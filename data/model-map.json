@@ -1,0 +1,22 @@
+{
+  "aliases": {
+    "hy3": "hy3",
+    "tencenthy3": "hy3",
+    "gpt56luna": "gpt-5.6-luna",
+    "qwen38max": "qwen-3.8-max",
+    "qwen37max": "qwen-3.7-max",
+    "qwen37plus": "qwen-3.7-plus",
+    "qwen36plus": "qwen-3.6-plus",
+    "deepseekv4pro": "deepseek-v4-pro",
+    "deepseekv4flash": "deepseek-v4-flash",
+    "minimaxm3": "minimax-m3",
+    "minimaxm27": "minimax-m2.7",
+    "minimaxm25": "minimax-m2.5"
+  },
+  "ignoredNames": [
+    "laguna s 2.1",
+    "grok 4.6",
+    "gpt-5.6 sol",
+    "gpt-5.6 terra"
+  ]
+}

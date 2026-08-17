@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 28rem),
+    var(--color-base-100);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-primary) 35%, transparent);
+}
+
+.number {
+  font-variant-numeric: tabular-nums;
+}
+
+.winner-row {
+  background: color-mix(in oklab, var(--color-success) 7%, transparent);
+}
+
+.loser-row {
+  background: color-mix(in oklab, var(--color-error) 5%, transparent);
+}
