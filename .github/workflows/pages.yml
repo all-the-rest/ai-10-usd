@@ -46,16 +46,16 @@ jobs:
       - name: Commit generated data
         id: commit
         run: |
-          if git diff --quiet public/data/latest.json; then
-            echo "no data changes, skipping commit"
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
+          if node scripts/has-semantic-change.mjs; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add public/data/latest.json
             git commit -m "chore: update comparison data $(date -u +%Y-%m-%d)"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "no semantic data changes, skipping commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Setup Pages

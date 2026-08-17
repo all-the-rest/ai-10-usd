@@ -109,8 +109,10 @@ pnpm typecheck        # nur svelte-check
 - Trigger: `push` auf `main`, `workflow_dispatch`, `repository_dispatch` Typ
   `source-updated`.
 - Pipeline: install (`--frozen-lockfile`) → `pnpm test` → `pnpm build` (generiert
-  `public/data/latest.json`) → Commit-Step (`public/data/latest.json` nur bei
-  Diff; bot-Commit pusht → ein zusätzlicher No-Op-Lauf, keine Schleife) →
+  `public/data/latest.json`) → Commit-Step: **nur bei semantischer Änderung**
+  (`scripts/has-semantic-change.mjs` vergleicht gegen `HEAD`, ignoriert den
+  volatilen `generatedAt`-Stempel — verhindert Commit-Schleifen; bot-Commit
+  pusht → ein zusätzlicher No-Op-Lauf, keine Schleife) →
   `upload-pages-artifact` (dist) + `upload-artifact` (Zip) → `deploy-pages`.
 - Die **Tracker-Repos** feuern den Dispatch nach dem Deploy **nur wenn ihre Daten
   geändert wurden** (`needs.build.outputs.changed == 'true'`) mit Secret
