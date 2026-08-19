@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-19T05:44:13.919Z",
+  "generatedAt": "2026-08-19T05:48:45.513Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
@@ -722,6 +722,27 @@
     {
       "canonicalModel": "musespark12",
       "displayName": "Muse Spark 1.2",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Muse Spark 1.2",
+        "variantCount": 1,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0091885,
+        "averageRequestsPerMonth": 2176.633835772977,
+        "normalizedRequestsPer10": 2021.0156321011857,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00494800725
+      },
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "muse-spark-1.2-contributor",
+      "displayName": "Muse Spark 1.2 Contributor",
       "status": "matched",
       "openCodeGo": {
         "sourceName": "Muse Spark 1.2",
@@ -734,40 +755,19 @@
         "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
       },
       "commandCode": {
-        "sourceName": "Muse Spark 1.2",
-        "variantCount": 1,
-        "averageAllowance": 20,
-        "averageRequestCost": 0.01276,
-        "averageRequestsPerMonth": 1567.398119122257,
-        "normalizedRequestsPer10": 1455.3371579593845,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00687126
-      },
-      "comparison": {
-        "normalizedDifference": 225130.76556107384,
-        "advantagePercent": 15469.320241691841,
-        "winner": "openCodeGo"
-      }
-    },
-    {
-      "canonicalModel": "musespark12contributor",
-      "displayName": "Muse Spark 1.2 Contributor",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
         "sourceName": "Muse Spark 1.2 Contributor",
         "variantCount": 1,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0002124,
-        "averageRequestsPerMonth": 94161.95856873822,
-        "normalizedRequestsPer10": 87429.85939530011,
+        "averageRequestCost": 0.0002648,
+        "averageRequestsPerMonth": 75528.70090634441,
+        "normalizedRequestsPer10": 70128.78449985554,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0001143774
+        "effectiveRequestCostAtPaidPrice": 0.00014259479999999999
       },
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 156457.3182191777,
+        "advantagePercent": 223.1,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -1038,17 +1038,17 @@
         "count": 23,
         "min": 427.9259218805995,
         "max": 70172.95176556901,
-        "mean": 12829.628338591428,
-        "median": 4699.489037373754,
-        "p25": 1340.138966036478,
-        "p75": 11975.568500995638
+        "mean": 15815.430396934738,
+        "median": 5245.791563718007,
+        "p25": 1502.994634673999,
+        "p75": 16250.766476401943
       }
     },
     "normalizedDifference": {
       "count": 23,
       "min": 116.67000443012245,
-      "max": 225130.76556107384,
-      "mean": 17853.83203865151,
+      "max": 156457.3182191777,
+      "mean": 14868.029980308202,
       "median": 2826.5563519739626,
       "p25": 488.243151628398,
       "p75": 7577.152626108113
@@ -1059,36 +1059,6 @@
       "draw": 3
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "musespark12",
-        "displayName": "Muse Spark 1.2",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Muse Spark 1.2",
-          "variantCount": 1,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.0002648,
-          "averageRequestsPerMonth": 226586.10271903325,
-          "normalizedRequestsPer10": 226586.10271903322,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
-        },
-        "commandCode": {
-          "sourceName": "Muse Spark 1.2",
-          "variantCount": 1,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.01276,
-          "averageRequestsPerMonth": 1567.398119122257,
-          "normalizedRequestsPer10": 1455.3371579593845,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00687126
-        },
-        "comparison": {
-          "normalizedDifference": 225130.76556107384,
-          "advantagePercent": 15469.320241691841,
-          "winner": "openCodeGo"
-        }
-      },
       {
         "canonicalModel": "qwen-3.7-max",
         "displayName": "Qwen3.7 Max",
@@ -1176,6 +1146,36 @@
         "comparison": {
           "normalizedDifference": 3973.519192868005,
           "advantagePercent": 223.10000000000002,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "muse-spark-1.2-contributor",
+        "displayName": "Muse Spark 1.2 Contributor",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Muse Spark 1.2",
+          "variantCount": 1,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0002648,
+          "averageRequestsPerMonth": 226586.10271903325,
+          "normalizedRequestsPer10": 226586.10271903322,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
+        },
+        "commandCode": {
+          "sourceName": "Muse Spark 1.2 Contributor",
+          "variantCount": 1,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.0002648,
+          "averageRequestsPerMonth": 75528.70090634441,
+          "normalizedRequestsPer10": 70128.78449985554,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00014259479999999999
+        },
+        "comparison": {
+          "normalizedDifference": 156457.3182191777,
+          "advantagePercent": 223.1,
           "winner": "openCodeGo"
         }
       },
@@ -1300,15 +1300,7 @@
         }
       }
     ],
-    "outliers": [
-      {
-        "model": "Muse Spark 1.2",
-        "ratio": 155.6932024169184,
-        "advantagePercent": 15469.320241691841,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      }
-    ]
+    "outliers": []
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."

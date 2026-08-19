@@ -62,8 +62,16 @@ pnpm typecheck        # nur svelte-check
   pro Familie gemittelt (`averageFamilyRequests`), `variantCount` dokumentiert die
   Zahl der gemittelten Einträge.
 - **Matching:** kanonische Aliase in `data/model-map.json` (inkl. `hy3`/`tencenthy3`);
-  `normalizeName`, `canonicalModelOf`. Ausgeschlossen: Free-/Deal-Modelle und
-  Goat-unverfügbare CC-Modelle (`IGNORED_MODEL_IDS`). CC-Modelle ohne OpenCode-
+  `normalizeName`, `canonicalName` und `displayNameOf` in `scripts/model-map.mjs`
+  (exportiert, unit-getestet). **Pro-Quelle-Überschreibungen** (`sourceAliases`)
+  gewinnen vor den globalen `aliases` — nötig, wenn Quellen denselben Namen für
+  unterschiedliche Modelle nutzen: OpenCode Go nennt den Contributor-Tier schlicht
+  „Muse Spark 1.2" (`musespark12` → `muse-spark-1.2-contributor`), Command Code führt
+  Contributor UND das teure Basis-Modell separat (`musespark12contributor` →
+  dasselbe Kanonische; Basis-„Muse Spark 1.2" bleibt ungemappt → `commandCodeOnly`).
+  `prettyNames` liefert das Anzeige-Label abweichend vom Quellnamen
+  („Muse Spark 1.2 Contributor"). Ausgeschlossen: Free-/Deal-Modelle und
+  Goat-unverfügbare CC-Modelle (`ignoredNames`). CC-Modelle ohne OpenCode-
   Pendant + OpenCode-only-Modelle bleiben als `status: "openCodeGoOnly" "/ "commandCodeOnly"`
   mit `comparison: null` in den Daten (die UI blendet sie per Default aus).
 - Ausgabe `public/data/latest.json`: `generatedAt`, `sources` (URL + `fetchedAt`),

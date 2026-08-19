@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadModelMap, normalizeName, canonicalName, displayNameOf } from "./model-map.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OPEN_CODE_URL = "https://ocgo-pricing.all-the.rest/data/latest.json";
@@ -21,23 +22,10 @@ const AVERAGE_MESSAGE_PATTERN = { input: 800, cachedRead: 50000, output: 162 };
 // draw instead of a winner.
 const DRAW_THRESHOLD_PERCENT = 10;
 
-const modelMap = JSON.parse(await readFile(join(ROOT, "data/model-map.json"), "utf8"));
+const modelMap = await loadModelMap();
 
 function finite(value) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
-}
-
-function normalizeName(value) {
-  return String(value)
-    .toLowerCase()
-    .replace(/\(latest\)|\b(latest|preview)\b/g, "")
-    .replace(/[^a-z0-9]+/g, "")
-    .trim();
-}
-
-function canonicalName(value) {
-  const normalized = normalizeName(value);
-  return modelMap.aliases[normalized] ?? normalized;
 }
 
 function prettyName(value) {
@@ -162,7 +150,11 @@ function compareGroup(group, openCodePaid, commandCodePaid, commandPlan) {
           ? "openCodeGo"
           : "commandCode";
 
-  const baseName = prettyName(group.openCodeGo[0]?.name ?? group.commandCode[0]?.name ?? group.canonical);
+  const baseName = displayNameOf(
+    modelMap,
+    prettyName(group.openCodeGo[0]?.name ?? group.commandCode[0]?.name ?? group.canonical),
+    group.canonical
+  );
   const title = group.kind ? ` (${variantTitle(group.kind)})` : "";
   return {
     canonicalModel: group.kind ? `${group.canonical}${title}` : group.canonical,
@@ -225,7 +217,7 @@ function add(provider, model) {
   if (modelMap.ignoredNames.some((name) => normalizeName(name) === normalizeName(model.name))) return;
   if (provider === "commandCode" && model.deal?.free) return;
   if (provider === "commandCode" && model.availability?.goat === false) return;
-  const canonical = canonicalName(model.name);
+  const canonical = canonicalName(modelMap, model.name, provider);
   // Peak/off-peak variants stay separate comparison rows ("show both
   // variants"); other variants of a family are aggregated.
   const kind = variantKind(model.tier);

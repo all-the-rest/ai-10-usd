@@ -13,6 +13,18 @@
     "minimaxm27": "minimax-m2.7",
     "minimaxm25": "minimax-m2.5"
   },
+  "sourceAliases": {
+    "openCodeGo": {
+      "musespark12": "muse-spark-1.2-contributor",
+      "musespark12contributor": "muse-spark-1.2-contributor"
+    },
+    "commandCode": {
+      "musespark12contributor": "muse-spark-1.2-contributor"
+    }
+  },
+  "prettyNames": {
+    "muse-spark-1.2-contributor": "Muse Spark 1.2 Contributor"
+  },
   "ignoredNames": [
     "laguna s 2.1",
     "grok 4.6",

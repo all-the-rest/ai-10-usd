@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { loadModelMap, normalizeName, canonicalName, displayNameOf } from "../scripts/model-map.mjs";
 
 function normalizedRequests(allowance, requestCost, paidMonthly) {
   return (allowance / requestCost) * (10 / paidMonthly);
@@ -57,4 +58,25 @@ test("token pattern: OpenCode Go pattern for both when available, Command Code a
   const goPattern = { input: 1100, cachedRead: 71500, output: 220 };
   assert.deepEqual(resolvePattern(goPattern), goPattern);
   assert.deepEqual(resolvePattern(undefined), fallback);
+});
+
+test("canonicalName: Muse Spark 1.2 Contributor mappt beide Quellen auf dasselbe kanonische Modell", async () => {
+  const modelMap = await loadModelMap();
+  // OpenCode Go nennt den Contributor-Tier nur "Muse Spark 1.2" …
+  assert.equal(canonicalName(modelMap, "Muse Spark 1.2", "openCodeGo"), "muse-spark-1.2-contributor");
+  // … Command Code führt Contributor UND das teure Basis-Modell separat:
+  assert.equal(canonicalName(modelMap, "Muse Spark 1.2 Contributor", "commandCode"), "muse-spark-1.2-contributor");
+  assert.equal(canonicalName(modelMap, "Muse Spark 1.2", "commandCode"), "musespark12");
+});
+
+test("canonicalName: sourceAliases gewinnen vor globalen aliases", async () => {
+  const modelMap = await loadModelMap();
+  assert.equal(canonicalName(modelMap, "hy3", "openCodeGo"), "hy3");
+  assert.equal(canonicalName(modelMap, "tencenthy3", "commandCode"), "hy3");
+});
+
+test("displayNameOf: prettyNames überschreiben den Quellnamen für kanonische Modelle", async () => {
+  const modelMap = await loadModelMap();
+  assert.equal(displayNameOf(modelMap, "Muse Spark 1.2", "muse-spark-1.2-contributor"), "Muse Spark 1.2 Contributor");
+  assert.equal(displayNameOf(modelMap, "Grok 4.5", "grok45"), "Grok 4.5");
 });
