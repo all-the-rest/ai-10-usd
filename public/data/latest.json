@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-19T14:44:48.762Z",
+  "generatedAt": "2026-08-19T16:08:34.485Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-19T09:55:57.883Z",
+      "fetchedAt": "2026-08-19T15:18:57.993Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -372,12 +372,12 @@
       "openCodeGo": {
         "sourceName": "Hy3",
         "variantCount": 1,
-        "averageAllowance": 60,
+        "averageAllowance": 480,
         "averageRequestCost": 0.0027898000000000003,
-        "averageRequestsPerMonth": 21506.918058642194,
-        "normalizedRequestsPer10": 21506.918058642194,
+        "averageRequestsPerMonth": 172055.34446913755,
+        "normalizedRequestsPer10": 172055.34446913755,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00046496666666666673
+        "effectiveRequestCostAtPaidPrice": 0.00005812083333333334
       },
       "commandCode": {
         "sourceName": "Tencent Hy3",
@@ -390,9 +390,9 @@
         "effectiveRequestCostAtPaidPrice": 0.0004292306571428572
       },
       "comparison": {
-        "normalizedDifference": 1790.579064616144,
-        "advantagePercent": 8.325595790776866,
-        "winner": "draw"
+        "normalizedDifference": 148757.8473458792,
+        "advantagePercent": 638.5142857142856,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -1029,7 +1029,7 @@
         "count": 23,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 25395.937108126174,
+        "mean": 31941.52086510423,
         "median": 7556.216361750046,
         "p25": 3284.056793433044,
         "p75": 16847.425502790356
@@ -1048,17 +1048,47 @@
       "count": 23,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 14950.773617603945,
-      "median": 3924.5895163850037,
+      "mean": 21340.65484722408,
+      "median": 3973.519192868005,
       "p25": 488.243151628398,
-      "p75": 7577.152626108113
+      "p75": 9866.982276937402
     },
     "winnerCounts": {
-      "openCodeGo": 11,
+      "openCodeGo": 12,
       "commandCode": 9,
-      "draw": 3
+      "draw": 2
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "hy3",
+        "displayName": "Hy3",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Hy3",
+          "variantCount": 1,
+          "averageAllowance": 480,
+          "averageRequestCost": 0.0027898000000000003,
+          "averageRequestsPerMonth": 172055.34446913755,
+          "normalizedRequestsPer10": 172055.34446913755,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.00005812083333333334
+        },
+        "commandCode": {
+          "sourceName": "Tencent Hy3",
+          "variantCount": 1,
+          "averageAllowance": 70,
+          "averageRequestCost": 0.0027898000000000003,
+          "averageRequestsPerMonth": 25091.404401749227,
+          "normalizedRequestsPer10": 23297.497123258338,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0004292306571428572
+        },
+        "comparison": {
+          "normalizedDifference": 148757.8473458792,
+          "advantagePercent": 638.5142857142856,
+          "winner": "openCodeGo"
+        }
+      },
       {
         "canonicalModel": "qwen-3.7-max",
         "displayName": "Qwen3.7 Max",
@@ -1266,36 +1296,6 @@
         "comparison": {
           "normalizedDifference": 5522.217556294798,
           "advantagePercent": 117.50676536061917,
-          "winner": "openCodeGo"
-        }
-      },
-      {
-        "canonicalModel": "mimov25",
-        "displayName": "MiMo V2.5",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 150375.93984962406,
-          "normalizedRequestsPer10": 150375.93984962406,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
-        },
-        "commandCode": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 75187.96992481203,
-          "normalizedRequestsPer10": 69812.4140434652,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.000143241
-        },
-        "comparison": {
-          "normalizedDifference": 80563.52580615885,
-          "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
       }
