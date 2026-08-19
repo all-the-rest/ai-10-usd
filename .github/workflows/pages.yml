@@ -9,7 +9,7 @@ on:
     types:
       - source-updated
   schedule:
-    - cron: "0 1 * * *"   # 1 AM UTC (≈2–3 AM CET/CEST) — backstop so a missed source-updated dispatch still refreshes the comparison
+    - cron: "0 23 * * *"   # 1 AM local (CEST, 23:00 UTC) — backstop so a missed source-updated dispatch still refreshes the comparison; drifts to midnight CET in winter (DST)
 
 permissions:
   contents: write
