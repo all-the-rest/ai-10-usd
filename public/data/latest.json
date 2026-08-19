@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-18T05:01:53.842Z",
+  "generatedAt": "2026-08-19T05:41:02.875Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-18T04:58:55.901Z",
+      "fetchedAt": "2026-08-19T05:31:22.942Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-18T04:52:35.785Z",
+      "fetchedAt": "2026-08-18T20:32:20.841Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -722,22 +722,31 @@
     {
       "canonicalModel": "musespark12",
       "displayName": "Muse Spark 1.2",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "Muse Spark 1.2",
+        "variantCount": 1,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.0002648,
+        "averageRequestsPerMonth": 226586.10271903325,
+        "normalizedRequestsPer10": 226586.10271903322,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
+      },
       "commandCode": {
         "sourceName": "Muse Spark 1.2",
         "variantCount": 1,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0091885,
-        "averageRequestsPerMonth": 2176.633835772977,
-        "normalizedRequestsPer10": 2021.0156321011857,
+        "averageRequestCost": 0.01276,
+        "averageRequestsPerMonth": 1567.398119122257,
+        "normalizedRequestsPer10": 1455.3371579593845,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00494800725
+        "effectiveRequestCostAtPaidPrice": 0.00687126
       },
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 225130.76556107384,
+        "advantagePercent": 15469.320241691841,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -988,47 +997,77 @@
     }
   ],
   "statistics": {
-    "matchedModels": 22,
+    "matchedModels": 23,
     "totalModels": 36,
     "coverage": {
-      "openCodeGo": 22,
+      "openCodeGo": 23,
       "commandCode": 36
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 22,
+        "count": 23,
         "min": 490.19607843137254,
-        "max": 150375.93984962406,
-        "mean": 16594.393960437217,
-        "median": 7988.137140885492,
-        "p25": 2947.1933695690905,
-        "p75": 16708.335893315954
+        "max": 226586.10271903322,
+        "mean": 25724.46825428922,
+        "median": 10221.706593668552,
+        "p25": 3284.056793433044,
+        "p75": 16847.425502790356
       },
       "commandCode": {
-        "count": 22,
+        "count": 23,
         "min": 427.9259218805995,
         "max": 70172.95176556901,
-        "mean": 13346.641574074702,
-        "median": 4972.640300545881,
-        "p25": 1363.9677043937854,
-        "p75": 12130.722436260883
+        "mean": 12829.628338591428,
+        "median": 4699.489037373754,
+        "p25": 1340.138966036478,
+        "p75": 11975.568500995638
       }
     },
     "normalizedDifference": {
-      "count": 22,
+      "count": 23,
       "min": 116.67000443012245,
-      "max": 80563.52580615885,
-      "mean": 8432.153242177772,
-      "median": 2779.6996095106706,
-      "p25": 421.7265769865072,
-      "p75": 6647.035367134027
+      "max": 225130.76556107384,
+      "mean": 17853.83203865151,
+      "median": 2826.5563519739626,
+      "p25": 488.243151628398,
+      "p75": 7577.152626108113
     },
     "winnerCounts": {
-      "openCodeGo": 11,
+      "openCodeGo": 12,
       "commandCode": 8,
       "draw": 3
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "musespark12",
+        "displayName": "Muse Spark 1.2",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Muse Spark 1.2",
+          "variantCount": 1,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0002648,
+          "averageRequestsPerMonth": 226586.10271903325,
+          "normalizedRequestsPer10": 226586.10271903322,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
+        },
+        "commandCode": {
+          "sourceName": "Muse Spark 1.2",
+          "variantCount": 1,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.01276,
+          "averageRequestsPerMonth": 1567.398119122257,
+          "normalizedRequestsPer10": 1455.3371579593845,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00687126
+        },
+        "comparison": {
+          "normalizedDifference": 225130.76556107384,
+          "advantagePercent": 15469.320241691841,
+          "winner": "openCodeGo"
+        }
+      },
       {
         "canonicalModel": "qwen-3.7-max",
         "displayName": "Qwen3.7 Max",
@@ -1238,39 +1277,17 @@
           "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
-      },
-      {
-        "canonicalModel": "deepseek-v4-flash (Off-Peak)",
-        "displayName": "DeepSeek V4 Flash (Off-Peak)",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "DeepSeek V4 Flash",
-          "variantCount": 1,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.0007939,
-          "averageRequestsPerMonth": 37788.13452575891,
-          "normalizedRequestsPer10": 37788.13452575891,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00026463333333333333
-        },
-        "commandCode": {
-          "sourceName": "DeepSeek V4 Flash",
-          "variantCount": 1,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.0007939,
-          "averageRequestsPerMonth": 75576.26905151783,
-          "normalizedRequestsPer10": 70172.95176556901,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00014250505
-        },
-        "comparison": {
-          "normalizedDifference": 32384.8172398101,
-          "advantagePercent": 85.70102135561746,
-          "winner": "commandCode"
-        }
       }
     ],
-    "outliers": []
+    "outliers": [
+      {
+        "model": "Muse Spark 1.2",
+        "ratio": 155.6932024169184,
+        "advantagePercent": 15469.320241691841,
+        "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      }
+    ]
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
