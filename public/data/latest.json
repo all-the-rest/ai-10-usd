@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-19T05:48:45.513Z",
+  "generatedAt": "2026-08-19T08:13:42.645Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-19T05:43:29.919Z",
+      "fetchedAt": "2026-08-19T08:12:14.744Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -312,12 +312,12 @@
       "openCodeGo": {
         "sourceName": "GPT 5.6 Luna",
         "variantCount": 2,
-        "averageAllowance": 30,
+        "averageAllowance": 15,
         "averageRequestCost": 0.00220125,
-        "averageRequestsPerMonth": 15112.432723500093,
-        "normalizedRequestsPer10": 15112.432723500093,
+        "averageRequestsPerMonth": 7556.216361750046,
+        "normalizedRequestsPer10": 7556.216361750046,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00073375
+        "effectiveRequestCostAtPaidPrice": 0.0014675
       },
       "commandCode": {
         "sourceName": "GPT-5.6 Luna",
@@ -330,9 +330,9 @@
         "effectiveRequestCostAtPaidPrice": 0.0008139427499999999
       },
       "comparison": {
-        "normalizedDifference": 2826.5563519739626,
-        "advantagePercent": 23.00655050155655,
-        "winner": "openCodeGo"
+        "normalizedDifference": 4729.660009776084,
+        "advantagePercent": 62.5929669472921,
+        "winner": "commandCode"
       }
     },
     {
@@ -745,7 +745,7 @@
       "displayName": "Muse Spark 1.2 Contributor",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "Muse Spark 1.2",
+        "sourceName": "Muse Spark 1.2 Contributor",
         "variantCount": 1,
         "averageAllowance": 60,
         "averageRequestCost": 0.0002648,
@@ -1029,8 +1029,8 @@
         "count": 23,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 25724.46825428922,
-        "median": 10221.706593668552,
+        "mean": 25395.937108126174,
+        "median": 7556.216361750046,
         "p25": 3284.056793433044,
         "p75": 16847.425502790356
       },
@@ -1048,14 +1048,14 @@
       "count": 23,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 14868.029980308202,
-      "median": 2826.5563519739626,
+      "mean": 14950.773617603945,
+      "median": 3924.5895163850037,
       "p25": 488.243151628398,
       "p75": 7577.152626108113
     },
     "winnerCounts": {
-      "openCodeGo": 12,
-      "commandCode": 8,
+      "openCodeGo": 11,
+      "commandCode": 9,
       "draw": 3
     },
     "biggestDifferences": [
@@ -1154,7 +1154,7 @@
         "displayName": "Muse Spark 1.2 Contributor",
         "status": "matched",
         "openCodeGo": {
-          "sourceName": "Muse Spark 1.2",
+          "sourceName": "Muse Spark 1.2 Contributor",
           "variantCount": 1,
           "averageAllowance": 60,
           "averageRequestCost": 0.0002648,
