@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-19T23:21:02.935Z",
+  "generatedAt": "2026-08-20T05:08:52.235Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-19T19:03:28.988Z",
+      "fetchedAt": "2026-08-20T05:08:05.594Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -743,22 +743,31 @@
     {
       "canonicalModel": "muse-spark-1.2-contributor",
       "displayName": "Muse Spark 1.2 Contributor",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "Muse Spark 1.2 Contributor",
+        "variantCount": 1,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.0002648,
+        "averageRequestsPerMonth": 226586.10271903325,
+        "normalizedRequestsPer10": 226586.10271903322,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
+      },
       "commandCode": {
         "sourceName": "Muse Spark 1.2 Contributor",
         "variantCount": 1,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0002124,
-        "averageRequestsPerMonth": 94161.95856873822,
-        "normalizedRequestsPer10": 87429.85939530011,
+        "averageRequestCost": 0.0002648,
+        "averageRequestsPerMonth": 75528.70090634441,
+        "normalizedRequestsPer10": 70128.78449985554,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0001143774
+        "effectiveRequestCostAtPaidPrice": 0.00014259479999999999
       },
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 156457.3182191777,
+        "advantagePercent": 223.1,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -1009,43 +1018,43 @@
     }
   ],
   "statistics": {
-    "matchedModels": 22,
+    "matchedModels": 23,
     "totalModels": 37,
     "coverage": {
-      "openCodeGo": 22,
+      "openCodeGo": 23,
       "commandCode": 37
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 22,
+        "count": 23,
         "min": 490.19607843137254,
-        "max": 172055.34446913755,
-        "mean": 23094.03987174382,
-        "median": 6655.392024926239,
-        "p25": 2947.1933695690905,
-        "p75": 16708.335893315954
+        "max": 226586.10271903322,
+        "mean": 31941.52086510423,
+        "median": 7556.216361750046,
+        "p25": 3284.056793433044,
+        "p75": 16847.425502790356
       },
       "commandCode": {
-        "count": 22,
+        "count": 23,
         "min": 427.9259218805995,
         "max": 70172.95176556901,
-        "mean": 13346.641574074702,
-        "median": 4972.640300545881,
-        "p25": 1363.9677043937854,
-        "p75": 12130.722436260883
+        "mean": 15815.430396934738,
+        "median": 5245.791563718007,
+        "p25": 1502.994634673999,
+        "p75": 16250.766476401943
       }
     },
     "normalizedDifference": {
-      "count": 22,
+      "count": 23,
       "min": 116.67000443012245,
-      "max": 148757.8473458792,
-      "mean": 15198.988330317095,
-      "median": 3949.0543546265044,
-      "p25": 421.7265769865072,
-      "p75": 7854.741620455284
+      "max": 156457.3182191777,
+      "mean": 21340.65484722408,
+      "median": 3973.519192868005,
+      "p25": 488.243151628398,
+      "p75": 9866.982276937402
     },
     "winnerCounts": {
-      "openCodeGo": 11,
+      "openCodeGo": 12,
       "commandCode": 9,
       "draw": 2
     },
@@ -1171,6 +1180,36 @@
         }
       },
       {
+        "canonicalModel": "muse-spark-1.2-contributor",
+        "displayName": "Muse Spark 1.2 Contributor",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Muse Spark 1.2 Contributor",
+          "variantCount": 1,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0002648,
+          "averageRequestsPerMonth": 226586.10271903325,
+          "normalizedRequestsPer10": 226586.10271903322,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.000044133333333333326
+        },
+        "commandCode": {
+          "sourceName": "Muse Spark 1.2 Contributor",
+          "variantCount": 1,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.0002648,
+          "averageRequestsPerMonth": 75528.70090634441,
+          "normalizedRequestsPer10": 70128.78449985554,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00014259479999999999
+        },
+        "comparison": {
+          "normalizedDifference": 156457.3182191777,
+          "advantagePercent": 223.1,
+          "winner": "openCodeGo"
+        }
+      },
+      {
         "canonicalModel": "minimax-m2.7",
         "displayName": "MiniMax M2.7",
         "status": "matched",
@@ -1257,36 +1296,6 @@
         "comparison": {
           "normalizedDifference": 5522.217556294798,
           "advantagePercent": 117.50676536061917,
-          "winner": "openCodeGo"
-        }
-      },
-      {
-        "canonicalModel": "mimov25",
-        "displayName": "MiMo V2.5",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 150375.93984962406,
-          "normalizedRequestsPer10": 150375.93984962406,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
-        },
-        "commandCode": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 75187.96992481203,
-          "normalizedRequestsPer10": 69812.4140434652,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.000143241
-        },
-        "comparison": {
-          "normalizedDifference": 80563.52580615885,
-          "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
       }
