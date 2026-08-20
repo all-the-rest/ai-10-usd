@@ -12,7 +12,7 @@ Datenquellen sind die beiden Preis-Tracker (`https://ocgo-pricing.all-the.rest/d
 `https://ai-10-usd.all-the.rest`. Updates kommen per `repository_dispatch`
 (`source-updated`) aus den Tracker-Repos — **kein eigenes Cron**.
 
-- Repo (remote): `reisi007/ai-10-usd`
+- Repo (remote): `all-the-rest/ai-10-usd`
 - GitHub Pages Custom Domain: `ai-10-usd.all-the.rest` (CNAME)
 
 ## Stack

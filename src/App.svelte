@@ -379,7 +379,7 @@
     <aside class="text-sm">
       <p>{t.footerText}</p>
       {#if data}<p>{t.footerSnapshots} {new Date(data.sources.openCodeGo.fetchedAt).toLocaleDateString(lang === "de" ? "de-DE" : "en-US")} {new Date(data.sources.commandCode.fetchedAt).toLocaleDateString(lang === "de" ? "de-DE" : "en-US")}</p>{/if}
-      <p><a class="link link-hover" href="https://github.com/reisi007/ai-10-usd" target="_blank" rel="noreferrer">{t.footerSource}</a> · <a class="link link-hover" href="https://ai-10-usd.all-the.rest/data/latest.json">{t.footerApi}</a></p>
+      <p><a class="link link-hover" href="https://github.com/all-the-rest/ai-10-usd" target="_blank" rel="noreferrer">{t.footerSource}</a> · <a class="link link-hover" href="https://ai-10-usd.all-the.rest/data/latest.json">{t.footerApi}</a></p>
     </aside>
   </footer>
 </div>
