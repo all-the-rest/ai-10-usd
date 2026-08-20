@@ -201,11 +201,11 @@
         </div>
       </section>
 
-      {#if data.warnings.length}
-        <div role="alert" class="alert alert-warning mt-8">
-          <div><strong>Data notes</strong><ul class="mt-1 list-inside list-disc">{#each data.warnings as warning}<li>{warning}</li>{/each}</ul></div>
-        </div>
-      {/if}
+      <div class="mt-8 rounded-box border border-base-300 bg-base-100 p-5 shadow-sm">
+        <p class="text-sm text-base-content/70">Ready to try OpenCode Go yourself?</p>
+        <a class="btn btn-primary btn-sm mt-2" href="https://opencode.ai/go?ref=PKTZTZE0P0" target="_blank" rel="noopener noreferrer">Try OpenCode Go ↗</a>
+        <span class="ml-2 text-xs text-base-content/45">referral link</span>
+      </div>
 
       <section id="comparison" class="mt-14 scroll-mt-24">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
