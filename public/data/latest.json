@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-20T05:08:52.235Z",
+  "generatedAt": "2026-08-20T13:39:15.102Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-20T05:08:05.594Z",
+      "fetchedAt": "2026-08-20T12:09:27.555Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-19T19:51:37.336Z",
+      "fetchedAt": "2026-08-20T08:54:14.447Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -841,12 +841,12 @@
       "commandCode": {
         "sourceName": "Qwen 3.8 27B",
         "variantCount": 1,
-        "averageAllowance": 20,
+        "averageAllowance": 70,
         "averageRequestCost": 0.002806,
-        "averageRequestsPerMonth": 7127.583749109052,
-        "normalizedRequestsPer10": 6617.997910036261,
+        "averageRequestsPerMonth": 24946.543121881685,
+        "normalizedRequestsPer10": 23162.992685126912,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.001511031
+        "effectiveRequestCostAtPaidPrice": 0.0004317231428571428
       },
       "comparison": {
         "normalizedDifference": null,

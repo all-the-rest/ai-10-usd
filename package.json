@@ -13,12 +13,14 @@
     "build": "pnpm generate && svelte-check --tsconfig ./tsconfig.json && vite build",
     "preview": "vite preview",
     "test": "node --test \"tests/**/*.test.mjs\"",
+    "test:screenshots": "playwright test -c playwright.screenshots.config.ts",
     "typecheck": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
     "svelte": "^5.56.9"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/vite": "^4.1.0",
     "@types/node": "^26.1.2",
