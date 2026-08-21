@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T08:31:38.852Z",
+  "generatedAt": "2026-08-21T11:18:26.233Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-21T08:00:41.879Z",
+      "fetchedAt": "2026-08-21T11:17:34.816Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -792,6 +792,18 @@
       }
     },
     {
+      "canonicalModel": "oxalphafree",
+      "displayName": "Ox Alpha Free",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen36max",
       "displayName": "Qwen 3.6 Max Preview",
       "status": "commandCodeOnly",
@@ -1019,7 +1031,7 @@
   ],
   "statistics": {
     "matchedModels": 23,
-    "totalModels": 37,
+    "totalModels": 38,
     "coverage": {
       "openCodeGo": 23,
       "commandCode": 37
