@@ -53,7 +53,21 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add public/data/latest.json
             git commit -m "chore: update comparison data $(date -u +%Y-%m-%d)"
-            git push
+            # Parallele Dispatch-Läufe committen dieselbe Datei — ohne Rebase
+            # scheitert der zweite Push als non-fast-forward (Race).
+            MAX_TRIES=3
+            for i in $(seq 1 "$MAX_TRIES"); do
+              if git pull --rebase origin main && git push; then
+                echo "pushed on attempt $i/$MAX_TRIES"
+                break
+              fi
+              if [ "$i" -eq "$MAX_TRIES" ]; then
+                echo "::error::push failed after $MAX_TRIES attempts"
+                exit 1
+              fi
+              echo "Attempt $i/$MAX_TRIES: push rejected, rebasing and retrying…"
+              sleep 5
+            done
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "no semantic data changes, skipping commit"
