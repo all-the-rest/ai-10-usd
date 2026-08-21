@@ -5,6 +5,7 @@
   import { sortRows } from "./lib/sort";
   import { i18n, type Lang } from "./i18n";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
+  import Heading from "./Heading.svelte";
 
   let data = $state<ComparisonData | null>(null);
   let error = $state("");
@@ -162,16 +163,31 @@
 </script>
 
 <div class="min-h-screen text-base-content">
-  <header class="navbar sticky top-0 z-10 bg-base-200 px-4 shadow-sm sm:px-8">
+  <header class="sticky top-0 z-10 bg-base-200 shadow-sm">
+    <div class="navbar mx-auto max-w-7xl px-4 sm:px-8">
     <div class="navbar-start">
       <a class="flex items-center gap-2 text-lg font-black tracking-tight" href="./">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary h-5 w-5" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
         {@html t.brand}
       </a>
     </div>
-    <div class="navbar-end gap-3 text-sm text-base-content/70">
-      <a class="link link-hover" href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
-      <a class="link link-hover" href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
+    <div class="navbar-end gap-2 text-sm text-base-content/70 sm:gap-3">
+      <!-- Desktop (≥ md): Cross-Links inline -->
+      <div class="hidden items-center gap-3 md:flex">
+        <a class="link link-hover" href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
+        <a class="link link-hover" href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
+      </div>
+      <!-- Mobile (< md): Burger-Dropdown mit denselben Links -->
+      <div class="dropdown dropdown-end md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label={lang === "de" ? "Weitere Links" : "More links"}>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </div>
+        <ul class="menu dropdown-content z-20 mt-2 w-72 rounded-box bg-base-100 p-2 shadow-lg">
+          <li><a href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+      <!-- …existing DE/EN join + theme swap stay here, unchanged… -->
       <div class="join">
         <button class="join-item btn btn-sm" class:btn-active={lang === "de"} onclick={() => setLang("de")}>DE</button>
         <button class="join-item btn btn-sm" class:btn-active={lang === "en"} onclick={() => setLang("en")}>EN</button>
@@ -181,6 +197,7 @@
         <svg class="swap-off h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17l-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg>
         <svg class="swap-on h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg>
       </label>
+    </div>
     </div>
   </header>
 
@@ -242,9 +259,9 @@
       </section>
 
       <section class="mt-8 grid gap-4 lg:grid-cols-2">
-        <div class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id="plan-prices" class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <h2 class="card-title">{t.planPrices}</h2>
+            <Heading anchor="plan-prices" class="card-title">{t.planPrices}</Heading>
             <div class="overflow-x-auto">
               <table class="table table-sm">
                 <thead><tr><th>{t.planTh}</th><th>{t.paidMonthly}</th><th>{t.creditBasis}</th></tr></thead>
@@ -257,9 +274,9 @@
             <p class="mt-2 text-sm text-base-content/65">{t.planPricesNote}</p>
           </div>
         </div>
-        <div class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id="avg-value" class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <h2 class="card-title">{t.avgValue}</h2>
+            <Heading anchor="avg-value" class="card-title">{t.avgValue}</Heading>
             <div class="mt-2 grid grid-cols-2 gap-4">
               <div class="rounded-box bg-success/10 p-4"><p class="text-sm text-base-content/65">{t.winnerGo}</p><p class="mt-1 text-2xl font-bold number">{number(data.statistics.requestsPer10.openCodeGo.mean)}</p><p class="text-sm text-base-content/65">{t.requestsPer10}</p></div>
               <div class="rounded-box bg-info/10 p-4"><p class="text-sm text-base-content/65">{t.winnerCc}</p><p class="mt-1 text-2xl font-bold number">{number(data.statistics.requestsPer10.commandCode.mean)}</p><p class="text-sm text-base-content/65">{t.requestsPer10}</p></div>
@@ -279,7 +296,7 @@
 
       <section id="comparison" class="mt-14 scroll-mt-24">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-primary">{t.modelByModel}</p><h2 class="mt-2 text-3xl font-black tracking-tight">{t.comparisonTitle}</h2><p class="mt-2 max-w-2xl text-base-content/70">{t.comparisonDesc}</p></div>
+          <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-primary">{t.modelByModel}</p><Heading anchor="comparison" class="mt-2 text-3xl font-black tracking-tight">{t.comparisonTitle}</Heading><p class="mt-2 max-w-2xl text-base-content/70">{t.comparisonDesc}</p></div>
           <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
             <label class="input w-full sm:w-64"><span class="text-base-content/50">⌕</span><input type="search" placeholder={t.searchPlaceholder} bind:value={search} oninput={syncUrl} /></label>
             <label class="flex items-center gap-2 text-sm whitespace-nowrap text-base-content/70"><input type="checkbox" class="checkbox checkbox-sm" bind:checked={matchedOnly} onchange={syncUrl} />{t.matchedOnly}</label>
@@ -318,9 +335,9 @@
       </section>
 
       <section class="mt-14 grid gap-6 lg:grid-cols-2">
-        <div class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id="biggest-rel" class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <h2 class="card-title">{t.biggestRel}</h2>
+            <Heading anchor="biggest-rel" class="card-title">{t.biggestRel}</Heading>
             <p class="text-sm text-base-content/65">{t.biggestRelDesc}</p>
             <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-base-content/70">
               <span class="badge badge-success badge-sm min-w-28 justify-center whitespace-nowrap">{t.winnerGo}</span>
@@ -337,9 +354,9 @@
             </div>
           </div>
         </div>
-        <div class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id="biggest-abs" class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <h2 class="card-title">{t.biggestAbs}</h2>
+            <Heading anchor="biggest-abs" class="card-title">{t.biggestAbs}</Heading>
             <p class="text-sm text-base-content/65">{t.biggestAbsDesc}</p>
             <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-base-content/70">
               <span class="badge badge-success badge-sm min-w-28 justify-center whitespace-nowrap">{t.winnerGo}</span>
@@ -361,7 +378,7 @@
       <section id="method" class="mt-14 scroll-mt-24">
         <div class="card border border-base-300 bg-base-200/50">
           <div class="card-body">
-            <h2 class="card-title">{t.methodTitle}</h2>
+            <Heading anchor="method" class="card-title">{t.methodTitle}</Heading>
             <div class="grid gap-4 text-sm leading-relaxed text-base-content/75 md:grid-cols-3">
               <p><strong>{t.methodPaid}</strong> {t.methodPaidBody.replace("{cc}", money(data.sources.commandCode.paidMonthly)).replace("{go}", money(data.sources.openCodeGo.paidMonthly))}</p>
               <p><strong>{t.methodFair}</strong> {t.methodFairBody}</p>
