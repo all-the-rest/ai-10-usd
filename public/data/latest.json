@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T11:21:37.575Z",
+  "generatedAt": "2026-08-21T13:54:46.116Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-21T11:17:34.816Z",
+      "fetchedAt": "2026-08-21T13:53:35.636Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-21T11:18:11.326Z",
+      "fetchedAt": "2026-08-21T13:48:50.700Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -90,6 +90,48 @@
         "normalizedDifference": 16192.40861990505,
         "advantagePercent": 85.70102135561746,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "deepseekv4flashvisionexp (Off-Peak)",
+      "displayName": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "DeepSeek V4 Flash Vision Exp",
+        "variantCount": 1,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.0007939,
+        "averageRequestsPerMonth": 18894.067262879456,
+        "normalizedRequestsPer10": 18894.067262879456,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0005292666666666667
+      },
+      "commandCode": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "deepseekv4flashvisionexp (Peak)",
+      "displayName": "DeepSeek V4 Flash Vision Exp (Peak)",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "DeepSeek V4 Flash Vision Exp",
+        "variantCount": 1,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.0015878,
+        "averageRequestsPerMonth": 9447.033631439728,
+        "normalizedRequestsPer10": 9447.033631439728,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0010585333333333333
+      },
+      "commandCode": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1031,9 +1073,9 @@
   ],
   "statistics": {
     "matchedModels": 23,
-    "totalModels": 38,
+    "totalModels": 40,
     "coverage": {
-      "openCodeGo": 23,
+      "openCodeGo": 25,
       "commandCode": 37
     },
     "requestsPer10": {
