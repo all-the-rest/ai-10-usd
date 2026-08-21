@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T13:54:46.116Z",
+  "generatedAt": "2026-08-21T19:50:25.314Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-21T13:53:35.636Z",
+      "fetchedAt": "2026-08-21T18:01:35.809Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-21T13:48:50.700Z",
+      "fetchedAt": "2026-08-21T19:49:20.501Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -95,7 +95,7 @@
     {
       "canonicalModel": "deepseekv4flashvisionexp (Off-Peak)",
       "displayName": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "DeepSeek V4 Flash Vision Exp",
         "variantCount": 1,
@@ -106,17 +106,26 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.0005292666666666667
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4 Flash Vision (exp)",
+        "variantCount": 1,
+        "averageAllowance": 35,
+        "averageRequestCost": 0.0010078,
+        "averageRequestsPerMonth": 34729.11291923,
+        "normalizedRequestsPer10": 32246.158699377906,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00031011445714285716
+      },
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 13352.09143649845,
+        "advantagePercent": 70.66816927624079,
+        "winner": "commandCode"
       }
     },
     {
       "canonicalModel": "deepseekv4flashvisionexp (Peak)",
       "displayName": "DeepSeek V4 Flash Vision Exp (Peak)",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "DeepSeek V4 Flash Vision Exp",
         "variantCount": 1,
@@ -127,11 +136,20 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.0010585333333333333
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4 Flash Vision (exp)",
+        "variantCount": 1,
+        "averageAllowance": 35,
+        "averageRequestCost": 0.0020156,
+        "averageRequestsPerMonth": 17364.556459615,
+        "normalizedRequestsPer10": 16123.079349688953,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0006202289142857143
+      },
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 6676.045718249225,
+        "advantagePercent": 70.66816927624079,
+        "winner": "commandCode"
       }
     },
     {
@@ -1072,44 +1090,44 @@
     }
   ],
   "statistics": {
-    "matchedModels": 23,
+    "matchedModels": 25,
     "totalModels": 40,
     "coverage": {
       "openCodeGo": 25,
-      "commandCode": 37
+      "commandCode": 39
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 23,
+        "count": 25,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 31941.52086510423,
-        "median": 7556.216361750046,
-        "p25": 3284.056793433044,
+        "mean": 30519.843231668663,
+        "median": 9447.033631439728,
+        "p25": 3957.7836411609505,
         "p75": 16847.425502790356
       },
       "commandCode": {
-        "count": 23,
+        "count": 25,
         "min": 427.9259218805995,
         "max": 70172.95176556901,
-        "mean": 15815.430396934738,
-        "median": 5245.791563718007,
-        "p25": 1502.994634673999,
-        "p75": 16250.766476401943
+        "mean": 16484.965487142632,
+        "median": 5994.457306793873,
+        "p25": 1781.0484952344261,
+        "p75": 20215.656581277755
       }
     },
     "normalizedDifference": {
-      "count": 23,
+      "count": 25,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 21340.65484722408,
-      "median": 3973.519192868005,
-      "p25": 488.243151628398,
-      "p75": 9866.982276937402
+      "mean": 20434.527945636062,
+      "median": 4373.231751250973,
+      "p25": 621.2763009121795,
+      "p75": 11601.63393907235
     },
     "winnerCounts": {
       "openCodeGo": 12,
-      "commandCode": 9,
+      "commandCode": 11,
       "draw": 2
     },
     "biggestDifferences": [
