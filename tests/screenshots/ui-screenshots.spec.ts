@@ -75,6 +75,14 @@ for (const route of routes) {
         await page.screenshot({ path: out(state, viewport, `${route.name}.png`), fullPage: true });
         // Section screenshots
         await captureSections(page, state, viewport, route.name);
+        // Focused notice-area captures
+        for (const sel of route.elements ?? []) {
+          const slug = sel.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
+          const locator = page.locator(sel);
+          if ((await locator.count()) > 0) {
+            await locator.first().screenshot({ path: out(state, viewport, `${route.name}-${slug}.png`) });
+          }
+        }
       });
     }
   }

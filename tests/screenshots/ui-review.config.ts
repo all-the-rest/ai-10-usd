@@ -7,6 +7,8 @@ export interface UiReviewRoute {
   states: UiReviewState[];
   viewports?: UiReviewViewport[];
   expectedTitle?: string;
+  /** Optional list of CSS selectors for focused notice-area captures (e.g. ["#comparison", "#method"]). */
+  elements?: string[];
 }
 
 export const uiReviewConfig = {
@@ -17,24 +19,28 @@ export const uiReviewConfig = {
       path: '/',
       states: ['filled'],
       expectedTitle: 'AI plans at $10',
+      elements: ['#comparison', '#method'],
     },
     {
       name: 'home-dark',
       path: '/?theme=dark',
       states: ['filled'],
       expectedTitle: 'AI plans at $10',
+      elements: ['#comparison', '#method'],
     },
     {
       name: 'home-german',
       path: '/?lang=de',
       states: ['filled'],
       expectedTitle: 'AI plans at $10',
+      elements: ['#comparison', '#method'],
     },
     {
       name: 'home-all-models',
       path: '/?match=0',
       states: ['filled'],
       expectedTitle: 'AI plans at $10',
+      elements: ['#comparison', '#method'],
     },
   ],
 };
