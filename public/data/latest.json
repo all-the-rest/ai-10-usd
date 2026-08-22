@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-22T21:09:10.513Z",
+  "generatedAt": "2026-08-22T21:10:07.253Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
@@ -12,7 +12,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-22T19:47:47.728Z",
+      "fetchedAt": "2026-08-22T21:09:17.383Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
