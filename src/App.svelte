@@ -6,6 +6,7 @@
   import { i18n, type Lang } from "./i18n";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
   import Heading from "./Heading.svelte";
+  import UnadjustedCaption from "./UnadjustedCaption.svelte";
 
   let data = $state<ComparisonData | null>(null);
   let error = $state("");
@@ -127,6 +128,13 @@
     if (go === null && cc === null) return null;
     return Math.max(go ?? -Infinity, cc ?? -Infinity);
   }
+
+  const ccNormalization = $derived.by(() => {
+    const paid = data?.sources.commandCode.paidMonthly ?? null;
+    if (paid === null || !Number.isFinite(paid) || paid <= 0) return null;
+    const factor = 10 / paid;
+    return { paid, factor, reductionPercent: (1 - factor) * 100 };
+  });
 
   const biggestAbsolute = $derived(
     (data?.rows ?? [])
@@ -321,7 +329,7 @@
                 <tr class={rowClass(row)}>
                   <th><div class="flex items-center gap-2"><span class="font-semibold whitespace-nowrap">{row.displayName}</span>{#if bigGap(row)}<span class="badge badge-warning badge-xs whitespace-nowrap">{t.bigGap}</span>{/if}</div></th>
                   <td class="text-right number">{#if row.openCodeGo}<div><span class:font-bold={row.comparison.winner === "openCodeGo"} class:text-success={row.comparison.winner === "openCodeGo"}>{compact(row.openCodeGo.normalizedRequestsPer10)}</span><div class="text-xs font-normal text-base-content/45">{money(row.openCodeGo.averageAllowance, 0)} {t.allowance}</div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
-                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{compact(row.commandCode.normalizedRequestsPer10)}</span><div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{compact(row.commandCode.normalizedRequestsPer10)}</span><div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div><div class="whitespace-nowrap text-xs font-normal text-base-content/35"><UnadjustedCaption raw={compact(row.commandCode.averageRequestsPerMonth)} label={t.unadjusted} tip={t.unadjustedTip.replace("{value}", compact(row.commandCode.averageRequestsPerMonth))} /></div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td class="text-right">{#if row.comparison.normalizedDifference !== null}{@const go = row.openCodeGo!.normalizedRequestsPer10}{@const cc = row.commandCode!.normalizedRequestsPer10}{@const goShare = (go / (go + cc)) * 100}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare.toFixed(1)) + "%"} title={"OpenCode Go " + compact(go)}></div><div class="h-full bg-info" style:width={String((100 - goShare).toFixed(1)) + "%"} title={"Command Code " + compact(cc)}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "draw" ? "text-base-content/60" : row.comparison.winner === "openCodeGo" ? "text-success" : "text-info"}">+{number(row.comparison.normalizedDifference)} ({percent(row.comparison.advantagePercent)})</span></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td class="text-right number">{#if maxRequestsOf(row) !== null}<span class="font-semibold text-base-content/80">{compact(maxRequestsOf(row))}</span>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td>{#if row.comparison.winner}<span class="badge {winnerClass(row)} badge-sm min-w-28 justify-center whitespace-nowrap">{winnerLabel(row)}</span>{:else}<span class="badge badge-warning badge-sm min-w-28 justify-center whitespace-nowrap">{t.notComparable}</span>{/if}</td>
@@ -386,6 +394,9 @@
             </div>
             <div class="divider"></div>
             <p class="text-sm text-base-content/65">{t.methodFallback.replace("{input}", number(data.methodology.workload.input)).replace("{cached}", number(data.methodology.workload.cachedRead)).replace("{output}", number(data.methodology.workload.output)).replace("{date}", new Date(data.generatedAt).toLocaleString(lang === "de" ? "de-DE" : "en-US"))}</p>
+            {#if ccNormalization}
+              <p class="mt-2 text-sm text-base-content/65">{t.methodUnadjusted.replace("{price}", money(ccNormalization.paid)).replace("{factor}", "×" + ccNormalization.factor.toFixed(2)).replace("{percent}", number(ccNormalization.reductionPercent, 1))}</p>
+            {/if}
           </div>
         </div>
       </section>
