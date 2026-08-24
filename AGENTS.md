@@ -20,6 +20,13 @@ Datenquellen sind die beiden Preis-Tracker (`https://ocgo-pricing.all-the.rest/d
 - Svelte 5 + Vite 8 + TypeScript (`svelte-check --tsconfig ./tsconfig.json`);
   `typescript` ist auf `~6.0.3` gepinnt (svelte-check 4.x akzeptiert TS 7 nicht)
 - Tailwind CSS 4 + daisyUI 5 — lokal gebündelt, keine externen Fonts/Libs
+- **Icons: Iconify via Tailwind-Plugin** (gleiche Einbindung wie
+  `ocgo-price-tracker`): devDeps `@iconify/tailwind4` +
+  `@iconify-json/material-symbols`, in `src/app.css` via
+  `@plugin "@iconify/tailwind4" { prefixes: material-symbols; }`. Nutzung als
+  Klasse: `icon-[material-symbols--info] h-3 w-3` — die Icon-Daten werden ins
+  CSS **gebündelt** (kein Laufzeit-Fetch zur Iconify-API). Keine weiteren
+  Inline-SVGs für Standard-Icons mehr.
 - Generator: Node ≥ 22, `scripts/build-comparison.mjs` (keine Runtime-Deps)
 - Paketmanager: pnpm — Version in `package.json` (`packageManager`) ist maßgeblich
 - Deployment: GitHub Pages (`upload-pages-artifact` + `deploy-pages`), CNAME in `public/`
@@ -95,11 +102,21 @@ pnpm typecheck        # nur svelte-check
   `maxRequests desc` (hohes Anfragevolumen = günstige Modelle oben).
 - **Spalten:** Modell (Name + `big gap`-Badge), OpenCode Go /$10 (fett + grün wenn
   Sieger, Sub-Caption `$Nutzung usage`), Command Code /$10 (fett + info wenn
-  Sieger, Sub-Caption `$Allowance allowance` — **kein doppeltes `$`**, `money()`
-  formatiert bereits mit Währung), Difference (Inline-Segment-Bar Go/CC + 
-  `+Anzahl (Pct)`, immer positiv), Max / $10 (`max(go, cc)`, sortierbar), Better
-  value (Winner-Badge). Fehlende Werte: `-`. Sortieren ausschließlich über
-  Spalten-Header-Buttons (keine Sortier-Zeile).
+  Sieger, Sub-Captions `$Allowance allowance` — **kein doppeltes `$`**,
+  `money()` formatiert bereits mit Währung — und `≈ {raw} unbereinigt`
+  (`averageRequestsPerMonth`, roher Wert vor der $10-Normalisierung)), Difference
+  (Inline-Segment-Bar Go/CC + `+Anzahl (Pct)`, immer positiv), Max / $10
+  (`max(go, cc)`, sortierbar), Better value (Winner-Badge). Fehlende Werte: `-`.
+  Sortieren ausschließlich über Spalten-Header-Buttons (keine Sortier-Zeile).
+- **Tooltips sind Toggle-only:** Interaktive Tooltips (z. B. `UnadjustedCaption.svelte`
+  für „≈ … unbereinigt") öffnen/schließen ausschließlich per Klick/Tap
+  (`.tooltip-open`-State) — **nie via `:hover`/`:focus-visible`** (daisyUI zeigt
+  Tooltips sonst bei Fokus dauerhaft → „Sticky Bubble" auf Touch). Umsetzung:
+  Klasse `.tap-tooltip` in `src/app.css` erzwingt `opacity: 0 !important` außer
+  bei `.tooltip-open`; Outside-Tap schließt (`pointerdown`-Handler); Position
+  `tooltip-top` (nicht left/bottom — Clipping-Risiko im `overflow-x-auto`-Container).
+  Der rohe Wert bleibt zusätzlich immer als Caption sichtbar (Tooltip ist nur
+  Erklärung, nie die einzige Informationsquelle).
 - **Header-Links** zu den Trackern: „OpenCode Go [price tracker] ↗“ /
   „Command Code [price tracker] ↗“ — die Links müssen als Preis-Tracker-Seiten
   erkennbar sein.
