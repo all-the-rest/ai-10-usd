@@ -15,6 +15,9 @@ permissions:
   contents: write
   pull-requests: write
   actions: read
+  # checks: read ist PFLICHT (Abweichung zur kanonischen Vorlage): mcps/knowledge-db
+  # braucht es, sonst 403 beim Warten auf Check-Runs via wait-on-check-action.
+  checks: read
 
 concurrency:
   group: dependabot-automerge-${{ github.event.pull_request.number }}
