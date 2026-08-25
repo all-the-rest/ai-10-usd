@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
   repository_dispatch:
     types:
@@ -17,8 +20,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  # Production-Läufe teilen sich die "pages"-Gruppe (kein Cancel). PR-Läufe
+  # (Dependabot) bekommen eine eigene Gruppe, damit sie echte Deploys nicht
+  # blockieren bzw. in die Queue einreihen.
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.event.pull_request.number) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -47,6 +53,8 @@ jobs:
 
       - name: Commit generated data
         id: commit
+        # Pusht nach main -> nur bei push/dispatch/schedule, nie auf pull_request
+        if: github.event_name != 'pull_request'
         run: |
           if node scripts/has-semantic-change.mjs; then
             git config user.name "github-actions[bot]"
@@ -75,9 +83,11 @@ jobs:
           fi
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist
@@ -90,6 +100,8 @@ jobs:
 
   deploy:
     needs: build
+    # Deploy (github-pages environment) darf auf pull_request NIE laufen
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
