@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-26T12:08:05.899Z",
+  "generatedAt": "2026-08-26T14:07:43.508Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-26T12:07:07.034Z",
+      "fetchedAt": "2026-08-26T14:05:31.955Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -363,6 +363,27 @@
         "normalizedDifference": 235.49486382333407,
         "advantagePercent": 23.800680903744958,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "glm53flash",
+      "displayName": "GLM-5.3-Flash",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "GLM-5.3-Flash",
+        "variantCount": 1,
+        "averageAllowance": 30,
+        "averageRequestCost": 0.0019,
+        "averageRequestsPerMonth": 15789.473684210527,
+        "normalizedRequestsPer10": 15789.473684210529,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0006333333333333333
+      },
+      "commandCode": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1091,9 +1112,9 @@
   ],
   "statistics": {
     "matchedModels": 24,
-    "totalModels": 40,
+    "totalModels": 41,
     "coverage": {
-      "openCodeGo": 25,
+      "openCodeGo": 26,
       "commandCode": 39
     },
     "requestsPer10": {
