@@ -174,6 +174,16 @@
   <header class="sticky top-0 z-10 bg-base-200 shadow-sm">
     <div class="navbar mx-auto max-w-7xl px-4 sm:px-8">
     <div class="navbar-start">
+      <!-- Mobile (< md): Burger-Dropdown ganz links, öffnet nach rechts (dropdown-start) -->
+      <div class="dropdown dropdown-start md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label={lang === "de" ? "Weitere Links" : "More links"}>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </div>
+        <ul class="menu dropdown-content z-20 mt-2 w-72 max-w-[90vw] rounded-box bg-base-100 p-2 shadow-lg">
+          <li><a href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
       <a class="flex items-center gap-2 text-lg font-black tracking-tight" href="./">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary h-5 w-5" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
         {@html t.brand}
@@ -184,16 +194,6 @@
       <div class="hidden items-center gap-3 md:flex">
         <a class="link link-hover" href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
         <a class="link link-hover" href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a>
-      </div>
-      <!-- Mobile (< md): Burger-Dropdown mit denselben Links -->
-      <div class="dropdown dropdown-end md:hidden">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm" aria-label={lang === "de" ? "Weitere Links" : "More links"}>
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </div>
-        <ul class="menu dropdown-content z-20 mt-2 w-72 rounded-box bg-base-100 p-2 shadow-lg">
-          <li><a href="https://ocgo-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">OpenCode Go <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://cc-pricing.all-the.rest/" target="_blank" rel="noreferrer" class="whitespace-nowrap">Command Code <span class="badge badge-ghost badge-xs whitespace-nowrap">price tracker</span> <span aria-hidden="true">↗</span></a></li>
-        </ul>
       </div>
       <!-- …existing DE/EN join + theme swap stay here, unchanged… -->
       <div class="join">

@@ -9,6 +9,12 @@ export default defineConfig({
   workers: 2,
   timeout: 60000,
   reporter: [['html', { open: 'never', outputFolder: 'playwright-report/ui-screenshots' }]],
+  webServer: {
+    command: 'pnpm dev --port 5173 --strictPort',
+    url: 'http://localhost:5173',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
+  },
   use: {
     baseURL: 'http://localhost:5173',
     trace: 'off',

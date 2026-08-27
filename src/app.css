@@ -34,14 +34,6 @@ body {
   background: color-mix(in oklab, var(--color-success) 7%, transparent);
 }
 
-/* Tap-controlled tooltip: visibility ONLY via .tooltip-open state.
-   This disables daisyUI's :hover and :focus-visible rules so the bubble
-   opens and closes exclusively through the button toggle on all devices. */
-.tap-tooltip[data-tip]:not(.tooltip-open)::before,
-.tap-tooltip[data-tip]:not(.tooltip-open)::after {
-  opacity: 0 !important;
-}
-
 .loser-row {
   background: color-mix(in oklab, var(--color-error) 5%, transparent);
 }
