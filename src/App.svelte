@@ -118,13 +118,22 @@
     return "";
   }
 
+  function hasUnlimited(row: ComparisonRow) {
+    return row.openCodeGo?.unlimited === true || row.commandCode?.unlimited === true;
+  }
+
   function bigGap(row: ComparisonRow) {
-    return row.comparison.winner !== "draw" && (row.comparison.advantagePercent ?? 0) >= 35;
+    return (
+      row.comparison.winner !== "draw" &&
+      ((row.comparison.advantagePercent ?? 0) >= 35 || hasUnlimited(row))
+    );
   }
 
   function maxRequestsOf(row: ComparisonRow): number | null {
-    const go = row.openCodeGo?.normalizedRequestsPer10 ?? null;
-    const cc = row.commandCode?.normalizedRequestsPer10 ?? null;
+    // JSON cannot represent Infinity, so unlimited sides serialize
+    // normalizedRequestsPer10 as null; treat the `unlimited` flag as ∞ here.
+    const go = row.openCodeGo?.unlimited ? Infinity : (row.openCodeGo?.normalizedRequestsPer10 ?? null);
+    const cc = row.commandCode?.unlimited ? Infinity : (row.commandCode?.normalizedRequestsPer10 ?? null);
     if (go === null && cc === null) return null;
     return Math.max(go ?? -Infinity, cc ?? -Infinity);
   }
@@ -138,7 +147,7 @@
 
   const biggestAbsolute = $derived(
     (data?.rows ?? [])
-      .filter((row) => row.status === "matched")
+      .filter((row) => row.status === "matched" && row.comparison.normalizedDifference != null)
       .sort((a, b) => (b.comparison.normalizedDifference ?? 0) - (a.comparison.normalizedDifference ?? 0))
       .slice(0, 6)
   );
@@ -328,9 +337,9 @@
               {#each filteredRows as row}
                 <tr class={rowClass(row)}>
                   <th><div class="flex items-center gap-2"><span class="font-semibold whitespace-nowrap">{row.displayName}</span>{#if bigGap(row)}<span class="badge badge-warning badge-xs whitespace-nowrap">{t.bigGap}</span>{/if}</div></th>
-                  <td class="text-right number">{#if row.openCodeGo}<div><span class:font-bold={row.comparison.winner === "openCodeGo"} class:text-success={row.comparison.winner === "openCodeGo"}>{compact(row.openCodeGo.normalizedRequestsPer10)}</span><div class="text-xs font-normal text-base-content/45">{money(row.openCodeGo.averageAllowance, 0)} {t.allowance}</div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
-                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{compact(row.commandCode.normalizedRequestsPer10)}</span><div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div><div class="whitespace-nowrap text-xs font-normal text-base-content/35"><UnadjustedCaption raw={compact(row.commandCode.averageRequestsPerMonth)} label={t.unadjusted} tip={t.unadjustedTip.replace("{value}", compact(row.commandCode.averageRequestsPerMonth))} /></div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
-                  <td class="text-right">{#if row.comparison.normalizedDifference !== null}{@const go = row.openCodeGo!.normalizedRequestsPer10}{@const cc = row.commandCode!.normalizedRequestsPer10}{@const goShare = (go / (go + cc)) * 100}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare.toFixed(1)) + "%"} title={"OpenCode Go " + compact(go)}></div><div class="h-full bg-info" style:width={String((100 - goShare).toFixed(1)) + "%"} title={"Command Code " + compact(cc)}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "draw" ? "text-base-content/60" : row.comparison.winner === "openCodeGo" ? "text-success" : "text-info"}">+{number(row.comparison.normalizedDifference)} ({percent(row.comparison.advantagePercent)})</span></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right number">{#if row.openCodeGo}<div><span class:font-bold={row.comparison.winner === "openCodeGo"} class:text-success={row.comparison.winner === "openCodeGo"}>{row.openCodeGo.unlimited ? "∞" : compact(row.openCodeGo.normalizedRequestsPer10)}</span>{#if row.openCodeGo.unlimited}<span class="badge badge-success badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.openCodeGo.averageAllowance, 0)} {t.allowance}</div>{/if}{#if row.openCodeGo.unlimited && row.openCodeGo.paidNormalizedRequestsPer10 != null}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{t.paid} {compact(row.openCodeGo.paidNormalizedRequestsPer10)}</div>{/if}</div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{row.commandCode.unlimited ? "∞" : compact(row.commandCode.normalizedRequestsPer10)}</span>{#if row.commandCode.unlimited}<span class="badge badge-info badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div>{/if}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{#if row.commandCode.unlimited && row.commandCode.paidNormalizedRequestsPer10 != null}{t.paid} {compact(row.commandCode.paidNormalizedRequestsPer10)}{:else}<UnadjustedCaption raw={compact(row.commandCode.averageRequestsPerMonth)} label={t.unadjusted} tip={t.unadjustedTip.replace("{value}", compact(row.commandCode.averageRequestsPerMonth))} />{/if}</div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right">{#if hasUnlimited(row)}{@const goU = row.openCodeGo?.unlimited === true}{@const ccU = row.commandCode?.unlimited === true}{@const goShare = goU && ccU ? 50 : goU ? 100 : ccU ? 0 : 50}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare) + "%"} title={"OpenCode Go ∞"}></div><div class="h-full bg-info" style:width={String(100 - goShare) + "%"} title={"Command Code ∞"}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "openCodeGo" ? "text-success" : row.comparison.winner === "commandCode" ? "text-info" : "text-base-content/60"}">∞</span></div>{:else if row.comparison.normalizedDifference !== null}{@const go = row.openCodeGo!.normalizedRequestsPer10}{@const cc = row.commandCode!.normalizedRequestsPer10}{@const goShare = (go / (go + cc)) * 100}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare.toFixed(1)) + "%"} title={"OpenCode Go " + compact(go)}></div><div class="h-full bg-info" style:width={String((100 - goShare).toFixed(1)) + "%"} title={"Command Code " + compact(cc)}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "draw" ? "text-base-content/60" : row.comparison.winner === "openCodeGo" ? "text-success" : "text-info"}">+{number(row.comparison.normalizedDifference)} ({percent(row.comparison.advantagePercent)})</span></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td class="text-right number">{#if maxRequestsOf(row) !== null}<span class="font-semibold text-base-content/80">{compact(maxRequestsOf(row))}</span>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td>{#if row.comparison.winner}<span class="badge {winnerClass(row)} badge-sm min-w-28 justify-center whitespace-nowrap">{winnerLabel(row)}</span>{:else}<span class="badge badge-warning badge-sm min-w-28 justify-center whitespace-nowrap">{t.notComparable}</span>{/if}</td>
                 </tr>

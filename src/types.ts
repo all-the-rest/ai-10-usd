@@ -23,7 +23,7 @@ export interface OpenCodeModel {
   output: number | null;
   cachedRead: number | null;
   cachedWrite: number | null;
-  usage: number;
+  usage: number | null;
   pattern: RequestPattern;
 }
 
@@ -57,12 +57,15 @@ export interface RequestPattern {
 export interface ProviderModelValue {
   sourceName: string;
   variantCount: number;
+  unlimited: boolean;
   averageAllowance: number;
   averageRequestCost: number;
   averageRequestsPerMonth: number;
   normalizedRequestsPer10: number;
   paidMonthly: number;
   effectiveRequestCostAtPaidPrice: number;
+  paidNormalizedRequestsPer10?: number | null;
+  paidAverageRequestsPerMonth?: number | null;
 }
 
 export interface ComparisonRow {
@@ -71,6 +74,8 @@ export interface ComparisonRow {
   status: "matched" | "openCodeGoOnly" | "commandCodeOnly";
   openCodeGo: ProviderModelValue | null;
   commandCode: ProviderModelValue | null;
+  freeIncluded: { openCodeGo: boolean; commandCode: boolean };
+  promoExpires: string | null;
   comparison: {
     normalizedDifference: number | null;
     advantagePercent: number | null;

@@ -28,6 +28,16 @@ function finite(value) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
+// A model is "free" (unlimited, no per-request cost) on a provider when:
+// - Command Code: flagged by a 100%-discount free deal
+// - OpenCode Go: a free catalog row (usage is null, tokens priced at 0)
+// OpenCode Zen free models live in `freeModels`, not `models`, so they never
+// reach this generator and are intentionally excluded from the comparison.
+function isFree(model, provider) {
+  if (provider === "commandCode") return model.deal?.free === true;
+  return model.usage == null;
+}
+
 function prettyName(value) {
   return String(value)
     .replace(/\s*\(latest\)/gi, "")
@@ -97,7 +107,7 @@ function commandCodeAllowance(model, plan) {
   return finite(model.allowances?.goat) ?? finite(plan.defaultAllowance) ?? finite(plan.creditsMonthly);
 }
 
-function providerValue(models, provider, paidMonthly, plan, pattern) {
+function computeFinite(models, provider, paidMonthly, plan, pattern) {
   const values = models
     .map((model) => {
       const allowance = provider === "openCodeGo" ? finite(model.usage) : commandCodeAllowance(model, plan);
@@ -118,6 +128,7 @@ function providerValue(models, provider, paidMonthly, plan, pattern) {
   return {
     sourceName: prettyName(models[0].name),
     variantCount: models.length,
+    unlimited: false,
     averageAllowance: average(values.map((value) => value.allowance)),
     averageRequestCost: average(values.map((value) => value.cost)),
     averageRequestsPerMonth: average(values.map((value) => value.requests)),
@@ -125,6 +136,43 @@ function providerValue(models, provider, paidMonthly, plan, pattern) {
     paidMonthly,
     effectiveRequestCostAtPaidPrice: average(values.map((value) => value.effective))
   };
+}
+
+// Splits a provider's models into free (unlimited) and paid, then derives a
+// single ProviderModelValue: a paid-only group stays finite; a group with both
+// paid and free reports as unlimited (free wins) while keeping the paid figure
+// for a sub-caption; a free-only group is unlimited with no finite figure.
+function providerValue(models, provider, paidMonthly, plan, pattern) {
+  const free = models.filter((model) => isFree(model, provider));
+  const paid = models.filter((model) => !isFree(model, provider));
+  const finiteValue = computeFinite(paid, provider, paidMonthly, plan, pattern);
+  if (finiteValue) {
+    if (free.length) {
+      return {
+        ...finiteValue,
+        unlimited: true,
+        normalizedRequestsPer10: Infinity,
+        averageRequestsPerMonth: Infinity,
+        paidNormalizedRequestsPer10: finiteValue.normalizedRequestsPer10,
+        paidAverageRequestsPerMonth: finiteValue.averageRequestsPerMonth
+      };
+    }
+    return finiteValue;
+  }
+  if (free.length) {
+    return {
+      sourceName: prettyName(free[0].name),
+      variantCount: free.length,
+      unlimited: true,
+      normalizedRequestsPer10: Infinity,
+      averageRequestsPerMonth: Infinity,
+      averageAllowance: 0,
+      averageRequestCost: 0,
+      paidMonthly,
+      effectiveRequestCostAtPaidPrice: 0
+    };
+  }
+  return null;
 }
 
 function compareGroup(group, openCodePaid, commandCodePaid, commandPlan) {
@@ -135,20 +183,33 @@ function compareGroup(group, openCodePaid, commandCodePaid, commandPlan) {
   const openCodeGo = providerValue(group.openCodeGo, "openCodeGo", openCodePaid, null, pattern);
   const commandCode = providerValue(group.commandCode, "commandCode", commandCodePaid, commandPlan, pattern);
   const matched = openCodeGo && commandCode;
+  const goUnlimited = openCodeGo?.unlimited ?? false;
+  const ccUnlimited = commandCode?.unlimited ?? false;
   const goRequests = openCodeGo?.normalizedRequestsPer10 ?? null;
   const ccRequests = commandCode?.normalizedRequestsPer10 ?? null;
-  // Always positive: "how much better the plan with more requests is".
-  const difference = matched ? Math.abs(goRequests - ccRequests) : null;
-  const lower = matched ? Math.min(goRequests, ccRequests) : null;
-  const advantagePercent = lower && lower > 0 ? (difference / lower) * 100 : null;
-  const winner =
-    advantagePercent === null
-      ? null
-      : advantagePercent < DRAW_THRESHOLD_PERCENT
+  let winner = null;
+  let difference = null;
+  let advantagePercent = null;
+  if (goUnlimited && ccUnlimited) {
+    // Free on both plans → no finite advantage to compute (both unlimited).
+    winner = "draw";
+  } else if (ccUnlimited) {
+    // Command Code includes the model for free → wins by an infinite margin.
+    winner = "commandCode";
+  } else if (goUnlimited) {
+    winner = "openCodeGo";
+  } else if (matched) {
+    // Always positive: "how much better the plan with more requests is".
+    difference = Math.abs(goRequests - ccRequests);
+    const lower = Math.min(goRequests, ccRequests);
+    advantagePercent = lower && lower > 0 ? (difference / lower) * 100 : null;
+    winner =
+      advantagePercent < DRAW_THRESHOLD_PERCENT
         ? "draw"
         : goRequests >= ccRequests
           ? "openCodeGo"
           : "commandCode";
+  }
 
   const baseName = displayNameOf(
     modelMap,
@@ -156,12 +217,15 @@ function compareGroup(group, openCodePaid, commandCodePaid, commandPlan) {
     group.canonical
   );
   const title = group.kind ? ` (${variantTitle(group.kind)})` : "";
+  const promoExpires = group.commandCode.find((model) => model.deal?.free)?.deal?.expires ?? null;
   return {
     canonicalModel: group.kind ? `${group.canonical}${title}` : group.canonical,
     displayName: `${baseName}${title}`,
     status: matched ? "matched" : openCodeGo ? "openCodeGoOnly" : "commandCodeOnly",
     openCodeGo,
     commandCode,
+    freeIncluded: { openCodeGo: goUnlimited, commandCode: ccUnlimited },
+    promoExpires,
     comparison: { normalizedDifference: difference, advantagePercent, winner }
   };
 }
@@ -215,7 +279,6 @@ function variantTitle(kind) {
 
 function add(provider, model) {
   if (modelMap.ignoredNames.some((name) => normalizeName(name) === normalizeName(model.name))) return;
-  if (provider === "commandCode" && model.deal?.free) return;
   if (provider === "commandCode" && model.availability?.goat === false) return;
   const canonical = canonicalName(modelMap, model.name, provider);
   // Peak/off-peak variants stay separate comparison rows ("show both
@@ -235,13 +298,21 @@ const rows = [...groups.values()]
   .sort((a, b) => a.displayName.localeCompare(b.displayName, undefined, { numeric: true, sensitivity: "base" }));
 
 const matchedRows = rows.filter((row) => row.status === "matched");
-const normalizedGo = matchedRows.map((row) => row.openCodeGo.normalizedRequestsPer10);
-const normalizedCc = matchedRows.map((row) => row.commandCode.normalizedRequestsPer10);
+// Free/unlimited rows report Infinity requests; they are real comparison
+// results (counted in matchedModels/winnerCounts) but must not poison the
+// numeric request distributions, so filter them out of those aggregates.
+const normalizedGo = matchedRows
+  .map((row) => row.openCodeGo.normalizedRequestsPer10)
+  .filter(Number.isFinite);
+const normalizedCc = matchedRows
+  .map((row) => row.commandCode.normalizedRequestsPer10)
+  .filter(Number.isFinite);
 const differences = matchedRows.map((row) => row.comparison.normalizedDifference);
 const winnerCounts = { openCodeGo: 0, commandCode: 0, draw: 0 };
 for (const row of matchedRows) winnerCounts[row.comparison.winner] += 1;
 
 const biggestDifferences = [...matchedRows]
+  .filter((row) => row.comparison.advantagePercent != null)
   .sort((a, b) => (b.comparison.advantagePercent ?? 0) - (a.comparison.advantagePercent ?? 0))
   .slice(0, 8);
 
@@ -275,7 +346,7 @@ const output = {
     modelAggregation:
       "arithmetic mean across variants; peak/off-peak variants compared separately",
     matching:
-      "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models excluded"
+      "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   rows,
   statistics: {

@@ -22,9 +22,12 @@ export function percent(value: number | null | undefined, digits = 0): string {
 }
 
 export function compact(value: number | null | undefined): string {
-  if (value === null || value === undefined || !Number.isFinite(value)) return "-";
+  if (value === null || value === undefined) return "-";
+  if (!Number.isFinite(value)) return "∞";
+  // Requests are discrete, so round to whole numbers — otherwise expensive
+  // models (< 1000 requests/month) show awkward decimals like "12.4".
   return new Intl.NumberFormat("en-US", {
     notation: "compact",
     maximumFractionDigits: 1
-  }).format(value);
+  }).format(Math.round(value));
 }
