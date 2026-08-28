@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-28T06:03:19.367Z",
+  "generatedAt": "2026-08-28T06:09:37.271Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
@@ -12,7 +12,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-28T04:24:44.225Z",
+      "fetchedAt": "2026-08-28T06:08:54.377Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -220,12 +220,12 @@
       "commandCode": {
         "sourceName": "Gemini 3.7 Flash",
         "variantCount": 1,
-        "averageAllowance": 40,
+        "averageAllowance": 20,
         "averageRequestCost": 0.004419169200000001,
-        "averageRequestsPerMonth": 9051.4751053207,
-        "normalizedRequestsPer10": 8404.340859164995,
+        "averageRequestsPerMonth": 4525.73755266035,
+        "normalizedRequestsPer10": 4202.1704295824975,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0011898613071000001
+        "effectiveRequestCostAtPaidPrice": 0.0023797226142000002
       },
       "comparison": {
         "normalizedDifference": null,
