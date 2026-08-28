@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T20:53:32.692Z",
+  "generatedAt": "2026-08-28T06:03:19.367Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-27T18:02:32.497Z",
+      "fetchedAt": "2026-08-28T06:02:12.200Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-27T18:05:50.694Z",
+      "fetchedAt": "2026-08-28T04:24:44.225Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -957,27 +957,6 @@
       }
     },
     {
-      "canonicalModel": "qwen38flash",
-      "displayName": "Qwen 3.8 Flash",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Qwen 3.8 Flash",
-        "variantCount": 1,
-        "averageAllowance": 20,
-        "averageRequestCost": 0.00100414,
-        "averageRequestsPerMonth": 19917.541378692214,
-        "normalizedRequestsPer10": 18493.538884579586,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00054072939
-      },
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
-      }
-    },
-    {
       "canonicalModel": "qwen-3.6-plus",
       "displayName": "Qwen3.6 Plus",
       "status": "matched",
@@ -1068,6 +1047,36 @@
       }
     },
     {
+      "canonicalModel": "qwen38flash",
+      "displayName": "Qwen3.8 Flash",
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "Qwen3.8 Flash",
+        "variantCount": 1,
+        "averageAllowance": 30,
+        "averageRequestCost": 0.0011405,
+        "averageRequestsPerMonth": 26304.2525208242,
+        "normalizedRequestsPer10": 26304.2525208242,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0003801666666666667
+      },
+      "commandCode": {
+        "sourceName": "Qwen 3.8 Flash",
+        "variantCount": 1,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.001118,
+        "averageRequestsPerMonth": 17889.087656529515,
+        "normalizedRequestsPer10": 16610.1092446885,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.000602043
+      },
+      "comparison": {
+        "normalizedDifference": 9694.1432761357,
+        "advantagePercent": 58.36291100394565,
+        "winner": "openCodeGo"
+      }
+    },
+    {
       "canonicalModel": "qwen-3.8-max",
       "displayName": "Qwen3.8 Max",
       "status": "matched",
@@ -1141,43 +1150,43 @@
     }
   ],
   "statistics": {
-    "matchedModels": 25,
+    "matchedModels": 26,
     "totalModels": 42,
     "coverage": {
-      "openCodeGo": 26,
+      "openCodeGo": 27,
       "commandCode": 41
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 25,
+        "count": 26,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 31127.39334443556,
-        "median": 10221.706593668552,
-        "p25": 3957.7836411609505,
-        "p75": 16847.425502790356
+        "mean": 30941.887928142816,
+        "median": 12174.24725763244,
+        "p25": 4210.419459848479,
+        "p75": 18382.40682285718
       },
       "commandCode": {
-        "count": 25,
+        "count": 26,
         "min": 427.9259218805995,
         "max": 70172.95176556901,
-        "mean": 16716.63873129935,
-        "median": 6463.212493234633,
-        "p25": 3231.6062466173166,
-        "p75": 20215.656581277755
+        "mean": 16712.541443352777,
+        "median": 8144.331679305609,
+        "p25": 3495.5278623123627,
+        "p75": 20048.61141900088
       }
     },
     "normalizedDifference": {
-      "count": 25,
+      "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20048.424020780436,
-      "median": 3973.519192868005,
-      "p25": 1242.552601824359,
-      "p75": 8132.330614802455
+      "mean": 19650.182453678714,
+      "median": 4173.375472059489,
+      "p25": 1243.9346992802489,
+      "p75": 9303.690110802389
     },
     "winnerCounts": {
-      "openCodeGo": 11,
+      "openCodeGo": 12,
       "commandCode": 12,
       "draw": 2
     },
