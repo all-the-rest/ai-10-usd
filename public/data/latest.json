@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-28T06:09:37.271Z",
+  "generatedAt": "2026-08-28T15:43:19.796Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-28T06:02:12.200Z",
+      "fetchedAt": "2026-08-28T15:41:42.945Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-28T06:08:54.377Z",
+      "fetchedAt": "2026-08-28T14:08:37.807Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -474,6 +474,27 @@
         "normalizedDifference": 148757.8473458792,
         "advantagePercent": 638.5142857142856,
         "winner": "openCodeGo"
+      }
+    },
+    {
+      "canonicalModel": "hy4",
+      "displayName": "Hy4 preview",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Hy4 preview",
+        "variantCount": 1,
+        "averageAllowance": 30,
+        "averageRequestCost": 0.004433014999999999,
+        "averageRequestsPerMonth": 6767.403223314156,
+        "normalizedRequestsPer10": 6767.403223314157,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0014776716666666664
+      },
+      "commandCode": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1147,14 +1168,35 @@
         "advantagePercent": null,
         "winner": null
       }
+    },
+    {
+      "canonicalModel": "tencenthy4",
+      "displayName": "Tencent Hy4 Preview",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Tencent Hy4 Preview",
+        "variantCount": 1,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0031723619999999998,
+        "averageRequestsPerMonth": 6304.4507530981655,
+        "normalizedRequestsPer10": 5853.714719682605,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0017083169369999998
+      },
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
     }
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 42,
+    "totalModels": 44,
     "coverage": {
-      "openCodeGo": 27,
-      "commandCode": 41
+      "openCodeGo": 28,
+      "commandCode": 42
     },
     "requestsPer10": {
       "openCodeGo": {
