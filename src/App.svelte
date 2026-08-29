@@ -147,8 +147,13 @@
 
   const biggestAbsolute = $derived(
     (data?.rows ?? [])
-      .filter((row) => row.status === "matched" && row.comparison.normalizedDifference != null)
-      .sort((a, b) => (b.comparison.normalizedDifference ?? 0) - (a.comparison.normalizedDifference ?? 0))
+      .filter((row) => row.status === "matched")
+      .sort((a, b) => {
+        const au = a.openCodeGo?.unlimited || a.commandCode?.unlimited;
+        const bu = b.openCodeGo?.unlimited || b.commandCode?.unlimited;
+        if (au !== bu) return au ? -1 : 1;
+        return (b.comparison.normalizedDifference ?? 0) - (a.comparison.normalizedDifference ?? 0);
+      })
       .slice(0, 6)
   );
 
@@ -365,7 +370,7 @@
               {#each data.statistics.biggestDifferences.slice(0, 6) as row}
                 <div class="flex items-center justify-between gap-4 border-b border-base-200 pb-3 last:border-0">
                   <div><p class="font-semibold">{row.displayName}</p><p class="text-sm text-base-content/60">{winnerLabel(row)}</p></div>
-                  <span class="badge {winnerClass(row)} number whitespace-nowrap">+{number(row.comparison.normalizedDifference)} · {percent(row.comparison.advantagePercent)}</span>
+                  <span class="badge {winnerClass(row)} number whitespace-nowrap">{#if hasUnlimited(row)}∞{:else}+ {number(row.comparison.normalizedDifference)} · {percent(row.comparison.advantagePercent)}{/if}</span>
                 </div>
               {/each}
             </div>
@@ -384,7 +389,7 @@
               {#each biggestAbsolute as row}
                 <div class="flex items-center justify-between gap-4 border-b border-base-200 pb-3 last:border-0">
                   <div><p class="font-semibold">{row.displayName}</p><p class="text-sm text-base-content/60">{winnerLabel(row)}</p></div>
-                  <span class="badge {winnerClass(row)} number whitespace-nowrap">+{number(row.comparison.normalizedDifference)} · {percent(row.comparison.advantagePercent)}</span>
+                  <span class="badge {winnerClass(row)} number whitespace-nowrap">{#if hasUnlimited(row)}∞{:else}+ {number(row.comparison.normalizedDifference)} · {percent(row.comparison.advantagePercent)}{/if}</span>
                 </div>
               {/each}
             </div>

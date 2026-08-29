@@ -312,8 +312,13 @@ const winnerCounts = { openCodeGo: 0, commandCode: 0, draw: 0 };
 for (const row of matchedRows) winnerCounts[row.comparison.winner] += 1;
 
 const biggestDifferences = [...matchedRows]
-  .filter((row) => row.comparison.advantagePercent != null)
-  .sort((a, b) => (b.comparison.advantagePercent ?? 0) - (a.comparison.advantagePercent ?? 0))
+  .sort((a, b) => {
+    const au = a.openCodeGo?.unlimited || a.commandCode?.unlimited;
+    const bu = b.openCodeGo?.unlimited || b.commandCode?.unlimited;
+    // Unlimited (infinite) gaps rank above any finite percentage difference.
+    if (au !== bu) return au ? -1 : 1;
+    return (b.comparison.advantagePercent ?? 0) - (a.comparison.advantagePercent ?? 0);
+  })
   .slice(0, 8);
 
 const openCodePaid = finite(openCodeData.monthlyCost) ?? 10;

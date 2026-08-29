@@ -121,3 +121,38 @@ test("unlimited requests are excluded from numeric distributions", () => {
   assert.equal(mean([100, 200, Infinity]), 150);
   assert.equal(finite([100, 200, Infinity]).length, 2);
 });
+
+// Sorting (mirrors src/lib/sort.ts valueFor): JSON stores unlimited requests as
+// null, so the `unlimited` flag must rank those rows first — above any finite
+// request sum — for maxRequests / per-provider requests / difference sorts.
+test("sorting ranks unlimited models first (above finite request sums)", () => {
+  const unlimitedOf = (row) => row.openCodeGo?.unlimited === true || row.commandCode?.unlimited === true;
+  const valueFor = (row, key) => {
+    if (key === "maxRequests") {
+      const go = row.openCodeGo?.unlimited ? Infinity : (row.openCodeGo?.normalizedRequestsPer10 ?? null);
+      const cc = row.commandCode?.unlimited ? Infinity : (row.commandCode?.normalizedRequestsPer10 ?? null);
+      if (go === null && cc === null) return null;
+      return Math.max(go ?? -Infinity, cc ?? -Infinity);
+    }
+    if (key === "commandCodeRequests") return row.commandCode?.unlimited ? Infinity : (row.commandCode?.normalizedRequestsPer10 ?? null);
+    if (key === "normalizedDifference") return unlimitedOf(row) ? Infinity : row.comparison.normalizedDifference;
+    return null;
+  };
+  const sortDesc = (rows, key) =>
+    [...rows].sort((a, b) => (valueFor(b, key) ?? -Infinity) - (valueFor(a, key) ?? -Infinity));
+  const finite = {
+    displayName: "Finite",
+    openCodeGo: { unlimited: false, normalizedRequestsPer10: 5000 },
+    commandCode: { unlimited: false, normalizedRequestsPer10: 3000 },
+    comparison: { normalizedDifference: 100 }
+  };
+  const unlimited = {
+    displayName: "Unlimited",
+    openCodeGo: { unlimited: false, normalizedRequestsPer10: 16000 },
+    commandCode: { unlimited: true, normalizedRequestsPer10: null },
+    comparison: { normalizedDifference: null }
+  };
+  assert.equal(sortDesc([finite, unlimited], "maxRequests")[0].displayName, "Unlimited");
+  assert.equal(sortDesc([finite, unlimited], "commandCodeRequests")[0].displayName, "Unlimited");
+  assert.equal(sortDesc([finite, unlimited], "normalizedDifference")[0].displayName, "Unlimited");
+});
