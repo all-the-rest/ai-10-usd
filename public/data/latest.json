@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T01:04:06.775Z",
+  "generatedAt": "2026-08-30T04:10:41.848Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-29T22:43:00.543Z",
+      "fetchedAt": "2026-08-30T04:09:43.901Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-29T22:43:10.678Z",
+      "fetchedAt": "2026-08-30T04:04:02.776Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -555,12 +555,12 @@
         "sourceName": "Hy3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 480,
+        "averageAllowance": 60,
         "averageRequestCost": 0.0027898000000000003,
-        "averageRequestsPerMonth": 172055.34446913755,
-        "normalizedRequestsPer10": 172055.34446913755,
+        "averageRequestsPerMonth": 21506.918058642194,
+        "normalizedRequestsPer10": 21506.918058642194,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00005812083333333334
+        "effectiveRequestCostAtPaidPrice": 0.00046496666666666673
       },
       "commandCode": {
         "sourceName": "Tencent Hy3",
@@ -579,9 +579,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 148757.8473458792,
-        "advantagePercent": 638.5142857142856,
-        "winner": "openCodeGo"
+        "normalizedDifference": 1790.579064616144,
+        "advantagePercent": 8.325595790776866,
+        "winner": "draw"
       }
     },
     {
@@ -1497,7 +1497,7 @@
         "count": 26,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 30941.887928142816,
+        "mean": 25151.563835431458,
         "median": 12174.24725763244,
         "p25": 4210.419459848479,
         "p75": 18382.40682285718
@@ -1516,15 +1516,15 @@
       "count": 24,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20622.078254388467,
-      "median": 3949.0543546265044,
+      "mean": 14498.442076002504,
+      "median": 3841.2958821723687,
       "p25": 1087.2335265963143,
-      "p75": 8522.783780135765
+      "p75": 7299.5636317609415
     },
     "winnerCounts": {
-      "openCodeGo": 10,
+      "openCodeGo": 9,
       "commandCode": 14,
-      "draw": 2
+      "draw": 3
     },
     "biggestDifferences": [
       {
@@ -1603,43 +1603,6 @@
           "normalizedDifference": null,
           "advantagePercent": null,
           "winner": "commandCode"
-        }
-      },
-      {
-        "canonicalModel": "hy3",
-        "displayName": "Hy3",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Hy3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 480,
-          "averageRequestCost": 0.0027898000000000003,
-          "averageRequestsPerMonth": 172055.34446913755,
-          "normalizedRequestsPer10": 172055.34446913755,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00005812083333333334
-        },
-        "commandCode": {
-          "sourceName": "Tencent Hy3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 70,
-          "averageRequestCost": 0.0027898000000000003,
-          "averageRequestsPerMonth": 25091.404401749227,
-          "normalizedRequestsPer10": 23297.497123258338,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.0004292306571428572
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 148757.8473458792,
-          "advantagePercent": 638.5142857142856,
-          "winner": "openCodeGo"
         }
       },
       {
@@ -1824,6 +1787,43 @@
         "comparison": {
           "normalizedDifference": 8132.330614802455,
           "advantagePercent": 135.66416772350024,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "qwen-3.6-plus",
+        "displayName": "Qwen3.6 Plus",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Qwen3.6 Plus",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.008753437499999999,
+          "averageRequestsPerMonth": 10221.706593668552,
+          "normalizedRequestsPer10": 10221.706593668552,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0014589062500000001
+        },
+        "commandCode": {
+          "sourceName": "Qwen 3.6 Plus",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 33,
+          "averageRequestCost": 0.00652,
+          "averageRequestsPerMonth": 5061.349693251534,
+          "normalizedRequestsPer10": 4699.489037373754,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.002127890909090909
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 5522.217556294798,
+          "advantagePercent": 117.50676536061917,
           "winner": "openCodeGo"
         }
       }
