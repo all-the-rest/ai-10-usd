@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-29T09:48:22.353Z",
+  "generatedAt": "2026-08-30T01:04:06.775Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-29T04:07:12.232Z",
+      "fetchedAt": "2026-08-29T22:43:00.543Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-29T04:07:49.117Z",
+      "fetchedAt": "2026-08-29T22:43:10.678Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
