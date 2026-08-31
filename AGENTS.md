@@ -45,6 +45,12 @@ pnpm typecheck        # nur svelte-check
 
 ## Generator-Regeln (`scripts/build-comparison.mjs`)
 
+- **Struktur:** `scripts/build-comparison.mjs` ist der schlanke Runner (Fetch,
+  Modell-Map laden, Schreiben). Die gesamte Rechenlogik — Konstanten und pure
+  Funktionen bis zur kompletten Pipeline `buildComparison(openCodeData,
+  commandCodeData, modelMap)` — lebt in `scripts/comparison-core.mjs` (exportiert,
+  ohne Network/IO → direkt unit-testbar statt Mirror-Tests).
+
 - **Konstanten:** `COMMAND_CODE_PAID_PRICE = 10.77` (vom Nutzer bestätigter
   bezahlter Monatspreis; Quelle: `https://cc-pricing.all-the.rest/?sort=requests:desc`).
   Normalisierung Command Code: `requests × 10 / paidPrice`. OpenCode Go ist
@@ -146,10 +152,16 @@ pnpm typecheck        # nur svelte-check
 
 ## Tests
 
-- `pnpm test` = Generator-Unit-Tests (`tests/comparison.test.mjs`): Normalisierung
-  (×10/10.77), Draw-Schwelle (<10% → draw), positive Differenz (abs), 
-  Pattern-Fallback, Varianten-Mittelung, Matching/Aliase.
-- `pnpm build` läuft zusätzlich `svelte-check` (0 errors/warnings Pflicht).
+- `pnpm test` = `tests/comparison.test.mjs`: testet die **echten** Funktionen aus
+  `scripts/comparison-core.mjs` (keine Mirror-Implementierungen) — `requestCost`
+  (5%/95%-Heuristik, Cached-Write-Fallback), `percentile`/`average`/
+  `distribution` (∞ ausgeklammert), `computeFinite`/`providerValue` (free/paid),
+  `compareGroup` (Draw <10%, Sieger, ∞-Marge, `promoExpires`), `findOutliers`
+  (Tukey-IQR), `variantKind`/`variantTitle`, Normalisierung (×10/10.77) plus die
+  Pipeline `buildComparison` deterministisch über Fixture-Snapshots (matched/
+  winnerCounts/unlimited/Exclusions/Warnungen, fehlender GOAT-Plan wirft) und die
+  Modell-Map-Matches (`model-map.mjs`). `pnpm build` läuft zusätzlich `svelte-check`
+  (0 errors/warnings Pflicht).
 
 ## Verifikation
 
