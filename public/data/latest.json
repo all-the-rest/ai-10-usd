@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-31T01:05:44.721Z",
+  "generatedAt": "2026-08-31T16:10:43.904Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-30T22:53:05.752Z",
+      "fetchedAt": "2026-08-31T16:06:12.301Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-30T22:52:36.794Z",
+      "fetchedAt": "2026-08-31T16:09:49.563Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -104,6 +104,33 @@
         "normalizedDifference": 16192.40861990505,
         "advantagePercent": 85.70102135561746,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "deepseekv4flashfast",
+      "displayName": "DeepSeek V4 Flash Fast",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4 Flash Fast",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.00381472,
+        "averageRequestsPerMonth": 5242.848754299136,
+        "normalizedRequestsPer10": 4868.011842431882,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00205422672
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1487,10 +1514,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 44,
+    "totalModels": 45,
     "coverage": {
       "openCodeGo": 28,
-      "commandCode": 42
+      "commandCode": 43
     },
     "requestsPer10": {
       "openCodeGo": {
