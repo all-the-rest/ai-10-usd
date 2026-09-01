@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T01:39:00.348Z",
+  "generatedAt": "2026-09-01T08:06:53.258Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-31T23:58:58.746Z",
+      "fetchedAt": "2026-09-01T08:05:34.181Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-08-31T23:58:09.814Z",
+      "fetchedAt": "2026-09-01T08:03:50.416Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1286,12 +1286,12 @@
         "sourceName": "Qwen3.7 Max",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
+        "averageAllowance": 30,
         "averageRequestCost": 0.035799375,
-        "averageRequestsPerMonth": 1676.0069135285182,
-        "normalizedRequestsPer10": 1676.0069135285182,
+        "averageRequestsPerMonth": 838.0034567642591,
+        "normalizedRequestsPer10": 838.0034567642591,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0059665625
+        "effectiveRequestCostAtPaidPrice": 0.011933125
       },
       "commandCode": {
         "sourceName": "Qwen 3.7 Max",
@@ -1310,8 +1310,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 1248.0809916479188,
-        "advantagePercent": 291.6581884460274,
+        "normalizedDifference": 410.0775348836596,
+        "advantagePercent": 95.82909422301368,
         "winner": "openCodeGo"
       }
     },
@@ -1520,7 +1520,7 @@
         "count": 26,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 25151.563835431458,
+        "mean": 25119.332933248217,
         "median": 12174.24725763244,
         "p25": 4210.419459848479,
         "p75": 18382.40682285718
@@ -1539,9 +1539,9 @@
       "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 13997.59521209167,
+      "mean": 13965.364309908427,
       "median": 3949.0543546265044,
-      "p25": 1243.9346992802489,
+      "p25": 776.5953761402244,
       "p75": 7854.741620455284
     },
     "winnerCounts": {
@@ -1550,43 +1550,6 @@
       "draw": 3
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "qwen-3.7-max",
-        "displayName": "Qwen3.7 Max",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Qwen3.7 Max",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.035799375,
-          "averageRequestsPerMonth": 1676.0069135285182,
-          "normalizedRequestsPer10": 1676.0069135285182,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0059665625
-        },
-        "commandCode": {
-          "sourceName": "Qwen 3.7 Max",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 33,
-          "averageRequestCost": 0.07160274000000001,
-          "averageRequestsPerMonth": 460.87621786540564,
-          "normalizedRequestsPer10": 427.9259218805995,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.023368530600000003
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 1248.0809916479188,
-          "advantagePercent": 291.6581884460274,
-          "winner": "openCodeGo"
-        }
-      },
       {
         "canonicalModel": "glm51",
         "displayName": "GLM-5.1",
@@ -1843,6 +1806,43 @@
         "comparison": {
           "normalizedDifference": 80563.52580615885,
           "advantagePercent": 115.40000000000002,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "qwen-3.7-max",
+        "displayName": "Qwen3.7 Max",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Qwen3.7 Max",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 30,
+          "averageRequestCost": 0.035799375,
+          "averageRequestsPerMonth": 838.0034567642591,
+          "normalizedRequestsPer10": 838.0034567642591,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.011933125
+        },
+        "commandCode": {
+          "sourceName": "Qwen 3.7 Max",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 33,
+          "averageRequestCost": 0.07160274000000001,
+          "averageRequestsPerMonth": 460.87621786540564,
+          "normalizedRequestsPer10": 427.9259218805995,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.023368530600000003
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 410.0775348836596,
+          "advantagePercent": 95.82909422301368,
           "winner": "openCodeGo"
         }
       }
