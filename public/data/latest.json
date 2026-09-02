@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T17:25:03.378Z",
+  "generatedAt": "2026-09-02T18:04:37.033Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
@@ -12,7 +12,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-02T16:09:35.217Z",
+      "fetchedAt": "2026-09-02T18:03:45.218Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -860,7 +860,7 @@
     {
       "canonicalModel": "longcat20",
       "displayName": "LongCat-2.0",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "LongCat-2.0",
         "variantCount": 1,
@@ -872,16 +872,26 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.0001749
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "LongCat 2.0",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": false
+        "commandCode": true
       },
       "promoExpires": null,
       "comparison": {
         "normalizedDifference": null,
         "advantagePercent": null,
-        "winner": null
+        "winner": "commandCode"
       }
     },
     {
@@ -1269,6 +1279,33 @@
       }
     },
     {
+      "canonicalModel": "qwen38max0902",
+      "displayName": "Qwen 3.8 Max 0902",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Qwen 3.8 Max 0902",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.015072,
+        "averageRequestsPerMonth": 1326.963906581741,
+        "normalizedRequestsPer10": 1232.0927637713473,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.008116271999999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen-3.6-plus",
       "displayName": "Qwen3.6 Plus",
       "status": "matched",
@@ -1536,21 +1573,21 @@
     }
   ],
   "statistics": {
-    "matchedModels": 26,
-    "totalModels": 46,
+    "matchedModels": 27,
+    "totalModels": 47,
     "coverage": {
       "openCodeGo": 29,
-      "commandCode": 43
+      "commandCode": 45
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 26,
+        "count": 27,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 25119.332933248217,
-        "median": 12174.24725763244,
-        "p25": 4210.419459848479,
-        "p75": 18382.40682285718
+        "mean": 26306.5994495591,
+        "median": 14126.787921596328,
+        "p25": 4463.055278536009,
+        "p75": 18894.067262879456
       },
       "commandCode": {
         "count": 26,
@@ -1573,10 +1610,47 @@
     },
     "winnerCounts": {
       "openCodeGo": 11,
-      "commandCode": 12,
+      "commandCode": 13,
       "draw": 3
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "longcat20",
+        "displayName": "LongCat-2.0",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "LongCat-2.0",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0010494,
+          "averageRequestsPerMonth": 57175.52887364208,
+          "normalizedRequestsPer10": 57175.52887364208,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0001749
+        },
+        "commandCode": {
+          "sourceName": "LongCat 2.0",
+          "variantCount": 1,
+          "unlimited": true,
+          "normalizedRequestsPer10": null,
+          "averageRequestsPerMonth": null,
+          "averageAllowance": 0,
+          "averageRequestCost": 0,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": true
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": null,
+          "advantagePercent": null,
+          "winner": "commandCode"
+        }
+      },
       {
         "canonicalModel": "glm51",
         "displayName": "GLM-5.1",
@@ -1833,43 +1907,6 @@
         "comparison": {
           "normalizedDifference": 80563.52580615885,
           "advantagePercent": 115.40000000000002,
-          "winner": "openCodeGo"
-        }
-      },
-      {
-        "canonicalModel": "qwen-3.7-max",
-        "displayName": "Qwen3.7 Max",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Qwen3.7 Max",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.035799375,
-          "averageRequestsPerMonth": 838.0034567642591,
-          "normalizedRequestsPer10": 838.0034567642591,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.011933125
-        },
-        "commandCode": {
-          "sourceName": "Qwen 3.7 Max",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 33,
-          "averageRequestCost": 0.07160274000000001,
-          "averageRequestsPerMonth": 460.87621786540564,
-          "normalizedRequestsPer10": 427.9259218805995,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.023368530600000003
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 410.0775348836596,
-          "advantagePercent": 95.82909422301368,
           "winner": "openCodeGo"
         }
       }
