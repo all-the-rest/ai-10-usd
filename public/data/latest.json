@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T18:04:37.033Z",
+  "generatedAt": "2026-09-02T21:32:43.101Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-02T17:24:06.645Z",
+      "fetchedAt": "2026-09-02T18:33:26.179Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-02T18:03:45.218Z",
+      "fetchedAt": "2026-09-02T21:30:51.370Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -296,6 +296,33 @@
         "normalizedRequestsPer10": 4202.1704295824975,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.0023797226142000002
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "gemini38flash",
+      "displayName": "Gemini 3.8 Flash",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Gemini 3.8 Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 40,
+        "averageRequestCost": 0.009915,
+        "averageRequestsPerMonth": 4034.2914775592535,
+        "normalizedRequestsPer10": 3745.8602391450827,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00266961375
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1574,10 +1601,10 @@
   ],
   "statistics": {
     "matchedModels": 27,
-    "totalModels": 47,
+    "totalModels": 48,
     "coverage": {
       "openCodeGo": 29,
-      "commandCode": 45
+      "commandCode": 46
     },
     "requestsPer10": {
       "openCodeGo": {
