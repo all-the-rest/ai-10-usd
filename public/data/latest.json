@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-04T04:18:41.684Z",
+  "generatedAt": "2026-09-04T06:11:18.738Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-04T04:02:12.170Z",
+      "fetchedAt": "2026-09-04T06:06:27.953Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-04T04:10:47.063Z",
+      "fetchedAt": "2026-09-04T06:05:39.281Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1262,6 +1262,33 @@
       }
     },
     {
+      "canonicalModel": "omenalpha",
+      "displayName": "Omen Alpha",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Omen Alpha",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 100,
+        "averageRequestCost": 0.001726,
+        "averageRequestsPerMonth": 57937.427578215524,
+        "normalizedRequestsPer10": 57937.427578215524,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00017260000000000002
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen36max",
       "displayName": "Qwen 3.6 Max Preview",
       "status": "commandCodeOnly",
@@ -1638,9 +1665,9 @@
   ],
   "statistics": {
     "matchedModels": 28,
-    "totalModels": 49,
+    "totalModels": 50,
     "coverage": {
-      "openCodeGo": 29,
+      "openCodeGo": 30,
       "commandCode": 48
     },
     "requestsPer10": {
