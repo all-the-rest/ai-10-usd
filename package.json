@@ -18,7 +18,7 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "svelte": "^5.56.10"
+    "svelte": "^5.57.0"
   },
   "devDependencies": {
     "@iconify-json/material-symbols": "^1.2.90",
@@ -26,8 +26,8 @@
     "@playwright/test": "^1.62.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.4.0",
-    "daisyui": "^5.7.22",
+    "@types/node": "^26.4.1",
+    "daisyui": "^5.7.28",
     "svelte-check": "^4.7.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
