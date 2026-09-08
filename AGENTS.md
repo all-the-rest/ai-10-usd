@@ -162,6 +162,10 @@ pnpm typecheck        # nur svelte-check
   winnerCounts/unlimited/Exclusions/Warnungen, fehlender GOAT-Plan wirft) und die
   Modell-Map-Matches (`model-map.mjs`). `pnpm build` läuft zusätzlich `svelte-check`
   (0 errors/warnings Pflicht).
+- **Screenshot-Tests sind permanent:** neue UI-Features (insb. Share-Cards) bekommen Playwright-Tests in
+  `tests/screenshots/` (Suite `playwright.screenshots.config.ts`, `pnpm test:screenshots`) — alle Size-Varianten
+  + Mobile + beide Sprachen (de/en). Keine Einmal-Screenshots: die Tests bleiben im Repo und müssen bei jeder
+  Umsetzung grün laufen.
 
 ## Verifikation
 
