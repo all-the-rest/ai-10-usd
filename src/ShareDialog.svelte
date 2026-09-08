@@ -17,10 +17,11 @@
   } from "./lib/share";
   import type { ComparisonData } from "./types";
 
-  let { data, config = $bindable({ ...DEFAULT_SHARE_CONFIG }), dialogId = "share-dialog" } = $props<{
+  let { data, config = $bindable({ ...DEFAULT_SHARE_CONFIG }), dialogId = "share-dialog", themeExplicit = $bindable(false) } = $props<{
     data: ComparisonData | null;
     config: ShareConfig;
     dialogId?: string;
+    themeExplicit?: boolean;
   }>();
 
   let statusKey = $state<ShareStatusKey | null>(null);
@@ -29,6 +30,7 @@
   let pngBusy = $state(false);
 
   const s = $derived(SHARE_I18N[config.shareLang as ShareLang]);
+  const isPortrait = $derived(config.preset === "portrait" || config.preset === "story");
   const svg = $derived(data ? buildShareSvg(data, config) : "");
   const previewRows = $derived(data ? selectTopRows(data, config).length : 0);
   const presetSize = $derived(SHARE_PRESETS[config.preset as SharePreset]);
@@ -133,7 +135,7 @@
 </script>
 
 <dialog id={dialogId} class="modal" aria-labelledby={dialogId + "-title"}>
-  <div class="modal-box relative max-w-4xl">
+  <div class="modal-box relative max-w-4xl max-h-[92vh] max-h-[92dvh] overflow-y-auto">
     <button
       class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
       aria-label={s.close}
@@ -214,7 +216,7 @@
               aria-checked={config.theme === "light"}
               class="join-item btn btn-sm"
               class:btn-active={config.theme === "light"}
-              onclick={() => (config.theme = "light" as ShareTheme)}
+              onclick={() => { config.theme = "light" as ShareTheme; themeExplicit = true; }}
             >{s.themeLight}</button>
             <button
               type="button"
@@ -222,7 +224,7 @@
               aria-checked={config.theme === "dark"}
               class="join-item btn btn-sm"
               class:btn-active={config.theme === "dark"}
-              onclick={() => (config.theme = "dark" as ShareTheme)}
+              onclick={() => { config.theme = "dark" as ShareTheme; themeExplicit = true; }}
             >{s.themeDark}</button>
           </div>
         </fieldset>
@@ -246,7 +248,7 @@
           {previewRows} {s.rowsUnit} · {presetSize.width}×{presetSize.height}px · {themeName}
         </p>
         {#if svg}
-          <div class="max-h-[70vh] overflow-auto rounded-box border border-base-300 bg-base-200 p-2 [&_svg]:h-auto [&_svg]:w-full [&_svg]:max-w-full">
+          <div class="max-h-[30dvh] overflow-hidden rounded-box border border-base-300 bg-base-200 p-2 md:max-h-[55vh] md:max-h-[55dvh] [&_svg]:mx-auto [&_svg]:block [&_svg]:max-h-[30dvh] [&_svg]:max-w-full [&_svg]:object-contain md:[&_svg]:max-h-[55vh] md:[&_svg]:max-h-[55dvh] {isPortrait ? '[&_svg]:w-auto' : '[&_svg]:w-full [&_svg]:h-auto'}">
             {@html svg}
           </div>
         {:else}

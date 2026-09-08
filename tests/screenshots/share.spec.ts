@@ -248,6 +248,28 @@ test('share presets matrix renders all 4 sizes in EN + DE', { tag: ['@screenshot
     expect(layout.right.y + layout.right.h).toBeGreaterThan(layout.H - 40);
     expect(layout.ranks).toBe(layout.n);
     expect(layout.n).toBeGreaterThan(0);
+    // Preview fit: image + dialog + action buttons stay within the viewport.
+    const fit = await dialog.evaluate((d) => {
+      const bottom = (el: Element | null) => Math.round(el!.getBoundingClientRect().bottom);
+      const btns = [...d.querySelectorAll('.modal-action .btn')].map((el) =>
+        Math.round(el.getBoundingClientRect().bottom),
+      );
+      return {
+        vp: window.innerHeight,
+        svg: bottom(d.querySelector('.modal-box svg')),
+        modal: bottom(d.querySelector('.modal-box')),
+        maxBtn: Math.max(...btns),
+      };
+    });
+    expect(fit.svg).toBeLessThanOrEqual(fit.vp);
+    expect(fit.modal).toBeLessThanOrEqual(fit.vp);
+    expect(fit.maxBtn).toBeLessThanOrEqual(fit.vp);
+    // Every action button must intersect the viewport (no page scroll needed).
+    const btnCount = await dialog.locator('.modal-action .btn').count();
+    expect(btnCount).toBe(5);
+    for (let i = 0; i < btnCount; i++) {
+      await expect(dialog.locator('.modal-action .btn').nth(i)).toBeInViewport();
+    }
     await expect.poll(async () => svg.evaluate((el) => el.outerHTML.includes('ai-10-usd.all-the.rest')), { timeout: 5000 }).toBe(true);
     await page.waitForTimeout(300);
     await dialog.screenshot({ path: path.join(OUTPUT_DIR, c.shot) });
@@ -274,22 +296,80 @@ test('legacy share links coerce to the current config', { tag: ['@screenshot'] }
   await expect(page.locator('#share-dialog').locator('svg').first()).toBeVisible({ timeout: 15000 });
 });
 
-test('share dialog tall story card has no mobile overflow', { tag: ['@screenshot'] }, async ({ page }, testInfo) => {
+test('share dialog tall portrait cards fit the mobile viewport', { tag: ['@screenshot'] }, async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'Mobile Chrome', 'mobile-only tall-card check');
-  await page.goto('/?share=1&topN=10&metric=max&winner=all&stheme=dark&preset=story&slang=en');
-  await page.waitForLoadState('networkidle');
-  const dialog = page.locator('#share-dialog');
-  await expect(dialog).toBeVisible({ timeout: 15000 });
-  await expect(dialog.locator('svg').first()).toBeVisible({ timeout: 15000 });
-  await page.waitForTimeout(400);
-  await dialog.screenshot({ path: path.join(OUTPUT_DIR, 'share-dialog-mobile-story.png') });
+  for (const [shot, query, de] of [
+    ['share-dialog-mobile-story.png', '?share=1&topN=10&metric=max&winner=all&stheme=dark&preset=story&slang=en', false],
+    ['share-dialog-mobile-portrait.png', '?share=1&topN=10&metric=max&winner=all&stheme=light&preset=portrait&slang=de', true],
+  ] as Array<[string, string, boolean]>) {
+    await page.goto(query);
+    await page.waitForLoadState('networkidle');
+    const dialog = page.locator('#share-dialog');
+    await expect(dialog).toBeVisible({ timeout: 15000 });
+    await expect(dialog.locator('svg').first()).toBeVisible({ timeout: 15000 });
+    await page.waitForTimeout(400);
+    await dialog.screenshot({ path: path.join(OUTPUT_DIR, shot) });
 
-  const vp = page.viewportSize()!;
-  const box = (await dialog.locator('.modal-box').boundingBox())!;
-  expect(box.x).toBeGreaterThanOrEqual(0);
-  expect(box.x + box.width).toBeLessThanOrEqual(vp.width);
-  for (const name of ['Copy SVG', 'Download SVG', 'Download PNG', 'Copy link']) {
-    await expect(dialog.getByRole('button', { name, exact: true })).toBeVisible();
+    const vp = page.viewportSize()!;
+    const box = (await dialog.locator('.modal-box').boundingBox())!;
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(vp.width);
+    // Image + dialog + action buttons stay within the viewport height.
+    const fit = await dialog.evaluate((d) => {
+      const bottom = (el: Element | null) => Math.round(el!.getBoundingClientRect().bottom);
+      const btns = [...d.querySelectorAll('.modal-action .btn')].map((el) =>
+        Math.round(el.getBoundingClientRect().bottom),
+      );
+      return {
+        vp: window.innerHeight,
+        svg: bottom(d.querySelector('.modal-box svg')),
+        modal: bottom(d.querySelector('.modal-box')),
+        maxBtn: Math.max(...btns),
+      };
+    });
+    expect(fit.svg).toBeLessThanOrEqual(fit.vp);
+    expect(fit.modal).toBeLessThanOrEqual(fit.vp);
+    expect(fit.maxBtn).toBeLessThanOrEqual(fit.vp);
+    // Every action button must intersect the viewport (no page scroll needed).
+    const btnCount = await dialog.locator('.modal-action .btn').count();
+    expect(btnCount).toBe(5);
+    for (let i = 0; i < btnCount; i++) {
+      await expect(dialog.locator('.modal-action .btn').nth(i)).toBeInViewport();
+    }
+    const actions = de
+      ? ['SVG kopieren', 'SVG herunterladen', 'PNG herunterladen', 'Link kopieren', 'Schließen']
+      : ['Copy SVG', 'Download SVG', 'Download PNG', 'Copy link', 'Close'];
+    for (const name of actions) {
+      await expect(dialog.locator('.modal-action').getByRole('button', { name, exact: true })).toBeVisible();
+    }
+    // X close button sits top-right of the dialog box.
+    await expect(dialog.getByLabel(de ? 'Schließen' : 'Close', { exact: true })).toBeVisible();
   }
-  await expect(dialog.locator('.modal-action').getByRole('button', { name: 'Close', exact: true })).toBeVisible();
+});
+
+test('share dialog theme follows the page theme until explicit choice', { tag: ['@screenshot'] }, async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'Desktop Chrome', 'desktop-only theme check');
+  async function openFrom(query: string) {
+    await page.goto(query);
+    await page.waitForLoadState('networkidle');
+    await page.locator('#comparison table').waitFor({ state: 'attached', timeout: 15000 });
+    await page.getByRole('button', { name: 'Share', exact: true }).first().click();
+    const dialog = page.locator('#share-dialog');
+    await expect(dialog).toBeVisible({ timeout: 15000 });
+    return dialog;
+  }
+  // Dark page → dark card; explicit Light choice sticks across close/reopen.
+  let dialog = await openFrom('/?theme=dark');
+  await expect(dialog.getByRole('radio', { name: 'Dark' })).toHaveAttribute('aria-checked', 'true');
+  await expect.poll(async () => dialog.locator('svg').first().evaluate((el) => el.outerHTML.includes('#1d232a')), { timeout: 5000 }).toBe(true);
+  await dialog.getByRole('radio', { name: 'Light' }).click();
+  await dialog.locator('.modal-action').getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(dialog).toBeHidden({ timeout: 5000 });
+  await page.getByRole('button', { name: 'Share', exact: true }).first().click();
+  await expect(dialog).toBeVisible({ timeout: 15000 });
+  await expect(dialog.getByRole('radio', { name: 'Light' })).toHaveAttribute('aria-checked', 'true');
+  // Light page → light card.
+  dialog = await openFrom('/?theme=light');
+  await expect(dialog.getByRole('radio', { name: 'Light' })).toHaveAttribute('aria-checked', 'true');
+  await expect.poll(async () => dialog.locator('svg').first().evaluate((el) => el.outerHTML.includes('#f8fafc')), { timeout: 5000 }).toBe(true);
 });

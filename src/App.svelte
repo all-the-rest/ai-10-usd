@@ -3,7 +3,7 @@
   import { loadComparison } from "./lib/data";
   import { compact, money, number, percent } from "./lib/format";
   import { sortRows } from "./lib/sort";
-  import { DEFAULT_SHARE_CONFIG, defaultShareLang, parseShareQuery, type ShareConfig } from "./lib/share";
+  import { DEFAULT_SHARE_CONFIG, defaultShareLang, defaultShareTheme, parseShareQuery, type ShareConfig } from "./lib/share";
   import ShareDialog from "./ShareDialog.svelte";
   import { i18n, type Lang } from "./i18n";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
@@ -27,10 +27,13 @@
 
   let lang = $state<Lang>(defaultLang);
   let dark = $state(false);
-  let shareConfig = $state<ShareConfig>({ ...DEFAULT_SHARE_CONFIG, shareLang: defaultShareLang() });
+  let shareConfig = $state<ShareConfig>({ ...DEFAULT_SHARE_CONFIG, shareLang: defaultShareLang(), theme: defaultShareTheme() });
+  let shareThemeExplicit = $state(false);
 
   function openShare() {
-    // Card inherits the page's "both plans only" state on every manual open.
+    // Card inherits the page state on every manual open — until an explicit
+    // in-dialog choice (or ?stheme= link) takes precedence and sticks.
+    if (!shareThemeExplicit) shareConfig.theme = dark ? "dark" : "light";
     shareConfig.matchedOnly = matchedOnly;
     showShare();
   }
@@ -131,8 +134,10 @@
         const shared = parseShareQuery(window.location.search);
         if (shared) {
           shareConfig = shared;
-          // No explicit card param → inherit the page's matchedOnly state.
+          // No explicit card params → inherit the page state.
           if (!params.has("matched")) shareConfig.matchedOnly = matchedOnly;
+          if (params.has("stheme")) shareThemeExplicit = true;
+          else shareConfig.theme = dark ? "dark" : "light";
           showShare();
         }
       })
@@ -490,5 +495,5 @@
     </aside>
   </footer>
 
-  <ShareDialog data={data} bind:config={shareConfig} />
+  <ShareDialog data={data} bind:config={shareConfig} bind:themeExplicit={shareThemeExplicit} />
 </div>

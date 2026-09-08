@@ -29,6 +29,26 @@ export interface ShareConfig {
   matchedOnly: boolean;
 }
 
+/** Card theme default: live page theme wins (same pattern as shareLang) —
+ *  explicit `?stheme=` deep-links and in-dialog choices take precedence. */
+export function defaultShareTheme(): ShareTheme {
+  if (typeof document !== "undefined") {
+    const attr = document.documentElement.getAttribute("data-theme");
+    if (attr === "dark") return "dark";
+    if (attr !== null) return "light";
+  }
+  if (typeof localStorage !== "undefined") {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") return stored;
+  }
+  if (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  )
+    return "dark";
+  return "light";
+}
 /** UI language default: stored `lang` wins, else browser language. */
 export function defaultShareLang(): ShareLang {
   if (typeof localStorage !== "undefined") {
