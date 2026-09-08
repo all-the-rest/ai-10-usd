@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T00:54:42.462Z",
+  "generatedAt": "2026-09-08T18:07:17.869Z",
   "targetMonthlyPrice": 10,
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-07T22:56:41.177Z",
+      "fetchedAt": "2026-09-08T18:03:33.444Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-07T22:55:53.976Z",
+      "fetchedAt": "2026-09-08T18:06:22.320Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -279,6 +279,60 @@
         "normalizedDifference": 621.2763009121795,
         "advantagePercent": 23.80068090374499,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "deepseekv41flashbeta (Off-Peak)",
+      "displayName": "DeepSeek V4.1 Flash (beta) (Off-Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4.1 Flash (beta)",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0006329199999999999,
+        "averageRequestsPerMonth": 31599.57024584466,
+        "normalizedRequestsPer10": 29340.36234525967,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00034082741999999993
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "deepseekv41flashbeta (Peak)",
+      "displayName": "DeepSeek V4.1 Flash (beta) (Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4.1 Flash (beta)",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0012658399999999998,
+        "averageRequestsPerMonth": 15799.78512292233,
+        "normalizedRequestsPer10": 14670.181172629835,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0006816548399999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1665,10 +1719,10 @@
   ],
   "statistics": {
     "matchedModels": 28,
-    "totalModels": 50,
+    "totalModels": 52,
     "coverage": {
       "openCodeGo": 30,
-      "commandCode": 48
+      "commandCode": 50
     },
     "requestsPer10": {
       "openCodeGo": {
