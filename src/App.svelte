@@ -3,6 +3,8 @@
   import { loadComparison } from "./lib/data";
   import { compact, money, number, percent } from "./lib/format";
   import { sortRows } from "./lib/sort";
+  import { DEFAULT_SHARE_CONFIG, defaultShareLang, parseShareQuery, type ShareConfig } from "./lib/share";
+  import ShareDialog from "./ShareDialog.svelte";
   import { i18n, type Lang } from "./i18n";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
   import Heading from "./Heading.svelte";
@@ -25,6 +27,17 @@
 
   let lang = $state<Lang>(defaultLang);
   let dark = $state(false);
+  let shareConfig = $state<ShareConfig>({ ...DEFAULT_SHARE_CONFIG, shareLang: defaultShareLang() });
+
+  function openShare() {
+    // Card inherits the page's "both plans only" state on every manual open.
+    shareConfig.matchedOnly = matchedOnly;
+    showShare();
+  }
+
+  function showShare() {
+    (document.getElementById("share-dialog") as HTMLDialogElement | null)?.showModal();
+  }
 
   function prefersDarkSystem(): boolean {
     return (
@@ -113,7 +126,16 @@
     }
 
     loadComparison()
-      .then((loaded) => (data = loaded))
+      .then((loaded) => {
+        data = loaded;
+        const shared = parseShareQuery(window.location.search);
+        if (shared) {
+          shareConfig = shared;
+          // No explicit card param → inherit the page's matchedOnly state.
+          if (!params.has("matched")) shareConfig.matchedOnly = matchedOnly;
+          showShare();
+        }
+      })
       .catch((reason: unknown) => {
         error = reason instanceof Error ? reason.message : "The comparison data could not be loaded.";
       });
@@ -359,13 +381,14 @@
       </div>
 
       <section id="comparison" class="mt-14 scroll-mt-24">
-        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="flex flex-row items-center justify-between gap-4">
           <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-primary">{t.modelByModel}</p><Heading anchor="comparison" class="mt-2 text-3xl font-black tracking-tight">{t.comparisonTitle}</Heading><p class="mt-2 max-w-2xl text-base-content/70">{t.comparisonDesc}</p></div>
-          <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-            <label class="input w-full sm:w-64"><span class="text-base-content/50">⌕</span><input type="search" placeholder={t.searchPlaceholder} bind:value={search} oninput={syncUrl} /></label>
-            <label class="flex items-center gap-2 text-sm whitespace-nowrap text-base-content/70"><input type="checkbox" class="checkbox checkbox-sm" bind:checked={matchedOnly} onchange={syncUrl} />{t.matchedOnly}</label>
-            <span class="text-sm text-base-content/50">{t.showing.replace("{show}", String(filteredRows.length)).replace("{total}", String(data.rows.length))}</span>
-          </div>
+          <button class="btn btn-outline shrink-0" onclick={openShare}><span class="icon-[material-symbols--share] h-4 w-4" aria-hidden="true"></span>{t.btnShare}</button>
+        </div>
+        <div class="mt-4 flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+          <label class="input w-full sm:w-64"><span class="text-base-content/50">⌕</span><input type="search" placeholder={t.searchPlaceholder} bind:value={search} oninput={syncUrl} /></label>
+          <label class="flex items-center gap-2 text-sm whitespace-nowrap text-base-content/70"><input type="checkbox" class="checkbox checkbox-sm" bind:checked={matchedOnly} onchange={syncUrl} />{t.matchedOnly}</label>
+          <span class="text-sm text-base-content/50">{t.showing.replace("{show}", String(filteredRows.length)).replace("{total}", String(data.rows.length))}</span>
         </div>
 
         <div class="mt-4 overflow-x-auto rounded-box border border-base-300 bg-base-100 shadow-sm">
@@ -466,4 +489,6 @@
       <p><a class="link link-hover" href="https://github.com/all-the-rest/ai-10-usd" target="_blank" rel="noreferrer">{t.footerSource}</a> · <a class="link link-hover" href="https://ai-10-usd.all-the.rest/data/latest.json">{t.footerApi}</a></p>
     </aside>
   </footer>
+
+  <ShareDialog data={data} bind:config={shareConfig} />
 </div>

@@ -310,6 +310,11 @@ export function buildComparison(openCodeData, commandCodeData, modelMap) {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
     targetMonthlyPrice: TARGET_PRICE,
+    // Off-peak windows (UTC hour ranges per tracker-normalized model key) from
+    // the OpenCode Go tracker — used for Peak-/Off-Peak annotations on cards.
+    // No weekday coverage in source: consumers must mark coverage as
+    // source-state instead of guessing.
+    peakWindows: openCodeData.peakHours ?? null,
     sources: {
       openCodeGo: {
         url: "https://ocgo-pricing.all-the.rest/data/latest.json",

@@ -1,7 +1,39 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T18:07:17.869Z",
+  "generatedAt": "2026-09-08T19:08:35.372Z",
   "targetMonthlyPrice": 10,
+  "peakWindows": {
+    "deepseekv4pro": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ],
+    "deepseekv4flash": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ],
+    "deepseekv4flashvisionexp": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ]
+  },
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",

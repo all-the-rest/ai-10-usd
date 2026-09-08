@@ -97,6 +97,8 @@ export interface ComparisonData {
   schemaVersion: 1;
   generatedAt: string;
   targetMonthlyPrice: number;
+  /** Off-peak UTC hour ranges per tracker-normalized model key (or null). */
+  peakWindows: Record<string, Array<[number, number]>> | null;
   sources: {
     openCodeGo: {
       url: string;
