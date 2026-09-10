@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T05:48:36.602Z",
+  "generatedAt": "2026-09-10T05:54:23.566Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,7 +47,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-10T05:47:30.971Z",
+      "fetchedAt": "2026-09-10T05:53:23.023Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -331,12 +331,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 15,
+        "averageAllowance": 60,
         "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 32509.752925877765,
-        "normalizedRequestsPer10": 32509.75292587776,
+        "averageRequestsPerMonth": 130039.01170351106,
+        "normalizedRequestsPer10": 130039.01170351105,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0003076
+        "effectiveRequestCostAtPaidPrice": 0.0000769
       },
       "commandCode": null,
       "freeIncluded": {
@@ -358,12 +358,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 15,
+        "averageAllowance": 60,
         "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 16254.876462938882,
-        "normalizedRequestsPer10": 16254.87646293888,
+        "averageRequestsPerMonth": 65019.50585175553,
+        "normalizedRequestsPer10": 65019.50585175552,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0006152
+        "effectiveRequestCostAtPaidPrice": 0.0001538
       },
       "commandCode": null,
       "freeIncluded": {
