@@ -150,6 +150,28 @@ pnpm typecheck        # nur svelte-check
   `AI10USD_DISPATCH_TOKEN` (PAT, cross-repo nötig — `GITHUB_TOKEN` reicht nicht).
   Fehlt das Secret → Step wird übersprungen (Tracker bleiben grün).
 
+## Schwester-Projekte (Git-Remotes)
+
+| Kurzname | Repo (`all-the-rest/…`) | Rolle |
+|---|---|---|
+| `ocgo-price-tracker` | `ocgo-price-tracker` | OpenCode-Go-Preise (Upstream-Quelle) |
+| `ai-10-usd` | `ai-10-usd` | dieses Repo (origin) |
+| `cc-price-tracker` | `cc-price-tracker` | Command-Code-Preise (Upstream-Quelle) |
+| `provider-plans` | `provider-plans` | Anbieter-Pläne (Referenz) |
+
+```bash
+git remote add ocgo-price-tracker https://github.com/all-the-rest/ocgo-price-tracker.git
+git remote add cc-price-tracker https://github.com/all-the-rest/cc-price-tracker.git
+git remote add provider-plans https://github.com/all-the-rest/provider-plans.git
+```
+
+Vergleichen (read-only, ohne Fetch-Merge):
+
+```bash
+git fetch ocgo-price-tracker main --dry-run
+git log --oneline origin/main..ocgo-price-tracker/main --no-decorate | head
+```
+
 ## Tests
 
 - `pnpm test` = `tests/comparison.test.mjs`: testet die **echten** Funktionen aus
