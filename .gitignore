@@ -7,3 +7,4 @@ dist/
 !.env.example
 test-results/
 playwright-report/
+public/share/og.png
