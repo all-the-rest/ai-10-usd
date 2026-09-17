@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T06:03:41.459Z",
+  "generatedAt": "2026-09-17T01:05:23.968Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-16T06:02:23.434Z",
+      "fetchedAt": "2026-09-16T23:08:04.705Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-16T04:04:20.687Z",
+      "fetchedAt": "2026-09-16T23:06:19.797Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1777,13 +1777,40 @@
         "advantagePercent": null,
         "winner": null
       }
+    },
+    {
+      "canonicalModel": "unionalphafree",
+      "displayName": "Union Alpha Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Union Alpha Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
     }
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 52,
+    "totalModels": 53,
     "coverage": {
-      "openCodeGo": 31,
+      "openCodeGo": 32,
       "commandCode": 51
     },
     "requestsPer10": {
