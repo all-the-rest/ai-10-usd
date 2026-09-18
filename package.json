@@ -25,7 +25,7 @@
   "devDependencies": {
     "@iconify-json/material-symbols": "^1.2.92",
     "@iconify/tailwind4": "^1.2.3",
-    "@playwright/test": "^1.63.0",
+    "@playwright/test": "1.63.0",
     "@resvg/resvg-js": "^2.6.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/vite": "^4.3.3",
