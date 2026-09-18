@@ -40,6 +40,7 @@ pnpm generate         # fetch both trackers → public/data/latest.json
 pnpm test             # generator unit tests (tests/comparison.test.mjs)
 pnpm dev              # dev server
 pnpm build            # generate + svelte-check + vite build → dist/
+pnpm smoke            # smoke test on dist/ (artifacts + assets + preview HTTP) — no browser needed
 pnpm preview          # serve dist/ locally
 pnpm typecheck        # svelte-check only
 ```

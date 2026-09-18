@@ -39,6 +39,7 @@ pnpm generate         # holt beide Tracker → public/data/latest.json
 pnpm test             # Generator-Unit-Tests (node --test)
 pnpm dev              # Dev-Server
 pnpm build            # generate + svelte-check + vite build → dist/
+pnpm smoke            # Smoke-Test auf dist/: Artefakte + Assets + Preview-HTTP (/ und /data/latest.json) — ohne Browser
 pnpm preview          # dist/ lokal serven
 pnpm typecheck        # nur svelte-check
 ```
@@ -140,7 +141,8 @@ pnpm typecheck        # nur svelte-check
 - Trigger: `push` auf `main`, `workflow_dispatch`, `repository_dispatch` Typ
   `source-updated`.
 - Pipeline: install (`--frozen-lockfile`) → `pnpm test` → `pnpm build` (generiert
-  `public/data/latest.json`) → Commit-Step: **nur bei semantischer Änderung**
+  `public/data/latest.json`) → `pnpm smoke` (bricht rot ab, bevor kaputte
+  Bundles auf Pages landen) → Commit-Step: **nur bei semantischer Änderung**
   (`scripts/has-semantic-change.mjs` vergleicht gegen `HEAD`, ignoriert den
   volatilen `generatedAt`-Stempel — verhindert Commit-Schleifen; bot-Commit
   pusht → ein zusätzlicher No-Op-Lauf, keine Schleife) →

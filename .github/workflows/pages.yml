@@ -51,6 +51,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Smoke test
+        run: pnpm smoke
+
       - name: Commit generated data
         id: commit
         # Pusht nach main -> nur bei push/dispatch/schedule, nie auf pull_request

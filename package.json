@@ -13,6 +13,7 @@
     "dev": "vite",
     "build": "pnpm generate && svelte-check --tsconfig ./tsconfig.json && vite build",
     "preview": "vite preview",
+    "smoke": "node scripts/smoke.mjs",
     "test": "node --experimental-strip-types --test \"tests/**/*.test.mjs\"",
     "test:screenshots": "playwright test -c playwright.screenshots.config.ts",
     "test:contrast": "playwright test -c playwright.contrast.config.ts",
