@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T04:08:29.761Z",
+  "generatedAt": "2026-09-18T04:09:32.280Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -54,7 +54,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-17T22:57:55.731Z",
+      "fetchedAt": "2026-09-18T04:08:26.960Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1513,6 +1513,33 @@
       }
     },
     {
+      "canonicalModel": "qwen38omniflash",
+      "displayName": "Qwen 3.8 Omni Flash",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Qwen 3.8 Omni Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.00099614,
+        "averageRequestsPerMonth": 20077.499146706286,
+        "normalizedRequestsPer10": 18642.060489049476,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00053642139
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen-3.6-plus",
       "displayName": "Qwen3.6 Plus",
       "status": "matched",
@@ -1808,10 +1835,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 53,
+    "totalModels": 54,
     "coverage": {
       "openCodeGo": 32,
-      "commandCode": 51
+      "commandCode": 52
     },
     "requestsPer10": {
       "openCodeGo": {
