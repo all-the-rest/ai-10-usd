@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T19:32:10.331Z",
+  "generatedAt": "2026-09-18T19:42:56.695Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -54,7 +54,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-18T18:04:45.034Z",
+      "fetchedAt": "2026-09-18T19:34:32.408Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -614,6 +614,33 @@
         "normalizedDifference": 235.49486382333407,
         "advantagePercent": 23.800680903744958,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "glm53flashx",
+      "displayName": "GLM-5.3 FlashX",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "GLM-5.3 FlashX",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0042485,
+        "averageRequestsPerMonth": 4707.543839002001,
+        "normalizedRequestsPer10": 4370.978494895079,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00228781725
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1808,10 +1835,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 53,
+    "totalModels": 54,
     "coverage": {
       "openCodeGo": 31,
-      "commandCode": 52
+      "commandCode": 53
     },
     "requestsPer10": {
       "openCodeGo": {
