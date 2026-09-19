@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-19T00:58:27.742Z",
+  "generatedAt": "2026-09-19T04:06:07.166Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -54,7 +54,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-18T22:43:14.428Z",
+      "fetchedAt": "2026-09-19T04:04:48.021Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1072,23 +1072,23 @@
       "commandCode": {
         "sourceName": "LongCat 2.0",
         "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
+        "unlimited": false,
+        "averageAllowance": 50,
+        "averageRequestCost": 0.0010494,
+        "averageRequestsPerMonth": 47646.2740613684,
+        "normalizedRequestsPer10": 44239.80878492888,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
+        "effectiveRequestCostAtPaidPrice": 0.00022604076
       },
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": true
+        "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
+        "normalizedDifference": 12935.720088713198,
+        "advantagePercent": 29.239999999999988,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -1851,67 +1851,30 @@
         "p75": 32509.75292587776
       },
       "commandCode": {
-        "count": 29,
+        "count": 30,
         "min": 427.9259218805995,
         "max": 120741.88644708548,
-        "mean": 27134.6745193341,
-        "median": 11665.260630465145,
-        "p25": 4287.292709397501,
-        "p75": 40247.29548236183
+        "mean": 27704.845661520594,
+        "median": 11975.568500995638,
+        "p25": 4368.748760439738,
+        "p75": 43241.68045928712
       }
     },
     "normalizedDifference": {
-      "count": 29,
+      "count": 30,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20056.663145836785,
-      "median": 4648.562628212785,
-      "p25": 1242.552601824359,
-      "p75": 9694.1432761357
+      "mean": 19819.298377265997,
+      "median": 4689.111318994434,
+      "p25": 1379.5592175223053,
+      "p75": 11124.761273338187
     },
     "winnerCounts": {
-      "openCodeGo": 13,
-      "commandCode": 12,
+      "openCodeGo": 14,
+      "commandCode": 11,
       "draw": 5
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "longcat20",
-        "displayName": "LongCat-2.0",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "LongCat-2.0",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.0010494,
-          "averageRequestsPerMonth": 57175.52887364208,
-          "normalizedRequestsPer10": 57175.52887364208,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0001749
-        },
-        "commandCode": {
-          "sourceName": "LongCat 2.0",
-          "variantCount": 1,
-          "unlimited": true,
-          "normalizedRequestsPer10": null,
-          "averageRequestsPerMonth": null,
-          "averageAllowance": 0,
-          "averageRequestCost": 0,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": true
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": null,
-          "advantagePercent": null,
-          "winner": "commandCode"
-        }
-      },
       {
         "canonicalModel": "glm51",
         "displayName": "GLM-5.1",
@@ -2168,6 +2131,43 @@
         "comparison": {
           "normalizedDifference": 5522.217556294798,
           "advantagePercent": 117.50676536061917,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "mimov25",
+        "displayName": "MiMo V2.5",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "MiMo V2.5",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 150375.93984962406,
+          "normalizedRequestsPer10": 150375.93984962406,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
+        },
+        "commandCode": {
+          "sourceName": "MiMo V2.5",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 30,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 75187.96992481203,
+          "normalizedRequestsPer10": 69812.4140434652,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.000143241
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 80563.52580615885,
+          "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
       }
