@@ -11,7 +11,7 @@ const out = (viewport: string, file: string) =>
   path.resolve(process.cwd(), uiReviewConfig.outputDir, 'filled', viewport, file);
 
 const THEME_TOGGLE = 'input.theme-controller';
-const EXPECTED_TITLE = 'AI plans at $10';
+const EXPECTED_TITLE = 'Best AI Coding Plan for $10/month — OpenCode Go vs Command Code GOAT';
 
 async function loadWithEmptyStorage(page: Page, colorScheme: 'dark' | 'light') {
   await page.emulateMedia({ colorScheme });

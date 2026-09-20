@@ -69,6 +69,12 @@ export const i18n = {
     methodTokensBody: "OpenCode Gos pro-Modell-Token-Statistiken werden für beide Anbieter verwendet, wenn das Modell in OpenCode existiert; Command Codes durchschnittliches Nachrichtenprofil ist der Fallback. Unterschiede unter 10% sind Unentschieden; Peak/Off-Peak-Varianten werden separat verglichen.",
     methodFallback: "Fallback-Arbeitslast (Command Code Durchschnittsnachricht): {input} Input · {cached} Cached-Read · {output} Output Tokens pro Anfrage. Generiert {date}.",
     methodUnadjusted: "Unbereinigte Werte: Die Command-Code-Anfragen werden mit dem Faktor 10 / {price} ≈ {factor} auf $10 normalisiert ({percent}% Abzug). Die tatsächlichen Monatswerte erscheinen als „≈ … unbereinigt“ unter jedem Command-Code-Wert.",
+    verdictTitle: "Fazit",
+    verdictLead:
+      "{winner} liefert bei $10 mehr Anfragen: durchschnittlich {mean} pro $10 gegenüber {other} bei {otherPlan}.",
+    verdictMore: "Das sind {percent}% mehr als der andere Plan im Durchschnitt.",
+    verdictWins: "In {wins} von {matched} gematchten Modellfamilien gewinnt {winner}; {draws} enden unentschieden.",
+    faqTitle: "Häufige Fragen",
     footerText: "KI-Pläne für $10 · Open-Data-Vergleich",
     footerSnapshots: "Daten-Snapshots:",
     footerSource: "Quellcode",
@@ -143,6 +149,12 @@ export const i18n = {
     methodTokensBody: "OpenCode Go's per-model token statistics are used for both providers when the model exists in OpenCode; Command Code's average message profile is the fallback. A difference under 10% is a draw; peak/off-peak variants are compared separately.",
     methodFallback: "Fallback workload (Command Code average message): {input} input · {cached} cached-read · {output} output tokens per request. Generated {date}.",
     methodUnadjusted: "Unadjusted values: Command Code requests are normalized to $10 using the factor 10 / {price} ≈ {factor} (a {percent} reduction). Actual monthly figures appear as “≈ … unadjusted” beneath each Command Code value.",
+    verdictTitle: "Verdict",
+    verdictLead:
+      "{winner} gives you more requests for $10: on average {mean} per $10 versus {other} for {otherPlan}.",
+    verdictMore: "That is {percent}% more than the other plan on average.",
+    verdictWins: "{winner} wins {wins} of {matched} matched model families; {draws} end in a draw.",
+    faqTitle: "Frequently asked questions",
     footerText: "AI plans at $10 · Open data comparison",
     footerSnapshots: "Source snapshots:",
     footerSource: "Source code",
@@ -152,3 +164,65 @@ export const i18n = {
 } as const;
 
 export type Translation = { [K in keyof (typeof i18n)["de"]]: string };
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+/** FAQ content per language — single source of truth for the visible FAQ
+ *  (`<details>`) and the `FAQPage` JSON-LD emitted into the prerendered files. */
+export const FAQ: Record<Lang, FaqItem[]> = {
+  en: [
+    {
+      q: "Is OpenCode Go worth $10?",
+      a: "OpenCode Go costs $10 per month and includes a $60 monthly credit. This comparison converts each model's average requests per month into requests per normalized $10, so you can judge the value directly against Command Code GOAT.",
+    },
+    {
+      q: "Which plan gives more requests for $10?",
+      a: "It depends on the model. This page compares both plans model by model and shows a winner badge on every row. The verdict above names the plan with the higher average across all matched model families.",
+    },
+    {
+      q: "How is the $10 normalization calculated?",
+      a: "Each plan's average monthly requests are scaled by $10 divided by the plan's actual paid monthly price. OpenCode Go already costs $10; Command Code GOAT's $10.77 is scaled down, so both plans are compared on the same $10 base.",
+    },
+    {
+      q: "Why do the two plans cost different amounts?",
+      a: "OpenCode Go costs $10 per month, while Command Code GOAT's paid checkout is $10.77 per month. The comparison normalizes both to exactly $10 to keep the value comparison fair.",
+    },
+    {
+      q: "Are peak and off-peak models compared separately?",
+      a: "Yes. Models with peak/off-peak pricing (for example DeepSeek V4 Pro and V4 Flash) appear as separate rows, because their request counts differ by time of day.",
+    },
+    {
+      q: "How often is the comparison data updated?",
+      a: "The data is regenerated automatically whenever the OpenCode Go or Command Code price trackers publish new data, and at least once per day.",
+    },
+  ],
+  de: [
+    {
+      q: "Lohnt sich OpenCode Go für $10?",
+      a: "OpenCode Go kostet $10/Monat und enthält ein Monatsguthaben von $60. Dieser Vergleich rechnet die durchschnittlichen Anfragen pro Modell in Anfragen pro normalisiertem $10 um, damit du den Gegenwert direkt mit Command Code GOAT vergleichen kannst.",
+    },
+    {
+      q: "Welcher Plan liefert mehr Anfragen für $10?",
+      a: "Das hängt vom Modell ab. Diese Seite vergleicht beide Pläne Modell für Modell und zeigt für jede Zeile ein Sieger-Badge. Das Fazit oben nennt den Plan mit dem höheren Durchschnitt über alle gematchten Modellfamilien.",
+    },
+    {
+      q: "Wie wird die $10-Normalisierung berechnet?",
+      a: "Die durchschnittlichen Monatsanfragen jedes Plans werden mit $10 geteilt durch den tatsächlich bezahlten Monatspreis skaliert. OpenCode Go kostet bereits $10; Command Code GOATs $10,77 werden herunterskaliert, damit beide auf derselben $10-Basis verglichen werden.",
+    },
+    {
+      q: "Warum kosten die beiden Pläne unterschiedlich viel?",
+      a: "OpenCode Go kostet $10/Monat, während der bezahlte Checkout von Command Code GOAT $10,77/Monat beträgt. Der Vergleich normalisiert beide auf exakt $10, damit der Gegenwert fair bleibt.",
+    },
+    {
+      q: "Werden Peak- und Off-Peak-Modelle getrennt verglichen?",
+      a: "Ja. Modelle mit Peak-/Off-Peak-Preisen (zum Beispiel DeepSeek V4 Pro und V4 Flash) erscheinen als eigene Zeilen, weil sich ihre Anfragenanzahl je nach Tageszeit unterscheidet.",
+    },
+    {
+      q: "Wie oft werden die Vergleichsdaten aktualisiert?",
+      a: "Die Daten werden automatisch neu erzeugt, sobald die OpenCode-Go- oder Command-Code-Preis-Tracker neue Daten veröffentlichen, und mindestens einmal pro Tag.",
+    },
+  ],
+};

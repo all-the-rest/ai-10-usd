@@ -22,15 +22,15 @@ const ok = (msg) => console.log(`[smoke] ok: ${msg}`);
 
 async function main() {
   // 1. Build-Artefakte vorhanden?
-  for (const f of ["index.html", "CNAME", join("data", "latest.json")]) {
+  for (const f of ["index.html", join("de", "index.html"), "CNAME", "robots.txt", "sitemap.xml", join("data", "latest.json")]) {
     if (!existsSync(join(DIST, f))) fail(`dist/${f} fehlt (Build unvollständig?)`);
     else ok(`dist/${f} vorhanden`);
   }
 
   // 2. Alle in index.html referenzierten Assets existieren?
-  // (Vite schreibt relative ./assets/…-Pfade — data:-URIs ausnehmen.)
+  // (Vite schreibt absolute /assets/…-Pfade bei base "/"; data:-URIs ausnehmen.)
   const html = existsSync(join(DIST, "index.html")) ? readFileSync(join(DIST, "index.html"), "utf8") : "";
-  const refs = [...html.matchAll(/(?:src|href)="(\.?\/assets\/[^"]+)"/g)].map((m) => m[1].replace(/^\.\//, ""));
+  const refs = [...html.matchAll(/(?:src|href)="([^"]*assets\/[^"]+)"/g)].map((m) => m[1].replace(/^\.\//, ""));
   if (refs.length === 0) fail("index.html referenziert keine assets-Dateien");
   for (const ref of new Set(refs)) {
     if (!existsSync(join(DIST, ref))) fail(`${ref} referenziert, aber nicht in dist/`);
@@ -70,13 +70,18 @@ async function main() {
       ok("GET / → 200");
       if (!root.includes('id="app"')) fail('GET / enthält keinen App-Root (id="app") — kaputtes Bundle?');
       else ok("App-Root vorhanden");
+      if (!/<h1[\s>]/.test(root)) fail("GET / enthält keine <h1> — Prerender?");
+      else ok("GET / enthält <h1> (vorgerendert)");
+      if (!root.includes("application/ld+json")) fail("GET / ohne JSON-LD");
+      else ok("GET / enthält JSON-LD");
     }
 
+    let data = null;
     try {
       const res = await fetch(`${BASE}/data/latest.json`);
       if (!res.ok) fail(`GET /data/latest.json → HTTP ${res.status}`);
       else {
-        const data = await res.json();
+        data = await res.json();
         ok("GET /data/latest.json → 200, valides JSON");
         if (!Array.isArray(data.rows) || data.rows.length === 0) fail("latest.json ohne rows[]");
         else ok(`${data.rows.length} Vergleichszeilen`);
@@ -88,6 +93,46 @@ async function main() {
       }
     } catch (e) {
       fail(`/data/latest.json: ${e instanceof Error ? e.message : String(e)}`);
+    }
+
+    if (root !== null && Array.isArray(data?.rows)) {
+      const sample = data.rows.find((row) => row.status === "matched")?.displayName;
+      if (!sample) fail("kein gematchtes Modell für den Prerender-Check");
+      else if (!root.includes(sample)) fail(`GET / enthält kein vorgerendertes Modell („${sample}“)`);
+      else ok(`GET / enthält Modellname („${sample}“)`);
+    }
+
+    // German prerendered page.
+    try {
+      const res = await fetch(`${BASE}/de/`);
+      if (!res.ok) fail(`GET /de/ → HTTP ${res.status}`);
+      else {
+        const de = await res.text();
+        ok("GET /de/ → 200");
+        if (!/<html lang="de"/.test(de)) fail('GET /de/ hat kein <html lang="de">');
+        else ok('GET /de/ enthält <html lang="de">');
+        if (!/<h1[\s>]/.test(de)) fail("GET /de/ enthält keine <h1>");
+        else ok("GET /de/ enthält <h1>");
+      }
+    } catch (e) {
+      fail(`/de/: ${e instanceof Error ? e.message : String(e)}`);
+    }
+
+    for (const [file, needle] of [
+      ["robots.txt", "Sitemap: https://ai-10-usd.all-the.rest/sitemap.xml"],
+      ["sitemap.xml", "https://ai-10-usd.all-the.rest/de/"],
+    ]) {
+      try {
+        const res = await fetch(`${BASE}/${file}`);
+        if (!res.ok) fail(`GET /${file} → HTTP ${res.status}`);
+        else {
+          const text = await res.text();
+          if (!text.includes(needle)) fail(`/${file} ohne „${needle}“`);
+          else ok(`GET /${file} → 200`);
+        }
+      } catch (e) {
+        fail(`/${file}: ${e instanceof Error ? e.message : String(e)}`);
+      }
     }
   } finally {
     stop();

@@ -1,33 +1,36 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import { loadComparison } from "./lib/data";
   import { compact, money, number, percent } from "./lib/format";
   import { sortRows } from "./lib/sort";
-  import { DEFAULT_SHARE_CONFIG, defaultShareLang, defaultShareTheme, parseShareQuery, type ShareConfig } from "./lib/share";
+  import { DEFAULT_SHARE_CONFIG, parseShareQuery, type ShareConfig } from "./lib/share";
   import ShareDialog from "./ShareDialog.svelte";
-  import { i18n, type Lang } from "./i18n";
+  import { i18n, FAQ, type Lang } from "./i18n";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
   import Heading from "./Heading.svelte";
   import UnadjustedCaption from "./UnadjustedCaption.svelte";
 
-  let data = $state<ComparisonData | null>(null);
+  let {
+    initialData = null,
+    initialLang = "en",
+  }: {
+    initialData?: ComparisonData | null;
+    initialLang?: Lang;
+  } = $props();
+
+  let data = $state<ComparisonData | null>(untrack(() => initialData));
   let error = $state("");
   let search = $state("");
   let matchedOnly = $state(true);
   let sortKey = $state<SortKey>("maxRequests");
   let sortDirection = $state<"asc" | "desc">("desc");
 
-  let defaultLang: Lang = ((): Lang => {
-    if (typeof localStorage !== "undefined") {
-      const stored = localStorage.getItem("lang");
-      if (stored === "de" || stored === "en") return stored;
-    }
-    return navigator.language.startsWith("de") ? "de" : "en";
-  })();
-
-  let lang = $state<Lang>(defaultLang);
+  // Hydration-safe defaults: the FIRST render (server + client) is always the
+  // language of the prerendered file + light theme. Stored preferences and the
+  // `?lang=`/`?theme=` aliases are applied in onMount, i.e. after hydration.
+  let lang = $state<Lang>(untrack(() => initialLang));
   let dark = $state(false);
-  let shareConfig = $state<ShareConfig>({ ...DEFAULT_SHARE_CONFIG, shareLang: defaultShareLang(), theme: defaultShareTheme() });
+  let shareConfig = $state<ShareConfig>({ ...DEFAULT_SHARE_CONFIG, shareLang: untrack(() => initialLang), theme: "light" });
   let shareThemeExplicit = $state(false);
 
   function openShare() {
@@ -73,8 +76,55 @@
   const t = $derived(i18n[lang]);
 
   function setLang(next: Lang) {
+    if (next === lang) return;
     lang = next;
-    syncUrl();
+    shareConfig.shareLang = next;
+    try {
+      if (typeof localStorage !== "undefined") localStorage.setItem("lang", next);
+    } catch {
+      // ignore (private mode etc.)
+    }
+    // Carry over the complete query (minus `lang`) and the hash — share links,
+    // sort/filter params etc. must survive the language switch. No `syncUrl()`
+    // here: it rebuilds the query from state and would drop `share`/`slang`/…
+    navigateLang(next, true);
+  }
+
+  /** Only relevant after hydration: writes a language choice without a reload. */
+  function langHref(next: Lang): string {
+    const base = import.meta.env.BASE_URL;
+    return next === "de" ? `${base}de/` : base;
+  }
+
+  function navigateLang(next: Lang, push: boolean) {
+    const params = new URLSearchParams(window.location.search);
+    params.delete("lang");
+    const qs = params.toString();
+    const url = `${langHref(next)}${qs ? `?${qs}` : ""}${window.location.hash}`;
+    if (push) window.history.pushState(null, "", url);
+    else window.history.replaceState(null, "", url);
+  }
+
+  function readStoredLang(): Lang | null {
+    try {
+      const stored = localStorage.getItem("lang");
+      if (stored === "de" || stored === "en") return stored;
+    } catch {
+      // ignore
+    }
+    return null;
+  }
+
+  function applySharedState(params: URLSearchParams) {
+    const shared = parseShareQuery(window.location.search);
+    if (!shared) return;
+    shareConfig = shared;
+    // No explicit card params → inherit the page state.
+    if (!params.has("slang")) shareConfig.shareLang = lang;
+    if (!params.has("matched")) shareConfig.matchedOnly = matchedOnly;
+    if (params.has("stheme")) shareThemeExplicit = true;
+    else shareConfig.theme = dark ? "dark" : "light";
+    showShare();
   }
 
   const filteredRows = $derived.by(() => {
@@ -103,16 +153,30 @@
     const requestedMatch = params.get("match");
     if (requestedMatch === "0") matchedOnly = false;
 
+    // Language precedence after hydration (no SSR redirect — crawlers see the
+    // English `/` file): `?lang=` alias > explicit path (`/de/` is never
+    // overridden) > on `/`: stored choice, else browser language > English.
+    const pathLang: Lang = lang;
     const requestedLang = params.get("lang");
+    let nextLang: Lang = pathLang;
     if (requestedLang === "de" || requestedLang === "en") {
-      lang = requestedLang;
-      defaultLang = requestedLang;
+      nextLang = requestedLang;
+    } else if (pathLang === "en") {
+      const storedLang = readStoredLang();
+      if (storedLang) nextLang = storedLang;
+      else if (typeof navigator !== "undefined" && navigator.language.startsWith("de")) nextLang = "de";
     }
+    if (nextLang !== lang) lang = nextLang;
+    shareConfig.shareLang = nextLang;
+    // Canonicalize the URL to the path form (drop the ?lang alias; keep the
+    // rest of the query and the hash). `/de/` is authoritative, never downgraded.
+    if (requestedLang !== null || nextLang !== pathLang) navigateLang(nextLang, false);
 
     dark = resolveInitialDark(
       params.get("theme"),
       typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null,
     );
+    shareConfig.theme = dark ? "dark" : "light";
 
     // Follow OS theme while the user has no explicit choice.
     if (typeof window !== "undefined" && typeof window.matchMedia !== "undefined") {
@@ -128,22 +192,18 @@
       }
     }
 
-    loadComparison()
-      .then((loaded) => {
-        data = loaded;
-        const shared = parseShareQuery(window.location.search);
-        if (shared) {
-          shareConfig = shared;
-          // No explicit card params → inherit the page state.
-          if (!params.has("matched")) shareConfig.matchedOnly = matchedOnly;
-          if (params.has("stheme")) shareThemeExplicit = true;
-          else shareConfig.theme = dark ? "dark" : "light";
-          showShare();
-        }
-      })
-      .catch((reason: unknown) => {
-        error = reason instanceof Error ? reason.message : "The comparison data could not be loaded.";
-      });
+    if (data) {
+      applySharedState(params);
+    } else {
+      loadComparison()
+        .then((loaded) => {
+          data = loaded;
+          applySharedState(params);
+        })
+        .catch((reason: unknown) => {
+          error = reason instanceof Error ? reason.message : "The comparison data could not be loaded.";
+        });
+    }
   });
 
   function isSortKey(value: string): value is SortKey {
@@ -161,13 +221,13 @@
 
   function syncUrl() {
     const params = new URLSearchParams(window.location.search);
+    params.delete("lang");
     if (search) params.set("q", search); else params.delete("q");
     if (sortKey === "maxRequests" && sortDirection === "desc") { params.delete("sort"); } else { params.set("sort", sortKey); }
     if (sortDirection === "desc") params.delete("dir"); else params.set("dir", sortDirection);
     if (!matchedOnly) params.set("match", "0"); else params.delete("match");
-    if (lang !== defaultLang) params.set("lang", lang); else params.delete("lang");
     if (dark) params.set("theme", "dark"); else params.delete("theme");
-    history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
+    history.replaceState(null, "", `${window.location.pathname}?${params.toString()}${window.location.hash}`);
   }
 
   function winnerLabel(row: ComparisonRow) {
@@ -234,6 +294,32 @@
     return sortDirection === "asc" ? "↑" : "↓";
   }
 
+  // "Verdict": which plan delivers more requests per $10, from the existing
+  // statistics (no extra computation beyond the data already on the page).
+  const verdict = $derived.by(() => {
+    if (!data) return null;
+    const go = data.statistics.requestsPer10.openCodeGo.mean;
+    const cc = data.statistics.requestsPer10.commandCode.mean;
+    if (!Number.isFinite(go) || !Number.isFinite(cc)) return null;
+    const goWins = go >= cc;
+    const mean = goWins ? go : cc;
+    const other = goWins ? cc : go;
+    const winner = goWins ? t.winnerGo : t.winnerCc;
+    const otherPlan = goWins ? t.winnerCc : t.winnerGo;
+    const percent = other > 0 ? (mean / other - 1) * 100 : null;
+    const wins = goWins ? data.statistics.winnerCounts.openCodeGo : data.statistics.winnerCounts.commandCode;
+    return {
+      winner,
+      otherPlan,
+      mean,
+      other,
+      percent,
+      wins,
+      matched: data.statistics.matchedModels,
+      draws: data.statistics.winnerCounts.draw,
+    };
+  });
+
   $effect(() => {
     if (typeof document === "undefined") return;
     if (dark) {
@@ -244,11 +330,11 @@
   });
 
   $effect(() => {
+    // Note: never write `localStorage.lang` here automatically — an initial
+    // path-derived language must not clobber the user's stored preference
+    // (which onMount reads). Only setLang persists a user choice.
     if (typeof document !== "undefined") {
       document.documentElement.lang = lang;
-    }
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem("lang", lang);
     }
   });
 </script>
@@ -377,6 +463,33 @@
         </div>
       </section>
 
+      {#if verdict}
+        <section id="verdict" class="mt-8 scroll-mt-24">
+          <div class="card border border-base-300 bg-base-100 shadow-sm">
+            <div class="card-body">
+              <Heading anchor="verdict" class="card-title">{t.verdictTitle}</Heading>
+              <p class="text-lg font-semibold">
+                {t.verdictLead
+                  .replace("{winner}", verdict.winner)
+                  .replace("{mean}", number(verdict.mean))
+                  .replace("{other}", number(verdict.other))
+                  .replace("{otherPlan}", verdict.otherPlan)}
+              </p>
+              {#if verdict.percent !== null}
+                <p class="text-sm text-base-content/70">{t.verdictMore.replace("{percent}", number(verdict.percent, 0))}</p>
+              {/if}
+              <p class="text-sm text-base-content/70">
+                {t.verdictWins
+                  .replace("{winner}", verdict.winner)
+                  .replace("{wins}", String(verdict.wins))
+                  .replace("{matched}", String(verdict.matched))
+                  .replace("{draws}", String(verdict.draws))}
+              </p>
+            </div>
+          </div>
+        </section>
+      {/if}
+
       <div class="mt-8 rounded-box border border-base-300 bg-base-100 p-5 shadow-sm">
         <p class="text-sm text-base-content/70">{t.referralText}</p>
         <div class="mt-2 flex items-center gap-2">
@@ -481,6 +594,22 @@
             {#if ccNormalization}
               <p class="mt-2 text-sm text-base-content/65">{t.methodUnadjusted.replace("{price}", money(ccNormalization.paid)).replace("{factor}", "×" + ccNormalization.factor.toFixed(2)).replace("{percent}", number(ccNormalization.reductionPercent, 1))}</p>
             {/if}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="mt-14 scroll-mt-24">
+        <div class="card border border-base-300 bg-base-200/50">
+          <div class="card-body">
+            <Heading anchor="faq" class="card-title">{t.faqTitle}</Heading>
+            <div class="mt-2 space-y-2">
+              {#each FAQ[lang] as item}
+                <details class="collapse collapse-arrow border border-base-300 bg-base-100">
+                  <summary class="collapse-title text-base font-semibold">{item.q}</summary>
+                  <div class="collapse-content text-sm leading-relaxed text-base-content/75"><p>{item.a}</p></div>
+                </details>
+              {/each}
+            </div>
           </div>
         </div>
       </section>

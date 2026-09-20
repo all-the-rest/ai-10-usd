@@ -8,10 +8,12 @@ import { fileURLToPath } from "node:url";
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const INDEX_HTML = readFileSync(join(ROOT, "index.html"), "utf8");
 const OG_PNG = join(ROOT, "public", "share", "og.png");
+const TITLE = "Best AI Coding Plan for $10/month — OpenCode Go vs Command Code GOAT";
 const DESCRIPTION =
-  "Compare how many average AI coding requests the OpenCode Go and Command Code GOAT plans provide for a normalized $10.";
+  "Which $10 AI coding subscription gives you the most requests? Model-by-model comparison, normalized to $10, updated automatically.";
 
 test("index.html: SEO/OG/Twitter-Tags mit absoluten URLs", () => {
+  assert.ok(INDEX_HTML.includes(`<title>${TITLE}</title>`), "title fehlt oder nicht aktualisiert");
   assert.ok(
     INDEX_HTML.includes('<link rel="canonical" href="https://ai-10-usd.all-the.rest/" />'),
     "canonical fehlt"
@@ -32,6 +34,32 @@ test("index.html: SEO/OG/Twitter-Tags mit absoluten URLs", () => {
     "twitter:image fehlt oder nicht absolut"
   );
   assert.ok(INDEX_HTML.includes(`content="${DESCRIPTION}"`), "description-Text fehlt");
+});
+
+test("index.html: hreflang, RSS-Autodiscovery und og:locale:alternate", () => {
+  assert.ok(
+    INDEX_HTML.includes('<link rel="alternate" hreflang="en" href="https://ai-10-usd.all-the.rest/" />'),
+    "hreflang=en fehlt"
+  );
+  assert.ok(
+    INDEX_HTML.includes('<link rel="alternate" hreflang="de" href="https://ai-10-usd.all-the.rest/de/" />'),
+    "hreflang=de fehlt"
+  );
+  assert.ok(
+    INDEX_HTML.includes('<link rel="alternate" hreflang="x-default" href="https://ai-10-usd.all-the.rest/" />'),
+    "hreflang=x-default fehlt"
+  );
+  assert.ok(
+    INDEX_HTML.includes(
+      '<link\n      rel="alternate"\n      type="application/atom+xml"\n      title="AI plans at $10 — releases"\n      href="https://github.com/all-the-rest/ai-10-usd/releases.atom"\n    />'
+    ),
+    "RSS-Autodiscovery fehlt"
+  );
+  assert.ok(INDEX_HTML.includes('<meta property="og:locale" content="en_US" />'), "og:locale fehlt");
+  assert.ok(
+    INDEX_HTML.includes('<meta property="og:locale:alternate" content="de_DE" />'),
+    "og:locale:alternate fehlt"
+  );
 });
 
 test("build-share: erzeugt public/share/og.png als 1200x630-PNG", () => {

@@ -152,6 +152,18 @@ pnpm typecheck        # nur svelte-check
   `AI10USD_DISPATCH_TOKEN` (PAT, cross-repo nötig — `GITHUB_TOKEN` reicht nicht).
   Fehlt das Secret → Step wird übersprungen (Tracker bleiben grün).
 
+## SEO / Prerender & Sprachen
+
+- **Statisches Pre-Rendering:** `pnpm build` läuft `pnpm generate` → `svelte-check` → `node scripts/prerender.mjs`. Dieser baut per Vite JS API zuerst das SSR-Bundle (`src/ssr-entry.ts` → `.ssr-build/`, gitignored; `render` aus `svelte/server`), rendert `App.svelte` **in beiden Sprachen**, baut dann den Client und injiziert das Markup in die leeren `#app`-Divs. `pnpm generate` braucht Netz; der Prerender selbst liest nur `public/data/latest.json` (Fehler nur, wenn die Datei fehlt).
+- **Zwei Sprach-Subrouten:** `dist/index.html` (Englisch, Default `/`) und `dist/de/index.html` (Deutsch `/de/`, `<html lang="de">`). `base: "/"` (absolute `/assets/…`) — sonst brechen die Assets unter `/de/`.
+- **Eingebettete Daten:** der Client liest die Vergleichsdaten synchron aus `<script type="application/json" id="__COMPARISON__">` (`src/lib/data.ts`, `readEmbeddedComparison`); `fetch('/data/latest.json')` ist nur Fallback (Dev). **Achtung Named-Element-Global:** ein Element mit `id="__COMPARISON__"` erzeugt automatisch `window.__COMPARISON__` (DOM-Element) — der Global wird per Shape-Guard (`Array.isArray(rows)`) geprüft, nie blind vertraut.
+- **Hydration:** `src/main.ts` ruft `hydrate(...)` (Fallback `mount`); `initialLang` synchron aus dem Pfadpräfix (`/de…` → de, sonst en), `initialData` aus dem eingebetteten JSON. Erster Client-Render = Prerender-Output.
+- **Hydration-Defaults:** Sprache/Theme starten deterministisch (Pfad-Sprache + hell). localStorage/`navigator`/System-Theme sowie `?lang=`/`?theme=` werden erst **nach** der Hydration in `onMount` angewandt; `?lang=de|en` bleibt Alias und die URL wird danach per `replaceState` auf die Pfadform normalisiert.
+- **Sprach-Priorität (erst nach Hydration, kein SSR-Redirect):** `?lang=` > Pfad (`/de/` wird nie überschrieben) > auf `/`: gespeicherte Wahl, sonst `navigator.language` (beginnt mit `de` → `/de/`) > Englisch. Umstellung per `replaceState`; der komplette Query-String (ohne `lang`) **und der Hash** bleiben beim Sprachwechsel erhalten (auch `share`/`slang`/`sort`). Crawler sehen auf `/` immer Englisch.
+- **hreflang/Canonical:** `en` → `/`, `de` → `/de/`, `x-default` → präfixlose URL; Canonical je Datei auf die eigene Sprach-URL (`/` bzw. `/de/`).
+- **Head-SEO (je Datei):** Title/Description/Canonical/`og:locale` in der jeweiligen Sprache, `hreflang` en/de/x-default, RSS-Autodiscovery (`releases.atom`), JSON-LD (`WebSite` + `ItemList` der Top-Modelle + `FAQPage` aus `FAQ[lang]` in `src/i18n.ts`). `scripts/prerender.mjs` schreibt außerdem `dist/robots.txt` + `dist/sitemap.xml` (beide URLs). Die sichtbare FAQ (`<details>`) und das „Fazit“-Element kommen aus `App.svelte`/`i18n.ts` und liegen damit ebenfalls im SSR-Output.
+- **Tests:** `tests/seo.test.mjs` prüft `dist/` (skip ohne Build: `#app`-Markup, `<h1>`, Modellnamen, JSON-LD, Sprachdateien, robots/sitemap). `scripts/smoke.mjs` prüft nach dem Build per HTTP `/`, `/de/`, `robots.txt`, `sitemap.xml`, `<h1>`, JSON-LD und einen vorgerenderten Modellnamen.
+
 ## Schwester-Projekte (Git-Remotes)
 
 | Kurzname | Repo (`all-the-rest/…`) | Rolle |

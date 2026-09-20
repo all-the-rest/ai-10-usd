@@ -11,7 +11,7 @@
     "generate": "node scripts/build-comparison.mjs",
     "prebuild": "node scripts/build-share.mjs",
     "dev": "vite",
-    "build": "pnpm generate && svelte-check --tsconfig ./tsconfig.json && vite build",
+    "build": "pnpm generate && svelte-check --tsconfig ./tsconfig.json && node scripts/prerender.mjs",
     "preview": "vite preview",
     "smoke": "node scripts/smoke.mjs",
     "test": "node --experimental-strip-types --test \"tests/**/*.test.mjs\"",
