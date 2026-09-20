@@ -6,6 +6,7 @@
   import { DEFAULT_SHARE_CONFIG, parseShareQuery, type ShareConfig } from "./lib/share";
   import ShareDialog from "./ShareDialog.svelte";
   import { i18n, FAQ, type Lang } from "./i18n";
+  import { SECTION_ANCHORS, faqAnchor } from "./lib/anchors";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
   import Heading from "./Heading.svelte";
   import UnadjustedCaption from "./UnadjustedCaption.svelte";
@@ -227,7 +228,10 @@
     if (sortDirection === "desc") params.delete("dir"); else params.set("dir", sortDirection);
     if (!matchedOnly) params.set("match", "0"); else params.delete("match");
     if (dark) params.set("theme", "dark"); else params.delete("theme");
-    history.replaceState(null, "", `${window.location.pathname}?${params.toString()}${window.location.hash}`);
+    // Keep the hash (section deep links like #comparison survive filter
+    // changes); omit the `?` when no params remain.
+    const qs = params.toString();
+    history.replaceState(null, "", `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`);
   }
 
   function winnerLabel(row: ComparisonRow) {
@@ -388,8 +392,8 @@
             {@html t.heroIntro.replace("{price}", money(data?.sources.commandCode.paidMonthly))}
           </p>
           <div class="mt-7 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="#comparison">{t.btnComparison}</a>
-            <a class="btn btn-outline" href="#method">{t.btnMethod}</a>
+            <a class="btn btn-primary" href={"#" + SECTION_ANCHORS.comparison}>{t.btnComparison}</a>
+            <a class="btn btn-outline" href={"#" + SECTION_ANCHORS.method}>{t.btnMethod}</a>
           </div>
         </div>
       </div>
@@ -436,9 +440,9 @@
       </section>
 
       <section class="mt-8 grid gap-4 lg:grid-cols-2">
-        <div id="plan-prices" class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id={SECTION_ANCHORS.planPrices} class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <Heading anchor="plan-prices" class="card-title">{t.planPrices}</Heading>
+            <Heading anchor={SECTION_ANCHORS.planPrices} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.planPrices}</Heading>
             <div class="overflow-x-auto">
               <table class="table table-sm">
                 <thead><tr><th>{t.planTh}</th><th>{t.paidMonthly}</th><th>{t.creditBasis}</th></tr></thead>
@@ -451,9 +455,9 @@
             <p class="mt-2 text-sm text-base-content/65">{t.planPricesNote}</p>
           </div>
         </div>
-        <div id="avg-value" class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id={SECTION_ANCHORS.avgValue} class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <Heading anchor="avg-value" class="card-title">{t.avgValue}</Heading>
+            <Heading anchor={SECTION_ANCHORS.avgValue} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.avgValue}</Heading>
             <div class="mt-2 grid grid-cols-2 gap-4">
               <div class="rounded-box bg-success/10 p-4"><p class="text-sm text-base-content/65">{t.winnerGo}</p><p class="mt-1 text-2xl font-bold number">{number(data.statistics.requestsPer10.openCodeGo.mean)}</p><p class="text-sm text-base-content/65">{t.requestsPer10}</p></div>
               <div class="rounded-box bg-info/10 p-4"><p class="text-sm text-base-content/65">{t.winnerCc}</p><p class="mt-1 text-2xl font-bold number">{number(data.statistics.requestsPer10.commandCode.mean)}</p><p class="text-sm text-base-content/65">{t.requestsPer10}</p></div>
@@ -464,10 +468,10 @@
       </section>
 
       {#if verdict}
-        <section id="verdict" class="mt-8 scroll-mt-24">
+        <section id={SECTION_ANCHORS.verdict} class="mt-8 scroll-mt-24">
           <div class="card border border-base-300 bg-base-100 shadow-sm">
             <div class="card-body">
-              <Heading anchor="verdict" class="card-title">{t.verdictTitle}</Heading>
+              <Heading anchor={SECTION_ANCHORS.verdict} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.verdictTitle}</Heading>
               <p class="text-lg font-semibold">
                 {t.verdictLead
                   .replace("{winner}", verdict.winner)
@@ -498,9 +502,9 @@
         </div>
       </div>
 
-      <section id="comparison" class="mt-14 scroll-mt-24">
+      <section id={SECTION_ANCHORS.comparison} class="mt-14 scroll-mt-24">
         <div class="flex flex-row items-center justify-between gap-4">
-          <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-primary">{t.modelByModel}</p><Heading anchor="comparison" class="mt-2 text-3xl font-black tracking-tight">{t.comparisonTitle}</Heading><p class="mt-2 max-w-2xl text-base-content/70">{t.comparisonDesc}</p></div>
+          <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-primary">{t.modelByModel}</p><Heading anchor={SECTION_ANCHORS.comparison} class="mt-2 text-3xl font-black tracking-tight" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.comparisonTitle}</Heading><p class="mt-2 max-w-2xl text-base-content/70">{t.comparisonDesc}</p></div>
           <button class="btn btn-outline shrink-0" onclick={openShare}><span class="icon-[material-symbols--share] h-4 w-4" aria-hidden="true"></span>{t.btnShare}</button>
         </div>
         <div class="mt-4 flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
@@ -540,9 +544,9 @@
       </section>
 
       <section class="mt-14 grid gap-6 lg:grid-cols-2">
-        <div id="biggest-rel" class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id={SECTION_ANCHORS.biggestRel} class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <Heading anchor="biggest-rel" class="card-title">{t.biggestRel}</Heading>
+            <Heading anchor={SECTION_ANCHORS.biggestRel} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.biggestRel}</Heading>
             <p class="text-sm text-base-content/65">{t.biggestRelDesc}</p>
             <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-base-content/70">
               <span class="badge badge-success badge-sm min-w-28 justify-center whitespace-nowrap">{t.winnerGo}</span>
@@ -559,9 +563,9 @@
             </div>
           </div>
         </div>
-        <div id="biggest-abs" class="card border border-base-300 bg-base-100 shadow-sm">
+        <div id={SECTION_ANCHORS.biggestAbs} class="card border border-base-300 bg-base-100 shadow-sm">
           <div class="card-body">
-            <Heading anchor="biggest-abs" class="card-title">{t.biggestAbs}</Heading>
+            <Heading anchor={SECTION_ANCHORS.biggestAbs} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.biggestAbs}</Heading>
             <p class="text-sm text-base-content/65">{t.biggestAbsDesc}</p>
             <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-base-content/70">
               <span class="badge badge-success badge-sm min-w-28 justify-center whitespace-nowrap">{t.winnerGo}</span>
@@ -580,10 +584,10 @@
         </div>
       </section>
 
-      <section id="method" class="mt-14 scroll-mt-24">
+      <section id={SECTION_ANCHORS.method} class="mt-14 scroll-mt-24">
         <div class="card border border-base-300 bg-base-200/50">
           <div class="card-body">
-            <Heading anchor="method" class="card-title">{t.methodTitle}</Heading>
+            <Heading anchor={SECTION_ANCHORS.method} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.methodTitle}</Heading>
             <div class="grid gap-4 text-sm leading-relaxed text-base-content/75 md:grid-cols-3">
               <p><strong>{t.methodPaid}</strong> {t.methodPaidBody.replace("{cc}", money(data.sources.commandCode.paidMonthly)).replace("{go}", money(data.sources.openCodeGo.paidMonthly))}</p>
               <p><strong>{t.methodFair}</strong> {t.methodFairBody}</p>
@@ -598,13 +602,13 @@
         </div>
       </section>
 
-      <section id="faq" class="mt-14 scroll-mt-24">
+      <section id={SECTION_ANCHORS.faq} class="mt-14 scroll-mt-24">
         <div class="card border border-base-300 bg-base-200/50">
           <div class="card-body">
-            <Heading anchor="faq" class="card-title">{t.faqTitle}</Heading>
+            <Heading anchor={SECTION_ANCHORS.faq} class="card-title" copyLabel={t.anchorLabel} copyTitle={t.anchorTitle}>{t.faqTitle}</Heading>
             <div class="mt-2 space-y-2">
-              {#each FAQ[lang] as item}
-                <details class="collapse collapse-arrow border border-base-300 bg-base-100">
+              {#each FAQ[lang] as item, i}
+                <details id={faqAnchor(i)} class="collapse collapse-arrow scroll-mt-24 border border-base-300 bg-base-100">
                   <summary class="collapse-title text-base font-semibold">{item.q}</summary>
                   <div class="collapse-content text-sm leading-relaxed text-base-content/75"><p>{item.a}</p></div>
                 </details>

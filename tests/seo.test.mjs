@@ -99,3 +99,41 @@ test("dist/robots.txt und dist/sitemap.xml sind vorhanden und parsebar", { skip 
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   assert.deepEqual(locs, ["https://ai-10-usd.all-the.rest/", "https://ai-10-usd.all-the.rest/de/"]);
 });
+
+test("Anker-IDs sind sprachstabil: EN und DE liefern identische ids (keine Duplikate)", { skip }, () => {
+  const expected = [
+    "plan-prices",
+    "avg-value",
+    "verdict",
+    "comparison",
+    "biggest-rel",
+    "biggest-abs",
+    "method",
+    "faq",
+  ];
+  const idsOf = (html) => {
+    const app = html.match(/<div id="app">([\s\S]*?)<script type="application\/json" id="__COMPARISON__"/);
+    assert.ok(app, "#app-Inhalt fehlt");
+    const ids = [...app[1].matchAll(/ id="([^"]+)"/g)].map((m) => m[1]);
+    const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
+    assert.deepEqual(dupes, [], `doppelte ids: ${[...new Set(dupes)].join(", ")}`);
+    return ids;
+  };
+  const en = idsOf(read("index.html"));
+  const de = idsOf(read(join("de", "index.html")));
+  for (const id of expected) {
+    assert.ok(en.includes(id), `EN ohne #${id}`);
+    assert.ok(de.includes(id), `DE ohne #${id}`);
+  }
+  // FAQ-Anker (faq-qN) sind indexbasiert und in beiden Sprachen identisch.
+  const faqIds = (ids) => ids.filter((id) => /^faq-q\d+$/.test(id)).sort();
+  assert.ok(faqIds(en).length >= 5, "EN ohne FAQ-Anker");
+  assert.deepEqual(faqIds(de), faqIds(en), "FAQ-Anker unterscheiden sich zwischen EN und DE");
+  // Alle internen #Hashes müssen ein Ziel in derselben Datei haben.
+  for (const [name, ids, html] of [["en", en, read("index.html")], ["de", de, read(join("de", "index.html"))]]) {
+    const app = html.match(/<div id="app">([\s\S]*?)<script type="application\/json" id="__COMPARISON__"/)[1];
+    const hrefs = [...app.matchAll(/ href="#([^"]+)"/g)].map((m) => m[1]);
+    const missing = [...new Set(hrefs)].filter((h) => !ids.includes(h));
+    assert.deepEqual(missing, [], `${name}: Hashes ohne Ziel: ${missing.join(", ")}`);
+  }
+});
