@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T23:28:09.433Z",
+  "generatedAt": "2026-09-21T23:29:01.900Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,7 +47,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-21T19:43:42.048Z",
+      "fetchedAt": "2026-09-21T23:27:47.598Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -1129,11 +1129,38 @@
       }
     },
     {
+      "canonicalModel": "mimov26proultraspeed",
+      "displayName": "MiMo V2.6 Pro UltraSpeed",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiMo V2.6 Pro UltraSpeed",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 10,
+        "averageRequestCost": 0.006689399999999999,
+        "averageRequestsPerMonth": 1494.9023828743984,
+        "normalizedRequestsPer10": 1388.0244966336104,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.007204483799999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "mimov25",
-      "displayName": "MiMo V2.5",
+      "displayName": "MiMo-V2.5",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo V2.5",
+        "sourceName": "MiMo-V2.5",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 60,
@@ -1167,10 +1194,10 @@
     },
     {
       "canonicalModel": "mimov25pro",
-      "displayName": "MiMo V2.5 Pro",
+      "displayName": "MiMo-V2.5-Pro",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo V2.5 Pro",
+        "sourceName": "MiMo-V2.5-Pro",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 15,
@@ -1204,19 +1231,29 @@
     },
     {
       "canonicalModel": "mimov26flash",
-      "displayName": "MiMo V2.6 Flash",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "displayName": "MiMo-V2.6-Flash",
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "MiMo-V2.6-Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.000399,
+        "averageRequestsPerMonth": 150375.93984962406,
+        "normalizedRequestsPer10": 150375.93984962406,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
+      },
       "commandCode": {
         "sourceName": "MiMo V2.6 Flash",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 67,
-        "averageRequestCost": 0.00029736000000000004,
-        "averageRequestsPerMonth": 225316.1151466236,
-        "normalizedRequestsPer10": 209207.16355303957,
+        "averageRequestCost": 0.000399,
+        "averageRequestsPerMonth": 167919.79949874687,
+        "normalizedRequestsPer10": 155914.39136373898,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0000477995104477612
+        "effectiveRequestCostAtPaidPrice": 0.00006413776119402985
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1224,26 +1261,36 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 5538.451514114917,
+        "advantagePercent": 3.68307025688642,
+        "winner": "draw"
       }
     },
     {
       "canonicalModel": "mimov26pro",
-      "displayName": "MiMo V2.6 Pro",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "displayName": "MiMo-V2.6-Pro",
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "MiMo-V2.6-Pro",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.00092075,
+        "averageRequestsPerMonth": 16291.06706489275,
+        "normalizedRequestsPer10": 16291.067064892752,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0006138333333333333
+      },
       "commandCode": {
         "sourceName": "MiMo V2.6 Pro",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.00066894,
-        "averageRequestsPerMonth": 29898.047657487965,
-        "normalizedRequestsPer10": 27760.489932672208,
+        "averageRequestCost": 0.0009186,
+        "averageRequestsPerMonth": 21772.26213803614,
+        "normalizedRequestsPer10": 20215.656581277755,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00036022418999999997
+        "effectiveRequestCostAtPaidPrice": 0.0004946661
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1251,36 +1298,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
-      }
-    },
-    {
-      "canonicalModel": "mimov26proultraspeed",
-      "displayName": "MiMo V2.6 Pro UltraSpeed",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "MiMo V2.6 Pro UltraSpeed",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 10,
-        "averageRequestCost": 0.006689399999999999,
-        "averageRequestsPerMonth": 1494.9023828743984,
-        "normalizedRequestsPer10": 1388.0244966336104,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.007204483799999999
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 3924.5895163850037,
+        "advantagePercent": 24.090438648076614,
+        "winner": "commandCode"
       }
     },
     {
@@ -1979,45 +1999,45 @@
     }
   ],
   "statistics": {
-    "matchedModels": 31,
+    "matchedModels": 33,
     "totalModels": 59,
     "coverage": {
-      "openCodeGo": 32,
+      "openCodeGo": 34,
       "commandCode": 58
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 31,
+        "count": 33,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 39019.8924966774,
-        "median": 16254.87646293888,
-        "p25": 4463.055278536009,
+        "mean": 41705.56588822777,
+        "median": 16291.067064892752,
+        "p25": 4968.326915911067,
         "p75": 32509.75292587776
       },
       "commandCode": {
-        "count": 31,
+        "count": 33,
         "min": 427.9259218805995,
-        "max": 120741.88644708548,
-        "mean": 26909.574034811645,
-        "median": 11665.260630465145,
-        "p25": 3759.449478007409,
-        "p75": 42243.55213364535
+        "max": 155914.39136373898,
+        "mean": 30615.96494012659,
+        "median": 12285.87637152613,
+        "p25": 4287.292709397501,
+        "p75": 44239.80878492888
       }
     },
     "normalizedDifference": {
-      "count": 31,
+      "count": 33,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 19257.953991439404,
+      "mean": 18377.564083791556,
       "median": 4648.562628212785,
-      "p25": 1516.5658332202515,
-      "p75": 10647.888607604025
+      "p25": 1790.579064616144,
+      "p75": 9694.1432761357
     },
     "winnerCounts": {
       "openCodeGo": 14,
-      "commandCode": 12,
-      "draw": 5
+      "commandCode": 13,
+      "draw": 6
     },
     "biggestDifferences": [
       {
@@ -2317,7 +2337,15 @@
         }
       }
     ],
-    "outliers": []
+    "outliers": [
+      {
+        "model": "Grok 4.7",
+        "ratio": 0.20770714285714287,
+        "advantagePercent": 381.44709240345264,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      }
+    ]
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
