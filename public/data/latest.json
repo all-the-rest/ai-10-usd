@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T16:07:57.601Z",
+  "generatedAt": "2026-09-21T23:28:09.433Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-21T16:01:13.783Z",
+      "fetchedAt": "2026-09-21T19:43:42.048Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-21T14:03:49.809Z",
+      "fetchedAt": "2026-09-21T23:27:02.865Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -747,7 +747,7 @@
     {
       "canonicalModel": "grok47",
       "displayName": "Grok 4.7",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "Grok 4.7",
         "variantCount": 2,
@@ -759,16 +759,26 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.01775
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "Grok 4.7",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 35,
+        "averageRequestCost": 0.01065,
+        "averageRequestsPerMonth": 3286.3849765258215,
+        "normalizedRequestsPer10": 3051.42523354301,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.003277157142857143
+      },
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 2417.6224166416014,
+        "advantagePercent": 381.44709240345264,
+        "winner": "commandCode"
       }
     },
     {
@@ -1190,6 +1200,87 @@
         "normalizedDifference": 3924.5895163850037,
         "advantagePercent": 24.090438648076614,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "mimov26flash",
+      "displayName": "MiMo V2.6 Flash",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiMo V2.6 Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 67,
+        "averageRequestCost": 0.00029736000000000004,
+        "averageRequestsPerMonth": 225316.1151466236,
+        "normalizedRequestsPer10": 209207.16355303957,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0000477995104477612
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "mimov26pro",
+      "displayName": "MiMo V2.6 Pro",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiMo V2.6 Pro",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.00066894,
+        "averageRequestsPerMonth": 29898.047657487965,
+        "normalizedRequestsPer10": 27760.489932672208,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00036022418999999997
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "mimov26proultraspeed",
+      "displayName": "MiMo V2.6 Pro UltraSpeed",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiMo V2.6 Pro UltraSpeed",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 10,
+        "averageRequestCost": 0.006689399999999999,
+        "averageRequestsPerMonth": 1494.9023828743984,
+        "normalizedRequestsPer10": 1388.0244966336104,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.007204483799999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1833,6 +1924,33 @@
       }
     },
     {
+      "canonicalModel": "step5",
+      "displayName": "Step 5 Preview",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Step 5 Preview",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0037374,
+        "averageRequestsPerMonth": 5351.313747525017,
+        "normalizedRequestsPer10": 4968.722142548762,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0020125899
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "tencenthy4",
       "displayName": "Tencent Hy4 Preview",
       "status": "commandCodeOnly",
@@ -1861,47 +1979,84 @@
     }
   ],
   "statistics": {
-    "matchedModels": 30,
-    "totalModels": 55,
+    "matchedModels": 31,
+    "totalModels": 59,
     "coverage": {
       "openCodeGo": 32,
-      "commandCode": 53
+      "commandCode": 58
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 30,
+        "count": 31,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 40299.4288193366,
-        "median": 16272.971763915815,
-        "p25": 5031.410159785869,
+        "mean": 39019.8924966774,
+        "median": 16254.87646293888,
+        "p25": 4463.055278536009,
         "p75": 32509.75292587776
       },
       "commandCode": {
-        "count": 30,
+        "count": 31,
         "min": 427.9259218805995,
         "max": 120741.88644708548,
-        "mean": 27704.845661520594,
-        "median": 11975.568500995638,
-        "p25": 4368.748760439738,
-        "p75": 43241.68045928712
+        "mean": 26909.574034811645,
+        "median": 11665.260630465145,
+        "p25": 3759.449478007409,
+        "p75": 42243.55213364535
       }
     },
     "normalizedDifference": {
-      "count": 30,
+      "count": 31,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 19819.298377265997,
-      "median": 4689.111318994434,
-      "p25": 1379.5592175223053,
-      "p75": 11124.761273338187
+      "mean": 19257.953991439404,
+      "median": 4648.562628212785,
+      "p25": 1516.5658332202515,
+      "p75": 10647.888607604025
     },
     "winnerCounts": {
       "openCodeGo": 14,
-      "commandCode": 11,
+      "commandCode": 12,
       "draw": 5
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "grok47",
+        "displayName": "Grok 4.7",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.026624999999999996,
+          "averageRequestsPerMonth": 633.8028169014085,
+          "normalizedRequestsPer10": 633.8028169014085,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.01775
+        },
+        "commandCode": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 35,
+          "averageRequestCost": 0.01065,
+          "averageRequestsPerMonth": 3286.3849765258215,
+          "normalizedRequestsPer10": 3051.42523354301,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.003277157142857143
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 2417.6224166416014,
+          "advantagePercent": 381.44709240345264,
+          "winner": "commandCode"
+        }
+      },
       {
         "canonicalModel": "glm51",
         "displayName": "GLM-5.1",
@@ -2158,43 +2313,6 @@
         "comparison": {
           "normalizedDifference": 5522.217556294798,
           "advantagePercent": 117.50676536061917,
-          "winner": "openCodeGo"
-        }
-      },
-      {
-        "canonicalModel": "mimov25",
-        "displayName": "MiMo V2.5",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 150375.93984962406,
-          "normalizedRequestsPer10": 150375.93984962406,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
-        },
-        "commandCode": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 75187.96992481203,
-          "normalizedRequestsPer10": 69812.4140434652,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.000143241
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 80563.52580615885,
-          "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
       }
