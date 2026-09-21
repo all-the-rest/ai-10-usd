@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T00:50:49.559Z",
+  "generatedAt": "2026-09-21T16:07:57.601Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-20T22:35:49.999Z",
+      "fetchedAt": "2026-09-21T16:01:13.783Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-20T22:35:31.041Z",
+      "fetchedAt": "2026-09-21T14:03:49.809Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -733,6 +733,33 @@
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.014847521999999998
       },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "grok47",
+      "displayName": "Grok 4.7",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Grok 4.7",
+        "variantCount": 2,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.026624999999999996,
+        "averageRequestsPerMonth": 633.8028169014085,
+        "normalizedRequestsPer10": 633.8028169014085,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.01775
+      },
+      "commandCode": null,
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
@@ -1835,9 +1862,9 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 54,
+    "totalModels": 55,
     "coverage": {
-      "openCodeGo": 31,
+      "openCodeGo": 32,
       "commandCode": 53
     },
     "requestsPer10": {
