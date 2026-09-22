@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T18:15:11.657Z",
+  "generatedAt": "2026-09-22T23:08:14.754Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -54,7 +54,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-22T18:09:29.635Z",
+      "fetchedAt": "2026-09-22T23:07:13.927Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -715,6 +715,33 @@
         "normalizedDifference": 4729.660009776084,
         "advantagePercent": 62.5929669472921,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "gpt6luna",
+      "displayName": "GPT-6 Luna",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "GPT-6 Luna",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.00068,
+        "averageRequestsPerMonth": 29411.76470588235,
+        "normalizedRequestsPer10": 27308.973728767272,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00036618
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -2027,10 +2054,10 @@
   ],
   "statistics": {
     "matchedModels": 33,
-    "totalModels": 60,
+    "totalModels": 61,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 59
+      "commandCode": 60
     },
     "requestsPer10": {
       "openCodeGo": {
