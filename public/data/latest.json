@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T23:29:01.900Z",
+  "generatedAt": "2026-09-22T18:15:11.657Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-21T23:27:47.598Z",
+      "fetchedAt": "2026-09-22T18:01:11.274Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-21T23:27:02.865Z",
+      "fetchedAt": "2026-09-22T18:09:29.635Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -900,6 +900,33 @@
       }
     },
     {
+      "canonicalModel": "jev",
+      "displayName": "Jev",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Jev",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": "2026-09-24",
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
+    {
       "canonicalModel": "kimik25",
       "displayName": "Kimi K2.5",
       "status": "commandCodeOnly",
@@ -1129,38 +1156,11 @@
       }
     },
     {
-      "canonicalModel": "mimov26proultraspeed",
-      "displayName": "MiMo V2.6 Pro UltraSpeed",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "MiMo V2.6 Pro UltraSpeed",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 10,
-        "averageRequestCost": 0.006689399999999999,
-        "averageRequestsPerMonth": 1494.9023828743984,
-        "normalizedRequestsPer10": 1388.0244966336104,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.007204483799999999
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
-      }
-    },
-    {
       "canonicalModel": "mimov25",
-      "displayName": "MiMo-V2.5",
+      "displayName": "MiMo V2.5",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo-V2.5",
+        "sourceName": "MiMo V2.5",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 60,
@@ -1194,10 +1194,10 @@
     },
     {
       "canonicalModel": "mimov25pro",
-      "displayName": "MiMo-V2.5-Pro",
+      "displayName": "MiMo V2.5 Pro",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo-V2.5-Pro",
+        "sourceName": "MiMo V2.5 Pro",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 15,
@@ -1231,10 +1231,10 @@
     },
     {
       "canonicalModel": "mimov26flash",
-      "displayName": "MiMo-V2.6-Flash",
+      "displayName": "MiMo V2.6 Flash",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo-V2.6-Flash",
+        "sourceName": "MiMo V2.6 Flash",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 60,
@@ -1268,10 +1268,10 @@
     },
     {
       "canonicalModel": "mimov26pro",
-      "displayName": "MiMo-V2.6-Pro",
+      "displayName": "MiMo V2.6 Pro",
       "status": "matched",
       "openCodeGo": {
-        "sourceName": "MiMo-V2.6-Pro",
+        "sourceName": "MiMo V2.6 Pro",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 15,
@@ -1301,6 +1301,33 @@
         "normalizedDifference": 3924.5895163850037,
         "advantagePercent": 24.090438648076614,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "mimov26proultraspeed",
+      "displayName": "MiMo V2.6 Pro UltraSpeed",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiMo V2.6 Pro UltraSpeed",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 10,
+        "averageRequestCost": 0.006689399999999999,
+        "averageRequestsPerMonth": 1494.9023828743984,
+        "normalizedRequestsPer10": 1388.0244966336104,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.007204483799999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -2000,10 +2027,10 @@
   ],
   "statistics": {
     "matchedModels": 33,
-    "totalModels": 59,
+    "totalModels": 60,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 58
+      "commandCode": 59
     },
     "requestsPer10": {
       "openCodeGo": {
