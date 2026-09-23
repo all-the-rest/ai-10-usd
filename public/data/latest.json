@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T14:48:11.631Z",
+  "generatedAt": "2026-09-23T23:03:56.617Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-23T14:46:20.888Z",
+      "fetchedAt": "2026-09-23T23:02:30.783Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-23T14:04:34.208Z",
+      "fetchedAt": "2026-09-23T23:02:04.392Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -719,19 +719,29 @@
     },
     {
       "canonicalModel": "gpt6luna",
-      "displayName": "GPT-6 Luna",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "displayName": "GPT 6 Luna",
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "GPT 6 Luna",
+        "variantCount": 2,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.0010731249999999999,
+        "averageRequestsPerMonth": 15531.199589935324,
+        "normalizedRequestsPer10": 15531.199589935324,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0007154166666666667
+      },
       "commandCode": {
         "sourceName": "GPT-6 Luna",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.00068,
-        "averageRequestsPerMonth": 29411.76470588235,
-        "normalizedRequestsPer10": 27308.973728767272,
+        "averageRequestCost": 0.00073375,
+        "averageRequestsPerMonth": 27257.2402044293,
+        "normalizedRequestsPer10": 25308.486726489602,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00036618
+        "effectiveRequestCostAtPaidPrice": 0.00039512437499999997
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -739,9 +749,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 9777.287136554278,
+        "advantagePercent": 62.95255611092815,
+        "winner": "commandCode"
       }
     },
     {
@@ -2080,44 +2090,44 @@
     }
   ],
   "statistics": {
-    "matchedModels": 33,
+    "matchedModels": 34,
     "totalModels": 62,
     "coverage": {
-      "openCodeGo": 35,
+      "openCodeGo": 36,
       "commandCode": 60
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 33,
+        "count": 34,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 41705.56588822777,
-        "median": 16291.067064892752,
-        "p25": 4968.326915911067,
+        "mean": 40935.731585336805,
+        "median": 16272.971763915815,
+        "p25": 5031.410159785869,
         "p75": 32509.75292587776
       },
       "commandCode": {
-        "count": 33,
+        "count": 34,
         "min": 427.9259218805995,
         "max": 155914.39136373898,
-        "mean": 30615.96494012659,
-        "median": 12285.87637152613,
-        "p25": 4287.292709397501,
-        "p75": 44239.80878492888
+        "mean": 30459.862639725503,
+        "median": 14447.992808107316,
+        "p25": 4368.748760439738,
+        "p75": 43241.68045928712
       }
     },
     "normalizedDifference": {
-      "count": 33,
+      "count": 34,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 18377.564083791556,
-      "median": 4648.562628212785,
-      "p25": 1790.579064616144,
-      "p75": 9694.1432761357
+      "mean": 18124.61476181399,
+      "median": 4689.111318994434,
+      "p25": 1947.3399026225084,
+      "p75": 9756.501171449632
     },
     "winnerCounts": {
       "openCodeGo": 14,
-      "commandCode": 13,
+      "commandCode": 14,
       "draw": 6
     },
     "biggestDifferences": [
