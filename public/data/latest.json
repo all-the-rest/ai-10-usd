@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T23:03:56.617Z",
+  "generatedAt": "2026-09-24T04:06:06.496Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-23T23:02:30.783Z",
+      "fetchedAt": "2026-09-24T04:01:37.030Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-23T23:02:04.392Z",
+      "fetchedAt": "2026-09-24T04:04:17.985Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1954,6 +1954,33 @@
       }
     },
     {
+      "canonicalModel": "spacebunnyalpha",
+      "displayName": "Space Bunny Alpha",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Space Bunny Alpha",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
+    {
       "canonicalModel": "spacebunnyfree",
       "displayName": "Space Bunny Free",
       "status": "openCodeGoOnly",
@@ -2091,10 +2118,10 @@
   ],
   "statistics": {
     "matchedModels": 34,
-    "totalModels": 62,
+    "totalModels": 63,
     "coverage": {
       "openCodeGo": 36,
-      "commandCode": 60
+      "commandCode": 61
     },
     "requestsPer10": {
       "openCodeGo": {
