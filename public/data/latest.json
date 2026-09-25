@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-25T01:08:47.822Z",
+  "generatedAt": "2026-09-25T04:10:43.069Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-24T23:17:58.811Z",
+      "fetchedAt": "2026-09-25T04:06:18.230Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-24T23:17:29.214Z",
+      "fetchedAt": "2026-09-25T04:09:11.764Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -941,26 +941,16 @@
       "displayName": "Jev",
       "status": "commandCodeOnly",
       "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Jev",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
+      "commandCode": null,
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": true
+        "commandCode": false
       },
-      "promoExpires": "2026-09-24",
+      "promoExpires": null,
       "comparison": {
         "normalizedDifference": null,
         "advantagePercent": null,
-        "winner": "commandCode"
+        "winner": null
       }
     },
     {
@@ -1285,12 +1275,12 @@
         "sourceName": "MiMo V2.6 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 67,
+        "averageAllowance": 20,
         "averageRequestCost": 0.000399,
-        "averageRequestsPerMonth": 167919.79949874687,
-        "normalizedRequestsPer10": 155914.39136373898,
+        "averageRequestsPerMonth": 50125.31328320802,
+        "normalizedRequestsPer10": 46541.60936231015,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00006413776119402985
+        "effectiveRequestCostAtPaidPrice": 0.0002148615
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1298,9 +1288,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 5538.451514114917,
-        "advantagePercent": 3.68307025688642,
-        "winner": "draw"
+        "normalizedDifference": 103834.33048731391,
+        "advantagePercent": 223.09999999999994,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -2017,11 +2007,11 @@
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0011286,
-        "averageRequestsPerMonth": 17721.0703526493,
-        "normalizedRequestsPer10": 16454.10432000864,
+        "averageRequestCost": 0.0011205999999999998,
+        "averageRequestsPerMonth": 17847.581652686065,
+        "normalizedRequestsPer10": 16571.570708157906,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0006077510999999999
+        "effectiveRequestCostAtPaidPrice": 0.0006034430999999999
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -2121,7 +2111,7 @@
     "totalModels": 63,
     "coverage": {
       "openCodeGo": 36,
-      "commandCode": 61
+      "commandCode": 60
     },
     "requestsPer10": {
       "openCodeGo": {
@@ -2136,8 +2126,8 @@
       "commandCode": {
         "count": 34,
         "min": 427.9259218805995,
-        "max": 155914.39136373898,
-        "mean": 30459.862639725503,
+        "max": 120741.88644708548,
+        "mean": 27243.016110271714,
         "median": 14447.992808107316,
         "p25": 4368.748760439738,
         "p75": 43241.68045928712
@@ -2147,15 +2137,15 @@
       "count": 34,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 18124.61476181399,
+      "mean": 21015.670025731608,
       "median": 4689.111318994434,
       "p25": 1947.3399026225084,
-      "p75": 9756.501171449632
+      "p75": 11145.547238442832
     },
     "winnerCounts": {
-      "openCodeGo": 14,
+      "openCodeGo": 15,
       "commandCode": 14,
-      "draw": 6
+      "draw": 5
     },
     "biggestDifferences": [
       {
@@ -2344,6 +2334,43 @@
         }
       },
       {
+        "canonicalModel": "mimov26flash",
+        "displayName": "MiMo V2.6 Flash",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "MiMo V2.6 Flash",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 150375.93984962406,
+          "normalizedRequestsPer10": 150375.93984962406,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
+        },
+        "commandCode": {
+          "sourceName": "MiMo V2.6 Flash",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 50125.31328320802,
+          "normalizedRequestsPer10": 46541.60936231015,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0002148615
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 103834.33048731391,
+          "advantagePercent": 223.09999999999994,
+          "winner": "openCodeGo"
+        }
+      },
+      {
         "canonicalModel": "minimax-m2.7",
         "displayName": "MiniMax M2.7",
         "status": "matched",
@@ -2416,54 +2443,9 @@
           "advantagePercent": 135.66416772350024,
           "winner": "openCodeGo"
         }
-      },
-      {
-        "canonicalModel": "qwen-3.6-plus",
-        "displayName": "Qwen3.6 Plus",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Qwen3.6 Plus",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.008753437499999999,
-          "averageRequestsPerMonth": 10221.706593668552,
-          "normalizedRequestsPer10": 10221.706593668552,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0014589062500000001
-        },
-        "commandCode": {
-          "sourceName": "Qwen 3.6 Plus",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 33,
-          "averageRequestCost": 0.00652,
-          "averageRequestsPerMonth": 5061.349693251534,
-          "normalizedRequestsPer10": 4699.489037373754,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.002127890909090909
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 5522.217556294798,
-          "advantagePercent": 117.50676536061917,
-          "winner": "openCodeGo"
-        }
       }
     ],
-    "outliers": [
-      {
-        "model": "Grok 4.7",
-        "ratio": 0.20770714285714287,
-        "advantagePercent": 381.44709240345264,
-        "winner": "commandCode",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      }
-    ]
+    "outliers": []
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
