@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-26T04:09:30.833Z",
+  "generatedAt": "2026-09-26T14:42:40.890Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-26T04:04:04.799Z",
+      "fetchedAt": "2026-09-26T14:41:23.849Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-26T04:08:23.902Z",
+      "fetchedAt": "2026-09-26T12:05:04.052Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1146,6 +1146,33 @@
       }
     },
     {
+      "canonicalModel": "longcat25free",
+      "displayName": "LongCat 2.5 Preview Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "LongCat 2.5 Preview Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
+    },
+    {
       "canonicalModel": "longcat20",
       "displayName": "LongCat-2.0",
       "status": "matched",
@@ -2135,9 +2162,9 @@
   ],
   "statistics": {
     "matchedModels": 34,
-    "totalModels": 64,
+    "totalModels": 65,
     "coverage": {
-      "openCodeGo": 36,
+      "openCodeGo": 37,
       "commandCode": 61
     },
     "requestsPer10": {
