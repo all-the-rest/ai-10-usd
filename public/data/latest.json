@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-26T01:11:49.870Z",
+  "generatedAt": "2026-09-26T04:09:30.833Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-25T23:24:01.909Z",
+      "fetchedAt": "2026-09-26T04:04:04.799Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-25T23:23:10.870Z",
+      "fetchedAt": "2026-09-26T04:08:23.902Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1624,6 +1624,33 @@
       }
     },
     {
+      "canonicalModel": "pixelcanary",
+      "displayName": "Pixel Canary",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Pixel Canary",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
+    {
       "canonicalModel": "qwen36max",
       "displayName": "Qwen 3.6 Max Preview",
       "status": "commandCodeOnly",
@@ -2108,10 +2135,10 @@
   ],
   "statistics": {
     "matchedModels": 34,
-    "totalModels": 63,
+    "totalModels": 64,
     "coverage": {
       "openCodeGo": 36,
-      "commandCode": 60
+      "commandCode": 61
     },
     "requestsPer10": {
       "openCodeGo": {
