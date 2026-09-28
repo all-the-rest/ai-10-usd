@@ -1,4 +1,9 @@
 import { canonicalName, displayNameOf, normalizeName } from "./model-map.mjs";
+import { normalizeOpenCodeData } from "./normalize.mjs";
+
+// Re-exported so consumers/tests can reach the normalization layer through the
+// core module (it runs before any comparison logic).
+export { normalizeOpenCodeData } from "./normalize.mjs";
 
 /**
  * Pure Vergleichslogik für den "$10 for AI"-Generator. Alle Funktionen sind
@@ -255,6 +260,12 @@ export function findOutliers(rows) {
  * serialisiert.
  */
 export function buildComparison(openCodeData, commandCodeData, modelMap) {
+  // Normalize the OpenCode tracker snapshot first: legacy (top-level
+  // monthlyCost/monthlyCredit + flat usage) and the new multi-plan shape
+  // (`plans` + per-plan usage map) both collapse to one `{ plan, models }`
+  // object, so every consumer below only ever sees `number | null` usage.
+  const openCode = normalizeOpenCodeData(openCodeData);
+
   const commandPlan = commandCodeData.plans?.find((plan) => plan.id === COMMAND_CODE_PLAN_ID);
   if (!commandPlan) throw new Error(`Command Code plan ${COMMAND_CODE_PLAN_ID} is missing`);
 
@@ -274,10 +285,10 @@ export function buildComparison(openCodeData, commandCodeData, modelMap) {
     groups.set(key, group);
   }
 
-  for (const model of openCodeData.models) add("openCodeGo", model);
+  for (const model of openCode.models) add("openCodeGo", model);
   for (const model of commandCodeData.models) add("commandCode", model);
 
-  const openCodePaid = finite(openCodeData.monthlyCost) ?? TARGET_PRICE;
+  const openCodePaid = finite(openCode.plan.priceMonthly) ?? TARGET_PRICE;
   const rows = [...groups.values()]
     .map((group) => compareGroup(group, openCodePaid, COMMAND_CODE_PAID_PRICE, commandPlan, modelMap))
     .sort((a, b) => a.displayName.localeCompare(b.displayName, undefined, { numeric: true, sensitivity: "base" }));
@@ -314,14 +325,14 @@ export function buildComparison(openCodeData, commandCodeData, modelMap) {
     // the OpenCode Go tracker — used for Peak-/Off-Peak annotations on cards.
     // No weekday coverage in source: consumers must mark coverage as
     // source-state instead of guessing.
-    peakWindows: openCodeData.peakHours ?? null,
+    peakWindows: openCode.peakHours ?? null,
     sources: {
       openCodeGo: {
         url: "https://ocgo-pricing.all-the.rest/data/latest.json",
-        fetchedAt: openCodeData.fetchedAt,
+        fetchedAt: openCode.fetchedAt,
         planName: "OpenCode Go",
         paidMonthly: openCodePaid,
-        monthlyCredit: finite(openCodeData.monthlyCredit) ?? 60,
+        monthlyCredit: finite(openCode.plan.creditsMonthly) ?? 60,
       },
       commandCode: {
         url: "https://cc-pricing.all-the.rest/data/latest.json",

@@ -7,12 +7,23 @@ export type SortKey =
   | "normalizedDifference"
   | "advantage";
 
+/** OpenCode Go subscription entry (new multi-plan tracker format). */
+export interface OpenCodePlan {
+  id: string;
+  name: string;
+  priceMonthly: number;
+  creditsMonthly: number | null;
+  sourceUrl?: string;
+}
+
 export interface PriceSnapshot {
   fetchedAt: string;
-  sourceUrl: string;
+  sourceUrl?: string;
+  /** Legacy trackers only; new snapshots expose the same values via `plans`. */
   monthlyCredit?: number;
+  /** Legacy trackers only; new snapshots expose the same values via `plans`. */
   monthlyCost?: number;
-  plans?: CommandCodePlan[];
+  plans?: Array<OpenCodePlan | CommandCodePlan>;
   models: OpenCodeModel[] | CommandCodeModel[];
 }
 
@@ -23,7 +34,11 @@ export interface OpenCodeModel {
   output: number | null;
   cachedRead: number | null;
   cachedWrite: number | null;
-  usage: number | null;
+  /**
+   * Legacy: flat allowance per model. New: a `{ [planId]: allowance | null }`
+   * map (null = free/unlimited). Normalized to `number | null` before use.
+   */
+  usage: number | Record<string, number | null> | null;
   pattern: RequestPattern;
 }
 

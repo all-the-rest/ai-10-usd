@@ -1,0 +1,54 @@
+{
+  "fetchedAt": "2026-09-28T12:00:00.000Z",
+  "sourceUrl": "https://opencode.ai/docs/de/go/",
+  "sourceLang": "de",
+  "plans": [
+    {
+      "id": "go",
+      "name": "Go",
+      "priceMonthly": 10,
+      "creditsMonthly": 60,
+      "sourceUrl": "https://opencode.ai/docs/de/go/"
+    },
+    {
+      "id": "go-plus",
+      "name": "Go Plus",
+      "priceMonthly": 40,
+      "creditsMonthly": 240,
+      "sourceUrl": "https://opencode.ai/docs/de/go/"
+    }
+  ],
+  "peakHours": { "deepseek-v4-flash": [[1, 6]] },
+  "models": [
+    {
+      "name": "Grok 4.5",
+      "tier": null,
+      "input": 2,
+      "output": 6,
+      "cachedRead": 0.3,
+      "cachedWrite": null,
+      "usage": { "go": 15, "go-plus": 120 },
+      "pattern": { "input": 1100, "cachedRead": 71500, "output": 220 }
+    },
+    {
+      "name": "DeepSeek V4 Flash",
+      "tier": "Off-Peak",
+      "input": 0.14,
+      "output": 0.28,
+      "cachedRead": 0.028,
+      "cachedWrite": null,
+      "usage": { "go": 60, "go-plus": 480 },
+      "pattern": { "input": 1000, "cachedRead": 50000, "output": 200 }
+    },
+    {
+      "name": "Ox Alpha Free",
+      "tier": null,
+      "input": 0,
+      "output": 0,
+      "cachedRead": 0,
+      "cachedWrite": 0,
+      "usage": { "go": null, "go-plus": null },
+      "pattern": null
+    }
+  ]
+}
