@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T01:24:29.997Z",
+  "generatedAt": "2026-09-28T04:09:07.670Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-27T23:14:07.829Z",
+      "fetchedAt": "2026-09-28T04:08:12.862Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-27T23:12:26.308Z",
+      "fetchedAt": "2026-09-28T04:07:56.854Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -801,11 +801,11 @@
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 35,
-        "averageRequestCost": 0.01065,
-        "averageRequestsPerMonth": 3286.3849765258215,
-        "normalizedRequestsPer10": 3051.42523354301,
+        "averageRequestCost": 0.01775,
+        "averageRequestsPerMonth": 1971.830985915493,
+        "normalizedRequestsPer10": 1830.8551401258062,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.003277157142857143
+        "effectiveRequestCostAtPaidPrice": 0.005461928571428571
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -813,8 +813,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 2417.6224166416014,
-        "advantagePercent": 381.44709240345264,
+        "normalizedDifference": 1197.0523232243977,
+        "advantagePercent": 188.86825544207161,
         "winner": "commandCode"
       }
     },
@@ -2181,7 +2181,7 @@
         "count": 34,
         "min": 427.9259218805995,
         "max": 120741.88644708548,
-        "mean": 27243.016110271714,
+        "mean": 27207.11698987709,
         "median": 14447.992808107316,
         "p25": 4368.748760439738,
         "p75": 43241.68045928712
@@ -2191,9 +2191,9 @@
       "count": 34,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 21015.670025731608,
+      "mean": 20979.770905336984,
       "median": 4689.111318994434,
-      "p25": 1947.3399026225084,
+      "p25": 1379.5592175223053,
       "p75": 11145.547238442832
     },
     "winnerCounts": {
@@ -2202,43 +2202,6 @@
       "draw": 5
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "grok47",
-        "displayName": "Grok 4.7",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.026624999999999996,
-          "averageRequestsPerMonth": 633.8028169014085,
-          "normalizedRequestsPer10": 633.8028169014085,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.01775
-        },
-        "commandCode": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 35,
-          "averageRequestCost": 0.01065,
-          "averageRequestsPerMonth": 3286.3849765258215,
-          "normalizedRequestsPer10": 3051.42523354301,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.003277157142857143
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 2417.6224166416014,
-          "advantagePercent": 381.44709240345264,
-          "winner": "commandCode"
-        }
-      },
       {
         "canonicalModel": "glm51",
         "displayName": "GLM-5.1",
@@ -2459,6 +2422,43 @@
           "normalizedDifference": 11601.63393907235,
           "advantagePercent": 221.16078761714232,
           "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "grok47",
+        "displayName": "Grok 4.7",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.026624999999999996,
+          "averageRequestsPerMonth": 633.8028169014085,
+          "normalizedRequestsPer10": 633.8028169014085,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.01775
+        },
+        "commandCode": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 35,
+          "averageRequestCost": 0.01775,
+          "averageRequestsPerMonth": 1971.830985915493,
+          "normalizedRequestsPer10": 1830.8551401258062,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.005461928571428571
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 1197.0523232243977,
+          "advantagePercent": 188.86825544207161,
+          "winner": "commandCode"
         }
       },
       {
