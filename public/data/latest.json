@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T06:08:20.906Z",
+  "generatedAt": "2026-09-28T14:20:35.704Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-28T06:07:02.632Z",
+      "fetchedAt": "2026-09-28T14:13:35.273Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-28T06:00:25.869Z",
+      "fetchedAt": "2026-09-28T14:02:26.476Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -481,28 +481,18 @@
     {
       "canonicalModel": "glm51",
       "displayName": "GLM-5.1",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "GLM-5.1",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.01516,
-        "averageRequestsPerMonth": 3957.78364116095,
-        "normalizedRequestsPer10": 3957.7836411609505,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.002526666666666667
-      },
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "GLM-5.1",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.01516,
-        "averageRequestsPerMonth": 1319.2612137203166,
-        "normalizedRequestsPer10": 1224.9407741135717,
+        "averageRequestCost": 0.014832799999999998,
+        "averageRequestsPerMonth": 1348.3630872121246,
+        "normalizedRequestsPer10": 1251.9620122675253,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00816366
+        "effectiveRequestCostAtPaidPrice": 0.0079874628
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -510,9 +500,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 2732.8428670473786,
-        "advantagePercent": 223.10000000000002,
-        "winner": "openCodeGo"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1387,28 +1377,18 @@
     {
       "canonicalModel": "minimax-m2.5",
       "displayName": "MiniMax M2.5",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "MiniMax M2.5",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.003561375,
-        "averageRequestsPerMonth": 16847.425502790356,
-        "normalizedRequestsPer10": 16847.425502790356,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0005935625
-      },
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "MiniMax M2.5",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.00189,
-        "averageRequestsPerMonth": 10582.010582010582,
-        "normalizedRequestsPer10": 9825.450865376586,
+        "averageRequestCost": 0.0019344000000000002,
+        "averageRequestsPerMonth": 10339.123242349047,
+        "normalizedRequestsPer10": 9599.928730129106,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.001017765
+        "effectiveRequestCostAtPaidPrice": 0.0010416744
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1416,9 +1396,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 7021.97463741377,
-        "advantagePercent": 71.46720016847425,
-        "winner": "openCodeGo"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -1705,6 +1685,33 @@
       }
     },
     {
+      "canonicalModel": "qwen-3.6-plus",
+      "displayName": "Qwen 3.6 Plus",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Qwen 3.6 Plus",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 33,
+        "averageRequestCost": 0.005886,
+        "averageRequestsPerMonth": 5606.523955147809,
+        "normalizedRequestsPer10": 5205.68612362842,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0019209763636363637
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen37flash",
       "displayName": "Qwen 3.7 Flash",
       "status": "commandCodeOnly",
@@ -1719,6 +1726,33 @@
         "normalizedRequestsPer10": 52885.18008646622,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.00018908888999999998
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "qwen-3.7-max",
+      "displayName": "Qwen 3.7 Max",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Qwen 3.7 Max",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 33,
+        "averageRequestCost": 0.0573876,
+        "averageRequestsPerMonth": 575.0371160320349,
+        "normalizedRequestsPer10": 533.9248988226879,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.018729225818181816
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1810,80 +1844,6 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": null
-      }
-    },
-    {
-      "canonicalModel": "qwen-3.6-plus",
-      "displayName": "Qwen3.6 Plus",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "Qwen3.6 Plus",
-        "variantCount": 2,
-        "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.008753437499999999,
-        "averageRequestsPerMonth": 10221.706593668552,
-        "normalizedRequestsPer10": 10221.706593668552,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0014589062500000001
-      },
-      "commandCode": {
-        "sourceName": "Qwen 3.6 Plus",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 33,
-        "averageRequestCost": 0.00652,
-        "averageRequestsPerMonth": 5061.349693251534,
-        "normalizedRequestsPer10": 4699.489037373754,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.002127890909090909
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": 5522.217556294798,
-        "advantagePercent": 117.50676536061917,
-        "winner": "openCodeGo"
-      }
-    },
-    {
-      "canonicalModel": "qwen-3.7-max",
-      "displayName": "Qwen3.7 Max",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "Qwen3.7 Max",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 30,
-        "averageRequestCost": 0.035799375,
-        "averageRequestsPerMonth": 838.0034567642591,
-        "normalizedRequestsPer10": 838.0034567642591,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.011933125
-      },
-      "commandCode": {
-        "sourceName": "Qwen 3.7 Max",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 33,
-        "averageRequestCost": 0.07160274000000001,
-        "averageRequestsPerMonth": 460.87621786540564,
-        "normalizedRequestsPer10": 427.9259218805995,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.023368530600000003
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": 410.0775348836596,
-        "advantagePercent": 95.82909422301368,
-        "winner": "openCodeGo"
       }
     },
     {
@@ -2161,84 +2121,47 @@
     }
   ],
   "statistics": {
-    "matchedModels": 34,
+    "matchedModels": 30,
     "totalModels": 65,
     "coverage": {
-      "openCodeGo": 37,
+      "openCodeGo": 33,
       "commandCode": 61
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 34,
+        "count": 30,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 40935.731585336805,
-        "median": 16272.971763915815,
-        "p25": 5031.410159785869,
-        "p75": 32509.75292587776
+        "mean": 45331.66515690225,
+        "median": 16291.067064892752,
+        "p25": 5354.136840583314,
+        "p75": 51009.084886701
       },
       "commandCode": {
-        "count": 34,
-        "min": 427.9259218805995,
+        "count": 30,
+        "min": 606.866082861495,
         "max": 120741.88644708548,
-        "mean": 27207.11698987709,
-        "median": 14447.992808107316,
-        "p25": 4368.748760439738,
-        "p75": 43241.68045928712
+        "mean": 30295.472368569215,
+        "median": 19835.561836675588,
+        "p25": 4771.285576104339,
+        "p75": 45966.15921796483
       }
     },
     "normalizedDifference": {
-      "count": 34,
+      "count": 30,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20979.770905336984,
+      "mean": 23254.169939527266,
       "median": 4689.111318994434,
       "p25": 1379.5592175223053,
-      "p75": 11145.547238442832
+      "p75": 11924.012061956184
     },
     "winnerCounts": {
-      "openCodeGo": 15,
+      "openCodeGo": 11,
       "commandCode": 14,
       "draw": 5
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "glm51",
-        "displayName": "GLM-5.1",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "GLM-5.1",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.01516,
-          "averageRequestsPerMonth": 3957.78364116095,
-          "normalizedRequestsPer10": 3957.7836411609505,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.002526666666666667
-        },
-        "commandCode": {
-          "sourceName": "GLM-5.1",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.01516,
-          "averageRequestsPerMonth": 1319.2612137203166,
-          "normalizedRequestsPer10": 1224.9407741135717,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00816366
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 2732.8428670473786,
-          "advantagePercent": 223.10000000000002,
-          "winner": "openCodeGo"
-        }
-      },
       {
         "canonicalModel": "kimik26",
         "displayName": "Kimi K2.6",
@@ -2495,6 +2418,43 @@
         "comparison": {
           "normalizedDifference": 8132.330614802455,
           "advantagePercent": 135.66416772350024,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "mimov25",
+        "displayName": "MiMo V2.5",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "MiMo V2.5",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 150375.93984962406,
+          "normalizedRequestsPer10": 150375.93984962406,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
+        },
+        "commandCode": {
+          "sourceName": "MiMo V2.5",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 30,
+          "averageRequestCost": 0.000399,
+          "averageRequestsPerMonth": 75187.96992481203,
+          "normalizedRequestsPer10": 69812.4140434652,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.000143241
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 80563.52580615885,
+          "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
       }
