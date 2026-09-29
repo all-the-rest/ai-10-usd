@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T14:20:35.704Z",
+  "generatedAt": "2026-09-29T00:28:57.780Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-28T14:13:35.273Z",
+      "fetchedAt": "2026-09-28T18:06:26.302Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-28T14:02:26.476Z",
+      "fetchedAt": "2026-09-29T00:27:45.530Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -74,6 +74,33 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
+    {
+      "canonicalModel": "claudesonnet55",
+      "displayName": "Claude Sonnet 5.5",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Claude Sonnet 5.5",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 10,
+        "averageRequestCost": 0.0136,
+        "averageRequestsPerMonth": 735.2941176470589,
+        "normalizedRequestsPer10": 682.724343219182,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.014647199999999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
     {
       "canonicalModel": "deepseek-v4-flash (Off-Peak)",
       "displayName": "DeepSeek V4 Flash (Off-Peak)",
@@ -395,6 +422,60 @@
         "normalizedDifference": 4648.562628212785,
         "advantagePercent": 7.69999999999999,
         "winner": "draw"
+      }
+    },
+    {
+      "canonicalModel": "deepseekv41flashfast (Off-Peak)",
+      "displayName": "DeepSeek V4.1 Flash Fast (Off-Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4.1 Flash Fast",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.0010219600000000001,
+        "averageRequestsPerMonth": 58710.712748052756,
+        "normalizedRequestsPer10": 54513.19660914834,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00018344182
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "deepseekv41flashfast (Peak)",
+      "displayName": "DeepSeek V4.1 Flash Fast (Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4.1 Flash Fast",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.0020439200000000003,
+        "averageRequestsPerMonth": 29355.356374026378,
+        "normalizedRequestsPer10": 27256.59830457417,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00036688364
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -790,12 +871,12 @@
         "sourceName": "Grok 4.7",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 35,
+        "averageAllowance": 20,
         "averageRequestCost": 0.01775,
-        "averageRequestsPerMonth": 1971.830985915493,
-        "normalizedRequestsPer10": 1830.8551401258062,
+        "averageRequestsPerMonth": 1126.7605633802818,
+        "normalizedRequestsPer10": 1046.2029372147463,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.005461928571428571
+        "effectiveRequestCostAtPaidPrice": 0.009558374999999997
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -803,8 +884,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 1197.0523232243977,
-        "advantagePercent": 188.86825544207161,
+        "normalizedDifference": 412.40012031333777,
+        "advantagePercent": 65.06757453832662,
         "winner": "commandCode"
       }
     },
@@ -2122,10 +2203,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 65,
+    "totalModels": 68,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 61
+      "commandCode": 64
     },
     "requestsPer10": {
       "openCodeGo": {
@@ -2141,7 +2222,7 @@
         "count": 30,
         "min": 606.866082861495,
         "max": 120741.88644708548,
-        "mean": 30295.472368569215,
+        "mean": 30269.317295138848,
         "median": 19835.561836675588,
         "p25": 4771.285576104339,
         "p75": 45966.15921796483
@@ -2151,7 +2232,7 @@
       "count": 30,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23254.169939527266,
+      "mean": 23228.0148660969,
       "median": 4689.111318994434,
       "p25": 1379.5592175223053,
       "p75": 11924.012061956184
@@ -2348,43 +2429,6 @@
         }
       },
       {
-        "canonicalModel": "grok47",
-        "displayName": "Grok 4.7",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.026624999999999996,
-          "averageRequestsPerMonth": 633.8028169014085,
-          "normalizedRequestsPer10": 633.8028169014085,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.01775
-        },
-        "commandCode": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 35,
-          "averageRequestCost": 0.01775,
-          "averageRequestsPerMonth": 1971.830985915493,
-          "normalizedRequestsPer10": 1830.8551401258062,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.005461928571428571
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 1197.0523232243977,
-          "advantagePercent": 188.86825544207161,
-          "winner": "commandCode"
-        }
-      },
-      {
         "canonicalModel": "qwen-3.7-plus",
         "displayName": "Qwen3.7 Plus",
         "status": "matched",
@@ -2456,6 +2500,43 @@
           "normalizedDifference": 80563.52580615885,
           "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "deepseek-v4-flash (Off-Peak)",
+        "displayName": "DeepSeek V4 Flash (Off-Peak)",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "DeepSeek V4 Flash",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 30,
+          "averageRequestCost": 0.0004614,
+          "averageRequestsPerMonth": 65019.50585175553,
+          "normalizedRequestsPer10": 65019.50585175552,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0001538
+        },
+        "commandCode": {
+          "sourceName": "DeepSeek V4 Flash",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0004614,
+          "averageRequestsPerMonth": 130039.01170351106,
+          "normalizedRequestsPer10": 120741.88644708548,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00008282129999999999
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 55722.38059532995,
+          "advantagePercent": 85.70102135561747,
+          "winner": "commandCode"
         }
       }
     ],
