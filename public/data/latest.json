@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T01:48:38.084Z",
+  "generatedAt": "2026-10-01T16:10:52.806Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-01T00:03:11.654Z",
+      "fetchedAt": "2026-10-01T16:09:28.610Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-01T00:01:06.849Z",
+      "fetchedAt": "2026-10-01T16:09:37.490Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -733,12 +733,12 @@
         "sourceName": "GLM-5.3 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 40,
+        "averageAllowance": 60,
         "averageRequestCost": 0.0019,
-        "averageRequestsPerMonth": 21052.63157894737,
-        "normalizedRequestsPer10": 19547.475932170262,
+        "averageRequestsPerMonth": 31578.947368421053,
+        "normalizedRequestsPer10": 29321.21389825539,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.000511575
+        "effectiveRequestCostAtPaidPrice": 0.00034104999999999997
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -746,9 +746,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 12031.471436250795,
-        "advantagePercent": 61.55,
-        "winner": "openCodeGo"
+        "normalizedDifference": 2257.7334701656655,
+        "advantagePercent": 7.700000000000001,
+        "winner": "draw"
       }
     },
     {
@@ -1739,33 +1739,6 @@
       }
     },
     {
-      "canonicalModel": "pixelcanary",
-      "displayName": "Pixel Canary",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Pixel Canary",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": true
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
-      }
-    },
-    {
       "canonicalModel": "qwen36max",
       "displayName": "Qwen 3.6 Max Preview",
       "status": "commandCodeOnly",
@@ -2230,10 +2203,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 69,
+    "totalModels": 68,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 65
+      "commandCode": 64
     },
     "requestsPer10": {
       "openCodeGo": {
@@ -2249,8 +2222,8 @@
         "count": 30,
         "min": 990.9603850455853,
         "max": 120741.88644708548,
-        "mean": 30309.775033996277,
-        "median": 19835.561836675588,
+        "mean": 30635.566299532446,
+        "median": 20169.652161229336,
         "p25": 4771.285576104339,
         "p75": 45966.15921796483
       }
@@ -2259,15 +2232,15 @@
       "count": 30,
       "min": 190.51213402501378,
       "max": 156457.3182191777,
-      "mean": 23268.47260495433,
-      "median": 4689.111318994434,
+      "mean": 22942.68133941816,
+      "median": 4510.897189731879,
       "p25": 1445.4463937688702,
-      "p75": 11924.012061956184
+      "p75": 11145.547238442832
     },
     "winnerCounts": {
-      "openCodeGo": 11,
+      "openCodeGo": 10,
       "commandCode": 14,
-      "draw": 5
+      "draw": 6
     },
     "biggestDifferences": [
       {
