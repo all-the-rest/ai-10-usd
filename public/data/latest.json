@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T01:50:24.432Z",
+  "generatedAt": "2026-10-01T00:02:35.512Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "deepseekv4.1flash": [
@@ -47,14 +47,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-29T23:51:59.749Z",
+      "fetchedAt": "2026-09-30T18:01:48.557Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-09-29T23:51:17.164Z",
+      "fetchedAt": "2026-10-01T00:01:06.849Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1171,12 +1171,12 @@
         "sourceName": "Kimi K3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 20,
+        "averageAllowance": 60,
         "averageRequestCost": 0.0306,
-        "averageRequestsPerMonth": 653.5947712418301,
-        "normalizedRequestsPer10": 606.866082861495,
+        "averageRequestsPerMonth": 1960.7843137254902,
+        "normalizedRequestsPer10": 1820.598248584485,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0164781
+        "effectiveRequestCostAtPaidPrice": 0.0054927
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1184,8 +1184,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 116.67000443012245,
-        "advantagePercent": 23.80068090374498,
+        "normalizedDifference": 1330.4021701531124,
+        "advantagePercent": 271.4020427112349,
         "winner": "commandCode"
       }
     },
@@ -2247,9 +2247,9 @@
       },
       "commandCode": {
         "count": 30,
-        "min": 606.866082861495,
+        "min": 990.9603850455853,
         "max": 120741.88644708548,
-        "mean": 30269.317295138848,
+        "mean": 30309.775033996277,
         "median": 19835.561836675588,
         "p25": 4771.285576104339,
         "p75": 45966.15921796483
@@ -2257,11 +2257,11 @@
     },
     "normalizedDifference": {
       "count": 30,
-      "min": 116.67000443012245,
+      "min": 190.51213402501378,
       "max": 156457.3182191777,
-      "mean": 23228.0148660969,
+      "mean": 23268.47260495433,
       "median": 4689.111318994434,
-      "p25": 1379.5592175223053,
+      "p25": 1445.4463937688702,
       "p75": 11924.012061956184
     },
     "winnerCounts": {
@@ -2270,6 +2270,43 @@
       "draw": 5
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "kimik3",
+        "displayName": "Kimi K3",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Kimi K3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.0306,
+          "averageRequestsPerMonth": 490.19607843137254,
+          "normalizedRequestsPer10": 490.19607843137254,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.020399999999999998
+        },
+        "commandCode": {
+          "sourceName": "Kimi K3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.0306,
+          "averageRequestsPerMonth": 1960.7843137254902,
+          "normalizedRequestsPer10": 1820.598248584485,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0054927
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 1330.4021701531124,
+          "advantagePercent": 271.4020427112349,
+          "winner": "commandCode"
+        }
+      },
       {
         "canonicalModel": "kimik26",
         "displayName": "Kimi K2.6",
@@ -2528,46 +2565,17 @@
           "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
-      },
-      {
-        "canonicalModel": "deepseek-v4-flash (Off-Peak)",
-        "displayName": "DeepSeek V4 Flash (Off-Peak)",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "DeepSeek V4 Flash",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.0004614,
-          "averageRequestsPerMonth": 65019.50585175553,
-          "normalizedRequestsPer10": 65019.50585175552,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0001538
-        },
-        "commandCode": {
-          "sourceName": "DeepSeek V4 Flash",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.0004614,
-          "averageRequestsPerMonth": 130039.01170351106,
-          "normalizedRequestsPer10": 120741.88644708548,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00008282129999999999
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 55722.38059532995,
-          "advantagePercent": 85.70102135561747,
-          "winner": "commandCode"
-        }
       }
     ],
-    "outliers": []
+    "outliers": [
+      {
+        "model": "Kimi K3",
+        "ratio": 0.26925,
+        "advantagePercent": 271.4020427112349,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      }
+    ]
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
