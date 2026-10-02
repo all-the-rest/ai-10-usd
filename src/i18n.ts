@@ -50,6 +50,17 @@ export const i18n = {
     paid: "bezahlt",
     unadjusted: "unbereinigt",
     unadjustedTip: "Unbereinigte Nutzung: {value} Anfragen pro Monat zum bezahlten Planpreis (vor der $10-Normalisierung).",
+    // Peak-Angabe IN der Provider-Zelle (Bindungsentscheidung: integriert, keine
+    // eigene Spalte). Die Labels selbst werden generiert (`src/lib/peak.ts`:
+    // formatDayScope / formatUtcWindows / timezoneLabel) — hier nur die i18n-Prosa.
+    peakLabel: "Peak",
+    peakNow: "jetzt Peak",
+    peakOffNow: "jetzt Off-Peak",
+    peakCountdown: "noch {time}",
+    peakDaysUnknown: "Wochentage lt. Quelle",
+    peakUtc: "UTC",
+    peakNext: "Wechsel {time} {utc}",
+    peakPreEffective: "Peak gilt erst ab {date}",
     notComparable: "Nicht vergleichbar",
     noMatch: "Kein Modell entspricht deinen Filtern.",
     winnerGo: "OpenCode Go",
@@ -132,6 +143,17 @@ export const i18n = {
     paid: "paid",
     unadjusted: "unadjusted",
     unadjustedTip: "Unadjusted usage: {value} requests per month at the paid plan price (before $10 normalization).",
+    // Peak line INSIDE the provider cell (binding decision: integrated, no extra
+    // column). The labels themselves are generated (`src/lib/peak.ts`:
+    // formatDayScope / formatUtcWindows / timezoneLabel) — only the prose here.
+    peakLabel: "Peak",
+    peakNow: "now peak",
+    peakOffNow: "now off-peak",
+    peakCountdown: "{time} left",
+    peakDaysUnknown: "weekdays per source",
+    peakUtc: "UTC",
+    peakNext: "switches {time} {utc}",
+    peakPreEffective: "peak pricing starts {date}",
     notComparable: "Not comparable",
     noMatch: "No model matches your filters.",
     winnerGo: "OpenCode Go",

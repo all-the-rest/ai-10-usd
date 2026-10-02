@@ -1,6 +1,11 @@
 import type { ComparisonData, ComparisonRow } from "../types";
-import { compact, money, percent } from "./format";
-import { sortRows } from "./sort";
+// Explizite `.ts`-Specifier: `tests/share.test.mjs` lädt diese Datei direkt über
+// Node-Type-Stripping (`--experimental-strip-types`), dessen ESM-Resolver keine
+// Endungen ergänzt. Vite und `svelte-check` akzeptieren `.ts`-Specifier
+// (`allowImportingTsExtensions`), `peak.ts` macht es für seinen Typ-Import genauso.
+import { compact, money, percent } from "./format.ts";
+import { PEAK_PROVIDERS } from "./peak.ts";
+import { sortRows } from "./sort.ts";
 
 // Assumption: "TOP information" = the top-ranked matched models by requests
 // per normalized $10 (the site's default sort `maxRequests desc`), plus plan
@@ -266,10 +271,23 @@ export function peakKey(displayName: string): string {
 }
 
 /** Off-peak UTC hour ranges for a row, or null when the source names none
- *  (never guessed — callers mark coverage as source-state instead). */
+ *  (never guessed — callers mark coverage as source-state instead).
+ *
+ *  `peakWindows` is provider-dimensioned (`{ openCodeGo, commandCode }`); the card
+ *  aggregates over both providers, so the first non-empty set wins. Während der
+ *  Migration liefert die Quelle das Fenster statt unter `peakWindows` (Legacy
+ *  `peakHours`) unter `peakRules[..].peak.windowsUtc` — deshalb dieser Fallback.
+ *  Er übernimmt **nur** die Fenster, nie den Wochentags-Scope (der gehört laut
+ *  Nutzerentscheid 2026-10-02 nicht auf die Karte). */
 export function peakWindowsOf(data: ComparisonData, displayName: string): Array<[number, number]> | null {
-  const wins = data.peakWindows?.[peakKey(displayName)];
-  return Array.isArray(wins) && wins.length > 0 ? wins : null;
+  const key = peakKey(displayName);
+  for (const provider of PEAK_PROVIDERS) {
+    const legacy = data.peakWindows?.[provider]?.[key];
+    if (Array.isArray(legacy) && legacy.length > 0) return legacy;
+    const windows = data.peakRules?.[provider]?.[key]?.peak?.windowsUtc;
+    if (Array.isArray(windows) && windows.length > 0) return windows;
+  }
+  return null;
 }
 
 function fmtHour(h: number): string {

@@ -89,9 +89,83 @@ pnpm typecheck        # nur svelte-check
   Pendant + OpenCode-only-Modelle bleiben als `status: "openCodeGoOnly" "/ "commandCodeOnly"`
   mit `comparison: null` in den Daten (die UI blendet sie per Default aus).
 - Ausgabe `public/data/latest.json`: `generatedAt`, `sources` (URL + `fetchedAt`),
-  `plans`, `statistics` (`matched`, `winners`, `biggestDifferences` — volle Rows,
+  `plans`, `peakWindows` / `peakRules` / `holidayCalendars` (Peak-Angaben, s. u.),
+  `statistics` (`matched`, `winners`, `biggestDifferences` — volle Rows,
   sortiert nach `advantagePercent` desc), `rows`. Fehlerhafter Fetch eines Trackers
   → `process.exit(1)` → CI rot.
+
+### Peak-Angaben (`peakWindows` / `peakRules` / `holidayCalendars`)
+
+Alle Peak-Felder sind **provider-dimensioniert** (`{ openCodeGo, commandCode }`) —
+jede Spalte der Vergleichstabelle zeigt die Zeiten **ihres** Anbieters. Quelle ist
+`peak-spec.md §1` (verbindliche Form: `peakRules` + `holidayCalendars`); die
+Tracker liefern nach dem Umbau `peakRules`, ältere Deploys noch `peakHours`
+(Legacy). `ai-10-usd` ist **dual-tolerant** und bricht mit keiner der beiden Formen.
+
+- `scripts/normalize.mjs` reicht **alle drei** Felder verbatim durch (`?? null`):
+  `peakHours` (Legacy), `peakRules`, `holidayCalendars`. **Keine** Umrechnung von
+  Legacy-Stunden auf Wochentage — die alte Form nennt keinen Wochentags-Scope,
+  jede Zuordnung wäre geraten (Hausregel: lieber sichtbar „unbekannt“ als falsch).
+- `buildComparison` (`scripts/comparison-core.mjs`) schreibt
+  `peakWindows` (**Legacy-only**, aus `peakHours`), `peakRules` und
+  `holidayCalendars` je Provider; leere Provider-Seite → `null` (`orNull`).
+  Die Einträge werden über `capturePeakForProvider` **umgehängt** auf den Key, den
+  die UI aus `sourceName` bildet (`peakKeyOf(prettyName(model.name))`: lowercase,
+  alle Nicht-Alphanumerika entfernen) — **nicht** verbatim durchgereicht.
+  Das behebt den Bug, dass der Quell-Key `deepseekv4.1flash` (Punkt) nicht auf den
+  UI-Key `deepseekv41flash` passte → V4.1 Flash zeigte nie sein Fenster.
+- `PeakRule` / `HolidayCalendar` / `ProviderPeakData<T>` in `src/types.ts`
+  spiegeln die Spec exakt (`days` = ISO-Wochentage 1=Mo…7=So, `windowsUtc`,
+  `timezone` = IANA, `holidays.calendar` → `holidayCalendars`).
+- **Auswertung an einer Stelle:** `src/lib/peak.ts` (`resolvePeak`,
+  `isPeakAt`, `isBeforeEffectiveFrom`, `nextTransition`, `localPeakByWeekday`,
+  `formatLocalScope`/`formatDayScope`/`formatUtcWindows`/`timezoneLabel`).
+  Semantik: Feiertag (in `rule.timezone`) → Off-Peak; sonst Peak, wenn Wochentag ∈
+  `peak.days` (in `rule.timezone` bewertet) **und** UTC-Stunde ∈ `windowsUtc`;
+  vor `effectiveFrom` kein Peak. **Kein 调休/`isWorkday`** (ein Ausgleichs-Samstag
+  bleibt Off-Peak). Die Auswertung ist mit `ocgo-price-tracker`/`cc-price-tracker`
+  identisch gehalten.
+- `src/PeakCell.svelte` sitzt **in** der Provider-Zelle (keine eigene Spalte):
+  Chip „jetzt Peak“/„now peak“ **nur** bei aktivem Peak; Countdown bis zum
+  nächsten Wechsel; Lookup über `resolvePeak(data, provider, sourceName)`
+  (Provider + `sourceName`), sodass jede Zelle die Zeiten **ihres** Anbieters zeigt.
+  - **Lokale Zeitzone ersetzt die UTC-Zeile nach der Hydration:** das prerenderte
+    HTML zeigt die UTC/Provider-Zeile (`Mon–Fri (Beijing time) · 01:00–04:00 +
+    06:00–10:00 UTC`); nach der Hydration ersetzt `Intl…timeZone` sie durch die
+    lokalen Fenster (`Mon–Fri 03:00–06:00 + 08:00–12:00 (Europe/Vienna)`). Die
+    lokalen Fenster werden aus `localPeakByWeekday` **abgeleitet** (jede lokale
+    Stunde über `isPeakAt` bewerten), **nicht** per Offset addiert — sonst läge ein
+    UTC-Fenster 22:00–24:00 am falschen lokalen Wochentag. Der Tooltip nennt nach
+    der Hydration **beide** Zeilen (lokal + UTC/Provider-Referenz).
+  - `formatLocalScope` fasst gleichbleibende Intervalle über aufeinanderfolgende
+    Tage zusammen (`Mo–Fr 03:00–06:00 + 08:00–12:00`) und schreibt bei täglich
+    identischem Muster `täglich 00:00–02:00 + 18:00–24:00` — **mit** Fenstern
+    (nie das nackte Wort).
+- **Zeilen-Dimmung analog zum OpenCode-Go-Projekt (Nutzerentscheid 2026-10-02):**
+  `src/App.svelte` `rowTierInactive(row)` + `rowClass` hängen `opacity-50` an die
+  **ganze `<tr>`** — dieselbe Logik wie `isTierActive` in `ocgo-price-tracker`
+  (`PeakIndicator.tsx`). Eine „Peak“-Zeile ist wirksam, wenn gerade Peak ist, eine
+  „Off-Peak“-Zeile, wenn gerade **kein** Peak ist; die jeweils **inaktive** Stufe
+  wird heruntergestuft. Die Stufe kommt aus dem `displayName`-Suffix; Basis-Zeilen
+  ohne Suffix und Zeilen ganz ohne Regel werden nie gedimmt. Bei mehreren Providern
+  gilt die Zeile als wirksam, sobald **ein** Provider dieser Stufe wirkt.
+- **Hydration-sichere Uhr:** `src/lib/clock.svelte.ts` startet mit dem
+  Build-Stempel (`src/lib/buildInfo.ts` → `__BUILD_TIME_ISO__`, per Vite-`define`)
+  und schaltet erst in `onMount` (`startPeakClock`) auf `Date.now()` — Server- und
+  erster Client-Render sind zeichengleich. `__setPeakNow` ist der Test-Hook.
+- `src/lib/share.ts` bleibt **auf HEAD-Verhalten** (Nutzerentscheid 2026-10-02: die
+  Wochentags-/Feiertags-Ausgabe auf der Share-Card wurde **zurückgenommen** — für
+  diese $10-Vergleichsseite nicht relevant). Die Karte zeigt weiter nur die
+  UTC-Fensterzeile (Portrait-Badge + Constraints); `peakWindowsOf` ist
+  provider-dimensioniert, aggregiert über beide Provider (erste nicht-leere Menge
+  gewinnt) und liest das Fenster aus `peakWindows` (Legacy `peakHours`) **oder**
+  `peakRules[..].peak.windowsUtc` (neue Form) — sonst fiele die Zeile nach der
+  Migration still weg. Übernommen werden **nur** die Fenster, nie der
+  Wochentags-Scope.
+- **Lokale Validierung:** `scripts/build-comparison.mjs` liest die Quellen per
+  `OPEN_CODE_URL` / `COMMAND_CODE_URL` (Default: die Live-URLs). Für den Bau gegen
+  die neuen `peakRules` aus den lokalen Dev-Servern:
+  `OPEN_CODE_URL=http://localhost:5173/data/latest.json COMMAND_CODE_URL=http://localhost:5174/data/latest.json pnpm build`.
 
 ## UI-Regeln (daisyUI 5 / Tailwind 4)
 
@@ -198,6 +272,21 @@ git log --oneline origin/main..ocgo-price-tracker/main --no-decorate | head
   winnerCounts/unlimited/Exclusions/Warnungen, fehlender GOAT-Plan wirft) und die
   Modell-Map-Matches (`model-map.mjs`). `pnpm build` läuft zusätzlich `svelte-check`
   (0 errors/warnings Pflicht).
+- **Peak-Dual-Toleranz, Auswertung & Share-Card:** `tests/peak.test.mjs` testet
+  die Auswertung in `src/lib/peak.ts` mit **festen** Zeitstempeln (keine Wanduhr):
+  `isPeakAt` (Werktag im/außerhalb Fenster, Wochenende, `effectiveFrom`, optionale
+  Feiertage), `nextTransition` (nächster Wechsel, Wochenende überspringen),
+  Zonenrand, `localIsoDate`/`localPeakByWeekday`/`formatLocalScope` (lokale
+  Fenster inkl. Mitternachtsüberlauf und `täglich` **mit** Fenstern) sowie die
+  Format-Helfer. `tests/comparison.test.mjs` prüft die **Provider-Dimension** und
+  das Umhängen der Keys (`capturePeakForProvider`) für `peakRules`/
+  `holidayCalendars` und den Legacy-Pfad `peakHours → peakWindows`. `tests/share.test.mjs`
+  testet `src/lib/share.ts` direkt (Node-Type-Stripping, deshalb explizite
+  `.ts`-Specifier in `share.ts`): `rowVariant`/`peakKey`, das **provider-aggregierende**
+  `peakWindowsOf`, `peakWindowsSummary` und `buildShareSvg` (Portrait mit
+  UTC-Fensterzeile, Landscape ohne — **kein** Wochentags-Scope). Fixture
+  `tests/fixtures/opencode-peak-rules.json`; die Legacy-Fixtures bleiben
+  unverändert und beweisen die Dual-Toleranz.
 - **Screenshot-Tests sind permanent:** neue UI-Features (insb. Share-Cards) bekommen Playwright-Tests in
   `tests/screenshots/` (Suite `playwright.screenshots.config.ts`, `pnpm test:screenshots`) — alle Size-Varianten
   + Mobile + beide Sprachen (de/en). Keine Einmal-Screenshots: die Tests bleiben im Repo und müssen bei jeder

@@ -5,8 +5,15 @@ import { loadModelMap } from "./model-map.mjs";
 import { buildComparison } from "./comparison-core.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
-const OPEN_CODE_URL = "https://ocgo-pricing.all-the.rest/data/latest.json";
-const COMMAND_CODE_URL = "https://cc-pricing.all-the.rest/data/latest.json";
+
+// Quellen sind per Env überschreibbar, damit die Tracker-Familie lokal gegen
+// die **neue** Peak-Form (`peakRules`) geprüft werden kann, solange die
+// Live-Deployments noch die Legacy-Form (`peakHours`) ausliefern. Ohne Override
+// bleibt das Produktionsverhalten unverändert.
+//   OPEN_CODE_URL=http://localhost:5173/data/latest.json \
+//   COMMAND_CODE_URL=http://localhost:5174/data/latest.json pnpm generate
+const OPEN_CODE_URL = process.env.OPEN_CODE_URL ?? "https://ocgo-pricing.all-the.rest/data/latest.json";
+const COMMAND_CODE_URL = process.env.COMMAND_CODE_URL ?? "https://cc-pricing.all-the.rest/data/latest.json";
 
 // Die gesamte Rechenlogik lebt in `comparison-core.mjs` (exportiert, unit-testbar);
 // dieses Skript kümmert sich nur um Fetch, Modell-Map laden und Schreiben.

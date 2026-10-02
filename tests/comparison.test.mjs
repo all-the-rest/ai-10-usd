@@ -257,6 +257,43 @@ test("buildComparison: wirft, wenn der GOAT-Plan fehlt", () => {
   assert.throws(() => buildComparison(fixtureGo, noPlan, EMPTY_MAP), /plan goat/);
 });
 
+test("buildComparison: peakRules/holidayCalendars (neu) provider-dimensioniert durchgereicht, peakWindows bleibt leer", () => {
+  const rule = (days) => ({
+    timezone: "Asia/Shanghai",
+    peak: { days, windowsUtc: [[1, 4], [6, 10]] },
+    offPeak: { days: days.length === 7 ? [] : [6, 7], allDay: true },
+  });
+  const holidayCalendars = { china: { dates: ["2026-10-01"], coveredThrough: "2027-12-31" } };
+  // Regeln liegen in der Quelle unter dem Modellnamen; `capturePeakForProvider`
+  // hängt sie auf den Schema-Key um, den die UI aus `sourceName` bildet
+  // (`peakKeyOf(prettyName(name))`) — **nicht** verbatim durchgereicht.
+  const goNew = { ...fixtureGo, peakRules: { alpha: rule([1, 2, 3, 4, 5]) }, holidayCalendars };
+  const ccNew = { ...fixtureCc, peakRules: { beta: rule([1, 2, 3, 4, 5, 6, 7]) } };
+  const out = buildComparison(goNew, ccNew, EMPTY_MAP);
+
+  assert.deepEqual(out.peakRules.openCodeGo, { alpha: rule([1, 2, 3, 4, 5]) });
+  assert.deepEqual(out.peakRules.commandCode, { beta: rule([1, 2, 3, 4, 5, 6, 7]) });
+  // Kein Vermischen der Provider: was nur die eine Quelle kennt, fehlt der anderen.
+  assert.equal("beta" in out.peakRules.openCodeGo, false);
+  assert.equal("alpha" in out.peakRules.commandCode, false);
+  // Feiertagskalender bleiben provider-dimensioniert.
+  assert.deepEqual(out.holidayCalendars.openCodeGo, holidayCalendars);
+  assert.equal(out.holidayCalendars.commandCode, null);
+  // Neue Form → `peakWindows` (Legacy) bleibt leer, keine Übersetzung geraten.
+  assert.deepEqual(out.peakWindows, { openCodeGo: null, commandCode: null });
+});
+
+test("buildComparison: Legacy peakHours → peakWindows provider-dimensioniert, keine Wochentage erfunden", () => {
+  const goLegacy = { ...fixtureGo, peakHours: { alpha: [[1, 4]] } };
+  const ccLegacy = { ...fixtureCc, peakHours: { alpha: [[6, 10]] } };
+  const out = buildComparison(goLegacy, ccLegacy, EMPTY_MAP);
+  assert.deepEqual(out.peakWindows.openCodeGo, { alpha: [[1, 4]] });
+  assert.deepEqual(out.peakWindows.commandCode, { alpha: [[6, 10]] });
+  // Legacy kennt keine Wochentage → peakRules bleibt leer, statt zu raten.
+  assert.deepEqual(out.peakRules, { openCodeGo: null, commandCode: null });
+  assert.deepEqual(out.holidayCalendars, { openCodeGo: null, commandCode: null });
+});
+
 test("buildComparison: Free nur auf der OpenCode-Seite → OpenCode Go gewinnt (∞)", () => {
   const goWithDeltaFree = {
     ...fixtureGo,

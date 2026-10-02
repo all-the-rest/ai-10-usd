@@ -7,8 +7,11 @@
   import ShareDialog from "./ShareDialog.svelte";
   import { i18n, FAQ, type Lang } from "./i18n";
   import { SECTION_ANCHORS, faqAnchor } from "./lib/anchors";
+  import { peakNow, startPeakClock } from "./lib/clock.svelte";
   import type { ComparisonData, ComparisonRow, SortKey } from "./types";
   import Heading from "./Heading.svelte";
+  import PeakCell from "./PeakCell.svelte";
+  import { isPeakAt, resolvePeak, PEAK_PROVIDERS } from "./lib/peak";
   import UnadjustedCaption from "./UnadjustedCaption.svelte";
 
   let {
@@ -20,6 +23,45 @@
   } = $props();
 
   let data = $state<ComparisonData | null>(untrack(() => initialData));
+
+  /**
+   * Stufe der Zeile aus dem `displayName`-Suffix (`"… (Peak)"` /
+   * `"… (Off-Peak)"`, siehe `variantTitle` im Generator). `null` = keine Stufe
+   * (Basis-Modell) → wird nie gedimmt.
+   */
+  function rowTierKind(row: ComparisonRow): "peak" | "offpeak" | null {
+    const m = row.displayName.match(/\((Peak|Off-Peak)\)\s*$/);
+    if (!m) return null;
+    return m[1] === "Peak" ? "peak" : "offpeak";
+  }
+
+  /**
+   * Zeilen-Dimmung analog zum OpenCode-Go-Projekt (`isTierActive` in
+   * `PeakIndicator.tsx`): die **ganze Zeile** wird mit `opacity-50` heruntergestuft,
+   * wenn ihre Stufe gerade **nicht** wirksam ist. Eine „Peak“-Zeile ist wirksam,
+   * wenn gerade Peak ist; eine „Off-Peak“-Zeile, wenn gerade **kein** Peak ist.
+   * Basis-Zeilen (ohne Suffix) und Zeilen ganz ohne Regel werden nie gedimmt.
+   *
+   * Nutzerentscheid 2026-10-02: bei mehreren Providern zählt die Zeile als
+   * wirksam, sobald **ein** Provider dieser Stufe wirkt — dann bleibt die Zeile
+   * voll lesbar.
+   */
+  function rowTierInactive(row: ComparisonRow): boolean {
+    if (!data) return false;
+    const kind = rowTierKind(row);
+    if (!kind) return false;
+    const now = peakNow();
+    let hasRule = false;
+    for (const provider of PEAK_PROVIDERS) {
+      const resolved = resolvePeak(data, provider, row[provider]?.sourceName);
+      if (!resolved?.rule) continue;
+      hasRule = true;
+      const inPeak = isPeakAt(resolved.rule, resolved.calendar, now);
+      const active = kind === "peak" ? inPeak : !inPeak;
+      if (active) return false;
+    }
+    return hasRule;
+  }
   let error = $state("");
   let search = $state("");
   let matchedOnly = $state(true);
@@ -142,6 +184,11 @@
   });
 
   onMount(() => {
+    // Echte Uhr **erst** nach der Hydration: bis dahin rendern Server und
+    // Client aus dem Build-Stempel (siehe `lib/clock.svelte.ts`), damit der
+    // Peak-Countdown der Provider-Zellen hydration-stabil bleibt.
+    startPeakClock();
+
     const params = new URLSearchParams(window.location.search);
     search = params.get("q") ?? "";
 
@@ -249,9 +296,11 @@
   }
 
   function rowClass(row: ComparisonRow) {
-    if (row.comparison.winner === "openCodeGo") return "bg-success/5";
-    if (row.comparison.winner === "commandCode") return "bg-info/5";
-    return "";
+    // Inaktive Peak-/Off-Peak-Stufe: ganze Zeile herunterstufen (ocgo-analog).
+    const dim = rowTierInactive(row) ? "opacity-50" : "";
+    if (row.comparison.winner === "openCodeGo") return `bg-success/5 ${dim}`.trim();
+    if (row.comparison.winner === "commandCode") return `bg-info/5 ${dim}`.trim();
+    return dim;
   }
 
   function hasUnlimited(row: ComparisonRow) {
@@ -529,8 +578,8 @@
               {#each filteredRows as row}
                 <tr class={rowClass(row)}>
                   <th><div class="flex items-center gap-2"><span class="font-semibold whitespace-nowrap">{row.displayName}</span>{#if bigGap(row)}<span class="badge badge-warning badge-xs whitespace-nowrap">{t.bigGap}</span>{/if}</div></th>
-                  <td class="text-right number">{#if row.openCodeGo}<div><span class:font-bold={row.comparison.winner === "openCodeGo"} class:text-success={row.comparison.winner === "openCodeGo"}>{row.openCodeGo.unlimited ? "∞" : compact(row.openCodeGo.normalizedRequestsPer10)}</span>{#if row.openCodeGo.unlimited}<span class="badge badge-success badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.openCodeGo.averageAllowance, 0)} {t.allowance}</div>{/if}{#if row.openCodeGo.unlimited && row.openCodeGo.paidNormalizedRequestsPer10 != null}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{t.paid} {compact(row.openCodeGo.paidNormalizedRequestsPer10)}</div>{/if}</div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
-                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{row.commandCode.unlimited ? "∞" : compact(row.commandCode.normalizedRequestsPer10)}</span>{#if row.commandCode.unlimited}<span class="badge badge-info badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div>{/if}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{#if row.commandCode.unlimited && row.commandCode.paidNormalizedRequestsPer10 != null}{t.paid} {compact(row.commandCode.paidNormalizedRequestsPer10)}{:else}<UnadjustedCaption raw={compact(row.commandCode.averageRequestsPerMonth)} label={t.unadjusted} tip={t.unadjustedTip.replace("{value}", compact(row.commandCode.averageRequestsPerMonth))} />{/if}</div></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right number">{#if row.openCodeGo}<div><span class:font-bold={row.comparison.winner === "openCodeGo"} class:text-success={row.comparison.winner === "openCodeGo"}>{row.openCodeGo.unlimited ? "∞" : compact(row.openCodeGo.normalizedRequestsPer10)}</span>{#if row.openCodeGo.unlimited}<span class="badge badge-success badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.openCodeGo.averageAllowance, 0)} {t.allowance}</div>{/if}{#if row.openCodeGo.unlimited && row.openCodeGo.paidNormalizedRequestsPer10 != null}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{t.paid} {compact(row.openCodeGo.paidNormalizedRequestsPer10)}</div>{/if}</div><PeakCell data={data} provider="openCodeGo" sourceName={row.openCodeGo.sourceName} {lang} {t} />{:else}<span class="text-base-content/35">-</span>{/if}</td>
+                  <td class="text-right number">{#if row.commandCode}<div><span class:font-bold={row.comparison.winner === "commandCode"} class:text-info={row.comparison.winner === "commandCode"}>{row.commandCode.unlimited ? "∞" : compact(row.commandCode.normalizedRequestsPer10)}</span>{#if row.commandCode.unlimited}<span class="badge badge-info badge-xs whitespace-nowrap ml-1">{t.freeIncluded}</span>{:else}<div class="text-xs font-normal text-base-content/45">{money(row.commandCode.averageAllowance, 0)} {t.allowance}</div>{/if}<div class="whitespace-nowrap text-xs font-normal text-base-content/35">{#if row.commandCode.unlimited && row.commandCode.paidNormalizedRequestsPer10 != null}{t.paid} {compact(row.commandCode.paidNormalizedRequestsPer10)}{:else}<UnadjustedCaption raw={compact(row.commandCode.averageRequestsPerMonth)} label={t.unadjusted} tip={t.unadjustedTip.replace("{value}", compact(row.commandCode.averageRequestsPerMonth))} />{/if}</div></div><PeakCell data={data} provider="commandCode" sourceName={row.commandCode.sourceName} {lang} {t} />{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td class="text-right">{#if hasUnlimited(row)}{@const goU = row.openCodeGo?.unlimited === true}{@const ccU = row.commandCode?.unlimited === true}{@const goShare = goU && ccU ? 50 : goU ? 100 : ccU ? 0 : 50}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare) + "%"} title={"OpenCode Go ∞"}></div><div class="h-full bg-info" style:width={String(100 - goShare) + "%"} title={"Command Code ∞"}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "openCodeGo" ? "text-success" : row.comparison.winner === "commandCode" ? "text-info" : "text-base-content/60"}">∞</span></div>{:else if row.comparison.normalizedDifference !== null}{@const go = row.openCodeGo!.normalizedRequestsPer10}{@const cc = row.commandCode!.normalizedRequestsPer10}{@const goShare = (go / (go + cc)) * 100}<div class="flex items-center justify-end gap-2"><div class="h-1.5 w-20 overflow-hidden rounded-full bg-base-300 sm:w-28"><div class="flex h-full"><div class="h-full bg-success" style:width={String(goShare.toFixed(1)) + "%"} title={"OpenCode Go " + compact(go)}></div><div class="h-full bg-info" style:width={String((100 - goShare).toFixed(1)) + "%"} title={"Command Code " + compact(cc)}></div></div></div><span class="number text-sm font-semibold {row.comparison.winner === "draw" ? "text-base-content/60" : row.comparison.winner === "openCodeGo" ? "text-success" : "text-info"}">+{number(row.comparison.normalizedDifference)} ({percent(row.comparison.advantagePercent)})</span></div>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td class="text-right number">{#if maxRequestsOf(row) !== null}<span class="font-semibold text-base-content/80">{compact(maxRequestsOf(row))}</span>{:else}<span class="text-base-content/35">-</span>{/if}</td>
                   <td>{#if row.comparison.winner}<span class="badge {winnerClass(row)} badge-sm min-w-28 justify-center whitespace-nowrap">{winnerLabel(row)}</span>{:else}<span class="badge badge-warning badge-sm min-w-28 justify-center whitespace-nowrap">{t.notComparable}</span>{/if}</td>

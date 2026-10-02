@@ -174,6 +174,54 @@ export function variantTitle(kind) {
   return kind === "peak" ? "Peak" : kind === "offpeak" ? "Off-Peak" : null;
 }
 
+/**
+ * Normalform eines Tracker-Keys: lowercase, **alle** Nicht-Alphanumerika
+ * entfernt — identisch zu `normalizePeakKey` in `src/lib/peak.ts` (dort die
+ * Browser-Seite). `tests/peak.test.mjs` beweist, dass beide übereinstimmen;
+ * das Duplikat ist nötig, weil der Generator ohne Type-Stripping läuft.
+ *
+ * Wichtig: die Tracker behalten im Key Zeichen, die `ProviderModelValue
+ * .sourceName` nicht hat („DeepSeek V4 Pro (latest)" → `…prolatest`), und
+ * OpenCode behält den Punkt („V4.1 Flash" → `deepseekv4.1flash`). Deshalb
+ * wird **beide** Seiten normalisiert und die Regel beim Erzeugen unter dem
+ * Schlüssel abgelegt, den die UI aus `sourceName` bildet.
+ */
+export function peakKeyOf(name) {
+  return String(name).toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+/** Exakter Normalform-Match gegen ein Tracker-Verzeichnis (beide Seiten
+ *  normalisiert). `null` = die Quelle kennt dieses Modell nicht. */
+export function peakRuleFor(directory, name) {
+  if (!directory || typeof directory !== "object") return null;
+  const key = peakKeyOf(name);
+  for (const [rawKey, value] of Object.entries(directory)) {
+    if (peakKeyOf(rawKey) === key) return value;
+  }
+  return null;
+}
+
+/**
+ * Übernimmt die Peak-Daten **eines** Anbieters pro Modell der Gruppe und legt
+ * sie unter dem Schlüssel ab, den die UI aus `sourceName` bildet
+ * (`peakKeyOf(prettyName(<model name>))`). Jedes Modell der Gruppe trägt bei —
+ * nicht nur das erste —, damit die Zuordnung unabhängig von der
+ * Varianten-/Mittelungsreihenfolge in `providerValue` trägt.
+ */
+export function capturePeakForProvider(provider, models, source, out) {
+  for (const model of models) {
+    const key = peakKeyOf(prettyName(model.name));
+    if (source.rules) {
+      const rule = peakRuleFor(source.rules, model.name);
+      if (rule) out.rules[provider][key] = rule;
+    }
+    if (source.windows) {
+      const windows = peakRuleFor(source.windows, model.name);
+      if (Array.isArray(windows) && windows.length > 0) out.windows[provider][key] = windows;
+    }
+  }
+}
+
 export function compareGroup(group, openCodePaid, commandCodePaid, commandPlan, modelMap) {
   // Token statistics: OpenCode Go's per-model pattern (the realistic one)
   // applies to BOTH providers when the family exists in OpenCode. Command
@@ -289,9 +337,30 @@ export function buildComparison(openCodeData, commandCodeData, modelMap) {
   for (const model of commandCodeData.models) add("commandCode", model);
 
   const openCodePaid = finite(openCode.plan.priceMonthly) ?? TARGET_PRICE;
+  // Peak-Daten pro Anbieter: jede Spalte zeigt ihre **eigenen** Zeiten. Die
+  // Tracker liefern die Regeln unter ihrem eigenen Key-Schema; hier werden sie
+  // auf den Schlüssel umgehängt, den die UI aus `sourceName` bildet (siehe
+  // `capturePeakForProvider`). Command-Code-Peak-Daten wurden vorher verworfen.
+  const peakSources = {
+    openCodeGo: { rules: openCode.peakRules, windows: openCode.peakHours },
+    commandCode: { rules: commandCodeData.peakRules ?? null, windows: commandCodeData.peakHours ?? null },
+  };
+  const peakOut = {
+    rules: { openCodeGo: {}, commandCode: {} },
+    windows: { openCodeGo: {}, commandCode: {} },
+  };
   const rows = [...groups.values()]
-    .map((group) => compareGroup(group, openCodePaid, COMMAND_CODE_PAID_PRICE, commandPlan, modelMap))
+    .map((group) => {
+      const row = compareGroup(group, openCodePaid, COMMAND_CODE_PAID_PRICE, commandPlan, modelMap);
+      for (const provider of ["openCodeGo", "commandCode"]) {
+        // Nur Zeilen, bei denen der Anbieter überhaupt Wert liefert.
+        if (!row[provider]) continue;
+        capturePeakForProvider(provider, group[provider], peakSources[provider], peakOut);
+      }
+      return row;
+    })
     .sort((a, b) => a.displayName.localeCompare(b.displayName, undefined, { numeric: true, sensitivity: "base" }));
+  const orNull = (entries) => (Object.keys(entries).length > 0 ? entries : null);
 
   const matchedRows = rows.filter((row) => row.status === "matched");
   // Free/unlimited rows report Infinity requests; they are real comparison
@@ -321,11 +390,21 @@ export function buildComparison(openCodeData, commandCodeData, modelMap) {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
     targetMonthlyPrice: TARGET_PRICE,
-    // Off-peak windows (UTC hour ranges per tracker-normalized model key) from
-    // the OpenCode Go tracker — used for Peak-/Off-Peak annotations on cards.
-    // No weekday coverage in source: consumers must mark coverage as
-    // source-state instead of guessing.
-    peakWindows: openCode.peakHours ?? null,
+    // Peak-Daten, **provider-dimensioniert** (`{ openCodeGo, commandCode }`):
+    // jede Spalte der Vergleichstabelle zeigt die Zeiten ihres Anbieters.
+    //   - `peakRules` (neu): Wochentags-Scope + UTC-Fenster + Zone. Der
+    //     Wochentag wird in `rule.timezone` bewertet, die Fenster sind UTC.
+    //   - `peakWindows` (Legacy `peakHours`): nur UTC-Fenster, **kein**
+    //     Wochentags-Scope — die Umrechnung der Legacy-Stunden auf Wochentage
+    //     ist bewusst nicht implementiert, weil die alte Quelle keinen Scope
+    //     nennt (geraten wäre das).
+    // Feiertagskalender werden verbatim durchgereicht (je Provider).
+    peakWindows: { openCodeGo: orNull(peakOut.windows.openCodeGo), commandCode: orNull(peakOut.windows.commandCode) },
+    peakRules: { openCodeGo: orNull(peakOut.rules.openCodeGo), commandCode: orNull(peakOut.rules.commandCode) },
+    holidayCalendars: {
+      openCodeGo: openCode.holidayCalendars ?? null,
+      commandCode: commandCodeData.holidayCalendars ?? null,
+    },
     sources: {
       openCodeGo: {
         url: "https://ocgo-pricing.all-the.rest/data/latest.json",

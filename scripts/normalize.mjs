@@ -4,8 +4,14 @@
  * still deployed in the legacy shape, so this module accepts BOTH and yields one
  * internal shape:
  *
- *   { fetchedAt, peakHours, plan: { id, name, priceMonthly, creditsMonthly },
+ *   { fetchedAt, peakHours, peakRules, holidayCalendars,
+ *     plan: { id, name, priceMonthly, creditsMonthly },
  *     models: [{ ..., usage: number | null }] }
+ *
+ * `peakHours` (legacy) and `peakRules` + `holidayCalendars` (new) are passed
+ * through verbatim (each `?? null`): the tracker is migrated concurrently, so
+ * either shape may arrive. Consumers keep the legacy path active when the new
+ * fields are absent and never convert legacy windows into weekdays.
  *
  * `ai-10-usd` is the $10 comparison page: from `plans` it always evaluates the
  * CHEAPEST plan (ties → the one first listed), never a pricier sibling such as
@@ -105,7 +111,14 @@ export function normalizeOpenCodeData(raw) {
 
   return {
     fetchedAt: raw.fetchedAt,
+    // Legacy peak field (old, already-deployed tracker snapshots) and the new
+    // peak representation (peakRules + holidayCalendars) are both carried
+    // through verbatim. Exactly one is non-null depending on the source; the
+    // consumer picks the new shape when present and never derives weekdays from
+    // the legacy hour windows.
     peakHours: raw.peakHours ?? null,
+    peakRules: raw.peakRules ?? null,
+    holidayCalendars: raw.holidayCalendars ?? null,
     plan,
     models,
   };

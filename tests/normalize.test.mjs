@@ -20,6 +20,8 @@ const readFixture = (name) => JSON.parse(readFileSync(join(ROOT, "tests", "fixtu
 
 const legacy = readFixture("opencode-legacy.json");
 const plans = readFixture("opencode-plans.json");
+// New tracker shape: peakRules + holidayCalendars instead of peakHours.
+const peakRulesFixture = readFixture("opencode-peak-rules.json");
 
 const byName = (models, name) => models.find((model) => model.name === name);
 
@@ -89,6 +91,32 @@ test("normalizeOpenCodeData ist idempotent (bereits normalisiert → unveränder
   const once = normalizeOpenCodeData(plans);
   const twice = normalizeOpenCodeData(once);
   assert.equal(twice, once);
+});
+
+test("Neues Peak-Format: peakRules + holidayCalendars verbatim, peakHours null", () => {
+  const normalized = normalizeOpenCodeData(peakRulesFixture);
+  assert.deepEqual(normalized.peakRules, peakRulesFixture.peakRules);
+  assert.deepEqual(normalized.holidayCalendars, peakRulesFixture.holidayCalendars);
+  // New source carries no legacy peakHours; the field stays null (not guessed).
+  assert.equal(normalized.peakHours, null);
+  assert.deepEqual(normalized.plan, { id: "go", name: "Go", priceMonthly: 10, creditsMonthly: 60 });
+});
+
+test("Dual-Toleranz: Legacy-/plans-Fixture ohne peakRules → neue Felder null, peakHours bleibt", () => {
+  for (const fixture of [legacy, plans]) {
+    const normalized = normalizeOpenCodeData(fixture);
+    assert.equal(normalized.peakRules, null);
+    assert.equal(normalized.holidayCalendars, null);
+    assert.deepEqual(normalized.peakHours, fixture.peakHours);
+  }
+});
+
+test("normalizeOpenCodeData idempotent: peakRules/holidayCalendars überstehen den zweiten Lauf", () => {
+  const once = normalizeOpenCodeData(peakRulesFixture);
+  const twice = normalizeOpenCodeData(once);
+  assert.equal(twice, once);
+  assert.deepEqual(twice.peakRules, peakRulesFixture.peakRules);
+  assert.deepEqual(twice.holidayCalendars, peakRulesFixture.holidayCalendars);
 });
 
 test("normalizeOpenCodeData: reines Vor-plans-Legacy nutzt monthlyCost/monthlyCredit", () => {

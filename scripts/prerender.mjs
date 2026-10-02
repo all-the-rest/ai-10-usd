@@ -95,12 +95,16 @@ function injectHead(html, head, jsonLd) {
   return html.replace(marker, () => `${extra}\n  </head>`);
 }
 
-async function buildSsr() {
+async function buildSsr(buildStamp) {
   await build({
     configFile: false,
     root: ROOT,
     logLevel: "error",
     plugins: [svelte()],
+    // Gleicher Stempel wie im Client-Build (vite.config.ts liest BUILD_STAMP):
+    // Server und Client rendern dadurch denselben „Jetzt"-Wert → der Peak-
+    // Live-Status/Countdown der Provider-Zelle ist hydration-stabil.
+    define: { __BUILD_TIME_ISO__: JSON.stringify(buildStamp) },
     build: {
       ssr: SSR_ENTRY,
       outDir: ".ssr-build",
@@ -126,7 +130,12 @@ async function main() {
   const data = JSON.parse(await readFile(DATA_PATH, "utf8"));
 
   // 1. SSR bundle + render both languages.
-  await buildSsr();
+  // One stamp for BOTH builds (SSR inline config + client `vite.config.ts`):
+  // the prerendered peak live status/countdown and the hydrated one start from
+  // the same instant — otherwise hydration would rewrite every cell.
+  const BUILD_STAMP = new Date().toISOString();
+  process.env.BUILD_STAMP = BUILD_STAMP;
+  await buildSsr(BUILD_STAMP);
   const bundleUrl = `${pathToFileURL(join(SSR_OUT, "ssr-entry.js")).href}?v=${Date.now()}`;
   const { renderApp, safeJson } = await import(bundleUrl);
 

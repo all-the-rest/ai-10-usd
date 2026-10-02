@@ -1,60 +1,298 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T02:00:51.485Z",
+  "generatedAt": "2026-10-02T15:52:33.154Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
-    "deepseekv4.1flash": [
-      [
-        1,
-        4
-      ],
-      [
-        6,
-        10
-      ]
-    ],
-    "deepseekv4pro": [
-      [
-        1,
-        4
-      ],
-      [
-        6,
-        10
-      ]
-    ],
-    "deepseekv4flash": [
-      [
-        1,
-        4
-      ],
-      [
-        6,
-        10
-      ]
-    ],
-    "deepseekv4flashvisionexp": [
-      [
-        1,
-        4
-      ],
-      [
-        6,
-        10
-      ]
-    ]
+    "openCodeGo": null,
+    "commandCode": null
+  },
+  "peakRules": {
+    "openCodeGo": {
+      "deepseekv41flash": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        }
+      },
+      "deepseekv4pro": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        }
+      },
+      "deepseekv4flash": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        }
+      },
+      "deepseekv4flashvisionexp": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        }
+      }
+    },
+    "commandCode": {
+      "deepseekv41flash": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        },
+        "effectiveFrom": "2026-08-16T16:00:00Z"
+      },
+      "deepseekv4pro": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        },
+        "effectiveFrom": "2026-08-16T16:00:00Z"
+      },
+      "deepseekv4flash": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        },
+        "effectiveFrom": "2026-08-16T16:00:00Z"
+      },
+      "deepseekv4flashvisionexp": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        },
+        "effectiveFrom": "2026-08-16T16:00:00Z"
+      },
+      "deepseekv41flashfast": {
+        "timezone": "Asia/Shanghai",
+        "peak": {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "windowsUtc": [
+            [
+              1,
+              4
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "offPeak": {
+          "days": [
+            6,
+            7
+          ],
+          "allDay": true
+        },
+        "effectiveFrom": "2026-08-16T16:00:00Z"
+      }
+    }
+  },
+  "holidayCalendars": {
+    "openCodeGo": null,
+    "commandCode": null
   },
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-02T00:01:37.315Z",
+      "fetchedAt": "2026-10-02T15:45:01.940Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-02T00:00:21.819Z",
+      "fetchedAt": "2026-10-02T15:50:22.153Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
