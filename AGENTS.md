@@ -294,10 +294,16 @@ git log --oneline origin/main..ocgo-price-tracker/main --no-decorate | head
 
 ## Verifikation
 
-Nach jeder Umsetzung prüft ein unabhängiger Agent:
-`pnpm generate` (exit 0, korrekte Daten — vor Commit/Push verpflichtend),
-`pnpm test` grün, `pnpm build` grün, `dist/` enthält `data/latest.json` + `CNAME`,
-Workflow-YAML valide, `pnpm preview` liefert 200 und der JSON-Endpunkt
-`/data/latest.json` antwortet (Schema vollständig). Außerdem aktuelle
-Tool-Versionen (`pnpm outdated` ohne ungewollte Abweichungen, Node ≥ 22, pnpm aus
-`packageManager`). Nach Push wird die CI bis zum grünen Lauf beobachtet.
+Der Verify-Flow (unabhängiger Agent, Commit-/Amend-Regeln, Push + CI) steht im Skill
+`build-verify` (agents-skills; Always-on-Kernel `.agents/rules/build-verify.md`).
+Hier steht nur, was in diesem Repo grün sein muss — nach jeder Umsetzung, geprüft von
+einem unabhängigen Agenten:
+
+- `pnpm generate` (exit 0, korrekte Daten — vor Commit/Push verpflichtend)
+- `pnpm test` grün, `pnpm build` grün
+- `dist/` enthält `data/latest.json` + `CNAME`, Workflow-YAML valide
+- `pnpm preview` liefert 200 und `/data/latest.json` antwortet (Schema vollständig)
+- aktuelle Tool-Versionen (`pnpm outdated` ohne ungewollte Abweichungen, Node ≥ 22,
+  pnpm aus `packageManager`)
+
+Nach Push wird die CI bis zum grünen Lauf beobachtet.
