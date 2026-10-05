@@ -29,11 +29,11 @@
     "@resvg/resvg-js": "^2.6.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.2",
-    "daisyui": "^5.7.46",
+    "@types/node": "^26.6.4",
+    "daisyui": "^5.7.47",
     "svelte-check": "^4.7.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "vite": "^8.3.1"
+    "vite": "^8.3.2"
   }
 }
