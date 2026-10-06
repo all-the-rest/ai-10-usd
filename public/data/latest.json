@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T06:06:46.517Z",
+  "generatedAt": "2026-10-06T18:09:55.464Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -285,14 +285,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-06T06:05:32.748Z",
+      "fetchedAt": "2026-10-06T18:03:37.216Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-06T04:02:53.790Z",
+      "fetchedAt": "2026-10-06T18:08:36.586Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1822,6 +1822,33 @@
       }
     },
     {
+      "canonicalModel": "mistrallarge4",
+      "displayName": "Mistral Large 4",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Mistral Large 4",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 40,
+        "averageRequestCost": 0.008765160000000001,
+        "averageRequestsPerMonth": 4563.521943695266,
+        "normalizedRequestsPer10": 4237.253429614917,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00236001933
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "musespark12",
       "displayName": "Muse Spark 1.2",
       "status": "commandCodeOnly",
@@ -2414,10 +2441,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 67,
+    "totalModels": 68,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 63
+      "commandCode": 64
     },
     "requestsPer10": {
       "openCodeGo": {
