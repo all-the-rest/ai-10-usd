@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T23:59:29.704Z",
+  "generatedAt": "2026-10-07T20:18:12.887Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -285,14 +285,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-06T23:58:12.932Z",
+      "fetchedAt": "2026-10-07T20:16:47.469Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-06T23:56:25.037Z",
+      "fetchedAt": "2026-10-07T18:05:48.889Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -312,6 +312,33 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
+    {
+      "canonicalModel": "claudehaiku55",
+      "displayName": "Claude Haiku 5.5",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Claude Haiku 5.5",
+        "variantCount": 2,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.0024183750000000004,
+        "averageRequestsPerMonth": 11164.52163126066,
+        "normalizedRequestsPer10": 11164.52163126066,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00161225
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
     {
       "canonicalModel": "claudesonnet55",
       "displayName": "Claude Sonnet 5.5",
@@ -2441,9 +2468,9 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 68,
+    "totalModels": 69,
     "coverage": {
-      "openCodeGo": 33,
+      "openCodeGo": 34,
       "commandCode": 64
     },
     "requestsPer10": {
