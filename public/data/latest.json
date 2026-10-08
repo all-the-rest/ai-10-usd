@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T20:18:12.887Z",
+  "generatedAt": "2026-10-08T00:18:41.337Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -292,7 +292,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-07T18:05:48.889Z",
+      "fetchedAt": "2026-10-08T00:17:28.562Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1014,6 +1014,33 @@
         "normalizedDifference": 2257.7334701656655,
         "advantagePercent": 7.700000000000001,
         "winner": "draw"
+      }
+    },
+    {
+      "canonicalModel": "glyphcluster",
+      "displayName": "Glyph Cluster",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Glyph Cluster",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
       }
     },
     {
@@ -2468,10 +2495,10 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 69,
+    "totalModels": 70,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 64
+      "commandCode": 65
     },
     "requestsPer10": {
       "openCodeGo": {
