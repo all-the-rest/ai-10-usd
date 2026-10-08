@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08T02:31:35.197Z",
+  "generatedAt": "2026-10-08T14:11:04.143Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -285,14 +285,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-08T00:18:46.789Z",
+      "fetchedAt": "2026-10-08T14:09:30.614Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-08T00:17:28.562Z",
+      "fetchedAt": "2026-10-08T14:05:11.210Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2466,6 +2466,33 @@
       }
     },
     {
+      "canonicalModel": "step5free",
+      "displayName": "Step 5 Preview Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Step 5 Preview Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
+    },
+    {
       "canonicalModel": "tencenthy4",
       "displayName": "Tencent Hy4 Preview",
       "status": "commandCodeOnly",
@@ -2495,9 +2522,9 @@
   ],
   "statistics": {
     "matchedModels": 30,
-    "totalModels": 70,
+    "totalModels": 71,
     "coverage": {
-      "openCodeGo": 34,
+      "openCodeGo": 35,
       "commandCode": 65
     },
     "requestsPer10": {
