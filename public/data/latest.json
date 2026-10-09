@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08T18:03:48.818Z",
+  "generatedAt": "2026-10-09T00:32:26.432Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -292,7 +292,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-08T16:01:13.057Z",
+      "fetchedAt": "2026-10-09T00:31:13.311Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -315,7 +315,7 @@
     {
       "canonicalModel": "claudehaiku55",
       "displayName": "Claude Haiku 5.5",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "Claude Haiku 5.5",
         "variantCount": 2,
@@ -327,16 +327,26 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.00161225
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "Claude Haiku 5.5",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.000806125,
+        "averageRequestsPerMonth": 24810.048069468136,
+        "normalizedRequestsPer10": 23036.25633191099,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00043409831249999995
+      },
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 11871.73470065033,
+        "advantagePercent": 106.3344681729083,
+        "winner": "commandCode"
       }
     },
     {
@@ -349,11 +359,11 @@
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 10,
-        "averageRequestCost": 0.0136,
-        "averageRequestsPerMonth": 735.2941176470589,
-        "normalizedRequestsPer10": 682.724343219182,
+        "averageRequestCost": 0.0086,
+        "averageRequestsPerMonth": 1162.7906976744187,
+        "normalizedRequestsPer10": 1079.6571009047527,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.014647199999999999
+        "effectiveRequestCostAtPaidPrice": 0.0092622
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1463,12 +1473,12 @@
         "sourceName": "Kimi K3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
+        "averageAllowance": 20,
         "averageRequestCost": 0.0306,
-        "averageRequestsPerMonth": 1960.7843137254902,
-        "normalizedRequestsPer10": 1820.598248584485,
+        "averageRequestsPerMonth": 653.5947712418301,
+        "normalizedRequestsPer10": 606.866082861495,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0054927
+        "effectiveRequestCostAtPaidPrice": 0.0164781
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1476,8 +1486,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 1330.4021701531124,
-        "advantagePercent": 271.4020427112349,
+        "normalizedDifference": 116.67000443012245,
+        "advantagePercent": 23.80068090374498,
         "winner": "commandCode"
       }
     },
@@ -2521,84 +2531,47 @@
     }
   ],
   "statistics": {
-    "matchedModels": 30,
+    "matchedModels": 31,
     "totalModels": 71,
     "coverage": {
       "openCodeGo": 35,
-      "commandCode": 65
+      "commandCode": 66
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 30,
+        "count": 31,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 45331.66515690225,
+        "mean": 44229.49923672027,
         "median": 16291.067064892752,
-        "p25": 5354.136840583314,
-        "p75": 51009.084886701
+        "p25": 5487.613789756353,
+        "p75": 44842.64089975992
       },
       "commandCode": {
-        "count": 30,
-        "min": 990.9603850455853,
+        "count": 31,
+        "min": 606.866082861495,
         "max": 120741.88644708548,
-        "mean": 30635.566299532446,
-        "median": 20169.652161229336,
-        "p25": 4771.285576104339,
-        "p75": 45966.15921796483
+        "mean": 30351.274617811665,
+        "median": 20215.656581277755,
+        "p25": 4929.454238642229,
+        "p75": 45390.70907361951
       }
     },
     "normalizedDifference": {
-      "count": 30,
-      "min": 190.51213402501378,
+      "count": 31,
+      "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 22942.68133941816,
-      "median": 4510.897189731879,
-      "p25": 1445.4463937688702,
-      "p75": 11145.547238442832
+      "mean": 22546.40137798297,
+      "median": 4648.562628212785,
+      "p25": 1516.5658332202515,
+      "p75": 11736.684319861339
     },
     "winnerCounts": {
       "openCodeGo": 10,
-      "commandCode": 14,
+      "commandCode": 15,
       "draw": 6
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "kimik3",
-        "displayName": "Kimi K3",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Kimi K3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.0306,
-          "averageRequestsPerMonth": 490.19607843137254,
-          "normalizedRequestsPer10": 490.19607843137254,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.020399999999999998
-        },
-        "commandCode": {
-          "sourceName": "Kimi K3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.0306,
-          "averageRequestsPerMonth": 1960.7843137254902,
-          "normalizedRequestsPer10": 1820.598248584485,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.0054927
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 1330.4021701531124,
-          "advantagePercent": 271.4020427112349,
-          "winner": "commandCode"
-        }
-      },
       {
         "canonicalModel": "kimik26",
         "displayName": "Kimi K2.6",
@@ -2857,17 +2830,46 @@
           "advantagePercent": 115.40000000000002,
           "winner": "openCodeGo"
         }
+      },
+      {
+        "canonicalModel": "claudehaiku55",
+        "displayName": "Claude Haiku 5.5",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Claude Haiku 5.5",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.0024183750000000004,
+          "averageRequestsPerMonth": 11164.52163126066,
+          "normalizedRequestsPer10": 11164.52163126066,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.00161225
+        },
+        "commandCode": {
+          "sourceName": "Claude Haiku 5.5",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.000806125,
+          "averageRequestsPerMonth": 24810.048069468136,
+          "normalizedRequestsPer10": 23036.25633191099,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00043409831249999995
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 11871.73470065033,
+          "advantagePercent": 106.3344681729083,
+          "winner": "commandCode"
+        }
       }
     ],
-    "outliers": [
-      {
-        "model": "Kimi K3",
-        "ratio": 0.26925,
-        "advantagePercent": 271.4020427112349,
-        "winner": "commandCode",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      }
-    ]
+    "outliers": []
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
