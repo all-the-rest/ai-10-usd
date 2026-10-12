@@ -20,20 +20,20 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "svelte": "^5.57.1"
+    "svelte": "^5.57.2"
   },
   "devDependencies": {
-    "@iconify-json/material-symbols": "^1.2.93",
+    "@iconify-json/material-symbols": "^1.2.95",
     "@iconify/tailwind4": "^1.2.3",
-    "@playwright/test": "1.63.0",
+    "@playwright/test": "1.64.0",
     "@resvg/resvg-js": "^2.6.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "daisyui": "^5.7.47",
     "svelte-check": "^4.7.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "vite": "^8.3.2"
+    "vite": "^8.3.4"
   }
 }
