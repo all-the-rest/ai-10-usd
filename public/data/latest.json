@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T06:04:39.359Z",
+  "generatedAt": "2026-10-13T16:09:08.003Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -285,14 +285,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-13T06:03:28.911Z",
+      "fetchedAt": "2026-10-13T16:05:42.723Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-13T06:02:35.020Z",
+      "fetchedAt": "2026-10-13T16:07:35.976Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -644,12 +644,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 130039.01170351106,
-        "normalizedRequestsPer10": 120741.88644708548,
+        "averageRequestsPerMonth": 216731.6861725184,
+        "normalizedRequestsPer10": 201236.47741180912,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00008282129999999999
+        "effectiveRequestCostAtPaidPrice": 0.00004969278
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -657,9 +657,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 52643.46249092926,
-        "advantagePercent": 43.599999999999994,
-        "winner": "openCodeGo"
+        "normalizedDifference": 27851.12847379438,
+        "advantagePercent": 16.063138347260907,
+        "winner": "commandCode"
       }
     },
     {
@@ -681,12 +681,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 65019.50585175553,
-        "normalizedRequestsPer10": 60370.94322354274,
+        "averageRequestsPerMonth": 108365.8430862592,
+        "normalizedRequestsPer10": 100618.23870590456,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00016564259999999999
+        "effectiveRequestCostAtPaidPrice": 0.00009938556
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -694,9 +694,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 26321.73124546463,
-        "advantagePercent": 43.599999999999994,
-        "winner": "openCodeGo"
+        "normalizedDifference": 13925.56423689719,
+        "advantagePercent": 16.063138347260907,
+        "winner": "commandCode"
       }
     },
     {
@@ -2550,8 +2550,8 @@
       "commandCode": {
         "count": 31,
         "min": 606.866082861495,
-        "max": 120741.88644708548,
-        "mean": 30351.274617811665,
+        "max": 201236.47741180912,
+        "mean": 34246.17418062086,
         "median": 20215.656581277755,
         "p25": 4929.454238642229,
         "p75": 45390.70907361951
@@ -2561,14 +2561,14 @@
       "count": 31,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 24643.804792555733,
+      "mean": 23444.175727210495,
       "median": 4729.660009776084,
       "p25": 1516.5658332202515,
-      "p75": 19628.725667088915
+      "p75": 13430.642162805194
     },
     "winnerCounts": {
-      "openCodeGo": 12,
-      "commandCode": 15,
+      "openCodeGo": 10,
+      "commandCode": 17,
       "draw": 4
     },
     "biggestDifferences": [
