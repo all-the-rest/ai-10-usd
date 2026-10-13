@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T16:09:08.003Z",
+  "generatedAt": "2026-10-13T18:11:21.348Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -285,7 +285,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-13T16:05:42.723Z",
+      "fetchedAt": "2026-10-13T18:08:47.272Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
@@ -312,6 +312,33 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
+    {
+      "canonicalModel": "catjamfree",
+      "displayName": "Cat Jam Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Cat Jam Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
+    },
     {
       "canonicalModel": "claudehaiku55",
       "displayName": "Claude Haiku 5.5",
@@ -2532,9 +2559,9 @@
   ],
   "statistics": {
     "matchedModels": 31,
-    "totalModels": 71,
+    "totalModels": 72,
     "coverage": {
-      "openCodeGo": 35,
+      "openCodeGo": 36,
       "commandCode": 66
     },
     "requestsPer10": {
