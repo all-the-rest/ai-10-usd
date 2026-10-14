@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T14:06:37.274Z",
+  "generatedAt": "2026-10-14T23:22:01.789Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-14T14:04:32.020Z",
+      "fetchedAt": "2026-10-14T21:30:09.060Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-14T12:06:00.621Z",
+      "fetchedAt": "2026-10-14T23:20:39.701Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -964,12 +964,12 @@
         "sourceName": "GLM-5.3 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0019,
-        "averageRequestsPerMonth": 31578.947368421053,
-        "normalizedRequestsPer10": 29321.21389825539,
+        "averageRequestsPerMonth": 52631.57894736842,
+        "normalizedRequestsPer10": 48868.68983042565,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00034104999999999997
+        "effectiveRequestCostAtPaidPrice": 0.00020463
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -977,9 +977,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 2257.7334701656655,
-        "advantagePercent": 7.700000000000001,
-        "winner": "draw"
+        "normalizedDifference": 17289.74246200459,
+        "advantagePercent": 54.75085112968119,
+        "winner": "commandCode"
       }
     },
     {
@@ -1482,23 +1482,23 @@
       "commandCode": {
         "sourceName": "Ling 3.1 Flash",
         "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0033858,
+        "averageRequestsPerMonth": 5907.0234508831,
+        "normalizedRequestsPer10": 5484.701440002878,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
+        "effectiveRequestCostAtPaidPrice": 0.0018232532999999998
       },
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": true
+        "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
         "normalizedDifference": null,
         "advantagePercent": null,
-        "winner": "commandCode"
+        "winner": null
       }
     },
     {
@@ -2186,6 +2186,33 @@
       }
     },
     {
+      "canonicalModel": "qwen38maxprime",
+      "displayName": "Qwen 3.8 Max Prime",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Qwen 3.8 Max Prime",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.030904,
+        "averageRequestsPerMonth": 647.1654154801968,
+        "normalizedRequestsPer10": 600.8963932035253,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.016641804
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen38omniflash",
       "displayName": "Qwen 3.8 Omni Flash",
       "status": "commandCodeOnly",
@@ -2488,10 +2515,10 @@
   ],
   "statistics": {
     "matchedModels": 27,
-    "totalModels": 73,
+    "totalModels": 74,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 66
+      "commandCode": 67
     },
     "requestsPer10": {
       "openCodeGo": {
@@ -2507,25 +2534,25 @@
         "count": 27,
         "min": 606.866082861495,
         "max": 201236.47741180912,
-        "mean": 30375.83802611393,
+        "mean": 31099.818616194305,
         "median": 16610.1092446885,
         "p25": 4450.204811481975,
-        "p75": 36780.51134159214
+        "p75": 45390.70907361951
       }
     },
     "normalizedDifference": {
       "count": 27,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23391.8356598446,
-      "median": 4373.231751250973,
+      "mean": 23948.576733616414,
+      "median": 4729.660009776084,
       "p25": 931.9144513682693,
-      "p75": 12403.727394681764
+      "p75": 13430.642162805194
     },
     "winnerCounts": {
       "openCodeGo": 10,
-      "commandCode": 13,
-      "draw": 4
+      "commandCode": 14,
+      "draw": 3
     },
     "biggestDifferences": [
       {
