@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T04:04:49.637Z",
+  "generatedAt": "2026-10-14T11:12:01.725Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -38,64 +38,6 @@
         }
       },
       "deepseekv4pro": {
-        "timezone": "Asia/Shanghai",
-        "peak": {
-          "days": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "windowsUtc": [
-            [
-              1,
-              4
-            ],
-            [
-              6,
-              10
-            ]
-          ]
-        },
-        "offPeak": {
-          "days": [
-            6,
-            7
-          ],
-          "allDay": true
-        }
-      },
-      "deepseekv4flash": {
-        "timezone": "Asia/Shanghai",
-        "peak": {
-          "days": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "windowsUtc": [
-            [
-              1,
-              4
-            ],
-            [
-              6,
-              10
-            ]
-          ]
-        },
-        "offPeak": {
-          "days": [
-            6,
-            7
-          ],
-          "allDay": true
-        }
-      },
-      "deepseekv4flashvisionexp": {
         "timezone": "Asia/Shanghai",
         "peak": {
           "days": [
@@ -285,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-14T04:03:30.942Z",
+      "fetchedAt": "2026-10-14T11:08:43.619Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-13T23:47:33.594Z",
+      "fetchedAt": "2026-10-14T10:06:14.947Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -406,28 +348,18 @@
     {
       "canonicalModel": "deepseek-v4-flash (Off-Peak)",
       "displayName": "DeepSeek V4 Flash (Off-Peak)",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "DeepSeek V4 Flash",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 30,
-        "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 65019.50585175553,
-        "normalizedRequestsPer10": 65019.50585175552,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0001538
-      },
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "DeepSeek V4 Flash",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 60,
-        "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 130039.01170351106,
-        "normalizedRequestsPer10": 120741.88644708548,
+        "averageRequestCost": 0.0003672,
+        "averageRequestsPerMonth": 163398.69281045752,
+        "normalizedRequestsPer10": 151716.52071537374,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00008282129999999999
+        "effectiveRequestCostAtPaidPrice": 0.00006591239999999999
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -435,36 +367,26 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 55722.38059532995,
-        "advantagePercent": 85.70102135561747,
-        "winner": "commandCode"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
       "canonicalModel": "deepseek-v4-flash (Peak)",
       "displayName": "DeepSeek V4 Flash (Peak)",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "DeepSeek V4 Flash",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 30,
-        "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 32509.752925877765,
-        "normalizedRequestsPer10": 32509.75292587776,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0003076
-      },
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "DeepSeek V4 Flash",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 60,
-        "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 65019.50585175553,
-        "normalizedRequestsPer10": 60370.94322354274,
+        "averageRequestCost": 0.0007344,
+        "averageRequestsPerMonth": 81699.34640522876,
+        "normalizedRequestsPer10": 75858.26035768687,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00016564259999999999
+        "effectiveRequestCostAtPaidPrice": 0.00013182479999999998
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -472,9 +394,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 27861.190297664976,
-        "advantagePercent": 85.70102135561747,
-        "winner": "commandCode"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -506,29 +428,19 @@
     },
     {
       "canonicalModel": "deepseekv4flashvisionexp (Off-Peak)",
-      "displayName": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "DeepSeek V4 Flash Vision Exp",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 15,
-        "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 32509.752925877765,
-        "normalizedRequestsPer10": 32509.75292587776,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0003076
-      },
+      "displayName": "DeepSeek V4 Flash Vision (exp) (Off-Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "DeepSeek V4 Flash Vision (exp)",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 43346.337234503684,
-        "normalizedRequestsPer10": 40247.29548236183,
+        "averageRequestCost": 0.0003672,
+        "averageRequestsPerMonth": 54466.23093681918,
+        "normalizedRequestsPer10": 50572.17357179125,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00024846389999999996
+        "effectiveRequestCostAtPaidPrice": 0.00019773719999999998
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -536,36 +448,26 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 7737.542556484066,
-        "advantagePercent": 23.80068090374499,
-        "winner": "commandCode"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
       "canonicalModel": "deepseekv4flashvisionexp (Peak)",
-      "displayName": "DeepSeek V4 Flash Vision Exp (Peak)",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "DeepSeek V4 Flash Vision Exp",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 15,
-        "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 16254.876462938882,
-        "normalizedRequestsPer10": 16254.87646293888,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0006152
-      },
+      "displayName": "DeepSeek V4 Flash Vision (exp) (Peak)",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "DeepSeek V4 Flash Vision (exp)",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 21673.168617251842,
-        "normalizedRequestsPer10": 20123.647741180914,
+        "averageRequestCost": 0.0007344,
+        "averageRequestsPerMonth": 27233.11546840959,
+        "normalizedRequestsPer10": 25286.086785895626,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0004969277999999999
+        "effectiveRequestCostAtPaidPrice": 0.00039547439999999996
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -573,9 +475,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 3868.771278242033,
-        "advantagePercent": 23.80068090374499,
-        "winner": "commandCode"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -823,6 +725,33 @@
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.00266961375
       },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "gemini4argoncontributor",
+      "displayName": "Gemini 4 Argon Contributor",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Gemini 4 Argon Contributor",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.01644,
+        "averageRequestsPerMonth": 3649.6350364963505,
+        "normalizedRequestsPer10": 3649.63503649635,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00274
+      },
+      "commandCode": null,
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
@@ -2558,44 +2487,44 @@
     }
   ],
   "statistics": {
-    "matchedModels": 31,
-    "totalModels": 72,
+    "matchedModels": 27,
+    "totalModels": 73,
     "coverage": {
-      "openCodeGo": 36,
+      "openCodeGo": 33,
       "commandCode": 66
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 31,
+        "count": 27,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 46326.90265129302,
-        "median": 16291.067064892752,
-        "p25": 5487.613789756353,
-        "p75": 44842.64089975992
+        "mean": 47771.85533420866,
+        "median": 16038.492381716118,
+        "p25": 5094.49340366067,
+        "p75": 44377.238121031565
       },
       "commandCode": {
-        "count": 31,
+        "count": 27,
         "min": 606.866082861495,
         "max": 201236.47741180912,
-        "mean": 34246.17418062086,
-        "median": 20215.656581277755,
-        "p25": 4929.454238642229,
-        "p75": 45390.70907361951
+        "mean": 30375.83802611393,
+        "median": 16610.1092446885,
+        "p25": 4450.204811481975,
+        "p75": 36780.51134159214
       }
     },
     "normalizedDifference": {
-      "count": 31,
+      "count": 27,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23444.175727210495,
-      "median": 4729.660009776084,
-      "p25": 1516.5658332202515,
-      "p75": 13430.642162805194
+      "mean": 23391.8356598446,
+      "median": 4373.231751250973,
+      "p25": 931.9144513682693,
+      "p75": 12403.727394681764
     },
     "winnerCounts": {
       "openCodeGo": 10,
-      "commandCode": 17,
+      "commandCode": 13,
       "draw": 4
     },
     "biggestDifferences": [
