@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T19:02:43.572Z",
+  "generatedAt": "2026-10-15T23:10:52.408Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -234,7 +234,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-15T18:07:54.405Z",
+      "fetchedAt": "2026-10-15T23:09:23.784Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -254,6 +254,33 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
+    {
+      "canonicalModel": "catjam",
+      "displayName": "Cat Jam",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Cat Jam",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
     {
       "canonicalModel": "catjamfree",
       "displayName": "Cat Jam Free",
@@ -1283,6 +1310,23 @@
       }
     },
     {
+      "canonicalModel": "jev1140",
+      "displayName": "Jev 1.14.0",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "kimik25",
       "displayName": "Kimi K2.5",
       "status": "commandCodeOnly",
@@ -1444,33 +1488,6 @@
       "comparison": {
         "normalizedDifference": 116.67000443012245,
         "advantagePercent": 23.80068090374498,
-        "winner": "commandCode"
-      }
-    },
-    {
-      "canonicalModel": "ling30flashsante",
-      "displayName": "Ling 3.0 Flash Sante",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Ling 3.0 Flash Sante",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": true
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
         "winner": "commandCode"
       }
     },
@@ -1997,6 +2014,33 @@
       }
     },
     {
+      "canonicalModel": "musesparkopen",
+      "displayName": "Muse Spark Open",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Muse Spark Open",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0091885,
+        "averageRequestsPerMonth": 2176.633835772977,
+        "normalizedRequestsPer10": 2021.0156321011857,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00494800725
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "nemotron3ultra",
       "displayName": "Nemotron 3 Ultra",
       "status": "commandCodeOnly",
@@ -2011,6 +2055,33 @@
         "normalizedRequestsPer10": 2703.543870190098,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.0036988488
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "nemotron35supervl",
+      "displayName": "Nemotron 3.5 Super VL",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Nemotron 3.5 Super VL",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.002241,
+        "averageRequestsPerMonth": 8924.587237840251,
+        "normalizedRequestsPer10": 8286.524826221217,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0012067784999999999
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -2515,10 +2586,10 @@
   ],
   "statistics": {
     "matchedModels": 27,
-    "totalModels": 74,
+    "totalModels": 77,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 67
+      "commandCode": 69
     },
     "requestsPer10": {
       "openCodeGo": {
