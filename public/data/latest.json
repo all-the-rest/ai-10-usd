@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T23:22:01.789Z",
+  "generatedAt": "2026-10-15T01:12:50.688Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-14T21:30:09.060Z",
+      "fetchedAt": "2026-10-14T23:21:01.751Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
