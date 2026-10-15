@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T23:10:52.408Z",
+  "generatedAt": "2026-10-15T23:12:20.357Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-15T18:02:30.816Z",
+      "fetchedAt": "2026-10-15T23:10:23.361Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
@@ -2505,18 +2505,28 @@
     {
       "canonicalModel": "step5",
       "displayName": "Step 5 Preview",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "Step 5 Preview",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.00704,
+        "averageRequestsPerMonth": 8522.727272727272,
+        "normalizedRequestsPer10": 8522.727272727272,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.0011733333333333333
+      },
       "commandCode": {
         "sourceName": "Step 5 Preview",
         "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0037374,
-        "averageRequestsPerMonth": 5351.313747525017,
-        "normalizedRequestsPer10": 4968.722142548762,
+        "averageRequestCost": 0.00429,
+        "averageRequestsPerMonth": 4662.004662004661,
+        "normalizedRequestsPer10": 4328.695136494579,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0020125899
+        "effectiveRequestCostAtPaidPrice": 0.0023101650000000003
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -2524,35 +2534,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
-      }
-    },
-    {
-      "canonicalModel": "step5free",
-      "displayName": "Step 5 Preview Free",
-      "status": "openCodeGoOnly",
-      "openCodeGo": {
-        "sourceName": "Step 5 Preview Free",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "commandCode": null,
-      "freeIncluded": {
-        "openCodeGo": true,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
+        "normalizedDifference": 4194.032136232693,
+        "advantagePercent": 96.8890625,
         "winner": "openCodeGo"
       }
     },
@@ -2585,43 +2568,43 @@
     }
   ],
   "statistics": {
-    "matchedModels": 27,
-    "totalModels": 77,
+    "matchedModels": 28,
+    "totalModels": 76,
     "coverage": {
       "openCodeGo": 33,
       "commandCode": 69
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 27,
+        "count": 28,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 47771.85533420866,
-        "median": 16038.492381716118,
-        "p25": 5094.49340366067,
-        "p75": 44377.238121031565
+        "mean": 46370.100760584326,
+        "median": 15784.845985825721,
+        "p25": 5157.576647535472,
+        "p75": 37978.09274472631
       },
       "commandCode": {
-        "count": 27,
+        "count": 28,
         "min": 606.866082861495,
         "max": 201236.47741180912,
-        "mean": 31099.818616194305,
-        "median": 16610.1092446885,
-        "p25": 4450.204811481975,
-        "p75": 45390.70907361951
+        "mean": 30143.707063347887,
+        "median": 14447.992808107316,
+        "p25": 4318.34452972031,
+        "p75": 44815.2589292742
       }
     },
     "normalizedDifference": {
-      "count": 27,
+      "count": 28,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23948.576733616414,
-      "median": 4729.660009776084,
-      "p25": 931.9144513682693,
-      "p75": 13430.642162805194
+      "mean": 23243.05728370985,
+      "median": 4551.445880513528,
+      "p25": 1087.2335265963143,
+      "p75": 13183.181125759196
     },
     "winnerCounts": {
-      "openCodeGo": 10,
+      "openCodeGo": 11,
       "commandCode": 14,
       "draw": 3
     },
