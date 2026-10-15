@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T08:11:02.558Z",
+  "generatedAt": "2026-10-15T16:07:53.717Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-15T08:08:59.538Z",
+      "fetchedAt": "2026-10-15T16:06:42.064Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 80
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-15T08:04:15.706Z",
+      "fetchedAt": "2026-10-15T16:06:25.380Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1483,12 +1483,12 @@
         "sourceName": "Ling 3.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 20,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0033858,
-        "averageRequestsPerMonth": 5907.0234508831,
-        "normalizedRequestsPer10": 5484.701440002878,
+        "averageRequestsPerMonth": 29535.1172544155,
+        "normalizedRequestsPer10": 27423.507200014395,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0018232532999999998
+        "effectiveRequestCostAtPaidPrice": 0.00036465065999999997
       },
       "freeIncluded": {
         "openCodeGo": false,
