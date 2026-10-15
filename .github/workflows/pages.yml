@@ -70,9 +70,24 @@ jobs:
             # scheitert der zweite Push als non-fast-forward (Race).
             MAX_TRIES=3
             for i in $(seq 1 "$MAX_TRIES"); do
+              # Abgebrochener Rebase vom vorherigen Versuch bereinigen,
+              # sonst blockiert "unmerged files" alle weiteren Versuche.
+              git rebase --abort 2>/dev/null || true
               if git pull --rebase origin main && git push; then
                 echo "pushed on attempt $i/$MAX_TRIES"
                 break
+              fi
+              if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+                # Konflikt in der generierten Datei: die frisch gebaute
+                # Version gewinnt (--theirs = rebasender lokaler Commit
+                # mit aktuellen Tracker-Daten, --ours = Remote-History).
+                git checkout --theirs -- public/data/latest.json
+                git add public/data/latest.json
+                GIT_EDITOR=true git rebase --continue
+                if git push; then
+                  echo "pushed on attempt $i/$MAX_TRIES (conflict resolved)"
+                  break
+                fi
               fi
               if [ "$i" -eq "$MAX_TRIES" ]; then
                 echo "::error::push failed after $MAX_TRIES attempts"
