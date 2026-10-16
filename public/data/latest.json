@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T10:05:06.465Z",
+  "generatedAt": "2026-10-16T14:06:41.604Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-16T10:03:41.117Z",
+      "fetchedAt": "2026-10-16T14:05:07.544Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-16T08:03:21.541Z",
+      "fetchedAt": "2026-10-16T14:02:13.176Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -254,6 +254,33 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
+    {
+      "canonicalModel": "beamfree",
+      "displayName": "Beam Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Beam Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
+    },
     {
       "canonicalModel": "catjam",
       "displayName": "Cat Jam",
@@ -279,33 +306,6 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": "commandCode"
-      }
-    },
-    {
-      "canonicalModel": "catjamfree",
-      "displayName": "Cat Jam Free",
-      "status": "openCodeGoOnly",
-      "openCodeGo": {
-        "sourceName": "Cat Jam Free",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "commandCode": null,
-      "freeIncluded": {
-        "openCodeGo": true,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "openCodeGo"
       }
     },
     {
