@@ -295,7 +295,7 @@ git log --oneline origin/main..ocgo-price-tracker/main --no-decorate | head
 ## Verifikation
 
 Der Verify-Flow (unabhängiger Agent, Commit-/Amend-Regeln, Push + CI) steht im Skill
-`build-verify` (agents-skills; Always-on-Kernel `.agents/rules/build-verify.md`).
+`build-verify` (agents-skills; Kernregel `.agents/rules/build-verify.md`).
 Hier steht nur, was in diesem Repo grün sein muss — nach jeder Umsetzung, geprüft von
 einem unabhängigen Agenten:
 
