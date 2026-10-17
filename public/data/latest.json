@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-17T12:09:31.780Z",
+  "generatedAt": "2026-10-17T22:31:12.939Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-17T12:08:03.951Z",
+      "fetchedAt": "2026-10-17T18:06:05.226Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-17T12:01:08.998Z",
+      "fetchedAt": "2026-10-17T22:29:54.023Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1018,12 +1018,12 @@
         "sourceName": "GLM-5.3 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 100,
+        "averageAllowance": 80,
         "averageRequestCost": 0.0019,
-        "averageRequestsPerMonth": 52631.57894736842,
-        "normalizedRequestsPer10": 48868.68983042565,
+        "averageRequestsPerMonth": 42105.26315789474,
+        "normalizedRequestsPer10": 39094.951864340524,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00020463
+        "effectiveRequestCostAtPaidPrice": 0.0002557875
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1031,8 +1031,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 17289.74246200459,
-        "advantagePercent": 54.75085112968119,
+        "normalizedDifference": 7516.004495919467,
+        "advantagePercent": 23.80068090374498,
         "winner": "commandCode"
       }
     },
@@ -2595,20 +2595,20 @@
         "count": 26,
         "min": 606.866082861495,
         "max": 160989.1819294473,
-        "mean": 29870.231326586385,
+        "mean": 29494.318327890793,
         "median": 18412.88291298313,
         "p25": 4399.800580762547,
-        "p75": 45966.15921796483
+        "p75": 42953.59455478179
       }
     },
     "normalizedDifference": {
       "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23540.308023619044,
+      "mean": 23164.395024923466,
       "median": 4551.445880513528,
       "p25": 776.5953761402244,
-      "p75": 12265.058931588152
+      "p75": 11348.122809626317
     },
     "winnerCounts": {
       "openCodeGo": 9,
