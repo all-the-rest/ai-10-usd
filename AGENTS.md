@@ -1,35 +1,39 @@
 # AGENTS.md
 
+> **Nur Regeln, keine Entscheidungen:** Diese Datei enthält ausschließlich Regeln —
+> Anweisungen, die für jede Arbeit in diesem Repo gelten. Dauerhafte Entscheidungen,
+> Begründungen, Messwerte und Historie gehören nicht hierher, sondern in `docs/`/`features/`
+> bzw. die Projekt-Doku (`README.md`); offene Punkte nach `Agents.todo.md`; Erledigtes in
+> die Git-Historie.
+
 ## Projektüberblick
 
-„AI for $10“ — Vergleich der beiden ~$10-Pläne: **OpenCode Go** ($10/Monat) vs.
-**Command Code GOAT** (paid, $10.77/Monat), Modell für Modell anhand der
-durchschnittlichen Anfragen pro Monat, normalisiert auf eine **$10-Basis**.
-Datenquellen sind die beiden Preis-Tracker (`https://ocgo-pricing.all-the.rest/data/latest.json`,
-`https://cc-pricing.all-the.rest/data/latest.json` — beide liefern
-`access-control-allow-origin: *`). Der Generator kombiniert sie in
-`public/data/latest.json`; die statische Svelte-5-Seite liegt unter
-`https://ai-10-usd.all-the.rest`. Updates kommen per `repository_dispatch`
-(`source-updated`) aus den Tracker-Repos — **kein eigenes Cron**.
-
+- „AI for $10“ vergleicht die beiden ~$10-Pläne **OpenCode Go** ($10/Monat) und
+  **Command Code GOAT** ($10.77/Monat) modell-für-modell, normalisiert auf eine
+  **$10-Basis**.
+- Datenquellen sind die beiden Preis-Tracker
+  (`https://ocgo-pricing.all-the.rest/data/latest.json`,
+  `https://cc-pricing.all-the.rest/data/latest.json`); der Generator kombiniert sie in
+  `public/data/latest.json`, die statische Svelte-5-Seite liegt unter
+  `https://ai-10-usd.all-the.rest`.
+- Updates kommen per `repository_dispatch` (`source-updated`) aus den Tracker-Repos —
+  **kein eigenes Cron**.
 - Repo (remote): `all-the-rest/ai-10-usd`
 - GitHub Pages Custom Domain: `ai-10-usd.all-the.rest` (CNAME)
 
 ## Stack
 
 - Svelte 5 + Vite 8 + TypeScript (`svelte-check --tsconfig ./tsconfig.json`);
-  `typescript` ist auf `~6.0.3` gepinnt (svelte-check 4.x akzeptiert TS 7 nicht)
-- Tailwind CSS 4 + daisyUI 5 — lokal gebündelt, keine externen Fonts/Libs
-- **Icons: Iconify via Tailwind-Plugin** (gleiche Einbindung wie
-  `ocgo-price-tracker`): devDeps `@iconify/tailwind4` +
-  `@iconify-json/material-symbols`, in `src/app.css` via
-  `@plugin "@iconify/tailwind4" { prefixes: material-symbols; }`. Nutzung als
-  Klasse: `icon-[material-symbols--info] h-3 w-3` — die Icon-Daten werden ins
-  CSS **gebündelt** (kein Laufzeit-Fetch zur Iconify-API). Keine weiteren
-  Inline-SVGs für Standard-Icons mehr.
-- Generator: Node ≥ 22, `scripts/build-comparison.mjs` (keine Runtime-Deps)
-- Paketmanager: pnpm — Version in `package.json` (`packageManager`) ist maßgeblich
-- Deployment: GitHub Pages (`upload-pages-artifact` + `deploy-pages`), CNAME in `public/`
+  `typescript` ist auf `~6.0.3` gepinnt.
+- Tailwind CSS 4 + daisyUI 5 — lokal gebündelt, keine externen Fonts/Libs.
+- **Icons: Iconify via Tailwind-Plugin** (gleiche Einbindung wie `ocgo-price-tracker`):
+  devDeps `@iconify/tailwind4` + `@iconify-json/material-symbols`, in `src/app.css` via
+  `@plugin "@iconify/tailwind4" { prefixes: material-symbols; }`. Nutzung als Klasse
+  `icon-[material-symbols--info] h-3 w-3` — die Icon-Daten werden ins CSS **gebündelt**
+  (kein Laufzeit-Fetch zur Iconify-API). Keine Inline-SVGs für Standard-Icons.
+- Generator: Node ≥ 22, `scripts/build-comparison.mjs` (keine Runtime-Deps).
+- Paketmanager: pnpm — Version in `package.json` (`packageManager`) ist maßgeblich.
+- Deployment: GitHub Pages (`upload-pages-artifact` + `deploy-pages`), CNAME in `public/`.
 
 ## Befehle
 
@@ -47,124 +51,103 @@ pnpm typecheck        # nur svelte-check
 ## Generator-Regeln (`scripts/build-comparison.mjs`)
 
 - **Struktur:** `scripts/build-comparison.mjs` ist der schlanke Runner (Fetch,
-  Modell-Map laden, Schreiben). Die gesamte Rechenlogik — Konstanten und pure
-  Funktionen bis zur kompletten Pipeline `buildComparison(openCodeData,
-  commandCodeData, modelMap)` — lebt in `scripts/comparison-core.mjs` (exportiert,
-  ohne Network/IO → direkt unit-testbar statt Mirror-Tests).
-
-- **Konstanten:** `COMMAND_CODE_PAID_PRICE = 10.77` (vom Nutzer bestätigter
-  bezahlter Monatspreis; Quelle: `https://cc-pricing.all-the.rest/?sort=requests:desc`).
-  Normalisierung Command Code: `requests × 10 / paidPrice`. OpenCode Go ist
-  bereits $10 → keine Skalierung.
+  Modell-Map laden, Schreiben). Die gesamte Rechenlogik — Konstanten und pure Funktionen
+  bis zur Pipeline `buildComparison(openCodeData, commandCodeData, modelMap)` — lebt
+  exportiert in `scripts/comparison-core.mjs` (ohne Network/IO → direkt unit-testbar
+  statt Mirror-Tests).
+- **Konstanten:** `COMMAND_CODE_PAID_PRICE = 10.77`. Normalisierung Command Code:
+  `requests × 10 / paidPrice`; OpenCode Go ist bereits $10 → keine Skalierung.
 - **Token-Statistik** (durchschnittliche Anfragen pro Monat je Modell):
   - OpenCode Go: `requests = monthlyCredit × 1000 / (pattern-basierte Kosten pro Anfrage)`
     mit dem **pro-Modell-`pattern`** aus dessen `latest.json` (`input`/`cachedRead`/`output`
     Tokens pro Anfrage; Kosten = 5% Input-Preis + 95% Cached-Write-Preis für Input,
     Cached-Read-Preis für Cached, Output-Preis für Output). Models ohne `pattern`:
-    Fallback `AVERAGE_MESSAGE_PATTERN = 800/50000/162` (Command-Code-Messwert).
+    Fallback `AVERAGE_MESSAGE_PATTERN = 800/50000/162`.
   - Command Code: `requests = monthlyAllowance / effectivePricePerMillTokenMess`,
-    Allowance aus `allowances.goat → plan.defaultAllowance → plan.creditsMonthly`,
-    Preise aus `model.pricing` (cached = 0.1 × input); `AVERAGE_MESSAGE_PATTERN`
-    für alle Modelle.
+    Allowance aus `allowances.goat → plan.defaultAllowance → plan.creditsMonthly`, Preise
+    aus `model.pricing` (cached = 0.1 × input); `AVERAGE_MESSAGE_PATTERN` für alle Modelle.
 - **`$10`-normalisierte Requests** je Modell (`normalizedRequestsPer10`) sind die
   Vergleichsbasis der Tabelle.
 - **Draw-Regel:** relative Differenz < 10% (`DRAW_THRESHOLD_PERCENT = 10`) →
-  `winner: "draw"`. `normalizedDifference` ist **immer positiv** (= „wie viel
-  besser das bessere Angebot ist“), `advantagePercent` relativ zum schlechteren Plan.
+  `winner: "draw"`. `normalizedDifference` ist **immer positiv**, `advantagePercent`
+  relativ zum schlechteren Plan.
 - **Varianten:** Peak/Off-Peak (DeepSeek V4 Pro/Flash) bleiben **getrennte Zeilen**
-  (`variantKind`/`variantTitle`, `· Off-Peak`/`· Peak`); weitere Varianten werden
-  pro Familie gemittelt (`averageFamilyRequests`), `variantCount` dokumentiert die
-  Zahl der gemittelten Einträge.
+  (`variantKind`/`variantTitle`, `· Off-Peak`/`· Peak`); weitere Varianten werden pro
+  Familie gemittelt (`averageFamilyRequests`), `variantCount` dokumentiert die Zahl der
+  gemittelten Einträge.
 - **Matching:** kanonische Aliase in `data/model-map.json` (inkl. `hy3`/`tencenthy3`);
   `normalizeName`, `canonicalName` und `displayNameOf` in `scripts/model-map.mjs`
-  (exportiert, unit-getestet). **Pro-Quelle-Überschreibungen** (`sourceAliases`)
-  gewinnen vor den globalen `aliases` — nötig, wenn Quellen denselben Namen für
-  unterschiedliche Modelle nutzen: OpenCode Go nennt den Contributor-Tier schlicht
-  „Muse Spark 1.2" (`musespark12` → `muse-spark-1.2-contributor`), Command Code führt
-  Contributor UND das teure Basis-Modell separat (`musespark12contributor` →
-  dasselbe Kanonische; Basis-„Muse Spark 1.2" bleibt ungemappt → `commandCodeOnly`).
-  `prettyNames` liefert das Anzeige-Label abweichend vom Quellnamen
-  („Muse Spark 1.2 Contributor"). Ausgeschlossen: Free-/Deal-Modelle und
-  Goat-unverfügbare CC-Modelle (`ignoredNames`). CC-Modelle ohne OpenCode-
-  Pendant + OpenCode-only-Modelle bleiben als `status: "openCodeGoOnly" "/ "commandCodeOnly"`
-  mit `comparison: null` in den Daten (die UI blendet sie per Default aus).
+  (exportiert, unit-getestet). **Pro-Quelle-Überschreibungen** (`sourceAliases`) gewinnen
+  vor den globalen `aliases`. `prettyNames` liefert das Anzeige-Label abweichend vom
+  Quellnamen. Ausgeschlossen: Free-/Deal-Modelle und Goat-unverfügbare CC-Modelle
+  (`ignoredNames`). CC-Modelle ohne OpenCode-Pendant und OpenCode-only-Modelle bleiben
+  als `status: "openCodeGoOnly"`/`"commandCodeOnly"` mit `comparison: null` in den Daten
+  (die UI blendet sie per Default aus).
 - Ausgabe `public/data/latest.json`: `generatedAt`, `sources` (URL + `fetchedAt`),
   `plans`, `peakWindows` / `peakRules` / `holidayCalendars` (Peak-Angaben, s. u.),
-  `statistics` (`matched`, `winners`, `biggestDifferences` — volle Rows,
-  sortiert nach `advantagePercent` desc), `rows`. Fehlerhafter Fetch eines Trackers
-  → `process.exit(1)` → CI rot.
+  `statistics` (`matched`, `winners`, `biggestDifferences` — volle Rows, sortiert nach
+  `advantagePercent` desc), `rows`. Fehlerhafter Fetch eines Trackers → `process.exit(1)`
+  → CI rot.
 
 ### Peak-Angaben (`peakWindows` / `peakRules` / `holidayCalendars`)
 
-Alle Peak-Felder sind **provider-dimensioniert** (`{ openCodeGo, commandCode }`) —
-jede Spalte der Vergleichstabelle zeigt die Zeiten **ihres** Anbieters. Quelle ist
-`peak-spec.md §1` (verbindliche Form: `peakRules` + `holidayCalendars`); die
-Tracker liefern nach dem Umbau `peakRules`, ältere Deploys noch `peakHours`
-(Legacy). `ai-10-usd` ist **dual-tolerant** und bricht mit keiner der beiden Formen.
+Verbindliche Form laut `peak-spec.md §1`: `peakRules` + `holidayCalendars`; ältere
+Deploys liefern noch `peakHours` (Legacy). `ai-10-usd` ist **dual-tolerant** und bricht
+mit keiner der beiden Formen. Alle Peak-Felder sind **provider-dimensioniert**
+(`{ openCodeGo, commandCode }`) — jede Spalte der Vergleichstabelle zeigt die Zeiten
+**ihres** Anbieters.
 
 - `scripts/normalize.mjs` reicht **alle drei** Felder verbatim durch (`?? null`):
   `peakHours` (Legacy), `peakRules`, `holidayCalendars`. **Keine** Umrechnung von
-  Legacy-Stunden auf Wochentage — die alte Form nennt keinen Wochentags-Scope,
-  jede Zuordnung wäre geraten (Hausregel: lieber sichtbar „unbekannt“ als falsch).
-- `buildComparison` (`scripts/comparison-core.mjs`) schreibt
-  `peakWindows` (**Legacy-only**, aus `peakHours`), `peakRules` und
-  `holidayCalendars` je Provider; leere Provider-Seite → `null` (`orNull`).
-  Die Einträge werden über `capturePeakForProvider` **umgehängt** auf den Key, den
-  die UI aus `sourceName` bildet (`peakKeyOf(prettyName(model.name))`: lowercase,
-  alle Nicht-Alphanumerika entfernen) — **nicht** verbatim durchgereicht.
-  Das behebt den Bug, dass der Quell-Key `deepseekv4.1flash` (Punkt) nicht auf den
-  UI-Key `deepseekv41flash` passte → V4.1 Flash zeigte nie sein Fenster.
-- `PeakRule` / `HolidayCalendar` / `ProviderPeakData<T>` in `src/types.ts`
-  spiegeln die Spec exakt (`days` = ISO-Wochentage 1=Mo…7=So, `windowsUtc`,
-  `timezone` = IANA, `holidays.calendar` → `holidayCalendars`).
-- **Auswertung an einer Stelle:** `src/lib/peak.ts` (`resolvePeak`,
-  `isPeakAt`, `isBeforeEffectiveFrom`, `nextTransition`, `localPeakByWeekday`,
-  `formatLocalScope`/`formatDayScope`/`formatUtcWindows`/`timezoneLabel`).
-  Semantik: Feiertag (in `rule.timezone`) → Off-Peak; sonst Peak, wenn Wochentag ∈
-  `peak.days` (in `rule.timezone` bewertet) **und** UTC-Stunde ∈ `windowsUtc`;
-  vor `effectiveFrom` kein Peak. **Kein 调休/`isWorkday`** (ein Ausgleichs-Samstag
-  bleibt Off-Peak). Die Auswertung ist mit `ocgo-price-tracker`/`cc-price-tracker`
-  identisch gehalten.
-- `src/PeakCell.svelte` sitzt **in** der Provider-Zelle (keine eigene Spalte):
-  Chip „jetzt Peak“/„now peak“ **nur** bei aktivem Peak; Countdown bis zum
-  nächsten Wechsel; Lookup über `resolvePeak(data, provider, sourceName)`
-  (Provider + `sourceName`), sodass jede Zelle die Zeiten **ihres** Anbieters zeigt.
-  - **Lokale Zeitzone ersetzt die UTC-Zeile nach der Hydration:** das prerenderte
-    HTML zeigt die UTC/Provider-Zeile (`Mon–Fri (Beijing time) · 01:00–04:00 +
-    06:00–10:00 UTC`); nach der Hydration ersetzt `Intl…timeZone` sie durch die
-    lokalen Fenster (`Mon–Fri 03:00–06:00 + 08:00–12:00 (Europe/Vienna)`). Die
-    lokalen Fenster werden aus `localPeakByWeekday` **abgeleitet** (jede lokale
-    Stunde über `isPeakAt` bewerten), **nicht** per Offset addiert — sonst läge ein
-    UTC-Fenster 22:00–24:00 am falschen lokalen Wochentag. Der Tooltip nennt nach
-    der Hydration **beide** Zeilen (lokal + UTC/Provider-Referenz).
-  - `formatLocalScope` fasst gleichbleibende Intervalle über aufeinanderfolgende
-    Tage zusammen (`Mo–Fr 03:00–06:00 + 08:00–12:00`) und schreibt bei täglich
-    identischem Muster `täglich 00:00–02:00 + 18:00–24:00` — **mit** Fenstern
-    (nie das nackte Wort).
-- **Zeilen-Dimmung analog zum OpenCode-Go-Projekt (Nutzerentscheid 2026-10-02):**
-  `src/App.svelte` `rowTierInactive(row)` + `rowClass` hängen `opacity-50` an die
-  **ganze `<tr>`** — dieselbe Logik wie `isTierActive` in `ocgo-price-tracker`
-  (`PeakIndicator.tsx`). Eine „Peak“-Zeile ist wirksam, wenn gerade Peak ist, eine
-  „Off-Peak“-Zeile, wenn gerade **kein** Peak ist; die jeweils **inaktive** Stufe
-  wird heruntergestuft. Die Stufe kommt aus dem `displayName`-Suffix; Basis-Zeilen
-  ohne Suffix und Zeilen ganz ohne Regel werden nie gedimmt. Bei mehreren Providern
-  gilt die Zeile als wirksam, sobald **ein** Provider dieser Stufe wirkt.
-- **Hydration-sichere Uhr:** `src/lib/clock.svelte.ts` startet mit dem
-  Build-Stempel (`src/lib/buildInfo.ts` → `__BUILD_TIME_ISO__`, per Vite-`define`)
-  und schaltet erst in `onMount` (`startPeakClock`) auf `Date.now()` — Server- und
-  erster Client-Render sind zeichengleich. `__setPeakNow` ist der Test-Hook.
-- `src/lib/share.ts` bleibt **auf HEAD-Verhalten** (Nutzerentscheid 2026-10-02: die
-  Wochentags-/Feiertags-Ausgabe auf der Share-Card wurde **zurückgenommen** — für
-  diese $10-Vergleichsseite nicht relevant). Die Karte zeigt weiter nur die
-  UTC-Fensterzeile (Portrait-Badge + Constraints); `peakWindowsOf` ist
+  Legacy-Stunden auf Wochentage (Hausregel: lieber sichtbar „unbekannt“ als falsch).
+- `buildComparison` (`scripts/comparison-core.mjs`) schreibt `peakWindows`
+  (**Legacy-only**, aus `peakHours`), `peakRules` und `holidayCalendars` je Provider;
+  leere Provider-Seite → `null` (`orNull`). Die Einträge werden über
+  `capturePeakForProvider` **umgehängt** auf den Key, den die UI aus `sourceName` bildet
+  (`peakKeyOf(prettyName(model.name))`: lowercase, alle Nicht-Alphanumerika entfernen) —
+  **nicht** verbatim durchgereicht.
+- `PeakRule` / `HolidayCalendar` / `ProviderPeakData<T>` in `src/types.ts` spiegeln die
+  Spec exakt (`days` = ISO-Wochentage 1=Mo…7=So, `windowsUtc`, `timezone` = IANA,
+  `holidays.calendar` → `holidayCalendars`).
+- **Auswertung an einer Stelle:** `src/lib/peak.ts` (`resolvePeak`, `isPeakAt`,
+  `isBeforeEffectiveFrom`, `nextTransition`, `localPeakByWeekday`, `formatLocalScope`/
+  `formatDayScope`/`formatUtcWindows`/`timezoneLabel`). Semantik: Feiertag (in
+  `rule.timezone`) → Off-Peak; sonst Peak, wenn Wochentag ∈ `peak.days` (in
+  `rule.timezone` bewertet) **und** UTC-Stunde ∈ `windowsUtc`; vor `effectiveFrom` kein
+  Peak. **Kein 调休/`isWorkday`** (ein Ausgleichs-Samstag bleibt Off-Peak). Die
+  Auswertung ist mit `ocgo-price-tracker`/`cc-price-tracker` identisch gehalten.
+- `src/PeakCell.svelte` sitzt **in** der Provider-Zelle (keine eigene Spalte): Chip
+  „jetzt Peak“/„now peak“ **nur** bei aktivem Peak; Countdown bis zum nächsten Wechsel;
+  Lookup über `resolvePeak(data, provider, sourceName)` (Provider + `sourceName`), sodass
+  jede Zelle die Zeiten **ihres** Anbieters zeigt.
+  - Das prerenderte HTML zeigt die UTC/Provider-Zeile; nach der Hydration ersetzt
+    `Intl…timeZone` sie durch die **lokalen** Fenster. Lokale Fenster aus
+    `localPeakByWeekday` **ableiten** (jede lokale Stunde über `isPeakAt` bewerten),
+    **nicht** per Offset addieren. Der Tooltip nennt nach der Hydration **beide** Zeilen
+    (lokal + UTC/Provider-Referenz).
+  - `formatLocalScope` fasst gleichbleibende Intervalle über aufeinanderfolgende Tage
+    zusammen (`Mo–Fr 03:00–06:00 + 08:00–12:00`) und schreibt bei täglich identischem
+    Muster `täglich 00:00–02:00 + 18:00–24:00` — **mit** Fenstern (nie das nackte Wort).
+- **Zeilen-Dimmung analog zum OpenCode-Go-Projekt:** `src/App.svelte`
+  `rowTierInactive(row)` + `rowClass` hängen `opacity-50` an die **ganze `<tr>`** —
+  dieselbe Logik wie `isTierActive` in `ocgo-price-tracker` (`PeakIndicator.tsx`). Eine
+  „Peak“-Zeile ist wirksam, wenn gerade Peak ist, eine „Off-Peak“-Zeile, wenn gerade
+  **kein** Peak ist; die jeweils **inaktive** Stufe wird heruntergestuft. Die Stufe kommt
+  aus dem `displayName`-Suffix; Basis-Zeilen ohne Suffix und Zeilen ganz ohne Regel
+  werden nie gedimmt. Bei mehreren Providern gilt die Zeile als wirksam, sobald **ein**
+  Provider dieser Stufe wirkt.
+- **Hydration-sichere Uhr:** `src/lib/clock.svelte.ts` startet mit dem Build-Stempel
+  (`src/lib/buildInfo.ts` → `__BUILD_TIME_ISO__`, per Vite-`define`) und schaltet erst in
+  `onMount` (`startPeakClock`) auf `Date.now()` — Server- und erster Client-Render sind
+  zeichengleich. `__setPeakNow` ist der Test-Hook.
+- `src/lib/share.ts`: die Share-Card zeigt **nur** die UTC-Fensterzeile (Portrait-Badge +
+  Constraints), **keinen** Wochentags-/Feiertags-Scope. `peakWindowsOf` ist
   provider-dimensioniert, aggregiert über beide Provider (erste nicht-leere Menge
   gewinnt) und liest das Fenster aus `peakWindows` (Legacy `peakHours`) **oder**
-  `peakRules[..].peak.windowsUtc` (neue Form) — sonst fiele die Zeile nach der
-  Migration still weg. Übernommen werden **nur** die Fenster, nie der
-  Wochentags-Scope.
+  `peakRules[..].peak.windowsUtc` (neue Form).
 - **Lokale Validierung:** `scripts/build-comparison.mjs` liest die Quellen per
-  `OPEN_CODE_URL` / `COMMAND_CODE_URL` (Default: die Live-URLs). Für den Bau gegen
-  die neuen `peakRules` aus den lokalen Dev-Servern:
+  `OPEN_CODE_URL` / `COMMAND_CODE_URL` (Default: die Live-URLs). Für den Bau gegen die
+  neuen `peakRules` aus den lokalen Dev-Servern:
   `OPEN_CODE_URL=http://localhost:5173/data/latest.json COMMAND_CODE_URL=http://localhost:5174/data/latest.json pnpm build`.
 
 ## UI-Regeln (daisyUI 5 / Tailwind 4)
@@ -175,68 +158,94 @@ Tracker liefern nach dem Umbau `peakRules`, ältere Deploys noch `peakHours`
   `@plugin "daisyui";` in `src/app.css`.
 - **Farbcodierung (immer mit Legende):** `badge-success` = OpenCode Go gewinnt,
   `badge-info` = Command Code gewinnt, `badge-ghost` = Draw (<10%),
-  `badge-warning` = „big gap“ (≥35% Vorsprung) bzw. „Not comparable“.
-  Legenden-Badges haben Einheitsbreite (`min-w-28 justify-center whitespace-nowrap`).
+  `badge-warning` = „big gap“ (≥35% Vorsprung) bzw. „Not comparable“. Legenden-Badges
+  haben Einheitsbreite (`min-w-28 justify-center whitespace-nowrap`).
 - **Alle Badges** im Table: `whitespace-nowrap` — mehrzeilige Badges sind verboten.
   Winner-Badge in der Tabelle ebenfalls `min-w-28 justify-center`.
 - **Defaults:** `matchedOnly = true` („Both plans only“) und Sortierung
   `maxRequests desc` (hohes Anfragevolumen = günstige Modelle oben).
 - **Spalten:** Modell (Name + `big gap`-Badge), OpenCode Go /$10 (fett + grün wenn
-  Sieger, Sub-Caption `$Nutzung usage`), Command Code /$10 (fett + info wenn
-  Sieger, Sub-Captions `$Allowance allowance` — **kein doppeltes `$`**,
-  `money()` formatiert bereits mit Währung — und `≈ {raw} unbereinigt`
-  (`averageRequestsPerMonth`, roher Wert vor der $10-Normalisierung)), Difference
-  (Inline-Segment-Bar Go/CC + `+Anzahl (Pct)`, immer positiv), Max / $10
-  (`max(go, cc)`, sortierbar), Better value (Winner-Badge). Fehlende Werte: `-`.
-  Sortieren ausschließlich über Spalten-Header-Buttons (keine Sortier-Zeile).
+  Sieger, Sub-Caption `$Nutzung usage`), Command Code /$10 (fett + info wenn Sieger,
+  Sub-Captions `$Allowance allowance` — **kein doppeltes `$`**, `money()` formatiert
+  bereits mit Währung — und `≈ {raw} unbereinigt` (`averageRequestsPerMonth`, roher Wert
+  vor der $10-Normalisierung)), Difference (Inline-Segment-Bar Go/CC + `+Anzahl (Pct)`,
+  immer positiv), Max / $10 (`max(go, cc)`, sortierbar), Better value (Winner-Badge).
+  Fehlende Werte: `-`. Sortieren ausschließlich über Spalten-Header-Buttons (keine
+  Sortier-Zeile).
 - **Tooltips sind Toggle-only:** Interaktive Tooltips (z. B. `UnadjustedCaption.svelte`
-  für „≈ … unbereinigt") öffnen/schließen ausschließlich per Klick/Tap
-  (`.tooltip-open`-State) — **nie via `:hover`/`:focus-visible`** (daisyUI zeigt
-  Tooltips sonst bei Fokus dauerhaft → „Sticky Bubble" auf Touch). Umsetzung:
-  Klasse `.tap-tooltip` in `src/app.css` erzwingt `opacity: 0 !important` außer
-  bei `.tooltip-open`; Outside-Tap schließt (`pointerdown`-Handler); Position
-  `tooltip-top` (nicht left/bottom — Clipping-Risiko im `overflow-x-auto`-Container).
-  Der rohe Wert bleibt zusätzlich immer als Caption sichtbar (Tooltip ist nur
-  Erklärung, nie die einzige Informationsquelle).
+  für „≈ … unbereinigt“) öffnen/schließen ausschließlich per Klick/Tap
+  (`.tooltip-open`-State) — **nie via `:hover`/`:focus-visible`**. Umsetzung: Klasse
+  `.tap-tooltip` in `src/app.css` erzwingt `opacity: 0 !important` außer bei
+  `.tooltip-open`; Outside-Tap schließt (`pointerdown`-Handler); Position `tooltip-top`.
+  Der rohe Wert bleibt zusätzlich immer als Caption sichtbar
+  (Tooltip ist nur Erklärung, nie die einzige Informationsquelle).
 - **Header-Links** zu den Trackern: „OpenCode Go [price tracker] ↗“ /
-  „Command Code [price tracker] ↗“ — die Links müssen als Preis-Tracker-Seiten
-  erkennbar sein.
-- **Abschnitte:** Stats (Cards + Legende darunter, inkl. „Big gap ≥ 35%“) →
-  Preistabelle → Plan prices → Changelog-artige? Nein: Statistik-Cards
-  „Biggest relative differences“ (Sortierung nach %, Zeilen zeigen
-  `+Anzahl · Pct`) und „Biggest absolute differences“ (Sortierung nach
+  „Command Code [price tracker] ↗“ — die Links müssen als Preis-Tracker-Seiten erkennbar
+  sein.
+- **Abschnitte:** Stats (Cards + Legende darunter, inkl. „Big gap ≥ 35%“) → Preistabelle
+  → Plan prices → Statistik-Cards „Biggest relative differences“ (Sortierung nach %,
+  Zeilen zeigen `+Anzahl · Pct`) und „Biggest absolute differences“ (Sortierung nach
   `normalizedDifference`, gleiche Badge-Darstellung) — beide mit Legende +
   Winner-Badge-Darstellung. **Kein** Outliers-Abschnitt in der UI.
-- **Query-Params:** `sort=…`, `dir=…`, `match=1`, `q=…` werden beim Laden gelesen
-  und via `history.replaceState` geschrieben.
+- **Query-Params:** `sort=…`, `dir=…`, `match=1`, `q=…` werden beim Laden gelesen und
+  via `history.replaceState` geschrieben.
 
 ## CI/CD (`.github/workflows/pages.yml`)
 
 - Trigger: `push` auf `main`, `workflow_dispatch`, `repository_dispatch` Typ
   `source-updated`.
 - Pipeline: install (`--frozen-lockfile`) → `pnpm test` → `pnpm build` (generiert
-  `public/data/latest.json`) → `pnpm smoke` (bricht rot ab, bevor kaputte
-  Bundles auf Pages landen) → Commit-Step: **nur bei semantischer Änderung**
-  (`scripts/has-semantic-change.mjs` vergleicht gegen `HEAD`, ignoriert den
-  volatilen `generatedAt`-Stempel — verhindert Commit-Schleifen; bot-Commit
-  pusht → ein zusätzlicher No-Op-Lauf, keine Schleife) →
-  `upload-pages-artifact` (dist) + `upload-artifact` (Zip) → `deploy-pages`.
+  `public/data/latest.json`) → `pnpm smoke` (bricht rot ab, bevor kaputte Bundles auf
+  Pages landen) → Commit-Step: **nur bei semantischer Änderung**
+  (`scripts/has-semantic-change.mjs` vergleicht gegen `HEAD`, ignoriert den volatilen
+  `generatedAt`-Stempel) → `upload-pages-artifact` (dist) + `upload-artifact` (Zip) →
+  `deploy-pages`.
 - Die **Tracker-Repos** feuern den Dispatch nach dem Deploy **nur wenn ihre Daten
   geändert wurden** (`needs.build.outputs.changed == 'true'`) mit Secret
-  `AI10USD_DISPATCH_TOKEN` (PAT, cross-repo nötig — `GITHUB_TOKEN` reicht nicht).
-  Fehlt das Secret → Step wird übersprungen (Tracker bleiben grün).
+  `AI10USD_DISPATCH_TOKEN` (PAT, cross-repo nötig — `GITHUB_TOKEN` reicht nicht). Fehlt
+  das Secret → Step wird übersprungen.
 
 ## SEO / Prerender & Sprachen
 
-- **Statisches Pre-Rendering:** `pnpm build` läuft `pnpm generate` → `svelte-check` → `node scripts/prerender.mjs`. Dieser baut per Vite JS API zuerst das SSR-Bundle (`src/ssr-entry.ts` → `.ssr-build/`, gitignored; `render` aus `svelte/server`), rendert `App.svelte` **in beiden Sprachen**, baut dann den Client und injiziert das Markup in die leeren `#app`-Divs. `pnpm generate` braucht Netz; der Prerender selbst liest nur `public/data/latest.json` (Fehler nur, wenn die Datei fehlt).
-- **Zwei Sprach-Subrouten:** `dist/index.html` (Englisch, Default `/`) und `dist/de/index.html` (Deutsch `/de/`, `<html lang="de">`). `base: "/"` (absolute `/assets/…`) — sonst brechen die Assets unter `/de/`.
-- **Eingebettete Daten:** der Client liest die Vergleichsdaten synchron aus `<script type="application/json" id="__COMPARISON__">` (`src/lib/data.ts`, `readEmbeddedComparison`); `fetch('/data/latest.json')` ist nur Fallback (Dev). **Achtung Named-Element-Global:** ein Element mit `id="__COMPARISON__"` erzeugt automatisch `window.__COMPARISON__` (DOM-Element) — der Global wird per Shape-Guard (`Array.isArray(rows)`) geprüft, nie blind vertraut.
-- **Hydration:** `src/main.ts` ruft `hydrate(...)` (Fallback `mount`); `initialLang` synchron aus dem Pfadpräfix (`/de…` → de, sonst en), `initialData` aus dem eingebetteten JSON. Erster Client-Render = Prerender-Output.
-- **Hydration-Defaults:** Sprache/Theme starten deterministisch (Pfad-Sprache + hell). localStorage/`navigator`/System-Theme sowie `?lang=`/`?theme=` werden erst **nach** der Hydration in `onMount` angewandt; `?lang=de|en` bleibt Alias und die URL wird danach per `replaceState` auf die Pfadform normalisiert.
-- **Sprach-Priorität (erst nach Hydration, kein SSR-Redirect):** `?lang=` > Pfad (`/de/` wird nie überschrieben) > auf `/`: gespeicherte Wahl, sonst `navigator.language` (beginnt mit `de` → `/de/`) > Englisch. Umstellung per `replaceState`; der komplette Query-String (ohne `lang`) **und der Hash** bleiben beim Sprachwechsel erhalten (auch `share`/`slang`/`sort`). Crawler sehen auf `/` immer Englisch.
-- **hreflang/Canonical:** `en` → `/`, `de` → `/de/`, `x-default` → präfixlose URL; Canonical je Datei auf die eigene Sprach-URL (`/` bzw. `/de/`).
-- **Head-SEO (je Datei):** Title/Description/Canonical/`og:locale` in der jeweiligen Sprache, `hreflang` en/de/x-default, RSS-Autodiscovery (`releases.atom`), JSON-LD (`WebSite` + `ItemList` der Top-Modelle + `FAQPage` aus `FAQ[lang]` in `src/i18n.ts`). `scripts/prerender.mjs` schreibt außerdem `dist/robots.txt` + `dist/sitemap.xml` (beide URLs). Die sichtbare FAQ (`<details>`) und das „Fazit“-Element kommen aus `App.svelte`/`i18n.ts` und liegen damit ebenfalls im SSR-Output.
-- **Tests:** `tests/seo.test.mjs` prüft `dist/` (skip ohne Build: `#app`-Markup, `<h1>`, Modellnamen, JSON-LD, Sprachdateien, robots/sitemap). `scripts/smoke.mjs` prüft nach dem Build per HTTP `/`, `/de/`, `robots.txt`, `sitemap.xml`, `<h1>`, JSON-LD und einen vorgerenderten Modellnamen.
+- **Statisches Pre-Rendering:** `pnpm build` läuft `pnpm generate` → `svelte-check` →
+  `node scripts/prerender.mjs`. Dieser baut per Vite JS API zuerst das SSR-Bundle
+  (`src/ssr-entry.ts` → `.ssr-build/`, gitignored; `render` aus `svelte/server`), rendert
+  `App.svelte` **in beiden Sprachen**, baut dann den Client und injiziert das Markup in
+  die leeren `#app`-Divs. `pnpm generate` braucht Netz; der Prerender selbst liest nur
+  `public/data/latest.json`.
+- **Zwei Sprach-Subrouten:** `dist/index.html` (Englisch, Default `/`) und
+  `dist/de/index.html` (Deutsch `/de/`, `<html lang="de">`). `base: "/"` (absolute
+  `/assets/…`) — sonst brechen die Assets unter `/de/`.
+- **Eingebettete Daten:** der Client liest die Vergleichsdaten synchron aus
+  `<script type="application/json" id="__COMPARISON__">` (`src/lib/data.ts`,
+  `readEmbeddedComparison`); `fetch('/data/latest.json')` ist nur Fallback (Dev).
+  **Achtung Named-Element-Global:** ein Element mit `id="__COMPARISON__"` erzeugt
+  automatisch `window.__COMPARISON__` (DOM-Element) — der Global wird per Shape-Guard
+  (`Array.isArray(rows)`) geprüft, nie blind vertraut.
+- **Hydration:** `src/main.ts` ruft `hydrate(...)` (Fallback `mount`); `initialLang`
+  synchron aus dem Pfadpräfix (`/de…` → de, sonst en), `initialData` aus dem
+  eingebetteten JSON. Erster Client-Render = Prerender-Output.
+- **Hydration-Defaults:** Sprache/Theme starten deterministisch (Pfad-Sprache + hell).
+  localStorage/`navigator`/System-Theme sowie `?lang=`/`?theme=` werden erst **nach** der
+  Hydration in `onMount` angewandt; `?lang=de|en` bleibt Alias und die URL wird danach per
+  `replaceState` auf die Pfadform normalisiert.
+- **Sprach-Priorität (erst nach Hydration, kein SSR-Redirect):** `?lang=` > Pfad (`/de/`
+  wird nie überschrieben) > auf `/`: gespeicherte Wahl, sonst `navigator.language` (beginnt
+  mit `de` → `/de/`) > Englisch. Umstellung per `replaceState`; der komplette Query-String
+  (ohne `lang`) **und der Hash** bleiben beim Sprachwechsel erhalten (auch
+  `share`/`slang`/`sort`). Crawler sehen auf `/` immer Englisch.
+- **hreflang/Canonical:** `en` → `/`, `de` → `/de/`, `x-default` → präfixlose URL;
+  Canonical je Datei auf die eigene Sprach-URL (`/` bzw. `/de/`).
+- **Head-SEO (je Datei):** Title/Description/Canonical/`og:locale` in der jeweiligen
+  Sprache, `hreflang` en/de/x-default, RSS-Autodiscovery (`releases.atom`), JSON-LD
+  (`WebSite` + `ItemList` der Top-Modelle + `FAQPage` aus `FAQ[lang]` in `src/i18n.ts`).
+  `scripts/prerender.mjs` schreibt außerdem `dist/robots.txt` + `dist/sitemap.xml`
+  (beide URLs). Die sichtbare FAQ (`<details>`) und das „Fazit“-Element kommen aus
+  `App.svelte`/`i18n.ts` und liegen damit ebenfalls im SSR-Output.
+- **Tests:** `tests/seo.test.mjs` prüft `dist/` (skip ohne Build: `#app`-Markup, `<h1>`,
+  Modellnamen, JSON-LD, Sprachdateien, robots/sitemap). `scripts/smoke.mjs` prüft nach dem
+  Build per HTTP `/`, `/de/`, `robots.txt`, `sitemap.xml`, `<h1>`, JSON-LD und einen
+  vorgerenderten Modellnamen.
 
 ## Schwester-Projekte (Git-Remotes)
 
@@ -263,34 +272,23 @@ git log --oneline origin/main..ocgo-price-tracker/main --no-decorate | head
 ## Tests
 
 - `pnpm test` = `tests/comparison.test.mjs`: testet die **echten** Funktionen aus
-  `scripts/comparison-core.mjs` (keine Mirror-Implementierungen) — `requestCost`
-  (5%/95%-Heuristik, Cached-Write-Fallback), `percentile`/`average`/
-  `distribution` (∞ ausgeklammert), `computeFinite`/`providerValue` (free/paid),
-  `compareGroup` (Draw <10%, Sieger, ∞-Marge, `promoExpires`), `findOutliers`
-  (Tukey-IQR), `variantKind`/`variantTitle`, Normalisierung (×10/10.77) plus die
-  Pipeline `buildComparison` deterministisch über Fixture-Snapshots (matched/
-  winnerCounts/unlimited/Exclusions/Warnungen, fehlender GOAT-Plan wirft) und die
-  Modell-Map-Matches (`model-map.mjs`). `pnpm build` läuft zusätzlich `svelte-check`
-  (0 errors/warnings Pflicht).
-- **Peak-Dual-Toleranz, Auswertung & Share-Card:** `tests/peak.test.mjs` testet
-  die Auswertung in `src/lib/peak.ts` mit **festen** Zeitstempeln (keine Wanduhr):
-  `isPeakAt` (Werktag im/außerhalb Fenster, Wochenende, `effectiveFrom`, optionale
-  Feiertage), `nextTransition` (nächster Wechsel, Wochenende überspringen),
-  Zonenrand, `localIsoDate`/`localPeakByWeekday`/`formatLocalScope` (lokale
-  Fenster inkl. Mitternachtsüberlauf und `täglich` **mit** Fenstern) sowie die
-  Format-Helfer. `tests/comparison.test.mjs` prüft die **Provider-Dimension** und
-  das Umhängen der Keys (`capturePeakForProvider`) für `peakRules`/
-  `holidayCalendars` und den Legacy-Pfad `peakHours → peakWindows`. `tests/share.test.mjs`
-  testet `src/lib/share.ts` direkt (Node-Type-Stripping, deshalb explizite
-  `.ts`-Specifier in `share.ts`): `rowVariant`/`peakKey`, das **provider-aggregierende**
-  `peakWindowsOf`, `peakWindowsSummary` und `buildShareSvg` (Portrait mit
-  UTC-Fensterzeile, Landscape ohne — **kein** Wochentags-Scope). Fixture
-  `tests/fixtures/opencode-peak-rules.json`; die Legacy-Fixtures bleiben
-  unverändert und beweisen die Dual-Toleranz.
-- **Screenshot-Tests sind permanent:** neue UI-Features (insb. Share-Cards) bekommen Playwright-Tests in
-  `tests/screenshots/` (Suite `playwright.screenshots.config.ts`, `pnpm test:screenshots`) — alle Size-Varianten
-  + Mobile + beide Sprachen (de/en). Keine Einmal-Screenshots: die Tests bleiben im Repo und müssen bei jeder
-  Umsetzung grün laufen.
+  `scripts/comparison-core.mjs` (keine Mirror-Implementierungen) — `requestCost`,
+  `percentile`/`average`/`distribution`, `computeFinite`/`providerValue`, `compareGroup`,
+  `findOutliers`, `variantKind`/`variantTitle`, Normalisierung (×10/10.77), die Pipeline
+  `buildComparison` deterministisch über Fixture-Snapshots und die Modell-Map-Matches
+  (`model-map.mjs`). `pnpm build` läuft zusätzlich `svelte-check` (0 errors/warnings
+  Pflicht).
+- **Peak:** `tests/peak.test.mjs` testet die Auswertung in `src/lib/peak.ts` mit
+  **festen** Zeitstempeln (keine Wanduhr); `tests/comparison.test.mjs` zusätzlich die
+  Provider-Dimension + das Re-Keying (`capturePeakForProvider`) und den Legacy-Pfad
+  `peakHours → peakWindows`; `tests/share.test.mjs` `src/lib/share.ts` direkt
+  (Node-Type-Stripping → explizite `.ts`-Specifier in `share.ts`). Die Legacy-Fixtures
+  bleiben unverändert und beweisen die Dual-Toleranz.
+- **Screenshot-Tests sind permanent:** neue UI-Features (insb. Share-Cards) bekommen
+  Playwright-Tests in `tests/screenshots/` (Suite `playwright.screenshots.config.ts`,
+  `pnpm test:screenshots`) — alle Size-Varianten + Mobile + beide Sprachen (de/en). Keine
+  Einmal-Screenshots: die Tests bleiben im Repo und müssen bei jeder Umsetzung grün
+  laufen.
 
 ## Verifikation
 

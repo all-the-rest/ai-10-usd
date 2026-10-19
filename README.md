@@ -113,6 +113,51 @@ repos** (Settings → Secrets and variables → Actions):
   token is required.
 - If the secret is missing the dispatch step is skipped (trackers stay green).
 
+## Design notes
+
+Durable decisions and rationale (previously kept in `AGENTS.md`).
+
+- **TypeScript pin:** `typescript` is pinned to `~6.0.3` because `svelte-check` 4.x
+  does not accept TS 7 yet (peer `^5 || ^6`). The upgrade waits for
+  `svelte-check@5`; the blocked item is tracked in `Agents.todo.md`.
+- **Paid-price provenance:** `COMMAND_CODE_PAID_PRICE = 10.77` is the
+  user-confirmed paid monthly price (`https://cc-pricing.all-the.rest/?sort=requests:desc`).
+  Command Code counts scale by `10 / 10.77`; OpenCode Go is already $10.
+- **Message-pattern fallback:** `AVERAGE_MESSAGE_PATTERN = 800/50000/162` is a
+  Command-Code measurement and is used for every model without its own per-model
+  `pattern`.
+- **Model matching:** per-source overrides (`sourceAliases`) intentionally win over
+  the global `aliases`, because sources reuse the same name for different models —
+  OpenCode Go calls the contributor tier just "Muse Spark 1.2" (`musespark12`),
+  while Command Code lists the contributor and the expensive base model separately
+  (`musespark12contributor`); the base "Muse Spark 1.2" therefore stays unmapped and
+  shows up as `commandCodeOnly`.
+- **Peak key re-mapping:** `buildComparison` re-keys peak entries onto the UI key via
+  `peakKeyOf(prettyName(name))`. This fixes a bug where the source key
+  `deepseekv4.1flash` (with a dot) never matched the UI key `deepseekv41flash`, so
+  DeepSeek V4.1 Flash never showed its peak window.
+- **Legacy tolerance is pass-through only:** the old `peakHours` form carries no
+  weekday scope, so it is forwarded verbatim and never converted into weekdays —
+  guessing would be wrong (house rule: show "unknown" rather than something false).
+  Holidays stay empty because the tracker source names no holiday dates, and the
+  optional holiday branch in `isPeakAt` is inert. Rejected changes (weekday/holiday
+  share-card output, `调休`/`isWorkday`) are recorded in `Agents.todo.md`.
+- **Tooltip behavior:** interactive tooltips are click/tap-only because daisyUI keeps
+  hover/focus tooltips open, which produces a "sticky bubble" on touch devices.
+- **CI no-op run:** the bot commit (`has-semantic-change.mjs`) can push once more and
+  trigger exactly one additional run — but no loop, since a clean tree produces no
+  further semantic change.
+- **CORS:** both tracker endpoints send `access-control-allow-origin: *`.
+- **Test coverage:** `tests/comparison.test.mjs` covers the real functions of
+  `scripts/comparison-core.mjs` — `requestCost` (5%/95% heuristic, cached-write
+  fallback), `percentile`/`average`/`distribution` (∞ excluded),
+  `computeFinite`/`providerValue` (free/paid), `compareGroup` (draw <10%, winner,
+  ∞ margin, `promoExpires`), `findOutliers` (Tukey-IQR),
+  `variantKind`/`variantTitle`, normalization (×10/10.77), the deterministic
+  `buildComparison` pipeline over fixture snapshots (matched/winnerCounts/unlimited/
+  exclusions/warnings, missing GOAT plan throws) and the model-map matches; the peak
+  tests use the fixture `tests/fixtures/opencode-peak-rules.json`.
+
 ## License
 
 Project code: MIT. Scraped prices are the property of their respective providers.
