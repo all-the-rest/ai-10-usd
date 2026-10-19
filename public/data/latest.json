@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T12:09:05.295Z",
+  "generatedAt": "2026-10-19T12:10:35.676Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-19T10:09:29.352Z",
+      "fetchedAt": "2026-10-19T12:09:10.693Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -1866,6 +1866,33 @@
       }
     },
     {
+      "canonicalModel": "minimaxm31flashfree",
+      "displayName": "MiniMax M3.1 Flash Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "MiniMax M3.1 Flash Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
+      }
+    },
+    {
       "canonicalModel": "mistrallarge4",
       "displayName": "Mistral Large 4",
       "status": "commandCodeOnly",
@@ -2426,33 +2453,6 @@
         "normalizedDifference": 190.51213402501378,
         "advantagePercent": 23.80068090374497,
         "winner": "commandCode"
-      }
-    },
-    {
-      "canonicalModel": "spacebunny",
-      "displayName": "Space Bunny",
-      "status": "openCodeGoOnly",
-      "openCodeGo": {
-        "sourceName": "Space Bunny",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 30,
-        "averageRequestCost": 0.00192,
-        "averageRequestsPerMonth": 15625,
-        "normalizedRequestsPer10": 15625,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00064
-      },
-      "commandCode": null,
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
       }
     },
     {
