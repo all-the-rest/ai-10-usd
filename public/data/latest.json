@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T14:10:09.045Z",
+  "generatedAt": "2026-10-19T18:03:52.928Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-19T14:06:14.518Z",
+      "fetchedAt": "2026-10-19T16:04:04.640Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-19T14:08:29.821Z",
+      "fetchedAt": "2026-10-19T18:01:55.238Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1866,6 +1866,35 @@
       }
     },
     {
+      "canonicalModel": "minimaxm31flash",
+      "displayName": "MiniMax M3.1 Flash",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "MiniMax M3.1 Flash",
+        "variantCount": 1,
+        "unlimited": true,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0009672000000000001,
+        "averageRequestsPerMonth": null,
+        "normalizedRequestsPer10": null,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0005208372,
+        "paidNormalizedRequestsPer10": 19199.857460258212,
+        "paidAverageRequestsPerMonth": 20678.246484698095
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": "2026-10-21",
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
+    {
       "canonicalModel": "minimaxm31flashfree",
       "displayName": "MiniMax M3.1 Flash Free",
       "status": "openCodeGoOnly",
@@ -1890,35 +1919,6 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": "openCodeGo"
-      }
-    },
-    {
-      "canonicalModel": "minimaxm31flash",
-      "displayName": "MiniMax M3.1 Flash Preview",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "MiniMax M3.1 Flash Preview",
-        "variantCount": 1,
-        "unlimited": true,
-        "averageAllowance": 20,
-        "averageRequestCost": 0.0009672000000000001,
-        "averageRequestsPerMonth": null,
-        "normalizedRequestsPer10": null,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0005208372,
-        "paidNormalizedRequestsPer10": 19199.857460258212,
-        "paidAverageRequestsPerMonth": 20678.246484698095
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": true
-      },
-      "promoExpires": "2026-10-20",
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
       }
     },
     {
