@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T18:03:52.928Z",
+  "generatedAt": "2026-10-19T23:51:30.573Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-19T16:04:04.640Z",
+      "fetchedAt": "2026-10-19T20:00:21.957Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-19T18:01:55.238Z",
+      "fetchedAt": "2026-10-19T23:50:14.606Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -306,33 +306,6 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": "openCodeGo"
-      }
-    },
-    {
-      "canonicalModel": "catjam",
-      "displayName": "Cat Jam",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Cat Jam",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": true
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
       }
     },
     {
@@ -2605,10 +2578,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 78,
+    "totalModels": 77,
     "coverage": {
       "openCodeGo": 31,
-      "commandCode": 71
+      "commandCode": 70
     },
     "requestsPer10": {
       "openCodeGo": {
