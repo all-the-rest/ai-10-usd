@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T01:13:28.857Z",
+  "generatedAt": "2026-10-22T16:02:45.784Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-21T23:30:24.143Z",
+      "fetchedAt": "2026-10-22T16:00:40.916Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-21T23:29:34.256Z",
+      "fetchedAt": "2026-10-22T14:10:26.932Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1841,20 +1841,30 @@
     {
       "canonicalModel": "minimaxm31flash",
       "displayName": "MiniMax M3.1 Flash",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
+      "status": "matched",
+      "openCodeGo": {
+        "sourceName": "MiniMax M3.1 Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.001032,
+        "averageRequestsPerMonth": 19379.844961240313,
+        "normalizedRequestsPer10": 19379.844961240313,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.000516
+      },
       "commandCode": {
         "sourceName": "MiniMax M3.1 Flash",
         "variantCount": 1,
         "unlimited": true,
         "averageAllowance": 20,
-        "averageRequestCost": 0.0009672000000000001,
+        "averageRequestCost": 0.001032,
         "averageRequestsPerMonth": null,
         "normalizedRequestsPer10": null,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0005208372,
-        "paidNormalizedRequestsPer10": 19199.857460258212,
-        "paidAverageRequestsPerMonth": 20678.246484698095
+        "effectiveRequestCostAtPaidPrice": 0.000555732,
+        "paidNormalizedRequestsPer10": 17994.28501507921,
+        "paidAverageRequestsPerMonth": 19379.844961240313
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -1865,33 +1875,6 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": "commandCode"
-      }
-    },
-    {
-      "canonicalModel": "minimaxm31flashfree",
-      "displayName": "MiniMax M3.1 Flash Free",
-      "status": "openCodeGoOnly",
-      "openCodeGo": {
-        "sourceName": "MiniMax M3.1 Flash Free",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "commandCode": null,
-      "freeIncluded": {
-        "openCodeGo": true,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "openCodeGo"
       }
     },
     {
@@ -2606,21 +2589,21 @@
     }
   ],
   "statistics": {
-    "matchedModels": 26,
-    "totalModels": 78,
+    "matchedModels": 27,
+    "totalModels": 77,
     "coverage": {
       "openCodeGo": 31,
       "commandCode": 71
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 26,
+        "count": 27,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 48821.87625580474,
-        "median": 15784.845985825721,
-        "p25": 4210.419459848479,
-        "p75": 50776.38349733682
+        "mean": 47731.430652302355,
+        "median": 16038.492381716118,
+        "p25": 4463.055278536009,
+        "p75": 44377.238121031565
       },
       "commandCode": {
         "count": 26,
@@ -2643,10 +2626,49 @@
     },
     "winnerCounts": {
       "openCodeGo": 8,
-      "commandCode": 13,
+      "commandCode": 14,
       "draw": 5
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "minimaxm31flash",
+        "displayName": "MiniMax M3.1 Flash",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "MiniMax M3.1 Flash",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.001032,
+          "averageRequestsPerMonth": 19379.844961240313,
+          "normalizedRequestsPer10": 19379.844961240313,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.000516
+        },
+        "commandCode": {
+          "sourceName": "MiniMax M3.1 Flash",
+          "variantCount": 1,
+          "unlimited": true,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.001032,
+          "averageRequestsPerMonth": null,
+          "normalizedRequestsPer10": null,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.000555732,
+          "paidNormalizedRequestsPer10": 17994.28501507921,
+          "paidAverageRequestsPerMonth": 19379.844961240313
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": true
+        },
+        "promoExpires": "2026-10-22",
+        "comparison": {
+          "normalizedDifference": null,
+          "advantagePercent": null,
+          "winner": "commandCode"
+        }
+      },
       {
         "canonicalModel": "muse-spark-1.2-contributor",
         "displayName": "Muse Spark 1.2 Contributor",
@@ -2903,43 +2925,6 @@
         "comparison": {
           "normalizedDifference": 2198.013318312761,
           "advantagePercent": 103.16009173947893,
-          "winner": "commandCode"
-        }
-      },
-      {
-        "canonicalModel": "grok47",
-        "displayName": "Grok 4.7",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.026624999999999996,
-          "averageRequestsPerMonth": 633.8028169014085,
-          "normalizedRequestsPer10": 633.8028169014085,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.01775
-        },
-        "commandCode": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.01775,
-          "averageRequestsPerMonth": 1126.7605633802818,
-          "normalizedRequestsPer10": 1046.2029372147463,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.009558374999999997
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 412.40012031333777,
-          "advantagePercent": 65.06757453832662,
           "winner": "commandCode"
         }
       }
