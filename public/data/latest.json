@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T16:02:45.784Z",
+  "generatedAt": "2026-10-22T23:31:02.118Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-22T16:00:40.916Z",
+      "fetchedAt": "2026-10-22T23:29:26.375Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-22T14:10:26.932Z",
+      "fetchedAt": "2026-10-22T23:29:16.152Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1575,7 +1575,7 @@
     {
       "canonicalModel": "mimov25",
       "displayName": "MiMo V2.5",
-      "status": "matched",
+      "status": "openCodeGoOnly",
       "openCodeGo": {
         "sourceName": "MiMo V2.5",
         "variantCount": 1,
@@ -1587,32 +1587,22 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
       },
-      "commandCode": {
-        "sourceName": "MiMo V2.5",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 30,
-        "averageRequestCost": 0.000399,
-        "averageRequestsPerMonth": 75187.96992481203,
-        "normalizedRequestsPer10": 69812.4140434652,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.000143241
-      },
+      "commandCode": null,
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 80563.52580615885,
-        "advantagePercent": 115.40000000000002,
-        "winner": "openCodeGo"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
       "canonicalModel": "mimov25pro",
       "displayName": "MiMo V2.5 Pro",
-      "status": "matched",
+      "status": "openCodeGoOnly",
       "openCodeGo": {
         "sourceName": "MiMo V2.5 Pro",
         "variantCount": 1,
@@ -1624,26 +1614,16 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.0006138333333333333
       },
-      "commandCode": {
-        "sourceName": "MiMo V2.5 Pro",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 20,
-        "averageRequestCost": 0.0009186,
-        "averageRequestsPerMonth": 21772.26213803614,
-        "normalizedRequestsPer10": 20215.656581277755,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0004946661
-      },
+      "commandCode": null,
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 3924.5895163850037,
-        "advantagePercent": 24.090438648076614,
-        "winner": "commandCode"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -2589,44 +2569,44 @@
     }
   ],
   "statistics": {
-    "matchedModels": 27,
+    "matchedModels": 25,
     "totalModels": 77,
     "coverage": {
       "openCodeGo": 31,
-      "commandCode": 71
+      "commandCode": 69
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 27,
+        "count": 25,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 47731.430652302355,
-        "median": 16038.492381716118,
-        "p25": 4463.055278536009,
-        "p75": 44377.238121031565
+        "mean": 44883.26482790586,
+        "median": 15531.199589935324,
+        "p25": 3957.7836411609505,
+        "p75": 31578.947368421057
       },
       "commandCode": {
-        "count": 26,
+        "count": 24,
         "min": 606.866082861495,
         "max": 160989.1819294473,
-        "mean": 29494.318327890793,
-        "median": 18412.88291298313,
-        "p25": 4399.800580762547,
-        "p75": 42953.59455478179
+        "mean": 28201.008579184083,
+        "median": 14447.992808107316,
+        "p25": 4318.34452972031,
+        "p75": 40381.16609448761
       }
     },
     "normalizedDifference": {
-      "count": 26,
+      "count": 24,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 23087.62507038808,
+      "mean": 21491.255687814428,
       "median": 4551.445880513528,
-      "p25": 776.5953761402244,
-      "p75": 11348.122809626317
+      "p25": 569.0572557624691,
+      "p75": 10300.89902757829
     },
     "winnerCounts": {
-      "openCodeGo": 8,
-      "commandCode": 14,
+      "openCodeGo": 7,
+      "commandCode": 13,
       "draw": 5
     },
     "biggestDifferences": [
@@ -2818,43 +2798,6 @@
         }
       },
       {
-        "canonicalModel": "mimov25",
-        "displayName": "MiMo V2.5",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 60,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 150375.93984962406,
-          "normalizedRequestsPer10": 150375.93984962406,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00006649999999999999
-        },
-        "commandCode": {
-          "sourceName": "MiMo V2.5",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 30,
-          "averageRequestCost": 0.000399,
-          "averageRequestsPerMonth": 75187.96992481203,
-          "normalizedRequestsPer10": 69812.4140434652,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.000143241
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 80563.52580615885,
-          "advantagePercent": 115.40000000000002,
-          "winner": "openCodeGo"
-        }
-      },
-      {
         "canonicalModel": "claudehaiku55",
         "displayName": "Claude Haiku 5.5",
         "status": "matched",
@@ -2925,6 +2868,43 @@
         "comparison": {
           "normalizedDifference": 2198.013318312761,
           "advantagePercent": 103.16009173947893,
+          "winner": "commandCode"
+        }
+      },
+      {
+        "canonicalModel": "grok47",
+        "displayName": "Grok 4.7",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.026624999999999996,
+          "averageRequestsPerMonth": 633.8028169014085,
+          "normalizedRequestsPer10": 633.8028169014085,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.01775
+        },
+        "commandCode": {
+          "sourceName": "Grok 4.7",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.01775,
+          "averageRequestsPerMonth": 1126.7605633802818,
+          "normalizedRequestsPer10": 1046.2029372147463,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.009558374999999997
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 412.40012031333777,
+          "advantagePercent": 65.06757453832662,
           "winner": "commandCode"
         }
       }
