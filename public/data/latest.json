@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T23:31:02.118Z",
+  "generatedAt": "2026-10-23T23:19:40.725Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-22T23:29:26.375Z",
+      "fetchedAt": "2026-10-23T18:04:48.748Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-22T23:29:16.152Z",
+      "fetchedAt": "2026-10-23T23:17:05.660Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1482,6 +1482,33 @@
       }
     },
     {
+      "canonicalModel": "kimik31pro",
+      "displayName": "Kimi K3.1 Pro",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Kimi K3.1 Pro",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.01322,
+        "averageRequestsPerMonth": 1512.85930408472,
+        "normalizedRequestsPer10": 1404.6975896794058,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0071189700000000005
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "ling31flash",
       "displayName": "Ling 3.1 Flash",
       "status": "commandCodeOnly",
@@ -1835,26 +1862,24 @@
       },
       "commandCode": {
         "sourceName": "MiniMax M3.1 Flash",
-        "variantCount": 1,
-        "unlimited": true,
+        "variantCount": 2,
+        "unlimited": false,
         "averageAllowance": 20,
         "averageRequestCost": 0.001032,
-        "averageRequestsPerMonth": null,
-        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": 19379.844961240313,
+        "normalizedRequestsPer10": 17994.28501507921,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.000555732,
-        "paidNormalizedRequestsPer10": 17994.28501507921,
-        "paidAverageRequestsPerMonth": 19379.844961240313
+        "effectiveRequestCostAtPaidPrice": 0.000555732
       },
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": true
+        "commandCode": false
       },
-      "promoExpires": "2026-10-22",
+      "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
+        "normalizedDifference": 1385.5599461611018,
+        "advantagePercent": 7.7000000000000135,
+        "winner": "draw"
       }
     },
     {
@@ -2100,26 +2125,24 @@
       "openCodeGo": null,
       "commandCode": {
         "sourceName": "Ornith 1.5 122B",
-        "variantCount": 1,
-        "unlimited": true,
+        "variantCount": 2,
+        "unlimited": false,
         "averageAllowance": 20,
         "averageRequestCost": 0.00123168,
-        "averageRequestsPerMonth": null,
-        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": 16237.98389191998,
+        "normalizedRequestsPer10": 15077.050967428022,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0006632596799999999,
-        "paidNormalizedRequestsPer10": 15077.050967428022,
-        "paidAverageRequestsPerMonth": 16237.98389191998
+        "effectiveRequestCostAtPaidPrice": 0.0006632596799999999
       },
       "freeIncluded": {
         "openCodeGo": false,
-        "commandCode": true
+        "commandCode": false
       },
-      "promoExpires": "2026-10-22",
+      "promoExpires": null,
       "comparison": {
         "normalizedDifference": null,
         "advantagePercent": null,
-        "winner": "commandCode"
+        "winner": null
       }
     },
     {
@@ -2570,10 +2593,10 @@
   ],
   "statistics": {
     "matchedModels": 25,
-    "totalModels": 77,
+    "totalModels": 78,
     "coverage": {
       "openCodeGo": 31,
-      "commandCode": 69
+      "commandCode": 70
     },
     "requestsPer10": {
       "openCodeGo": {
@@ -2586,69 +2609,30 @@
         "p75": 31578.947368421057
       },
       "commandCode": {
-        "count": 24,
+        "count": 25,
         "min": 606.866082861495,
         "max": 160989.1819294473,
-        "mean": 28201.008579184083,
-        "median": 14447.992808107316,
-        "p25": 4318.34452972031,
-        "p75": 40381.16609448761
+        "mean": 27792.73963661989,
+        "median": 16610.1092446885,
+        "p25": 4328.695136494579,
+        "p75": 39094.951864340524
       }
     },
     "normalizedDifference": {
-      "count": 24,
+      "count": 25,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 21491.255687814428,
-      "median": 4551.445880513528,
-      "p25": 569.0572557624691,
-      "p75": 10300.89902757829
+      "mean": 20687.027858148293,
+      "median": 4373.231751250973,
+      "p25": 621.2763009121795,
+      "p75": 9777.287136554278
     },
     "winnerCounts": {
       "openCodeGo": 7,
-      "commandCode": 13,
-      "draw": 5
+      "commandCode": 12,
+      "draw": 6
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "minimaxm31flash",
-        "displayName": "MiniMax M3.1 Flash",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "MiniMax M3.1 Flash",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.001032,
-          "averageRequestsPerMonth": 19379.844961240313,
-          "normalizedRequestsPer10": 19379.844961240313,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.000516
-        },
-        "commandCode": {
-          "sourceName": "MiniMax M3.1 Flash",
-          "variantCount": 1,
-          "unlimited": true,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.001032,
-          "averageRequestsPerMonth": null,
-          "normalizedRequestsPer10": null,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.000555732,
-          "paidNormalizedRequestsPer10": 17994.28501507921,
-          "paidAverageRequestsPerMonth": 19379.844961240313
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": true
-        },
-        "promoExpires": "2026-10-22",
-        "comparison": {
-          "normalizedDifference": null,
-          "advantagePercent": null,
-          "winner": "commandCode"
-        }
-      },
       {
         "canonicalModel": "muse-spark-1.2-contributor",
         "displayName": "Muse Spark 1.2 Contributor",
@@ -2905,6 +2889,43 @@
         "comparison": {
           "normalizedDifference": 412.40012031333777,
           "advantagePercent": 65.06757453832662,
+          "winner": "commandCode"
+        }
+      },
+      {
+        "canonicalModel": "gpt6luna",
+        "displayName": "GPT 6 Luna",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "GPT 6 Luna",
+          "variantCount": 2,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.0010731249999999999,
+          "averageRequestsPerMonth": 15531.199589935324,
+          "normalizedRequestsPer10": 15531.199589935324,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0007154166666666667
+        },
+        "commandCode": {
+          "sourceName": "GPT-6 Luna",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.00073375,
+          "averageRequestsPerMonth": 27257.2402044293,
+          "normalizedRequestsPer10": 25308.486726489602,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.00039512437499999997
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 9777.287136554278,
+          "advantagePercent": 62.95255611092815,
           "winner": "commandCode"
         }
       }
