@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-24T22:38:21.820Z",
+  "generatedAt": "2026-10-24T22:39:09.863Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-24T12:08:43.765Z",
+      "fetchedAt": "2026-10-24T22:37:35.301Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -764,19 +764,19 @@
       }
     },
     {
-      "canonicalModel": "gemini4argoncontributor",
-      "displayName": "Gemini 4 Argon Contributor",
+      "canonicalModel": "gemini4argon",
+      "displayName": "Gemini 4 Argon",
       "status": "openCodeGoOnly",
       "openCodeGo": {
-        "sourceName": "Gemini 4 Argon Contributor",
+        "sourceName": "Gemini 4 Argon",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.01644,
-        "averageRequestsPerMonth": 3649.6350364963505,
-        "normalizedRequestsPer10": 3649.63503649635,
+        "averageAllowance": 30,
+        "averageRequestCost": 0.016441762000000002,
+        "averageRequestsPerMonth": 1824.6219596172232,
+        "normalizedRequestsPer10": 1824.6219596172232,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00274
+        "effectiveRequestCostAtPaidPrice": 0.0054805873333333335
       },
       "commandCode": null,
       "freeIncluded": {
