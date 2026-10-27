@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27T01:49:11.591Z",
+  "generatedAt": "2026-10-27T07:05:12.684Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-26T23:58:46.051Z",
+      "fetchedAt": "2026-10-27T07:03:27.783Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-26T23:57:58.323Z",
+      "fetchedAt": "2026-10-27T07:00:33.704Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1236,6 +1236,33 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": null
+      }
+    },
+    {
+      "canonicalModel": "icemancontributorfree",
+      "displayName": "Iceman Contributor Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Iceman Contributor Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -2576,9 +2603,9 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 77,
+    "totalModels": 78,
     "coverage": {
-      "openCodeGo": 31,
+      "openCodeGo": 32,
       "commandCode": 70
     },
     "requestsPer10": {
