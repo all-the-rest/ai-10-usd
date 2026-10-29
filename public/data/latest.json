@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-29T02:06:10.593Z",
+  "generatedAt": "2026-10-29T05:07:09.836Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-29T00:10:48.517Z",
+      "fetchedAt": "2026-10-29T05:05:23.898Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-29T00:08:07.219Z",
+      "fetchedAt": "2026-10-29T05:03:58.753Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1824,14 +1824,14 @@
       "status": "matched",
       "openCodeGo": {
         "sourceName": "MiniMax M3",
-        "variantCount": 1,
+        "variantCount": 2,
         "unlimited": false,
         "averageAllowance": 60,
-        "averageRequestCost": 0.003741,
-        "averageRequestsPerMonth": 16038.492381716118,
-        "normalizedRequestsPer10": 16038.492381716118,
+        "averageRequestCost": 0.0056115,
+        "averageRequestsPerMonth": 12028.869286287088,
+        "normalizedRequestsPer10": 12028.869286287088,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0006235
+        "effectiveRequestCostAtPaidPrice": 0.0009352500000000001
       },
       "commandCode": {
         "sourceName": "MiniMax M3",
@@ -1850,9 +1850,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 4373.231751250973,
-        "advantagePercent": 37.48936170212763,
-        "winner": "openCodeGo"
+        "normalizedDifference": 363.6086558219431,
+        "advantagePercent": 3.117021276595724,
+        "winner": "draw"
       }
     },
     {
@@ -2613,8 +2613,8 @@
         "count": 26,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 43185.26595443436,
-        "median": 14828.993755765827,
+        "mean": 43031.049681533244,
+        "median": 13077.828603941707,
         "p25": 2947.1933695690905,
         "p75": 30260.273656521844
       },
@@ -2632,15 +2632,15 @@
       "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 19898.103902321254,
-      "median": 4148.910633817988,
-      "p25": 464.6191654630482,
+      "mean": 19743.887629420136,
+      "median": 3061.3014173488823,
+      "p25": 375.80652194479177,
       "p75": 9756.501171449632
     },
     "winnerCounts": {
-      "openCodeGo": 7,
+      "openCodeGo": 6,
       "commandCode": 13,
-      "draw": 6
+      "draw": 7
     },
     "biggestDifferences": [
       {
@@ -2967,6 +2967,20 @@
         "ratio": 2.3566416772350025,
         "advantagePercent": 135.66416772350024,
         "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Claude Haiku 5.5",
+        "ratio": 0.48464999999999997,
+        "advantagePercent": 106.3344681729083,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Step 5 Preview",
+        "ratio": 0.49222265625,
+        "advantagePercent": 103.16009173947893,
+        "winner": "commandCode",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       }
     ]
