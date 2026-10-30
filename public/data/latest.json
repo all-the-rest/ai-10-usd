@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T20:58:15.405Z",
+  "generatedAt": "2026-10-30T21:00:12.477Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -234,7 +234,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-30T19:08:19.440Z",
+      "fetchedAt": "2026-10-30T20:58:27.887Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -600,12 +600,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 80,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0004614,
-        "averageRequestsPerMonth": 173385.34893801474,
-        "normalizedRequestsPer10": 160989.1819294473,
+        "averageRequestsPerMonth": 216731.6861725184,
+        "normalizedRequestsPer10": 201236.47741180912,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00006211597499999999
+        "effectiveRequestCostAtPaidPrice": 0.00004969278
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -613,9 +613,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 55742.504243071104,
-        "advantagePercent": 34.624999999999986,
-        "winner": "openCodeGo"
+        "normalizedDifference": 15495.208760709298,
+        "advantagePercent": 7.699999999999998,
+        "winner": "draw"
       }
     },
     {
@@ -637,12 +637,12 @@
         "sourceName": "DeepSeek V4.1 Flash",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 80,
+        "averageAllowance": 100,
         "averageRequestCost": 0.0009228,
-        "averageRequestsPerMonth": 86692.67446900737,
-        "normalizedRequestsPer10": 80494.59096472365,
+        "averageRequestsPerMonth": 108365.8430862592,
+        "normalizedRequestsPer10": 100618.23870590456,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00012423194999999998
+        "effectiveRequestCostAtPaidPrice": 0.00009938556
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -650,9 +650,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 27871.252121535552,
-        "advantagePercent": 34.624999999999986,
-        "winner": "openCodeGo"
+        "normalizedDifference": 7747.604380354649,
+        "advantagePercent": 7.699999999999998,
+        "winner": "draw"
       }
     },
     {
@@ -2621,8 +2621,8 @@
       "commandCode": {
         "count": 26,
         "min": 606.866082861495,
-        "max": 160989.1819294473,
-        "mean": 26758.799616914974,
+        "max": 201236.47741180912,
+        "mean": 29080.758971666608,
         "median": 14447.992808107316,
         "p25": 4297.6433161717705,
         "p75": 35648.33557987779
@@ -2632,15 +2632,15 @@
       "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 22244.637854487653,
+      "mean": 19922.678499736012,
       "median": 3061.3014173488823,
       "p25": 375.80652194479177,
-      "p75": 11348.122809626317
+      "p75": 9756.501171449632
     },
     "winnerCounts": {
-      "openCodeGo": 8,
+      "openCodeGo": 6,
       "commandCode": 13,
-      "draw": 5
+      "draw": 7
     },
     "biggestDifferences": [
       {
@@ -2960,6 +2960,27 @@
         "ratio": 3.2309999999999994,
         "advantagePercent": 223.09999999999994,
         "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Qwen3.7 Plus",
+        "ratio": 2.3566416772350025,
+        "advantagePercent": 135.66416772350024,
+        "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Claude Haiku 5.5",
+        "ratio": 0.48464999999999997,
+        "advantagePercent": 106.3344681729083,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Step 5 Preview",
+        "ratio": 0.49222265625,
+        "advantagePercent": 103.16009173947893,
+        "winner": "commandCode",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       }
     ]
