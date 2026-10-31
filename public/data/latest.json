@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-31T02:01:34.261Z",
+  "generatedAt": "2026-10-31T11:25:41.251Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-30T23:56:48.713Z",
+      "fetchedAt": "2026-10-31T05:00:48.186Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-10-30T22:39:44.284Z",
+      "fetchedAt": "2026-10-31T08:22:32.841Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1573,6 +1573,33 @@
       }
     },
     {
+      "canonicalModel": "ling31flash1019",
+      "displayName": "Ling 3.1 Flash 1019",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Ling 3.1 Flash 1019",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": "2026-11-03",
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
+      }
+    },
+    {
       "canonicalModel": "longcat20",
       "displayName": "LongCat-2.0",
       "status": "matched",
@@ -2603,10 +2630,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 78,
+    "totalModels": 79,
     "coverage": {
       "openCodeGo": 32,
-      "commandCode": 70
+      "commandCode": 71
     },
     "requestsPer10": {
       "openCodeGo": {
