@@ -5,6 +5,14 @@ updates:
     schedule: {interval: "weekly"}
     open-pull-requests-limit: 8
     labels: ["dependencies"]
+    ignore:
+      # svelte-check 4.7.7 bundles svelte2tsx 0.7.62, which no longer types
+      # `$props<T>()`: every prop degrades to `Record<string, any>` and
+      # `ShareDialog.svelte` fails with 5 errors (and `$props<{…}>()` with
+      # "Expected 0 type arguments"). 4.7.6 is clean. Drop this entry once
+      # upstream ships a release whose `$props` generics survive.
+      - dependency-name: svelte-check
+        versions: ["4.7.7"]
     groups:
       minor-and-patch:
         applies-to: version-updates
