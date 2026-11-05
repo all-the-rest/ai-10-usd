@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T00:59:41.587Z",
+  "generatedAt": "2026-11-05T01:01:01.879Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-04T19:02:23.253Z",
+      "fetchedAt": "2026-11-05T00:58:29.654Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -1240,18 +1240,18 @@
     },
     {
       "canonicalModel": "hy4",
-      "displayName": "Hy4 preview",
+      "displayName": "Hy4",
       "status": "openCodeGoOnly",
       "openCodeGo": {
-        "sourceName": "Hy4 preview",
-        "variantCount": 1,
+        "sourceName": "Hy4",
+        "variantCount": 2,
         "unlimited": false,
-        "averageAllowance": 30,
+        "averageAllowance": 45,
         "averageRequestCost": 0.004433014999999999,
-        "averageRequestsPerMonth": 6767.403223314156,
-        "normalizedRequestsPer10": 6767.403223314157,
+        "averageRequestsPerMonth": 10151.104834971235,
+        "normalizedRequestsPer10": 10151.104834971236,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0014776716666666664
+        "effectiveRequestCostAtPaidPrice": 0.0011082537499999998
       },
       "commandCode": null,
       "freeIncluded": {
