@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T05:05:33.234Z",
+  "generatedAt": "2026-11-06T17:08:42.273Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-06T05:03:52.187Z",
+      "fetchedAt": "2026-11-06T17:03:57.909Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-06T05:00:49.754Z",
+      "fetchedAt": "2026-11-06T15:03:44.123Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -397,6 +397,33 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "croutonalphafree",
+      "displayName": "Crouton Alpha Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Crouton Alpha Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -2657,9 +2684,9 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 80,
+    "totalModels": 81,
     "coverage": {
-      "openCodeGo": 32,
+      "openCodeGo": 33,
       "commandCode": 72
     },
     "requestsPer10": {
