@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T01:01:01.879Z",
+  "generatedAt": "2026-11-06T01:02:28.677Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-05T00:58:29.654Z",
+      "fetchedAt": "2026-11-05T19:05:54.489Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-05T00:57:58.989Z",
+      "fetchedAt": "2026-11-06T01:00:33.730Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1926,7 +1926,7 @@
       },
       "commandCode": {
         "sourceName": "MiniMax M3.1 Flash",
-        "variantCount": 2,
+        "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
         "averageRequestCost": 0.001032,
@@ -2189,7 +2189,7 @@
       "openCodeGo": null,
       "commandCode": {
         "sourceName": "Ornith 1.5 122B",
-        "variantCount": 2,
+        "variantCount": 1,
         "unlimited": false,
         "averageAllowance": 20,
         "averageRequestCost": 0.00123168,
