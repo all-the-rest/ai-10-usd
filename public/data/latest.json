@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T17:08:42.273Z",
+  "generatedAt": "2026-11-07T00:12:50.397Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-06T17:03:57.909Z",
+      "fetchedAt": "2026-11-06T19:08:41.921Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-06T15:03:44.123Z",
+      "fetchedAt": "2026-11-07T00:10:59.319Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -751,6 +751,33 @@
         "normalizedRequestsPer10": 27256.59830457417,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.00036688364
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "deepseekv41flashultrafast",
+      "displayName": "DeepSeek V4.1 Flash Ultrafast",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "DeepSeek V4.1 Flash Ultrafast",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0058752,
+        "averageRequestsPerMonth": 3404.1394335511986,
+        "normalizedRequestsPer10": 3160.7608482369533,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0031637951999999997
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -2684,10 +2711,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 81,
+    "totalModels": 82,
     "coverage": {
       "openCodeGo": 33,
-      "commandCode": 72
+      "commandCode": 73
     },
     "requestsPer10": {
       "openCodeGo": {
