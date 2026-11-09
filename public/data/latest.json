@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T13:03:43.315Z",
+  "generatedAt": "2026-11-09T19:07:04.664Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-09T13:01:54.266Z",
+      "fetchedAt": "2026-11-09T17:10:05.693Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-09T11:08:26.272Z",
+      "fetchedAt": "2026-11-09T19:05:14.425Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -254,33 +254,6 @@
     "matching": "OpenCode Go per-model token statistics used for both providers when available, Command Code average message profile as fallback; free models (Command Code 100%-discount deals, OpenCode Go usage=null rows) included as unlimited on the offering side vs the other plan's paid offering — both free → draw; OpenCode Zen free models live in freeModels and are excluded"
   },
   "rows": [
-    {
-      "canonicalModel": "beam10",
-      "displayName": "Beam 1.0",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Beam 1.0",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": true
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "commandCode"
-      }
-    },
     {
       "canonicalModel": "beamfree",
       "displayName": "Beam Free",
@@ -2738,10 +2711,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 83,
+    "totalModels": 82,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 73
+      "commandCode": 72
     },
     "requestsPer10": {
       "openCodeGo": {
