@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T19:07:04.664Z",
+  "generatedAt": "2026-11-10T02:52:12.871Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-09T17:10:05.693Z",
+      "fetchedAt": "2026-11-09T19:06:32.625Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-09T19:05:14.425Z",
+      "fetchedAt": "2026-11-10T02:49:57.076Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2028,6 +2028,33 @@
       }
     },
     {
+      "canonicalModel": "museember",
+      "displayName": "Muse Ember",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Muse Ember",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.000361,
+        "averageRequestsPerMonth": 55401.662049861494,
+        "normalizedRequestsPer10": 51440.726137290156,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.00019439849999999999
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "musespark12",
       "displayName": "Muse Spark 1.2",
       "status": "commandCodeOnly",
@@ -2711,10 +2738,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 82,
+    "totalModels": 83,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 72
+      "commandCode": 73
     },
     "requestsPer10": {
       "openCodeGo": {
