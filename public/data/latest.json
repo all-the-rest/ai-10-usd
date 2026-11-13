@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T17:12:49.721Z",
+  "generatedAt": "2026-11-13T01:19:42.450Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-12T17:05:23.187Z",
+      "fetchedAt": "2026-11-12T19:09:29.871Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-12T17:10:22.360Z",
+      "fetchedAt": "2026-11-13T01:18:07.790Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -927,12 +927,12 @@
         "sourceName": "GLM-5.3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 20,
+        "averageAllowance": 70,
         "averageRequestCost": 0.01516,
-        "averageRequestsPerMonth": 1319.2612137203166,
-        "normalizedRequestsPer10": 1224.9407741135717,
+        "averageRequestsPerMonth": 4617.4142480211085,
+        "normalizedRequestsPer10": 4287.292709397501,
         "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.00816366
+        "effectiveRequestCostAtPaidPrice": 0.0023324742857142853
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -940,8 +940,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 235.49486382333407,
-        "advantagePercent": 23.800680903744958,
+        "normalizedDifference": 3297.846799107264,
+        "advantagePercent": 333.3023831631074,
         "winner": "commandCode"
       }
     },
@@ -2730,7 +2730,7 @@
         "count": 26,
         "min": 606.866082861495,
         "max": 201236.47741180912,
-        "mean": 29456.67197036219,
+        "mean": 29574.45473710388,
         "median": 14447.992808107316,
         "p25": 4297.6433161717705,
         "p75": 39506.97827031906
@@ -2740,9 +2740,9 @@
       "count": 26,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20298.59149843159,
-      "median": 3061.3014173488823,
-      "p25": 375.80652194479177,
+      "mean": 20416.37426517328,
+      "median": 3611.218157746134,
+      "p25": 464.6191654630482,
       "p75": 11348.122809626317
     },
     "winnerCounts": {
@@ -2751,6 +2751,43 @@
       "draw": 7
     },
     "biggestDifferences": [
+      {
+        "canonicalModel": "glm53",
+        "displayName": "GLM-5.3",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 15,
+          "averageRequestCost": 0.01516,
+          "averageRequestsPerMonth": 989.4459102902375,
+          "normalizedRequestsPer10": 989.4459102902376,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.010106666666666668
+        },
+        "commandCode": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 70,
+          "averageRequestCost": 0.01516,
+          "averageRequestsPerMonth": 4617.4142480211085,
+          "normalizedRequestsPer10": 4287.292709397501,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0023324742857142853
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 3297.846799107264,
+          "advantagePercent": 333.3023831631074,
+          "winner": "commandCode"
+        }
+      },
       {
         "canonicalModel": "muse-spark-1.2-contributor",
         "displayName": "Muse Spark 1.2 Contributor",
@@ -3009,46 +3046,16 @@
           "advantagePercent": 65.06757453832662,
           "winner": "commandCode"
         }
-      },
-      {
-        "canonicalModel": "gpt6luna",
-        "displayName": "GPT 6 Luna",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "GPT 6 Luna",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.0010731249999999999,
-          "averageRequestsPerMonth": 15531.199589935324,
-          "normalizedRequestsPer10": 15531.199589935324,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0007154166666666667
-        },
-        "commandCode": {
-          "sourceName": "GPT-6 Luna",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.00073375,
-          "averageRequestsPerMonth": 27257.2402044293,
-          "normalizedRequestsPer10": 25308.486726489602,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00039512437499999997
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 9777.287136554278,
-          "advantagePercent": 62.95255611092815,
-          "winner": "commandCode"
-        }
       }
     ],
     "outliers": [
+      {
+        "model": "GLM-5.3",
+        "ratio": 0.2307857142857143,
+        "advantagePercent": 333.3023831631074,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
       {
         "model": "Muse Spark 1.2 Contributor",
         "ratio": 3.231,
@@ -3075,20 +3082,6 @@
         "ratio": 2.3566416772350025,
         "advantagePercent": 135.66416772350024,
         "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Claude Haiku 5.5",
-        "ratio": 0.48464999999999997,
-        "advantagePercent": 106.3344681729083,
-        "winner": "commandCode",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Step 5 Preview",
-        "ratio": 0.49222265625,
-        "advantagePercent": 103.16009173947893,
-        "winner": "commandCode",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       }
     ]
