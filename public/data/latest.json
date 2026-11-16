@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-16T09:02:32.858Z",
+  "generatedAt": "2026-11-16T09:09:55.957Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -234,7 +234,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T07:09:11.446Z",
+      "fetchedAt": "2026-11-16T09:07:49.789Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2746,6 +2746,33 @@
       }
     },
     {
+      "canonicalModel": "tencenthy4flash",
+      "displayName": "Tencent Hy4 Flash",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Tencent Hy4 Flash",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.000251522,
+        "averageRequestsPerMonth": 59636.930367920104,
+        "normalizedRequestsPer10": 55373.19439918301,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.000180592796
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "tencenthy4",
       "displayName": "Tencent Hy4 Preview",
       "status": "commandCodeOnly",
@@ -2775,10 +2802,10 @@
   ],
   "statistics": {
     "matchedModels": 27,
-    "totalModels": 84,
+    "totalModels": 85,
     "coverage": {
       "openCodeGo": 35,
-      "commandCode": 74
+      "commandCode": 75
     },
     "requestsPer10": {
       "openCodeGo": {
