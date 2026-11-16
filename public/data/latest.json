@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-16T05:09:37.873Z",
+  "generatedAt": "2026-11-16T07:10:56.458Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T05:07:48.231Z",
+      "fetchedAt": "2026-11-16T07:02:14.260Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T05:08:11.574Z",
+      "fetchedAt": "2026-11-16T07:09:11.446Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2593,7 +2593,7 @@
     {
       "canonicalModel": "qwen4max",
       "displayName": "Qwen4 Max",
-      "status": "openCodeGoOnly",
+      "status": "matched",
       "openCodeGo": {
         "sourceName": "Qwen4 Max",
         "variantCount": 1,
@@ -2605,16 +2605,26 @@
         "paidMonthly": 10,
         "effectiveRequestCostAtPaidPrice": 0.00441975
       },
-      "commandCode": null,
+      "commandCode": {
+        "sourceName": "Qwen 4 Max",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.006629625,
+        "averageRequestsPerMonth": 2262.571412410204,
+        "normalizedRequestsPer10": 2100.8091108729845,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0047600707499999995
+      },
       "freeIncluded": {
         "openCodeGo": false,
         "commandCode": false
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
+        "normalizedDifference": 161.76230153721963,
+        "advantagePercent": 7.699999999999991,
+        "winner": "draw"
       }
     },
     {
@@ -2737,45 +2747,45 @@
     }
   ],
   "statistics": {
-    "matchedModels": 26,
+    "matchedModels": 27,
     "totalModels": 83,
     "coverage": {
       "openCodeGo": 34,
-      "commandCode": 73
+      "commandCode": 74
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 26,
+        "count": 27,
         "min": 490.19607843137254,
         "max": 226586.10271903322,
-        "mean": 45531.799906600776,
-        "median": 13077.828603941707,
-        "p25": 2947.1933695690905,
-        "p75": 30260.273656521844
+        "mean": 43929.23588829742,
+        "median": 12028.869286287088,
+        "p25": 2436.4506790576706,
+        "p75": 28941.599944622627
       },
       "commandCode": {
-        "count": 26,
+        "count": 27,
         "min": 606.866082861495,
         "max": 201236.47741180912,
-        "mean": 29574.45473710388,
-        "median": 14447.992808107316,
-        "p25": 4297.6433161717705,
-        "p75": 39506.97827031906
+        "mean": 28556.912306502738,
+        "median": 12285.87637152613,
+        "p25": 4287.292709397501,
+        "p75": 34774.147755709244
       }
     },
     "normalizedDifference": {
-      "count": 26,
+      "count": 27,
       "min": 116.67000443012245,
       "max": 156457.3182191777,
-      "mean": 20416.37426517328,
-      "median": 3611.218157746134,
-      "p25": 464.6191654630482,
-      "p75": 11348.122809626317
+      "mean": 19666.203451705278,
+      "median": 3297.846799107264,
+      "p25": 388.00438806764043,
+      "p75": 10824.510918602304
     },
     "winnerCounts": {
       "openCodeGo": 6,
       "commandCode": 13,
-      "draw": 7
+      "draw": 8
     },
     "biggestDifferences": [
       {
