@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-16T02:33:59.465Z",
+  "generatedAt": "2026-11-16T05:09:37.873Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T00:10:01.232Z",
+      "fetchedAt": "2026-11-16T05:07:48.231Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T00:06:24.135Z",
+      "fetchedAt": "2026-11-16T05:08:11.574Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2591,6 +2591,33 @@
       }
     },
     {
+      "canonicalModel": "qwen4max",
+      "displayName": "Qwen4 Max",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "Qwen4 Max",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.006629625,
+        "averageRequestsPerMonth": 2262.571412410204,
+        "normalizedRequestsPer10": 2262.571412410204,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00441975
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "step35flash",
       "displayName": "Step 3.5 Flash",
       "status": "commandCodeOnly",
@@ -2711,9 +2738,9 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 82,
+    "totalModels": 83,
     "coverage": {
-      "openCodeGo": 33,
+      "openCodeGo": 34,
       "commandCode": 73
     },
     "requestsPer10": {
