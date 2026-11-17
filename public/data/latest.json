@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-17T19:11:02.728Z",
+  "generatedAt": "2026-11-17T19:12:04.384Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -234,7 +234,7 @@
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-17T17:04:15.299Z",
+      "fetchedAt": "2026-11-17T19:10:06.992Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -2719,6 +2719,33 @@
       }
     },
     {
+      "canonicalModel": "tencenthy4",
+      "displayName": "Tencent Hy4",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Tencent Hy4",
+        "variantCount": 2,
+        "unlimited": false,
+        "averageAllowance": 20,
+        "averageRequestCost": 0.0031723619999999998,
+        "averageRequestsPerMonth": 6304.4507530981655,
+        "normalizedRequestsPer10": 5853.714719682605,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0017083169369999998
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "tencenthy4flash",
       "displayName": "Tencent Hy4 Flash",
       "status": "commandCodeOnly",
@@ -2733,33 +2760,6 @@
         "normalizedRequestsPer10": 55373.19439918301,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.000180592796
-      },
-      "freeIncluded": {
-        "openCodeGo": false,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": null
-      }
-    },
-    {
-      "canonicalModel": "tencenthy4",
-      "displayName": "Tencent Hy4 Preview",
-      "status": "commandCodeOnly",
-      "openCodeGo": null,
-      "commandCode": {
-        "sourceName": "Tencent Hy4 Preview",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 20,
-        "averageRequestCost": 0.0031723619999999998,
-        "averageRequestsPerMonth": 6304.4507530981655,
-        "normalizedRequestsPer10": 5853.714719682605,
-        "paidMonthly": 10.77,
-        "effectiveRequestCostAtPaidPrice": 0.0017083169369999998
       },
       "freeIncluded": {
         "openCodeGo": false,
