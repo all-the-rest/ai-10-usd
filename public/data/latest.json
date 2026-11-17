@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-16T09:09:55.957Z",
+  "generatedAt": "2026-11-17T03:03:33.788Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T09:00:30.100Z",
+      "fetchedAt": "2026-11-17T03:01:51.839Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-16T09:07:49.789Z",
+      "fetchedAt": "2026-11-17T03:01:43.890Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -707,6 +707,33 @@
         "normalizedDifference": null,
         "advantagePercent": null,
         "winner": null
+      }
+    },
+    {
+      "canonicalModel": "flint",
+      "displayName": "Flint",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Flint",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": true
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "commandCode"
       }
     },
     {
@@ -2802,10 +2829,10 @@
   ],
   "statistics": {
     "matchedModels": 27,
-    "totalModels": 85,
+    "totalModels": 86,
     "coverage": {
       "openCodeGo": 35,
-      "commandCode": 75
+      "commandCode": 76
     },
     "requestsPer10": {
       "openCodeGo": {
