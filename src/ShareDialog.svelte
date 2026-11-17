@@ -17,12 +17,17 @@
   } from "./lib/share";
   import type { ComparisonData } from "./types";
 
-  let { data, config = $bindable({ ...DEFAULT_SHARE_CONFIG }), dialogId = "share-dialog", themeExplicit = $bindable(false) } = $props<{
+  let {
+    data,
+    config = $bindable({ ...DEFAULT_SHARE_CONFIG }),
+    dialogId = "share-dialog",
+    themeExplicit = $bindable(false),
+  }: {
     data: ComparisonData | null;
     config: ShareConfig;
     dialogId?: string;
     themeExplicit?: boolean;
-  }>();
+  } = $props();
 
   let statusKey = $state<ShareStatusKey | null>(null);
   let statusVars = $state<Record<string, string>>({});
