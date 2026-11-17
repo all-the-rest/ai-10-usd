@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-17T18:26:09.513Z",
+  "generatedAt": "2026-11-17T19:11:02.728Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-17T17:08:54.395Z",
+      "fetchedAt": "2026-11-17T19:09:25.716Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -943,12 +943,12 @@
         "sourceName": "GLM-5.3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 100,
+        "averageAllowance": 200,
         "averageRequestCost": 0.014832799999999998,
-        "averageRequestsPerMonth": 6741.815436060623,
-        "normalizedRequestsPer10": 6741.815436060623,
+        "averageRequestsPerMonth": 13483.630872121246,
+        "normalizedRequestsPer10": 13483.630872121246,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0014832799999999998
+        "effectiveRequestCostAtPaidPrice": 0.0007416399999999999
       },
       "commandCode": {
         "sourceName": "GLM-5.3",
@@ -967,8 +967,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 2359.948393124285,
-        "advantagePercent": 53.85714285714285,
+        "normalizedDifference": 9101.763829184907,
+        "advantagePercent": 207.7142857142857,
         "winner": "openCodeGo"
       }
     },
@@ -2785,8 +2785,8 @@
         "count": 27,
         "min": 408.02263165530246,
         "max": 282485.8757062147,
-        "mean": 55454.7432879886,
-        "median": 13235.294117647058,
+        "mean": 55704.440155990844,
+        "median": 13483.630872121246,
         "p25": 3946.845211700389,
         "p75": 32974.421271387124
       },
@@ -2804,8 +2804,8 @@
       "count": 27,
       "min": 179.81612983378454,
       "max": 195056.0163109146,
-      "mean": 24614.92935934159,
-      "median": 2563.8739686301424,
+      "mean": 24864.62622734383,
+      "median": 5159.781151261866,
       "p25": 394.665207913627,
       "p75": 12334.635186984513
     },
@@ -2923,6 +2923,43 @@
         "comparison": {
           "normalizedDifference": 139325.72593636753,
           "advantagePercent": 223.09999999999994,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "glm53",
+        "displayName": "GLM-5.3",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 200,
+          "averageRequestCost": 0.014832799999999998,
+          "averageRequestsPerMonth": 13483.630872121246,
+          "normalizedRequestsPer10": 13483.630872121246,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0007416399999999999
+        },
+        "commandCode": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 70,
+          "averageRequestCost": 0.014832799999999998,
+          "averageRequestsPerMonth": 4719.270805242436,
+          "normalizedRequestsPer10": 4381.867042936338,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0022821322285714284
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 9101.763829184907,
+          "advantagePercent": 207.7142857142857,
           "winner": "openCodeGo"
         }
       },
@@ -3073,43 +3110,6 @@
           "advantagePercent": 65.06757453832662,
           "winner": "commandCode"
         }
-      },
-      {
-        "canonicalModel": "gpt6luna",
-        "displayName": "GPT 6 Luna",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "GPT 6 Luna",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.00099975,
-          "averageRequestsPerMonth": 16713.382965918463,
-          "normalizedRequestsPer10": 16713.382965918463,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.0006665
-        },
-        "commandCode": {
-          "sourceName": "GPT-6 Luna",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.00068,
-          "averageRequestsPerMonth": 29411.76470588235,
-          "normalizedRequestsPer10": 27308.973728767272,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.00036618
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 10595.59076284881,
-          "advantagePercent": 63.39584741434508,
-          "winner": "commandCode"
-        }
       }
     ],
     "outliers": [
@@ -3131,6 +3131,13 @@
         "model": "MiMo V2.6 Flash",
         "ratio": 3.2309999999999994,
         "advantagePercent": 223.09999999999994,
+        "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "GLM-5.3",
+        "ratio": 3.077142857142857,
+        "advantagePercent": 207.7142857142857,
         "winner": "openCodeGo",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       },
