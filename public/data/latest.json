@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-19T03:58:11.477Z",
+  "generatedAt": "2026-11-19T09:10:18.333Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-19T01:56:51.893Z",
+      "fetchedAt": "2026-11-19T09:08:24.073Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-19T01:56:09.915Z",
+      "fetchedAt": "2026-11-19T09:01:40.875Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -874,18 +874,8 @@
     {
       "canonicalModel": "glm52",
       "displayName": "GLM-5.2",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "GLM-5.2",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.014832799999999998,
-        "averageRequestsPerMonth": 4045.089261636374,
-        "normalizedRequestsPer10": 4045.0892616363735,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.002472133333333333
-      },
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "GLM-5.2",
         "variantCount": 1,
@@ -903,9 +893,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 336.7777812999648,
-        "advantagePercent": 8.325595790776863,
-        "winner": "draw"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -2774,45 +2764,45 @@
     }
   ],
   "statistics": {
-    "matchedModels": 27,
+    "matchedModels": 26,
     "totalModels": 84,
     "coverage": {
-      "openCodeGo": 33,
+      "openCodeGo": 32,
       "commandCode": 76
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 27,
+        "count": 26,
         "min": 408.02263165530246,
         "max": 282485.8757062147,
-        "mean": 56453.53075999758,
-        "median": 15064.778547755348,
-        "p25": 3946.845211700389,
-        "p75": 34491.22289350253
+        "mean": 58469.24004839609,
+        "median": 15889.080756836905,
+        "p25": 4261.588385074679,
+        "p75": 34882.29575010223
       },
       "commandCode": {
-        "count": 27,
+        "count": 26,
         "min": 673.5130616408583,
         "max": 252860.86785895625,
-        "mean": 35556.070929989444,
-        "median": 13336.758212842393,
-        "p25": 4573.230743235055,
-        "p75": 43907.614021937916
+        "mean": 36755.07877179918,
+        "median": 15915.14854871099,
+        "p25": 4815.62636828752,
+        "p75": 49246.72608145948
       }
     },
     "normalizedDifference": {
-      "count": 27,
+      "count": 26,
       "min": 179.81612983378454,
       "max": 195056.0163109146,
-      "mean": 25613.716831350564,
-      "median": 5159.781151261866,
-      "p25": 394.665207913627,
-      "p75": 16278.904525804955
+      "mean": 26585.90679481406,
+      "median": 5269.279217641101,
+      "p25": 526.0502031794795,
+      "p75": 17381.51698314733
     },
     "winnerCounts": {
       "openCodeGo": 7,
       "commandCode": 12,
-      "draw": 8
+      "draw": 7
     },
     "biggestDifferences": [
       {
@@ -3138,13 +3128,6 @@
         "model": "MiMo V2.6 Flash",
         "ratio": 3.2309999999999994,
         "advantagePercent": 223.09999999999994,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Qwen3.7 Plus",
-        "ratio": 2.2887737270262125,
-        "advantagePercent": 128.87737270262124,
         "winner": "openCodeGo",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       }
