@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-22T00:35:37.399Z",
+  "generatedAt": "2026-11-23T01:02:00.620Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-22T00:33:52.283Z",
+      "fetchedAt": "2026-11-22T13:09:02.972Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-22T00:33:16.018Z",
+      "fetchedAt": "2026-11-23T01:00:09.888Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1324,6 +1324,33 @@
         "normalizedRequestsPer10": 1865.1984346844392,
         "paidMonthly": 10.77,
         "effectiveRequestCostAtPaidPrice": 0.0053613598500000005
+      },
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "inkling2mini",
+      "displayName": "Inkling 2 Mini",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": {
+        "sourceName": "Inkling 2 Mini",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 15,
+        "averageRequestCost": 0.0008586,
+        "averageRequestsPerMonth": 17470.300489168414,
+        "normalizedRequestsPer10": 16221.263221140589,
+        "paidMonthly": 10.77,
+        "effectiveRequestCostAtPaidPrice": 0.0006164748
       },
       "freeIncluded": {
         "openCodeGo": false,
@@ -2738,10 +2765,10 @@
   ],
   "statistics": {
     "matchedModels": 26,
-    "totalModels": 83,
+    "totalModels": 84,
     "coverage": {
       "openCodeGo": 32,
-      "commandCode": 75
+      "commandCode": 76
     },
     "requestsPer10": {
       "openCodeGo": {
