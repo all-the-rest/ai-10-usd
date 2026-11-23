@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T01:02:00.620Z",
+  "generatedAt": "2026-11-23T01:03:57.182Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,7 +227,7 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-22T13:09:02.972Z",
+      "fetchedAt": "2026-11-23T01:01:56.024Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
@@ -933,12 +933,12 @@
         "sourceName": "GLM-5.3",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 500,
+        "averageAllowance": 200,
         "averageRequestCost": 0.014832799999999998,
-        "averageRequestsPerMonth": 33709.07718030312,
-        "normalizedRequestsPer10": 33709.07718030312,
+        "averageRequestsPerMonth": 13483.630872121246,
+        "normalizedRequestsPer10": 13483.630872121246,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.00029665599999999996
+        "effectiveRequestCostAtPaidPrice": 0.0007416399999999999
       },
       "commandCode": {
         "sourceName": "GLM-5.3",
@@ -957,8 +957,8 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 29327.21013736678,
-        "advantagePercent": 669.2857142857143,
+        "normalizedDifference": 9101.763829184907,
+        "advantagePercent": 207.7142857142857,
         "winner": "openCodeGo"
       }
     },
@@ -1671,47 +1671,10 @@
       }
     },
     {
-      "canonicalModel": "longcat25free",
-      "displayName": "LongCat 2.5 Free",
-      "status": "openCodeGoOnly",
-      "openCodeGo": {
-        "sourceName": "LongCat 2.5 Free",
-        "variantCount": 1,
-        "unlimited": true,
-        "normalizedRequestsPer10": null,
-        "averageRequestsPerMonth": null,
-        "averageAllowance": 0,
-        "averageRequestCost": 0,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0
-      },
-      "commandCode": null,
-      "freeIncluded": {
-        "openCodeGo": true,
-        "commandCode": false
-      },
-      "promoExpires": null,
-      "comparison": {
-        "normalizedDifference": null,
-        "advantagePercent": null,
-        "winner": "openCodeGo"
-      }
-    },
-    {
       "canonicalModel": "longcat20",
-      "displayName": "LongCat-2.0",
-      "status": "matched",
-      "openCodeGo": {
-        "sourceName": "LongCat-2.0",
-        "variantCount": 1,
-        "unlimited": false,
-        "averageAllowance": 60,
-        "averageRequestCost": 0.0007344,
-        "averageRequestsPerMonth": 81699.34640522876,
-        "normalizedRequestsPer10": 81699.34640522876,
-        "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.0001224
-      },
+      "displayName": "LongCat 2.0",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
       "commandCode": {
         "sourceName": "LongCat 2.0",
         "variantCount": 1,
@@ -1729,9 +1692,36 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 18484.129440489698,
-        "advantagePercent": 29.239999999999995,
-        "winner": "openCodeGo"
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "longcat25",
+      "displayName": "LongCat-2.5",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "LongCat-2.5",
+        "variantCount": 1,
+        "unlimited": false,
+        "averageAllowance": 60,
+        "averageRequestCost": 0.0005064,
+        "averageRequestsPerMonth": 118483.41232227489,
+        "normalizedRequestsPer10": 118483.4123222749,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0.00008439999999999998
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
       }
     },
     {
@@ -2764,84 +2754,47 @@
     }
   ],
   "statistics": {
-    "matchedModels": 26,
+    "matchedModels": 25,
     "totalModels": 84,
     "coverage": {
-      "openCodeGo": 32,
+      "openCodeGo": 31,
       "commandCode": 76
     },
     "requestsPer10": {
       "openCodeGo": {
-        "count": 26,
+        "count": 25,
         "min": 408.02263165530246,
         "max": 282485.8757062147,
-        "mean": 58469.24004839609,
-        "median": 15889.080756836905,
-        "p25": 4261.588385074679,
-        "p75": 34882.29575010223
+        "mean": 56731.017941795515,
+        "median": 13483.630872121246,
+        "p25": 3848.6011617644044,
+        "p75": 30675.47393607231
       },
       "commandCode": {
-        "count": 26,
+        "count": 25,
         "min": 673.5130616408583,
         "max": 252860.86785895625,
-        "mean": 36755.07877179918,
-        "median": 15915.14854871099,
-        "p25": 4815.62636828752,
-        "p75": 49246.72608145948
+        "mean": 35696.67324408158,
+        "median": 13336.758212842393,
+        "p25": 4764.594443533772,
+        "p75": 33229.3899028948
       }
     },
     "normalizedDifference": {
-      "count": 26,
+      "count": 25,
       "min": 179.81612983378454,
       "max": 195056.0163109146,
-      "mean": 26585.90679481406,
-      "median": 5269.279217641101,
-      "p25": 526.0502031794795,
-      "p75": 17381.51698314733
+      "mean": 26100.960036659748,
+      "median": 5159.781151261866,
+      "p25": 396.06917698284997,
+      "p75": 10595.59076284881
     },
     "winnerCounts": {
-      "openCodeGo": 7,
+      "openCodeGo": 6,
       "commandCode": 12,
       "draw": 7
     },
     "biggestDifferences": [
-      {
-        "canonicalModel": "glm53",
-        "displayName": "GLM-5.3",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "GLM-5.3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 500,
-          "averageRequestCost": 0.014832799999999998,
-          "averageRequestsPerMonth": 33709.07718030312,
-          "normalizedRequestsPer10": 33709.07718030312,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.00029665599999999996
-        },
-        "commandCode": {
-          "sourceName": "GLM-5.3",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 70,
-          "averageRequestCost": 0.014832799999999998,
-          "averageRequestsPerMonth": 4719.270805242436,
-          "normalizedRequestsPer10": 4381.867042936338,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.0022821322285714284
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 29327.21013736678,
-          "advantagePercent": 669.2857142857143,
-          "winner": "openCodeGo"
-        }
-      },
       {
         "canonicalModel": "muse-spark-1.2-contributor",
         "displayName": "Muse Spark 1.2 Contributor",
@@ -2950,6 +2903,43 @@
         "comparison": {
           "normalizedDifference": 139325.72593636753,
           "advantagePercent": 223.09999999999994,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "glm53",
+        "displayName": "GLM-5.3",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 200,
+          "averageRequestCost": 0.014832799999999998,
+          "averageRequestsPerMonth": 13483.630872121246,
+          "normalizedRequestsPer10": 13483.630872121246,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0007416399999999999
+        },
+        "commandCode": {
+          "sourceName": "GLM-5.3",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 70,
+          "averageRequestCost": 0.014832799999999998,
+          "averageRequestsPerMonth": 4719.270805242436,
+          "normalizedRequestsPer10": 4381.867042936338,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0022821322285714284
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 9101.763829184907,
+          "advantagePercent": 207.7142857142857,
           "winner": "openCodeGo"
         }
       },
@@ -3104,13 +3094,6 @@
     ],
     "outliers": [
       {
-        "model": "GLM-5.3",
-        "ratio": 7.692857142857143,
-        "advantagePercent": 669.2857142857143,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
         "model": "Muse Spark 1.2 Contributor",
         "ratio": 3.2310000000000003,
         "advantagePercent": 223.10000000000002,
@@ -3129,6 +3112,34 @@
         "ratio": 3.2309999999999994,
         "advantagePercent": 223.09999999999994,
         "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "GLM-5.3",
+        "ratio": 3.077142857142857,
+        "advantagePercent": 207.7142857142857,
+        "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Qwen3.7 Plus",
+        "ratio": 2.2887737270262125,
+        "advantagePercent": 128.87737270262124,
+        "winner": "openCodeGo",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Step 5 Preview",
+        "ratio": 0.4839973145862058,
+        "advantagePercent": 106.612716612891,
+        "winner": "commandCode",
+        "method": "Tukey IQR on log2 normalized-requests ratio"
+      },
+      {
+        "model": "Claude Haiku 5.5",
+        "ratio": 0.48464999999999997,
+        "advantagePercent": 106.3344681729083,
+        "winner": "commandCode",
         "method": "Tukey IQR on log2 normalized-requests ratio"
       }
     ]
