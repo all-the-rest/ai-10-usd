@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T19:02:43.106Z",
+  "generatedAt": "2026-11-23T20:54:47.898Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-23T17:09:22.066Z",
+      "fetchedAt": "2026-11-23T20:52:59.587Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-23T19:00:50.365Z",
+      "fetchedAt": "2026-11-23T20:51:45.478Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -818,6 +818,40 @@
       }
     },
     {
+      "canonicalModel": "geminidecision1",
+      "displayName": "Gemini Decision 1",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "geminiembedding2",
+      "displayName": "Gemini Embedding 2",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "glm5",
       "displayName": "GLM-5",
       "status": "commandCodeOnly",
@@ -1128,6 +1162,23 @@
       }
     },
     {
+      "canonicalModel": "gpt6lunadecision",
+      "displayName": "GPT-6 Luna Decision",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "grok45",
       "displayName": "Grok 4.5",
       "status": "commandCodeOnly",
@@ -1393,6 +1444,23 @@
     {
       "canonicalModel": "jev",
       "displayName": "Jev",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
+      "canonicalModel": "jev114",
+      "displayName": "Jev 1.14",
       "status": "commandCodeOnly",
       "openCodeGo": null,
       "commandCode": null,
@@ -2460,6 +2528,23 @@
       }
     },
     {
+      "canonicalModel": "qwen3embedding8b",
+      "displayName": "Qwen3 Embedding 8B",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
+    },
+    {
       "canonicalModel": "qwen-3.7-plus",
       "displayName": "Qwen3.7 Plus",
       "status": "matched",
@@ -2751,11 +2836,28 @@
         "advantagePercent": null,
         "winner": null
       }
+    },
+    {
+      "canonicalModel": "textembedding3small",
+      "displayName": "text-embedding-3-small",
+      "status": "commandCodeOnly",
+      "openCodeGo": null,
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": false,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": null
+      }
     }
   ],
   "statistics": {
     "matchedModels": 25,
-    "totalModels": 84,
+    "totalModels": 90,
     "coverage": {
       "openCodeGo": 31,
       "commandCode": 76
