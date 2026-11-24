@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T20:54:47.898Z",
+  "generatedAt": "2026-11-24T04:56:06.278Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-23T20:52:59.587Z",
+      "fetchedAt": "2026-11-24T04:54:08.694Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-23T20:51:45.478Z",
+      "fetchedAt": "2026-11-24T04:53:41.393Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1240,6 +1240,33 @@
         "normalizedDifference": 265.4904299855558,
         "advantagePercent": 65.06757453832662,
         "winner": "commandCode"
+      }
+    },
+    {
+      "canonicalModel": "hungergfree",
+      "displayName": "HungerG Free",
+      "status": "openCodeGoOnly",
+      "openCodeGo": {
+        "sourceName": "HungerG Free",
+        "variantCount": 1,
+        "unlimited": true,
+        "normalizedRequestsPer10": null,
+        "averageRequestsPerMonth": null,
+        "averageAllowance": 0,
+        "averageRequestCost": 0,
+        "paidMonthly": 10,
+        "effectiveRequestCostAtPaidPrice": 0
+      },
+      "commandCode": null,
+      "freeIncluded": {
+        "openCodeGo": true,
+        "commandCode": false
+      },
+      "promoExpires": null,
+      "comparison": {
+        "normalizedDifference": null,
+        "advantagePercent": null,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -2857,9 +2884,9 @@
   ],
   "statistics": {
     "matchedModels": 25,
-    "totalModels": 90,
+    "totalModels": 91,
     "coverage": {
-      "openCodeGo": 31,
+      "openCodeGo": 32,
       "commandCode": 76
     },
     "requestsPer10": {
