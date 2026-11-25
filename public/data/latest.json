@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T19:12:45.558Z",
+  "generatedAt": "2026-11-25T03:41:13.326Z",
   "targetMonthlyPrice": 10,
   "peakWindows": {
     "openCodeGo": null,
@@ -227,14 +227,14 @@
   "sources": {
     "openCodeGo": {
       "url": "https://ocgo-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-24T19:09:59.935Z",
+      "fetchedAt": "2026-11-25T03:39:05.867Z",
       "planName": "OpenCode Go",
       "paidMonthly": 10,
       "monthlyCredit": 60
     },
     "commandCode": {
       "url": "https://cc-pricing.all-the.rest/data/latest.json",
-      "fetchedAt": "2026-11-24T19:07:28.489Z",
+      "fetchedAt": "2026-11-25T03:37:45.214Z",
       "planId": "goat",
       "planName": "GOAT",
       "advertisedMonthly": 10,
@@ -1682,12 +1682,12 @@
         "sourceName": "Kimi K3.1 Pro",
         "variantCount": 1,
         "unlimited": false,
-        "averageAllowance": 15,
+        "averageAllowance": 60,
         "averageRequestCost": 0.01322,
-        "averageRequestsPerMonth": 1134.64447806354,
-        "normalizedRequestsPer10": 1134.64447806354,
+        "averageRequestsPerMonth": 4538.57791225416,
+        "normalizedRequestsPer10": 4538.57791225416,
         "paidMonthly": 10,
-        "effectiveRequestCostAtPaidPrice": 0.008813333333333334
+        "effectiveRequestCostAtPaidPrice": 0.0022033333333333336
       },
       "commandCode": {
         "sourceName": "Kimi K3.1 Pro",
@@ -1706,9 +1706,9 @@
       },
       "promoExpires": null,
       "comparison": {
-        "normalizedDifference": 270.0531116158659,
-        "advantagePercent": 23.80068090374498,
-        "winner": "commandCode"
+        "normalizedDifference": 3133.8803225747542,
+        "advantagePercent": 223.1,
+        "winner": "openCodeGo"
       }
     },
     {
@@ -2894,9 +2894,9 @@
         "count": 25,
         "min": 408.02263165530246,
         "max": 282485.8757062147,
-        "mean": 56731.017941795515,
+        "mean": 56867.17527916313,
         "median": 13483.630872121246,
-        "p25": 3848.6011617644044,
+        "p25": 4538.57791225416,
         "p75": 30675.47393607231
       },
       "commandCode": {
@@ -2913,14 +2913,14 @@
       "count": 25,
       "min": 179.81612983378454,
       "max": 195056.0163109146,
-      "mean": 26100.960036659748,
+      "mean": 26215.51312509811,
       "median": 5159.781151261866,
-      "p25": 396.06917698284997,
+      "p25": 915.993281769368,
       "p75": 10595.59076284881
     },
     "winnerCounts": {
-      "openCodeGo": 6,
-      "commandCode": 12,
+      "openCodeGo": 7,
+      "commandCode": 11,
       "draw": 7
     },
     "biggestDifferences": [
@@ -2995,6 +2995,43 @@
         "comparison": {
           "normalizedDifference": 195056.0163109146,
           "advantagePercent": 223.10000000000002,
+          "winner": "openCodeGo"
+        }
+      },
+      {
+        "canonicalModel": "kimik31pro",
+        "displayName": "Kimi K3.1 Pro",
+        "status": "matched",
+        "openCodeGo": {
+          "sourceName": "Kimi K3.1 Pro",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 60,
+          "averageRequestCost": 0.01322,
+          "averageRequestsPerMonth": 4538.57791225416,
+          "normalizedRequestsPer10": 4538.57791225416,
+          "paidMonthly": 10,
+          "effectiveRequestCostAtPaidPrice": 0.0022033333333333336
+        },
+        "commandCode": {
+          "sourceName": "Kimi K3.1 Pro",
+          "variantCount": 1,
+          "unlimited": false,
+          "averageAllowance": 20,
+          "averageRequestCost": 0.01322,
+          "averageRequestsPerMonth": 1512.85930408472,
+          "normalizedRequestsPer10": 1404.6975896794058,
+          "paidMonthly": 10.77,
+          "effectiveRequestCostAtPaidPrice": 0.0071189700000000005
+        },
+        "freeIncluded": {
+          "openCodeGo": false,
+          "commandCode": false
+        },
+        "promoExpires": null,
+        "comparison": {
+          "normalizedDifference": 3133.8803225747542,
+          "advantagePercent": 223.1,
           "winner": "openCodeGo"
         }
       },
@@ -3182,96 +3219,9 @@
           "advantagePercent": 106.3344681729083,
           "winner": "commandCode"
         }
-      },
-      {
-        "canonicalModel": "grok47",
-        "displayName": "Grok 4.7",
-        "status": "matched",
-        "openCodeGo": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 2,
-          "unlimited": false,
-          "averageAllowance": 15,
-          "averageRequestCost": 0.041358,
-          "averageRequestsPerMonth": 408.02263165530246,
-          "normalizedRequestsPer10": 408.02263165530246,
-          "paidMonthly": 10,
-          "effectiveRequestCostAtPaidPrice": 0.027571999999999992
-        },
-        "commandCode": {
-          "sourceName": "Grok 4.7",
-          "variantCount": 1,
-          "unlimited": false,
-          "averageAllowance": 20,
-          "averageRequestCost": 0.027572,
-          "averageRequestsPerMonth": 725.3735673872044,
-          "normalizedRequestsPer10": 673.5130616408583,
-          "paidMonthly": 10.77,
-          "effectiveRequestCostAtPaidPrice": 0.014847521999999998
-        },
-        "freeIncluded": {
-          "openCodeGo": false,
-          "commandCode": false
-        },
-        "promoExpires": null,
-        "comparison": {
-          "normalizedDifference": 265.4904299855558,
-          "advantagePercent": 65.06757453832662,
-          "winner": "commandCode"
-        }
       }
     ],
-    "outliers": [
-      {
-        "model": "Muse Spark 1.2 Contributor",
-        "ratio": 3.2310000000000003,
-        "advantagePercent": 223.10000000000002,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Muse Spark 1.3 Contributor",
-        "ratio": 3.2310000000000003,
-        "advantagePercent": 223.10000000000002,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "MiMo V2.6 Flash",
-        "ratio": 3.2309999999999994,
-        "advantagePercent": 223.09999999999994,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "GLM-5.3",
-        "ratio": 3.077142857142857,
-        "advantagePercent": 207.7142857142857,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Qwen3.7 Plus",
-        "ratio": 2.2887737270262125,
-        "advantagePercent": 128.87737270262124,
-        "winner": "openCodeGo",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Step 5 Preview",
-        "ratio": 0.4839973145862058,
-        "advantagePercent": 106.612716612891,
-        "winner": "commandCode",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      },
-      {
-        "model": "Claude Haiku 5.5",
-        "ratio": 0.48464999999999997,
-        "advantagePercent": 106.3344681729083,
-        "winner": "commandCode",
-        "method": "Tukey IQR on log2 normalized-requests ratio"
-      }
-    ]
+    "outliers": []
   },
   "warnings": [
     "Rows without a model on both plans are shown but excluded from comparison statistics."
